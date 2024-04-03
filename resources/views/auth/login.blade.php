@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset ('tloginjadi') }}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset ('tloginjadi') }}/assets/css/fontawsom-all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset ('tloginjadi') }}/assets/css/style.css" />
+
 </head>
 
 <body>
