@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FeaturesProfileController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-// Route tampilan features-profile 
+// Route tampilan features-profile
+Route::get('/features-profile', [FeaturesProfileController::class, 'show'])->name('features-profile');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
