@@ -1,2 +1,2 @@
-<!-- Menampilkan halaman app.blade.php !-->
+<!-- Tampilan app.blade.php !-->
 @include('layouts.app')
