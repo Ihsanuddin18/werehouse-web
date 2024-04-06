@@ -421,7 +421,7 @@
                     <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle profile-widget-picture">
                     <div class="profile-widget-items">
                       <div class="profile-widget-item">
-                        <div class="profile-widget-item-label">Posts</div>
+                        <div class="profile-widget-item-label">Tanggal</div>
                         <div class="profile-widget-item-value">187</div>
                       </div>
                       <div class="profile-widget-item">
