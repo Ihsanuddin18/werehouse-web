@@ -241,9 +241,12 @@
                 <i class="fas fa-cog"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"></i> Logout
-              </a>
+              <form method="POST" action="{{ route('logout') }}">
+                    @csrf 
+              <button class="dropdown-item has-icon text-danger" style="cursor: pointer;"> 
+                <i class="fas fa-sign-out-alt" style="display: block; margin-top: 8px;">
+                </i>Logout</button>
+             </form>
             </div>
           </li>
         </ul>
@@ -401,12 +404,12 @@
           <div class="section-header">
             <h1>Profile</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+              <div class="breadcrumb-item active"><a href="{{('dashboard')}}#">Dashboard</a></div>
               <div class="breadcrumb-item">Profile</div>
             </div>
           </div>
           <div class="section-body">
-            <h2 class="section-title">Hi, Ujang!</h2>
+            <h2 class="section-title">{{ Auth::user()->name }}</h2>
             <p class="section-lead">
               Change information about yourself on this page.
             </p>
