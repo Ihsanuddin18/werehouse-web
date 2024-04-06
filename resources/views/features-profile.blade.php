@@ -439,17 +439,17 @@
                     Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.
                   </div>
                   <div class="card-footer text-center">
-                    <div class="font-weight-bold mb-2">Follow Werehouse BPBD</div>
-                    <a href="#" class="btn btn-social-icon btn-facebook mr-1">
+                    <div class="font-weight-bold mb-2">Werehouse BPBD</div>
+                    <a href="https://www.facebook.com/bpbd.jember" class="btn btn-social-icon btn-facebook mr-1">
                       <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" class="btn btn-social-icon btn-twitter mr-1">
+                    <a href="https://twitter.com/PusdalopJ" class="btn btn-social-icon btn-twitter mr-1">
                       <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="btn btn-social-icon btn-github mr-1">
-                      <i class="fab fa-github"></i>
+                    <a href="https://bpbd.jemberkab.go.id/" class="btn btn-social-icon btn-github mr-1">
+                        <img src="{{ asset('tdashboard') }}/assets/img/lweb.png" alt="GitHub">
                     </a>
-                    <a href="#" class="btn btn-social-icon btn-instagram">
+                    <a href="https://www.instagram.com/bpbd_kab.jember/" class="btn btn-social-icon btn-instagram">
                       <i class="fab fa-instagram"></i>
                     </a>
                   </div>
