@@ -404,14 +404,14 @@
           <div class="section-header">
             <h1>Profile</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="{{('dashboard')}}#">Dashboard</a></div>
+              <div class="breadcrumb-item active"><a href="{{('dashboard')}}">Dashboard</a></div>
               <div class="breadcrumb-item">Profile</div>
             </div>
           </div>
           <div class="section-body">
             <h2 class="section-title">{{ Auth::user()->name }}</h2>
             <p class="section-lead">
-              Change information about yourself on this page.
+              Tingkatkan perubahan profile anda dengan sentuhan pribadi yang unik!
             </p>
 
             <div class="row mt-sm-4">
@@ -435,11 +435,11 @@
                     </div>
                   </div>
                   <div class="profile-widget-description">
-                    <div class="profile-widget-name">Ujang Maman <div class="text-muted d-inline font-weight-normal"><div class="slash"></div> Web Developer</div></div>
+                    <div class="profile-widget-name">{{ Auth::user()->name }} <div class="text-muted d-inline font-weight-normal"><div class="slash"></div> Biografi </div></div>
                     Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.
                   </div>
                   <div class="card-footer text-center">
-                    <div class="font-weight-bold mb-2">Follow Ujang On</div>
+                    <div class="font-weight-bold mb-2">Follow Werehouse BPBD</div>
                     <a href="#" class="btn btn-social-icon btn-facebook mr-1">
                       <i class="fab fa-facebook-f"></i>
                     </a>
