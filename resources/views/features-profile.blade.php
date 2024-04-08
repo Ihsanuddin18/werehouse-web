@@ -441,16 +441,16 @@
                   <div class="card-footer text-center">
                     <div class="font-weight-bold mb-2">Werehouse BPBD</div>
                     <a href="https://www.facebook.com/bpbd.jember" class="btn btn-social-icon btn-facebook mr-1">
-                      <i class="fab fa-facebook-f"></i>
+                        <img src="{{ asset('tdashboard') }}/assets/img/logfacebook.png" alt="logofacebook">
                     </a>
                     <a href="https://twitter.com/PusdalopJ" class="btn btn-social-icon btn-twitter mr-1">
-                      <i class="fab fa-twitter"></i>
+                        <img src="{{ asset('tdashboard') }}/assets/img/logtwitter.png" alt="logotwitter">
                     </a>
                     <a href="https://bpbd.jemberkab.go.id/" class="btn btn-social-icon btn-github mr-1">
-                        <img src="{{ asset('tdashboard') }}/assets/img/lweb.png" alt="GitHub">
+                        <img src="{{ asset('tdashboard') }}/assets/img/logbpbd.png" alt="logobpbd">
                     </a>
                     <a href="https://www.instagram.com/bpbd_kab.jember/" class="btn btn-social-icon btn-instagram">
-                      <i class="fab fa-instagram"></i>
+                        <img src="{{ asset('tdashboard') }}/assets/img/loginstagram.png" alt="logoinstagram">
                     </a>
                   </div>
                 </div>
