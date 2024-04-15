@@ -411,7 +411,7 @@
           <div class="section-body">
             <h2 class="section-title">{{ Auth::user()->name }}</h2>
             <p class="section-lead">
-              Tingkatkan perubahan profile anda dengan sentuhan pribadi yang unik!
+              Tingkatkan perubahan profil anda dengan sentuhan pribadi yang unik!
             </p>
 
             <div class="row mt-sm-4">
@@ -459,7 +459,7 @@
                 <div class="card">
                   <form method="post" class="needs-validation" novalidate="">
                     <div class="card-header">
-                      <h4> Edit Profile</h4>
+                      <h4> Perubahan Profil</h4>
                     </div>
                     <div class="card-body">
                         <div class="row">
