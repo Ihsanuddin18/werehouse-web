@@ -422,15 +422,15 @@
                     <div class="profile-widget-items">
                       <div class="profile-widget-item">
                         <div class="profile-widget-item-label">Tanggal</div>
-                        <div class="profile-widget-item-value">187</div>
+                        <div class="profile-widget-item-value">01</div>
                       </div>
                       <div class="profile-widget-item">
-                        <div class="profile-widget-item-label">Followers</div>
-                        <div class="profile-widget-item-value">6,8K</div>
+                        <div class="profile-widget-item-label">Bulan</div>
+                        <div class="profile-widget-item-value">Januari</div>
                       </div>
                       <div class="profile-widget-item">
-                        <div class="profile-widget-item-label">Following</div>
-                        <div class="profile-widget-item-value">2,1K</div>
+                        <div class="profile-widget-item-label">Tahun</div>
+                        <div class="profile-widget-item-value">2002</div>
                       </div>
                     </div>
                   </div>
@@ -459,7 +459,7 @@
                 <div class="card">
                   <form method="post" class="needs-validation" novalidate="">
                     <div class="card-header">
-                      <h4>Edit Profile</h4>
+                      <h4> Edit Profile</h4>
                     </div>
                     <div class="card-body">
                         <div class="row">
