@@ -462,18 +462,18 @@
                       <h4>Edit Profile</h4>
                     </div>
                     <div class="card-body">
-                        <div class="row">                               
+                        <div class="row">
                           <div class="form-group col-md-6 col-12">
+                          @include('profile.partials.update-profile-information-form')
                             <label>First Name</label>
-                            @include('profile.partials.update-profile-information-form')
                             <input type="text" class="form-control" value="Ujang" required="">
                             <div class="invalid-feedback">
                               Please fill in the first name
                             </div>
                           </div>
                           <div class="form-group col-md-6 col-12">
+                          @include('profile.partials.update-password-form')
                             <label>Last Name</label>
-                            @include('profile.partials.update-password-form')
                             <input type="text" class="form-control" value="Maman" required="">
                             <div class="invalid-feedback">
                               Please fill in the last name
