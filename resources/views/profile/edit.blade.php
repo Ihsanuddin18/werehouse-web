@@ -231,7 +231,7 @@
             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
-              <a href="{{ route('features-profile') }}" class="dropdown-item has-icon">
+              <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
               <a href="features-activities.html" class="dropdown-item has-icon">
@@ -465,6 +465,7 @@
                         <div class="row">                               
                           <div class="form-group col-md-6 col-12">
                             <label>First Name</label>
+                            @include('profile.partials.update-profile-information-form')
                             <input type="text" class="form-control" value="Ujang" required="">
                             <div class="invalid-feedback">
                               Please fill in the first name
@@ -472,6 +473,7 @@
                           </div>
                           <div class="form-group col-md-6 col-12">
                             <label>Last Name</label>
+                            @include('profile.partials.update-password-form')
                             <input type="text" class="form-control" value="Maman" required="">
                             <div class="invalid-feedback">
                               Please fill in the last name

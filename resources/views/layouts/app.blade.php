@@ -387,7 +387,7 @@
                 <li><a class="nav-link" href="features-activities.html">Activities</a></li>
                 <li><a class="nav-link" href="features-post-create.html">Post Create</a></li>
                 <li><a class="nav-link" href="features-posts.html">Posts</a></li>
-                <li><a class="nav-link" href="features-profile.html">Profile</a></li>
+                <li><a class="nav-link" href="{{ route('profile.edit') }}">Profile</a></li>
                 <li><a class="nav-link" href="features-settings.html">Settings</a></li>
                 <li><a class="nav-link" href="features-setting-detail.html">Setting Detail</a></li>
                 <li><a class="nav-link" href="features-tickets.html">Tickets</a></li>
