@@ -465,32 +465,18 @@
                         <div class="row">
                           <div class="form-group col-md-6 col-12">
                           @include('profile.partials.update-profile-information-form')
-                            <label>First Name</label>
-                            <input type="text" class="form-control" value="Ujang" required="">
                             <div class="invalid-feedback">
                               Please fill in the first name
                             </div>
                           </div>
                           <div class="form-group col-md-6 col-12">
                           @include('profile.partials.update-password-form')
-                            <label>Last Name</label>
-                            <input type="text" class="form-control" value="Maman" required="">
                             <div class="invalid-feedback">
                               Please fill in the last name
                             </div>
                           </div>
                         </div>
                         <div class="row">
-                          <div class="form-group col-md-7 col-12">
-                            <label>Email</label>
-                            <input type="email" class="form-control" value="ujang@maman.com" required="">
-                            <div class="invalid-feedback">
-                              Please fill in the email
-                            </div>
-                          </div>
-                          <div class="form-group col-md-5 col-12">
-                            <label>Phone</label>
-                            <input type="tel" class="form-control" value="">
                           </div>
                         </div>
                         <div class="row">
