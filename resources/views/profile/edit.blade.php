@@ -485,20 +485,9 @@
                             <textarea class="form-control summernote-simple">Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.</textarea>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="form-group mb-0 col-12">
-                            <div class="custom-control custom-checkbox">
-                              <input type="checkbox" name="remember" class="custom-control-input" id="newsletter">
-                              <label class="custom-control-label" for="newsletter">Subscribe to newsletter</label>
-                              <div class="text-muted form-text">
-                                You will get new information about products, offers and promotions
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                     </div>
-                    <div class="card-footer text-right">
-                      <button class="btn btn-primary">Save Changes</button>
+                    <div>
+                      <button class="btn btn-primary">Simpan Biografi</button>
                     </div>
                   </form>
                 </div>
