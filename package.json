@@ -15,7 +15,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "status": "^0.0.13",
-        "sweetalert2": "^11.10.7"
+        "semver": "^7.6.0",
+        "status": "^0.0.6"
     }
 }
