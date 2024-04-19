@@ -16,16 +16,17 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA --></head>
 
 <body>
   <div id="app">
@@ -422,24 +423,19 @@
                     <div class="profile-widget-items">
                       <div class="profile-widget-item">
                         <div class="profile-widget-item-label">Tanggal</div>
-                        <div class="profile-widget-item-value">01</div>
+                        <div class="profile-widget-item-value">08</div>
                       </div>
                       <div class="profile-widget-item">
                         <div class="profile-widget-item-label">Bulan</div>
-                        <div class="profile-widget-item-value">Januari</div>
+                        <div class="profile-widget-item-value">Juni</div>
                       </div>
                       <div class="profile-widget-item">
                         <div class="profile-widget-item-label">Tahun</div>
-                        <div class="profile-widget-item-value">2002</div>
+                        <div class="profile-widget-item-value">2010</div>
                       </div>
                     </div>
                   </div>
                   
-                  @if(Session::has('status'))
-                      <div class="alert alert-success">
-                          {{ Session::get('status') }}
-                      </div>
-                  @endif
                   <div class="profile-widget-description">
                       <div class="profile-widget-name">{{ Auth::user()->name }} <div class="text-muted d-inline font-weight-normal"><div class="slash"></div> Biografi </div></div>
                       @if(Auth::user()->biography)
@@ -448,7 +444,7 @@
                           <p>Belum ada biografi.</p>
                       @endif
                   </div>
-
+                    
                   <div class="card-footer text-center">
                     <div class="font-weight-bold mb-2">Werehouse BPBD</div>
                     <a href="https://www.facebook.com/bpbd.jember" class="btn btn-social-icon btn-facebook mr-1">
@@ -467,6 +463,11 @@
                 </div>
               </div>
               <div class="col-12 col-md-12 col-lg-7">
+              @if(Session::has('status'))
+                      <div class="alert alert-success">
+                          {{ Session::get('status') }}
+                      </div>
+                    @endif
                 <div class="card">
                   <form method="post" class="needs-validation" novalidate="">
                     <div class="card-header">
