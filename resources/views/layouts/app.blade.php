@@ -267,7 +267,7 @@
             <li class="dropdown active">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="index-0.html">General Dashboard</a></li>
+                <li><a class="nav-link" href="{{ route('dashboard2') }}">General Dashboard</a></li>
                 <li class=active><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
               </ul>
             </li>
@@ -310,7 +310,7 @@
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Tambah User</span></a>
               <ul class="dropdown-menu">
-              <li><a href="{{ route('tambah_user') }}">Buat User Baru</a></li> 
+              <li><a href="#">Buat User Baru</a></li> 
                 <li><a href="auth-login.html">Login</a></li> 
                 <li><a href="auth-register.html">Register</a></li> 
                 <li><a href="auth-reset-password.html">Reset Password</a></li> 

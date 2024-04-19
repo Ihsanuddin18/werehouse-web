@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TambahUserController;
+use App\Http\Controllers\Dashboard2Controller;
 
 
 /*
@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function () {
 });
 
 
+//Route Dashboard2
+    Route::get('/dashboard2', [Dashboard2Controller::class, 'showDashboard2'])->name('dashboard2');    
+    
+    
 //Route Tambah User
     Route::get('/tambah-user', [TambahUserController::class, 'showTambahUser'])->name('tambah_user');    
 
