@@ -231,7 +231,17 @@
             <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
+              <div class="dropdown-title">
+              <div class="dropdown-title">
+                
+                @if(Auth::user()->last_login_at)
+                    Last logged in {{ Auth::user()->last_login_at->diffForHumans() }}
+                @else
+                    First time login
+                @endif
+            </div>
+
+              </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
