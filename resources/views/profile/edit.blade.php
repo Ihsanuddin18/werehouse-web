@@ -434,10 +434,16 @@
                       </div>
                     </div>
                   </div>
+                  
+                  @if(Session::has('status'))
+                      <div class="alert alert-success">
+                          {{ Session::get('status') }}
+                      </div>
+                  @endif
                   <div class="profile-widget-description">
                       <div class="profile-widget-name">{{ Auth::user()->name }} <div class="text-muted d-inline font-weight-normal"><div class="slash"></div> Biografi </div></div>
                       @if(Auth::user()->biography)
-                          <p>{!! nl2br(e(Auth::user()->biography)) !!}</p>
+                          <p>{!! nl2br(Auth::user()->biography) !!}</p>
                       @else
                           <p>Belum ada biografi.</p>
                       @endif
@@ -484,6 +490,7 @@
                         <div class="row">
                           </div>
                           <div>
+
                           <form action="{{ route('profile.updateBiography', $user->id) }}" method="POST">
                             @csrf
                             @method('PUT')
@@ -497,6 +504,7 @@
                                 <button type="submit" class="btn btn-primary">Simpan Biografi</button>
                             </div>
                         </form>
+
                         </div>
                         </div>
                       </div>

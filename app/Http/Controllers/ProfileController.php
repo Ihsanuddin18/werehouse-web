@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
 
 
 class ProfileController extends Controller
@@ -45,14 +46,18 @@ class ProfileController extends Controller
      */
     public function updateBiography(Request $request, $id): RedirectResponse
 {
-    $user = User::findOrFail($id);
-    $biography = $request->input('biography');
-    $cleanBiography = Str::of(strip_tags($biography))->trim(); // membersihkan tag HTML dan menghapus spasi kosong di awal dan akhir
-    $user->biography = $cleanBiography;
-    $user->save();
+        $user = User::findOrFail($id);
+        $biography = $request->input('biography');
+        $cleanBiography = Str::of(strip_tags($biography))->trim(); // membersihkan tag HTML dan menghapus spasi kosong di awal dan akhir
+        $user->biography = $biography;
+        $user->biography = $cleanBiography;
+        $user->save();
 
-    return redirect()->route('profile.edit')->with('status', 'Biography updated successfully!');
-}
+        // Mengirimkan notifikasi
+        Session::flash('status', 'Biography updated successfully!');
+
+        return redirect()->route('profile.edit')->with('status', 'Biography updated successfully!');
+    }
 
 
     /**
