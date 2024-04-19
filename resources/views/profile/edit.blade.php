@@ -228,19 +228,15 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">
-              <div class="dropdown-title">
-                
                 @if(Auth::user()->last_login_at)
-                    Last logged in {{ Auth::user()->last_login_at->diffForHumans() }}
+                    Terakhir login {{ Auth::user()->last_login_at->diffForHumans() }}
                 @else
-                    First time login
+                    Baru Login
                 @endif
-            </div>
-
               </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
@@ -429,7 +425,7 @@
               <div class="col-12 col-md-12 col-lg-5">
                 <div class="card profile-widget">
                   <div class="profile-widget-header">                     
-                    <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle profile-widget-picture">
+                    <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png" class="rounded-circle profile-widget-picture">
                     <div class="profile-widget-items">
                       <div class="profile-widget-item">
                         <div class="profile-widget-item-label">Tanggal</div>
