@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 
 
+
 class ProfileController extends Controller
 {
     /**
@@ -45,10 +46,11 @@ class ProfileController extends Controller
      * Update the user's biography.
      */
     public function updateBiography(Request $request, $id): RedirectResponse
-{
+{       
+    
         $user = User::findOrFail($id);
         $biography = $request->input('biography');
-        $cleanBiography = Str::of(strip_tags($biography))->trim(); // membersihkan tag HTML dan menghapus spasi kosong di awal dan akhir
+        $cleanBiography = Str::of(strip_tags($biography))->trim(); 
         $user->biography = $biography;
         $user->biography = $cleanBiography;
         $user->save();
@@ -59,18 +61,6 @@ class ProfileController extends Controller
         return redirect()->route('profile.edit')->with('status', 'Biografi Berhasil Disimpan !');
     }
 
-
-    /**
-     * Delete the user's biography.
-     */
-    public function destroyBiography($id): RedirectResponse
-    {
-        $user = User::findOrFail($id);
-        $user->biography = null; // or you can delete the column if needed
-        $user->save();
-
-        return redirect()->route('dashboard')->with('status', 'Biography deleted successfully!');
-    }
 
     /**
      * Delete the user's account.
