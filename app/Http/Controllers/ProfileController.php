@@ -56,9 +56,9 @@ class ProfileController extends Controller
         $user->save();
 
         // Mengirimkan notifikasi
-        Session::flash('status', 'Biografi Berhasil Disimpan !');
+        Session::flash('status', 'Biografi Berhasil Diperbarui !');
 
-        return redirect()->route('profile.edit')->with('status', 'Biografi Berhasil Disimpan !');
+        return redirect()->route('profile.edit')->with('status', 'Biografi Berhasil Diperbarui !');
     }
 
 
