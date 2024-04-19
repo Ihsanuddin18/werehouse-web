@@ -16,7 +16,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-  
+
   <!-- Start GA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
   <script>
@@ -463,7 +463,7 @@
                 </div>
               </div>
               <div class="col-12 col-md-12 col-lg-7">
-              @if(Session::has('status'))
+                    @if(Session::has('status'))
                       <div class="alert alert-success">
                           {{ Session::get('status') }}
                       </div>
