@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
+use Illuminate\Support\Str;
+
 
 class ProfileController extends Controller
 {
@@ -35,6 +38,33 @@ class ProfileController extends Controller
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+
+    /**
+     * Update the user's biography.
+     */
+    public function updateBiography(Request $request, $id): RedirectResponse
+{
+    $user = User::findOrFail($id);
+    $biography = $request->input('biography');
+    $cleanBiography = Str::of(strip_tags($biography))->trim(); // membersihkan tag HTML dan menghapus spasi kosong di awal dan akhir
+    $user->biography = $cleanBiography;
+    $user->save();
+
+    return redirect()->route('profile.edit')->with('status', 'Biography updated successfully!');
+}
+
+
+    /**
+     * Delete the user's biography.
+     */
+    public function destroyBiography($id): RedirectResponse
+    {
+        $user = User::findOrFail($id);
+        $user->biography = null; // or you can delete the column if needed
+        $user->save();
+
+        return redirect()->route('dashboard')->with('status', 'Biography deleted successfully!');
     }
 
     /**

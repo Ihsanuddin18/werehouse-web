@@ -435,9 +435,14 @@
                     </div>
                   </div>
                   <div class="profile-widget-description">
-                    <div class="profile-widget-name">{{ Auth::user()->name }} <div class="text-muted d-inline font-weight-normal"><div class="slash"></div> Biografi </div></div>
-                    <b>"Werehouse BPBD"</b> Kabupaten Jember adalah sebuah platform digital yang dirancang khusus untuk memantau dan mengelola persediaan barang-barang logistik yang tersedia di gudang.
+                      <div class="profile-widget-name">{{ Auth::user()->name }} <div class="text-muted d-inline font-weight-normal"><div class="slash"></div> Biografi </div></div>
+                      @if(Auth::user()->biography)
+                          <p>{!! nl2br(e(Auth::user()->biography)) !!}</p>
+                      @else
+                          <p>Belum ada biografi.</p>
+                      @endif
                   </div>
+
                   <div class="card-footer text-center">
                     <div class="font-weight-bold mb-2">Werehouse BPBD</div>
                     <a href="https://www.facebook.com/bpbd.jember" class="btn btn-social-icon btn-facebook mr-1">
@@ -478,22 +483,32 @@
                         </div>
                         <div class="row">
                           </div>
+                          <div>
+                          <form action="{{ route('profile.updateBiography', $user->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="row">
+                                <div class="form-group col-12">
+                                    <label><strong style="font-size: 1.7em; color: #515151;">Perbarui Biografi</strong></label>
+                                    <textarea class="form-control summernote-simple" name="biography" rows="5">{{ $user->biography }}</textarea>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Simpan Biografi</button>
+                            </div>
+                        </form>
                         </div>
+                        </div>
+                      </div>
                     </div>
-                  </form>
+                  </section>
                 </div>
+                <footer class="main-footer">
+                  <div class="footer-right">
+                  </div>
+                </footer>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
-      <footer class="main-footer">
-        <div class="footer-right">
-          
-        </div>
-      </footer>
-    </div>
-  </div>
 
   <!-- General JS Scripts -->
   <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
