@@ -235,7 +235,7 @@
                 @if(Auth::user()->last_login_at)
                     Terakhir login {{ Auth::user()->last_login_at->diffForHumans() }}
                 @else
-                    Baru Login
+                    Baru Login {{ Carbon\Carbon::now()->diffForHumans() }}
                 @endif
               </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">

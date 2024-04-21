@@ -272,7 +272,7 @@
                 <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
               </ul>
             </li>
-            <li class=active><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank age</span></a></li>
+           
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
               <ul class="dropdown-menu">
@@ -302,8 +302,8 @@
             <li class="dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Tambah Akun</span></a>
                 <ul class="dropdown-menu">
-                    <li class="active"><a href="{{ route('tambah_akun')}}">Anggota</a></li>
-                    <li><a href="auth-login.html">Login</a></li>
+                    <li class="active"><a href="{{ route('tambah_akun')}}">Admin</a></li>
+                    <li><a href="auth-login.html">Anggota</a></li>
                     <li><a href="auth-register.html">Register</a></li>
                     <li><a href="auth-reset-password.html">Reset Password</a></li>
                 </ul>
