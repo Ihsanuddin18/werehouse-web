@@ -405,6 +405,23 @@
               <div class="breadcrumb-item">Admin</div>
             </div>
           </div>
+          <style>
+            .buttons {
+              display: inline-block;
+              margin-right: 20px; 
+            }
+            .buttons .btn {
+              font-size: 18px; 
+              padding: 12px 20px; 
+            }
+          </style>
+          <div class="buttons">
+            <a href="#" class="btn btn-icon icon-left"><i class="far fa-user"></i> Admin</a>
+          </div>
+          <div class="buttons">
+            <a href="#" class="btn btn-icon icon-left"><i class="far fa-user"></i> Anggota</a>
+          </div>
+
           <div class="row">
             <div class="col-md-8">
               <div class="card">
@@ -474,55 +491,57 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card card-hero">
-                <div class="card-header">
-                  <div class="card-icon">
-                    <i class="far fa-question-circle"></i>
-                  </div>
-                  <h4>14</h4>
-                  <div class="card-description">Customers need help</div>
+            <div class="card">
+                  <form class="needs-validation" novalidate="">
+                    <div class="card-header">
+                      <h4>JavaScript Validation (Horizontal Form)</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Your Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" required="">
+                          <div class="invalid-feedback">
+                            What's your name?
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" required="">
+                          <div class="invalid-feedback">
+                            Oh no! Email is invalid.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Subject</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control">
+                          <div class="valid-feedback">
+                            Good job!
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group mb-0 row">
+                        <label class="col-sm-3 col-form-label">Message</label>
+                        <div class="col-sm-9">
+                          <textarea class="form-control" required=""></textarea>
+                          <div class="invalid-feedback">
+                            What do you wanna say?
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer text-right">
+                      <button class="btn btn-primary">Submit</button>
+                    </div>
+                  </form>
                 </div>
-                <div class="card-body p-0">
-                  <div class="tickets-list">
-                    <a href="#" class="ticket-item">
-                      <div class="ticket-title">
-                        <h4>My order hasn't arrived yet</h4>
-                      </div>
-                      <div class="ticket-info">
-                        <div>Laila Tazkiah</div>
-                        <div class="bullet"></div>
-                        <div class="text-primary">1 min ago</div>
-                      </div>
-                    </a>
-                    <a href="#" class="ticket-item">
-                      <div class="ticket-title">
-                        <h4>Please cancel my order</h4>
-                      </div>
-                      <div class="ticket-info">
-                        <div>Rizal Fakhri</div>
-                        <div class="bullet"></div>
-                        <div>2 hours ago</div>
-                      </div>
-                    </a>
-                    <a href="#" class="ticket-item">
-                      <div class="ticket-title">
-                        <h4>Do you see my mother?</h4>
-                      </div>
-                      <div class="ticket-info">
-                        <div>Syahdan Ubaidillah</div>
-                        <div class="bullet"></div>
-                        <div>6 hours ago</div>
-                      </div>
-                    </a>
-                    <a href="features-tickets.html" class="ticket-item ticket-more">
-                      View All <i class="fas fa-chevron-right"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
+          
+          
           <div class="section-body">
           </div>
         </section>
@@ -557,65 +576,3 @@
   <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
