@@ -305,8 +305,6 @@
                 <ul class="dropdown-menu">
                     <li class="active"><a href="{{ route('tambah_akun')}}">Admin</a></li>
                     <li><a href="{{ route('tambah_akun_anggota')}}">Anggota</a></li>
-                    <li><a href="auth-register.html">Register</a></li>
-                    <li><a href="auth-reset-password.html">Reset Password</a></li>
                 </ul>
             </li>
             <li class="menu-header">Stisla</li>
@@ -419,7 +417,7 @@
             <a href="{{ route('tambah_akun') }}" class="btn btn-icon icon-left"><i class="far fa-user"></i> Admin</a>
           </div>
           <div class="buttons">
-            <a href="#" class="btn btn-icon icon-left"><i class="far fa-user"></i> Anggota</a>
+            <a href="{{ route('tambah_akun_anggota') }}" class="btn btn-icon icon-left"><i class="far fa-user"></i> Anggota</a>
           </div>
 
           <div class="row">

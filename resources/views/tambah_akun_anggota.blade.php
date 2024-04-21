@@ -302,10 +302,8 @@
             <li class="dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Tambah Akun</span></a>
                 <ul class="dropdown-menu">
-                    <li class="active"><a href="{{ route('tambah_akun')}}">Admin</a></li>
-                    <li><a href="auth-login.html">Anggota</a></li>
-                    <li><a href="auth-register.html">Register</a></li>
-                    <li><a href="auth-reset-password.html">Reset Password</a></li>
+                    <li><a href="{{ route('tambah_akun')}}">Admin</a></li>
+                    <li class="active"><a href="{{ route('tambah_akun_anggota')}}">Anggota</a></li>
                 </ul>
             </li>
             <li class="menu-header">Stisla</li>
@@ -397,14 +395,148 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Admin</h1>
+            <h1>Anggota</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
               <div class="breadcrumb-item"><a href="{{ route('tambah_akun') }}">Tambah Akun</a></div>
-              <div class="breadcrumb-item">Admin</div>
+              <div class="breadcrumb-item">Anggota</div>
             </div>
           </div>
+          <style>
+            .buttons {
+              display: inline-block;
+              margin-right: 20px; 
+            }
+            .buttons .btn {
+              font-size: 18px; 
+              padding: 12px 20px; 
+            }
+          </style>
+          <div class="buttons">
+            <a href="{{ route('tambah_akun') }}" class="btn btn-icon icon-left"><i class="far fa-user"></i> Admin</a>
+          </div>
+          <div class="buttons">
+            <a href="{{ route('tambah_akun_anggota') }}" class="btn btn-icon icon-left"><i class="far fa-user"></i> Anggota</a>
+          </div>
 
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Invoices</h4>
+                  <div class="card-header-action">
+                    <a href="#" class="btn btn-danger">View More <i class="fas fa-chevron-right"></i></a>
+                  </div>
+                </div>
+                <div class="card-body p-0">
+                  <div class="table-responsive table-invoice">
+                    <table class="table table-striped">
+                      <tr>
+                        <th>Invoice ID</th>
+                        <th>Customer</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+                        <th>Action</th>
+                      </tr>
+                      <tr>
+                        <td><a href="#">INV-87239</a></td>
+                        <td class="font-weight-600">Kusnadi</td>
+                        <td><div class="badge badge-warning">Unpaid</div></td>
+                        <td>July 19, 2018</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">INV-48574</a></td>
+                        <td class="font-weight-600">Hasan Basri</td>
+                        <td><div class="badge badge-success">Paid</div></td>
+                        <td>July 21, 2018</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">INV-76824</a></td>
+                        <td class="font-weight-600">Muhamad Nuruzzaki</td>
+                        <td><div class="badge badge-warning">Unpaid</div></td>
+                        <td>July 22, 2018</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">INV-84990</a></td>
+                        <td class="font-weight-600">Agung Ardiansyah</td>
+                        <td><div class="badge badge-warning">Unpaid</div></td>
+                        <td>July 22, 2018</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">INV-87320</a></td>
+                        <td class="font-weight-600">Ardian Rahardiansyah</td>
+                        <td><div class="badge badge-success">Paid</div></td>
+                        <td>July 28, 2018</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+                <div class="card">
+                  <form class="needs-validation" novalidate="">
+                    <div class="card-header">
+                      <h4>JavaScript Validation (Horizontal Form)</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Your Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" required="">
+                          <div class="invalid-feedback">
+                            What's your name?
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" required="">
+                          <div class="invalid-feedback">
+                            Oh no! Email is invalid.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Subject</label>
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control">
+                          <div class="valid-feedback">
+                            Good job!
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group mb-0 row">
+                        <label class="col-sm-3 col-form-label">Message</label>
+                        <div class="col-sm-9">
+                          <textarea class="form-control" required=""></textarea>
+                          <div class="invalid-feedback">
+                            What do you wanna say?
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer text-right">
+                      <button class="btn btn-primary">Submit</button>
+                    </div>
+                  </form>
+                </div>
+          </div>
           <div class="section-body">
           </div>
         </section>
