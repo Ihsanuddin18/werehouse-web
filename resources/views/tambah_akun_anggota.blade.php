@@ -303,7 +303,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Tambah Akun</span></a>
                 <ul class="dropdown-menu">
                     <li class="active"><a href="{{ route('tambah_akun')}}">Admin</a></li>
-                    <li><a href="{{ route('tambah_akun_anggota')}}">Anggota</a></li>
+                    <li><a href="auth-login.html">Anggota</a></li>
                     <li><a href="auth-register.html">Register</a></li>
                     <li><a href="auth-reset-password.html">Reset Password</a></li>
                 </ul>
