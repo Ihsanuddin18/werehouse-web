@@ -416,7 +416,7 @@
             }
           </style>
           <div class="buttons">
-            <a href="#" class="btn btn-icon icon-left"><i class="far fa-user"></i> Admin</a>
+            <a href="{{ route('tambah_akun') }}" class="btn btn-icon icon-left"><i class="far fa-user"></i> Admin</a>
           </div>
           <div class="buttons">
             <a href="#" class="btn btn-icon icon-left"><i class="far fa-user"></i> Anggota</a>
@@ -491,7 +491,7 @@
                 </div>
               </div>
             </div>
-            <div class="card">
+                <div class="card">
                   <form class="needs-validation" novalidate="">
                     <div class="card-header">
                       <h4>JavaScript Validation (Horizontal Form)</h4>
