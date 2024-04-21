@@ -164,6 +164,7 @@
                 <a href="#">View All <i class="fas fa-chevron-right"></i></a>
               </div>
             </div>
+            
           </li>
           <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
@@ -404,11 +405,129 @@
               <div class="breadcrumb-item">Admin</div>
             </div>
           </div>
-
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Invoices</h4>
+                  <div class="card-header-action">
+                    <a href="#" class="btn btn-danger">View More <i class="fas fa-chevron-right"></i></a>
+                  </div>
+                </div>
+                <div class="card-body p-0">
+                  <div class="table-responsive table-invoice">
+                    <table class="table table-striped">
+                      <tr>
+                        <th>Invoice ID</th>
+                        <th>Customer</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+                        <th>Action</th>
+                      </tr>
+                      <tr>
+                        <td><a href="#">INV-87239</a></td>
+                        <td class="font-weight-600">Kusnadi</td>
+                        <td><div class="badge badge-warning">Unpaid</div></td>
+                        <td>July 19, 2018</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">INV-48574</a></td>
+                        <td class="font-weight-600">Hasan Basri</td>
+                        <td><div class="badge badge-success">Paid</div></td>
+                        <td>July 21, 2018</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">INV-76824</a></td>
+                        <td class="font-weight-600">Muhamad Nuruzzaki</td>
+                        <td><div class="badge badge-warning">Unpaid</div></td>
+                        <td>July 22, 2018</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">INV-84990</a></td>
+                        <td class="font-weight-600">Agung Ardiansyah</td>
+                        <td><div class="badge badge-warning">Unpaid</div></td>
+                        <td>July 22, 2018</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">INV-87320</a></td>
+                        <td class="font-weight-600">Ardian Rahardiansyah</td>
+                        <td><div class="badge badge-success">Paid</div></td>
+                        <td>July 28, 2018</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-hero">
+                <div class="card-header">
+                  <div class="card-icon">
+                    <i class="far fa-question-circle"></i>
+                  </div>
+                  <h4>14</h4>
+                  <div class="card-description">Customers need help</div>
+                </div>
+                <div class="card-body p-0">
+                  <div class="tickets-list">
+                    <a href="#" class="ticket-item">
+                      <div class="ticket-title">
+                        <h4>My order hasn't arrived yet</h4>
+                      </div>
+                      <div class="ticket-info">
+                        <div>Laila Tazkiah</div>
+                        <div class="bullet"></div>
+                        <div class="text-primary">1 min ago</div>
+                      </div>
+                    </a>
+                    <a href="#" class="ticket-item">
+                      <div class="ticket-title">
+                        <h4>Please cancel my order</h4>
+                      </div>
+                      <div class="ticket-info">
+                        <div>Rizal Fakhri</div>
+                        <div class="bullet"></div>
+                        <div>2 hours ago</div>
+                      </div>
+                    </a>
+                    <a href="#" class="ticket-item">
+                      <div class="ticket-title">
+                        <h4>Do you see my mother?</h4>
+                      </div>
+                      <div class="ticket-info">
+                        <div>Syahdan Ubaidillah</div>
+                        <div class="bullet"></div>
+                        <div>6 hours ago</div>
+                      </div>
+                    </a>
+                    <a href="features-tickets.html" class="ticket-item ticket-more">
+                      View All <i class="fas fa-chevron-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="section-body">
           </div>
         </section>
       </div>
+      
       <footer class="main-footer">
         <div class="footer-left">
           Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
@@ -438,3 +557,65 @@
   <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+<x-guest-layout>
+    <form method="POST" action="{{ route('register') }}">
+        @csrf
+
+        <!-- Name -->
+        <div>
+            <x-input-label for="name" :value="__('Name')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+
+        <!-- Email Address -->
+        <div class="mt-4">
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            required autocomplete="new-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mt-4">
+            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                            type="password"
+                            name="password_confirmation" required autocomplete="new-password" />
+
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <div class="flex items-center justify-end mt-4">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+                {{ __('Already registered?') }}
+            </a>
+
+            <x-primary-button class="ms-4">
+                {{ __('Register') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>
