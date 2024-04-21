@@ -231,13 +231,23 @@
             <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">
+            <div class="dropdown-title">
                 @if(Auth::user()->last_login_at)
-                    Terakhir login {{ Auth::user()->last_login_at->diffForHumans() }}
+                    @php
+                        $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
+                        $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
+                    @endphp
+                    @if($diffInMinutes > 1)
+                        Terakhir login {{ $diffInMinutes }} menit yang lalu
+                    @elseif($diffInSeconds > 0)
+                        Terakhir login {{ $diffInSeconds }} detik yang lalu
+                    @else
+                        Baru Login
+                    @endif
                 @else
-                    Baru Login {{ Carbon\Carbon::now()->diffForHumans() }}
+                    Baru Login
                 @endif
-              </div>
+            </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
