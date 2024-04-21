@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard2Controller;
 use App\Http\Controllers\TambahUserController;
 
 
@@ -34,10 +33,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/{id}/biography', [ProfileController::class, 'destroyBiography'])->name('profile.destroyBiography');
 });
 
-
-//Route Dashboard2
-    Route::get('/dashboard2', [Dashboard2Controller::class, 'showDashboard2'])->name('dashboard2');    
-    
     
 //Route Tambah User
     Route::get('/tambah-user', [TambahUserController::class, 'showTambahUser'])->name('tambah_user');    

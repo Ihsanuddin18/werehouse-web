@@ -267,7 +267,7 @@
             <li class="dropdown active">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('dashboard2') }}">General Dashboard</a></li>
+                <li><a class="nav-link" href="#">General Dashboard</a></li>
                 <li class=active><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
               </ul>
             </li>

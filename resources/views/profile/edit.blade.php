@@ -470,7 +470,7 @@
               </div>
               <div class="col-12 col-md-12 col-lg-7">
                     @if(Session::has('status'))
-                      <div class="alert alert-success">
+                      <div class="toastr toastr-success-message">
                           {{ Session::get('status') }}
                       </div>
                     @endif
