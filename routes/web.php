@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TambahAkunController;
+use App\Http\Controllers\TambahAkunAdminController;
 use App\Http\Controllers\TambahAkunAnggotaController;
 
 
@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
 
     
 //Route Tambah Akun
-    Route::get('/tambah-akun', [TambahAkunController::class, 'showTambahAkun'])->name('tambah_akun');    
+    Route::get('/tambah-akun-admin', [TambahAkunAdminController::class, 'showTambahAkunAdmin'])->name('tambah_akun_admin');    
     Route::get('/tambah-akun-anggota', [TambahAkunAnggotaController::class, 'showTambahAkunAnggota'])->name('tambah_akun_anggota');    
 
 

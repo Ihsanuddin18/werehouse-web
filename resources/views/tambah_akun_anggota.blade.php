@@ -226,7 +226,7 @@
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
+            <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}n</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
               <a href="features-profile.html" class="dropdown-item has-icon">
@@ -302,7 +302,7 @@
             <li class="dropdown active">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Tambah Akun</span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ route('tambah_akun')}}">Admin</a></li>
+                    <li><a href="{{ route('tambah_akun_admin')}}">Admin</a></li>
                     <li class="active"><a href="{{ route('tambah_akun_anggota')}}">Anggota</a></li>
                 </ul>
             </li>
@@ -407,7 +407,7 @@
             <h1>Anggota</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="{{ route('tambah_akun') }}">Tambah Akun</a></div>
+              <div class="breadcrumb-item"><a href="{{ route('tambah_akun_admin') }}">Tambah Akun</a></div>
               <div class="breadcrumb-item">Anggota</div>
             </div>
           </div>
@@ -422,7 +422,7 @@
             }
           </style>
           <div class="buttons">
-            <a href="{{ route('tambah_akun') }}" class="btn btn-icon icon-left"><i class="far fa-user"></i> Admin</a>
+            <a href="{{ route('tambah_akun_admin') }}" class="btn btn-icon icon-left"><i class="far fa-user"></i> Admin</a>
           </div>
           <div class="buttons">
             <a href="{{ route('tambah_akun_anggota') }}" class="btn btn-icon icon-left"><i class="far fa-user"></i> Anggota</a>
