@@ -226,10 +226,26 @@
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}n</div></a>
+            <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
-              <a href="features-profile.html" class="dropdown-item has-icon">
+            <div class="dropdown-title">
+                @if(Auth::user()->last_login_at)
+                    @php
+                        $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
+                        $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
+                    @endphp
+                    @if($diffInMinutes > 1)
+                        Terakhir login {{ $diffInMinutes }} menit yang lalu
+                    @elseif($diffInSeconds > 0)
+                        Terakhir login {{ $diffInSeconds }} detik yang lalu
+                    @else
+                        Baru Login
+                    @endif
+                @else
+                    Baru Login
+                @endif
+            </div>
+              <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
               <a href="features-activities.html" class="dropdown-item has-icon">
@@ -239,9 +255,12 @@
                 <i class="fas fa-cog"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"></i> Logout
-              </a>
+              <form method="POST" action="{{ route('logout') }}">
+                    @csrf 
+              <button class="dropdown-item has-icon text-danger" style="cursor: pointer;"> 
+                <i class="fas fa-sign-out-alt" style="display: block; margin-top: 8px;">
+                </i>Logout</button>
+             </form>
             </div>
           </li>
         </ul>
