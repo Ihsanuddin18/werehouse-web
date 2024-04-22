@@ -519,8 +519,16 @@
                         </div>
                         <div class="row">
                           </div>
+                        <div class="card">
+                          </div>
+                            <div class="section-title">Perbarui Foto Profil</div>
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input" id="customFile">
+                              <label class="custom-file-label" for="customFile">Pilih File</label>
+                            </div>
+                          </div>
+                        </div>
                           <div>
-
                           <form action="{{ route('profile.updateBiography', $user->id) }}" method="POST">
                             @csrf
                             @method('PUT')
