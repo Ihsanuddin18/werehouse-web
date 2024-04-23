@@ -467,7 +467,7 @@
                         <td><a href="#">INV-87239</a></td>
                         <td class="font-weight-600">Kusnadi</td>
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
-                        <td><div class="badge badge-warning">Anggota</div></td>
+                        <td><div class="badge badge-info">Anggota</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
@@ -476,7 +476,7 @@
                         <td><a href="#">INV-48574</a></td>
                         <td class="font-weight-600">Hasan Basri</td>
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
-                        <td><div class="badge badge-warning">Anggota</div></td>
+                        <td><div class="badge badge-info">Anggota</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
@@ -485,7 +485,7 @@
                         <td><a href="#">INV-76824</a></td>
                         <td class="font-weight-600">Muhamad Nuruzzaki</td>
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
-                        <td><div class="badge badge-warning">Anggota</div></td>
+                        <td><div class="badge badge-info">Anggota</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
@@ -494,7 +494,7 @@
                         <td><a href="#">INV-84990</a></td>
                         <td class="font-weight-600">Agung Ardiansyah</td>
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
-                        <td><div class="badge badge-warning">Anggota</div></td>
+                        <td><div class="badge badge-info">Anggota</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
@@ -503,7 +503,7 @@
                         <td><a href="#">INV-87320</a></td>
                         <td class="font-weight-600">Ardian Rahardiansyah</td>
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
-                        <td><div class="badge badge-warning">Anggota</div></td>
+                        <td><div class="badge badge-info">Anggota</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
@@ -538,37 +538,46 @@
                 </div>
               </div>
             </div>
-                <div class="card">
-                  <form class="needs-validation" novalidate="">
-                    <div class="card-header">
-                      <h4> Form Tambah Anggota</h4>
+            <div class="col-md-4">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#tambahModal">Tambah</button>
+    </div>
+</div>
+<div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="needs-validation" novalidate="">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambahModalLabel">Form Tambah Anggota</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="nama" name="nama" required>
+                            <div class="invalid-feedback">
+                                Kolom wajib diisi !
+                            </div>
+                            <div class="valid-feedback">
+                                Nama valid !
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                      <div class="form-group row">
-                          <label for="nama" class="col-sm-3 col-form-label">Nama</label>
-                          <div class="col-sm-9">
-                              <input type="text" class="form-control" id="nama" name="nama" required>
-                              <div class="invalid-feedback">
-                                  Kolom wajib diisi !
-                              </div>
-                              <div class="valid-feedback">
-                                  Nama valid !
-                              </div>
-                          </div>
-                      </div>
-                      <div class="form-group row">
-                          <label for="email" class="col-sm-3 col-form-label">Email</label>
-                          <div class="col-sm-9">
-                              <input type="email" class="form-control" id="email" name="email" required>
-                              <div class="invalid-feedback">
-                                  Email tidak valid !
-                              </div>
-                              <div class="valid-feedback">
-                                  Email valid !
-                              </div>
-                          </div>
-                      </div>
-                      <div class="form-group row">
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <div class="invalid-feedback">
+                                Email tidak valid !
+                            </div>
+                            <div class="valid-feedback">
+                                Email valid !
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="password" class="col-sm-3 col-form-label">Password</label>
                         <div class="col-sm-9">
                             <input type="password" class="form-control" id="password" name="password" required>
@@ -592,13 +601,15 @@
                             </div>
                         </div>
                     </div>
-                    </div>
-                    <div class="card-footer text-right">
-                      <button class="btn btn-primary">Tambah</button>
-                    </div>
-                  </form>
                 </div>
-          </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
           <div class="section-body">
           </div>
@@ -613,6 +624,7 @@
   <script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
   <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
   <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
+  
   
   <!-- JS Libraies -->
 
