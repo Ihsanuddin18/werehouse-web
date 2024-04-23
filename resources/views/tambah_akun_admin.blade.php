@@ -520,48 +520,60 @@
                 <div class="card">
                   <form class="needs-validation" novalidate="">
                     <div class="card-header">
-                      <h4>JavaScript Validation (Horizontal Form)</h4>
+                      <h4> Form Tambah Admin</h4>
                     </div>
                     <div class="card-body">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Your Name</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" required="">
-                          <div class="invalid-feedback">
-                            What's your name?
+                          <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                          <div class="col-sm-9">
+                              <input type="text" class="form-control" id="nama" name="nama" required>
+                              <div class="invalid-feedback">
+                                  Kolom wajib diisi !
+                              </div>
+                              <div class="valid-feedback">
+                                  Nama valid !
+                              </div>
                           </div>
-                        </div>
                       </div>
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Email</label>
-                        <div class="col-sm-9">
-                          <input type="email" class="form-control" required="">
-                          <div class="invalid-feedback">
-                            Oh no! Email is invalid.
+                          <label for="email" class="col-sm-3 col-form-label">Email</label>
+                          <div class="col-sm-9">
+                              <input type="email" class="form-control" id="email" name="email" required>
+                              <div class="invalid-feedback">
+                                  Email tidak valid !
+                              </div>
+                              <div class="valid-feedback">
+                                  Email valid !
+                              </div>
                           </div>
-                        </div>
                       </div>
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Subject</label>
+                        <label for="password" class="col-sm-3 col-form-label">Password</label>
                         <div class="col-sm-9">
-                          <input type="email" class="form-control">
-                          <div class="valid-feedback">
-                            Good job!
-                          </div>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Password valid !
+                            </div>
+                            <div class="invalid-feedback">
+                                Password tidak valid !
+                            </div>
                         </div>
-                      </div>
-                      <div class="form-group mb-0 row">
-                        <label class="col-sm-3 col-form-label">Message</label>
+                    </div>
+                    <div class="form-group mb-0 row">
+                        <label for="password_confirmation" class="col-sm-3 col-form-label">Konfirmasi Password</label>
                         <div class="col-sm-9">
-                          <textarea class="form-control" required=""></textarea>
-                          <div class="invalid-feedback">
-                            What do you wanna say?
-                          </div>
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                            <div class="valid-feedback">
+                                Konfirmasi password valid !
+                            </div>
+                            <div class="invalid-feedback">
+                                Konfirmasi password tidak sesuai !
+                            </div>
                         </div>
-                      </div>
+                    </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button class="btn btn-primary">Submit</button>
+                      <button class="btn btn-primary">Tambah</button>
                     </div>
                   </form>
                 </div>
