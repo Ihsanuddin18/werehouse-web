@@ -451,134 +451,159 @@
             <div class="col-md-8">
               <div class="card">
                 <div class="card-header">
-                  <h4>Invoices</h4>
-                  <div class="card-header-action">
-                    <a href="#" class="btn btn-danger">View More <i class="fas fa-chevron-right"></i></a>
-                  </div>
+                  <h4>Data Admin</h4>
                 </div>
                 <div class="card-body p-0">
                   <div class="table-responsive table-invoice">
                     <table class="table table-striped">
                       <tr>
-                        <th>Invoice ID</th>
-                        <th>Customer</th>
-                        <th>Status</th>
-                        <th>Due Date</th>
-                        <th>Action</th>
+                        <th>ID </th>
+                        <th>NAMA</th>
+                        <th>EMAIL</th>
+                        <th>STATUS</th>
+                        <th>AKSI</th>
                       </tr>
                       <tr>
                         <td><a href="#">INV-87239</a></td>
                         <td class="font-weight-600">Kusnadi</td>
-                        <td><div class="badge badge-warning">Unpaid</div></td>
-                        <td>July 19, 2018</td>
+                        <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
+                        <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                          <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
                       </tr>
                       <tr>
                         <td><a href="#">INV-48574</a></td>
                         <td class="font-weight-600">Hasan Basri</td>
-                        <td><div class="badge badge-success">Paid</div></td>
-                        <td>July 21, 2018</td>
+                        <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
+                        <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                          <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
                       </tr>
                       <tr>
                         <td><a href="#">INV-76824</a></td>
                         <td class="font-weight-600">Muhamad Nuruzzaki</td>
-                        <td><div class="badge badge-warning">Unpaid</div></td>
-                        <td>July 22, 2018</td>
+                        <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
+                        <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                          <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
                       </tr>
                       <tr>
                         <td><a href="#">INV-84990</a></td>
                         <td class="font-weight-600">Agung Ardiansyah</td>
-                        <td><div class="badge badge-warning">Unpaid</div></td>
-                        <td>July 22, 2018</td>
+                        <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
+                        <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                          <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
                       </tr>
                       <tr>
                         <td><a href="#">INV-87320</a></td>
                         <td class="font-weight-600">Ardian Rahardiansyah</td>
-                        <td><div class="badge badge-success">Paid</div></td>
-                        <td>July 28, 2018</td>
+                        <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
+                        <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                          <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
                       </tr>
                     </table>
                   </div>
+                  <div class="card">
+                    <div class="card-body">
+                        <div class="pagination-container">
+                            <nav aria-label="...">
+                                <ul class="pagination justify-content-end mb-0">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Halaman</a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Selanjutnya</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
                 </div>
               </div>
             </div>
                 <div class="card">
                   <form class="needs-validation" novalidate="">
                     <div class="card-header">
-                      <h4>JavaScript Validation (Horizontal Form)</h4>
+                      <h4> Form Tambah Admin</h4>
                     </div>
                     <div class="card-body">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Your Name</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" required="">
-                          <div class="invalid-feedback">
-                            What's your name?
+                          <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                          <div class="col-sm-9">
+                              <input type="text" class="form-control" id="nama" name="nama" required>
+                              <div class="invalid-feedback">
+                                  Kolom wajib diisi !
+                              </div>
+                              <div class="valid-feedback">
+                                  Nama valid !
+                              </div>
                           </div>
-                        </div>
                       </div>
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Email</label>
-                        <div class="col-sm-9">
-                          <input type="email" class="form-control" required="">
-                          <div class="invalid-feedback">
-                            Oh no! Email is invalid.
+                          <label for="email" class="col-sm-3 col-form-label">Email</label>
+                          <div class="col-sm-9">
+                              <input type="email" class="form-control" id="email" name="email" required>
+                              <div class="invalid-feedback">
+                                  Email tidak valid !
+                              </div>
+                              <div class="valid-feedback">
+                                  Email valid !
+                              </div>
                           </div>
-                        </div>
                       </div>
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Subject</label>
+                        <label for="password" class="col-sm-3 col-form-label">Password</label>
                         <div class="col-sm-9">
-                          <input type="email" class="form-control">
-                          <div class="valid-feedback">
-                            Good job!
-                          </div>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Password valid !
+                            </div>
+                            <div class="invalid-feedback">
+                                Password tidak valid !
+                            </div>
                         </div>
-                      </div>
-                      <div class="form-group mb-0 row">
-                        <label class="col-sm-3 col-form-label">Message</label>
+                    </div>
+                    <div class="form-group mb-0 row">
+                        <label for="password_confirmation" class="col-sm-3 col-form-label">Konfirmasi Password</label>
                         <div class="col-sm-9">
-                          <textarea class="form-control" required=""></textarea>
-                          <div class="invalid-feedback">
-                            What do you wanna say?
-                          </div>
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                            <div class="valid-feedback">
+                                Konfirmasi password valid !
+                            </div>
+                            <div class="invalid-feedback">
+                                Konfirmasi password tidak sesuai !
+                            </div>
                         </div>
-                      </div>
+                    </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button class="btn btn-primary">Submit</button>
+                      <button class="btn btn-primary">Tambah</button>
                     </div>
                   </form>
                 </div>
           </div>
+
           <div class="section-body">
           </div>
         </section>
       </div>
-      <footer class="main-footer">
-        <div class="footer-left">
-          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
-        </div>
-        <div class="footer-right">
-          
-        </div>
-      </footer>
-    </div>
-  </div>
 
   <!-- General JS Scripts -->
   <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
