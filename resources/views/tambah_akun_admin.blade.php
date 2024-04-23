@@ -469,45 +469,45 @@
                         <td><a href="#">INV-87239</a></td>
                         <td class="font-weight-600">Kusnadi</td>
                         <td>July 19, 2018</td>
-                        <td><div class="badge badge-warning">Unpaid</div></td>
-                        <td> 
-                          <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i></a>
+                        <td><div class="badge badge-warning">Admin</div></td>
+                        <td>
+                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
                       </tr>
                       <tr>
                         <td><a href="#">INV-48574</a></td>
                         <td class="font-weight-600">Hasan Basri</td>
                         <td>July 21, 2018</td>
-                        <td><div class="badge badge-success">Paid</div></td>
+                        <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                        <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i></a>
+                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
                       </tr>
                       <tr>
                         <td><a href="#">INV-76824</a></td>
                         <td class="font-weight-600">Muhamad Nuruzzaki</td>
                         <td>July 22, 2018</td>
-                        <td><div class="badge badge-warning">Unpaid</div></td>
+                        <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                          <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
                       </tr>
                       <tr>
                         <td><a href="#">INV-84990</a></td>
                         <td class="font-weight-600">Agung Ardiansyah</td>
-                        <td><div class="badge badge-warning">Unpaid</div></td>
                         <td>July 22, 2018</td>
+                        <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                          <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
                       </tr>
                       <tr>
                         <td><a href="#">INV-87320</a></td>
                         <td class="font-weight-600">Ardian Rahardiansyah</td>
-                        <td><div class="badge badge-success">Paid</div></td>
                         <td>July 28, 2018</td>
+                        <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                          <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
                       </tr>
                     </table>
