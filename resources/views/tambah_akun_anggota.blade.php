@@ -451,7 +451,7 @@
             <div class="col-md-8">
               <div class="card">
                 <div class="card-header">
-                  <h4>Data Admin</h4>
+                  <h4>Data Anggota</h4>
                 </div>
                 <div class="card-body p-0">
                   <div class="table-responsive table-invoice">
@@ -467,7 +467,7 @@
                         <td><a href="#">INV-87239</a></td>
                         <td class="font-weight-600">Kusnadi</td>
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
-                        <td><div class="badge badge-warning">Admin</div></td>
+                        <td><div class="badge badge-warning">Anggota</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
@@ -476,7 +476,7 @@
                         <td><a href="#">INV-48574</a></td>
                         <td class="font-weight-600">Hasan Basri</td>
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
-                        <td><div class="badge badge-warning">Admin</div></td>
+                        <td><div class="badge badge-warning">Anggota</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
@@ -485,7 +485,7 @@
                         <td><a href="#">INV-76824</a></td>
                         <td class="font-weight-600">Muhamad Nuruzzaki</td>
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
-                        <td><div class="badge badge-warning">Admin</div></td>
+                        <td><div class="badge badge-warning">Anggota</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
@@ -494,7 +494,7 @@
                         <td><a href="#">INV-84990</a></td>
                         <td class="font-weight-600">Agung Ardiansyah</td>
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
-                        <td><div class="badge badge-warning">Admin</div></td>
+                        <td><div class="badge badge-warning">Anggota</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
@@ -503,7 +503,7 @@
                         <td><a href="#">INV-87320</a></td>
                         <td class="font-weight-600">Ardian Rahardiansyah</td>
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
-                        <td><div class="badge badge-warning">Admin</div></td>
+                        <td><div class="badge badge-warning">Anggota</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
                         </td>
@@ -541,7 +541,7 @@
                 <div class="card">
                   <form class="needs-validation" novalidate="">
                     <div class="card-header">
-                      <h4> Form Tambah Admin</h4>
+                      <h4> Form Tambah Anggota</h4>
                     </div>
                     <div class="card-body">
                       <div class="form-group row">
