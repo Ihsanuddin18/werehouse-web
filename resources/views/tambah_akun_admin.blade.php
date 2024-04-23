@@ -447,13 +447,11 @@
           <div class="buttons">
             <a href="{{ route('tambah_akun_anggota') }}" class="btn btn-icon icon-left"><i class="far fa-user"></i> Anggota</a>
           </div>
-
           <div class="row">
             <div class="col-md-8">
               <div class="card">
                 <div class="card-header">
                   <h4>Data Admin</h4>
-                  
                 </div>
                 <div class="card-body p-0">
                   <div class="table-responsive table-invoice">
@@ -468,7 +466,7 @@
                       <tr>
                         <td><a href="#">INV-87239</a></td>
                         <td class="font-weight-600">Kusnadi</td>
-                        <td>July 19, 2018</td>
+                        <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-warning">Admin</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
@@ -477,7 +475,7 @@
                       <tr>
                         <td><a href="#">INV-48574</a></td>
                         <td class="font-weight-600">Hasan Basri</td>
-                        <td>July 21, 2018</td>
+                        <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-warning">Admin</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
@@ -486,7 +484,7 @@
                       <tr>
                         <td><a href="#">INV-76824</a></td>
                         <td class="font-weight-600">Muhamad Nuruzzaki</td>
-                        <td>July 22, 2018</td>
+                        <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-warning">Admin</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
@@ -495,7 +493,7 @@
                       <tr>
                         <td><a href="#">INV-84990</a></td>
                         <td class="font-weight-600">Agung Ardiansyah</td>
-                        <td>July 22, 2018</td>
+                        <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-warning">Admin</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
@@ -504,7 +502,7 @@
                       <tr>
                         <td><a href="#">INV-87320</a></td>
                         <td class="font-weight-600">Ardian Rahardiansyah</td>
-                        <td>July 28, 2018</td>
+                        <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-warning">Admin</div></td>
                         <td>
                             <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
@@ -512,6 +510,31 @@
                       </tr>
                     </table>
                   </div>
+                  <div class="card">
+                    <div class="card-body">
+                        <div class="pagination-container">
+                            <nav aria-label="...">
+                                <ul class="pagination justify-content-end mb-0">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Halaman</a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Selanjutnya</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -576,8 +599,7 @@
                   </form>
                 </div>
           </div>
-          
-          
+
           <div class="section-body">
           </div>
         </section>
