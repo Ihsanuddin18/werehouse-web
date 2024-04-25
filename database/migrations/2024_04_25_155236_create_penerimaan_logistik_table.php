@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('bantuan_dari');
             $table->date('tgl_terima');
             $table->integer('jumlah_terima');
-            $table->integer('satuan_terima');
+            $table->string('satuan_terima');
             $table->date('expayer');
             $table->timestamps();
         });

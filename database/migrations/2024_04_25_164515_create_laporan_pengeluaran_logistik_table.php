@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengeluaran_logistik', function (Blueprint $table) {
-            $table->id('id_keluar');
+        Schema::create('laporan_pengeluaran_logistik', function (Blueprint $table) {
+            $table->id('id_pengeluaran');
             $table->string('nama_penerima');
-            $table->integer('nik_kk_penerima');
-            $table->date('tgl_keluar');
-            $table->string('keterangan_keluar');
+            $table->date('tgl_pengeluaran');
+            $table->string('keterangan_pengeluaran');
             $table->string('jenis_logistik');
-            $table->integer('jumlah_keluar');
-            $table->string('satuan_keluar');
+            $table->integer('jumlah_pengeluaran');
+            $table->string('satuan_pengeluaran');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengeluaran_logistik');
+        Schema::dropIfExists('laporan_pengeluaran_logistik');
     }
 };

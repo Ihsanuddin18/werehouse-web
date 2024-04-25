@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('tgl_penerimaan');
             $table->string('jenis_penerimaan');
             $table->integer('jumlah_penerimaan');
-            $table->integer('satuan_penerimaan');
+            $table->string('satuan_penerimaan');
             $table->date('expayer');
             $table->timestamps();
         });
