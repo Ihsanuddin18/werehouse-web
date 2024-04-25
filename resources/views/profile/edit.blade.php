@@ -541,11 +541,15 @@
                   </section>
                 </div>
                 <footer class="main-footer">
+                  <div class="footer-left">
+                  Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
+                  </div>
                   <div class="footer-right">
                   </div>
                 </footer>
               </div>
             </div>
+            
 
   <!-- General JS Scripts -->
   <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
