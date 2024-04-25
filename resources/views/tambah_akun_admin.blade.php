@@ -469,8 +469,9 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
-                        </td>
+                          <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda yakin?|Apakah Anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                        </td> 
                       </tr>
                       <tr>
                         <td><a href="#">INV-48574</a></td>
@@ -478,7 +479,8 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
+                          <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda yakin?|Apakah Anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
                         </td>
                       </tr>
                       <tr>
@@ -487,7 +489,8 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
+                          <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda yakin?|Apakah Anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
                         </td>
                       </tr>
                       <tr>
@@ -496,7 +499,8 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
+                          <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda yakin?|Apakah Anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
                         </td>
                       </tr>
                       <tr>
@@ -505,7 +509,8 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-warning">Admin</div></td>
                         <td>
-                            <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-times"></i> Hapus</a>
+                          <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda yakin?|Apakah Anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
                         </td>
                       </tr>
                     </table>
@@ -612,6 +617,74 @@
       </footer>
     </div>
   </div>
+  <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="needs-validation" novalidate="">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambahModalLabel">Edit Data </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="nama" name="nama" required>
+                            <div class="invalid-feedback">
+                                Kolom wajib diisi !
+                            </div>
+                            <div class="valid-feedback">
+                                Nama valid !
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <div class="invalid-feedback">
+                                Email tidak valid !
+                            </div>
+                            <div class="valid-feedback">
+                                Email valid !
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-3 col-form-label">Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Password valid !
+                            </div>
+                            <div class="invalid-feedback">
+                                Password tidak valid !
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-0 row">
+                        <label for="password_confirmation" class="col-sm-3 col-form-label">Konfirmasi Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                            <div class="valid-feedback">
+                                Konfirmasi password valid !
+                            </div>
+                            <div class="invalid-feedback">
+                                Konfirmasi password tidak sesuai !
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
   <!-- General JS Scripts -->
   <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
