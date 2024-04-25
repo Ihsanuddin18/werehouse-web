@@ -537,11 +537,15 @@
                 </div>
               </div>
             </div>
-                    <div class="col-md-4">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#tambahModal">Tambah</button>
-            </div>
-        </div>
-          <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
+              <div class="col-md-4">
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#tambahModal">Tambah</button>
+              </div>
+          </div>
+          <div class="section-body">
+          </div>
+        </section>
+      </div>
+      <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                   <div class="modal-content">
                       <form class="needs-validation" novalidate="">
@@ -610,10 +614,6 @@
               </div>
           </div>
 
-          <div class="section-body">
-          </div>
-        </section>
-      </div>
 
   <!-- General JS Scripts -->
   <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
