@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
 
 class User extends Authenticatable
@@ -23,6 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
         'biography',
+        'last_login_at',
     ];
 
     /**
@@ -43,4 +45,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Set the last_login_at attribute.
+     *
+     * @param  mixed  $value
+     * @return void
+     */
+    public function setLastLoginAtAttribute($value)
+    {
+        $this->attributes['last_login_at'] = Carbon::parse($value);
+    }
 }

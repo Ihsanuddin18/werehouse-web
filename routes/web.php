@@ -36,7 +36,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-    
 //Route Tambah Akun
     Route::get('/tambah-akun-admin', [TambahAkunAdminController::class, 'showTambahAkunAdmin'])->name('tambah_akun_admin');    
     Route::get('/tambah-akun-anggota', [TambahAkunAnggotaController::class, 'showTambahAkunAnggota'])->name('tambah_akun_anggota');    
