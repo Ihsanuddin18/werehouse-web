@@ -469,7 +469,7 @@
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
                           <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda yakin?|Apakah Anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
                         </td>
                       </tr>
                       <tr>
@@ -479,7 +479,7 @@
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
                           <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda yakin?|Apakah Anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
                         </td>
                       </tr>
                       <tr>
@@ -489,7 +489,7 @@
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
                           <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda yakin?|Apakah Anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
                         </td>
                       </tr>
                       <tr>
@@ -499,7 +499,7 @@
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
                           <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda yakin?|Apakah Anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
                         </td>
                       </tr>
                       <tr>
@@ -509,7 +509,7 @@
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
                           <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah Anda yakin?|Apakah Anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
                         </td>
                       </tr>
                     </table>
@@ -565,7 +565,7 @@
                           <div class="col-sm-9">
                               <input type="email" class="form-control" id="email" name="email" required>
                               <div class="invalid-feedback">
-                                  Email tidak valid !
+                                  Kolom wajib diisi !
                               </div>
                               <div class="valid-feedback">
                                   Email valid !
@@ -580,7 +580,7 @@
                                 Password valid !
                             </div>
                             <div class="invalid-feedback">
-                                Password tidak valid !
+                                Kolom wajib diisi !
                             </div>
                         </div>
                     </div>
@@ -592,7 +592,7 @@
                                 Konfirmasi password valid !
                             </div>
                             <div class="invalid-feedback">
-                                Konfirmasi password tidak sesuai !
+                                Kolom wajib diisi !
                             </div>
                         </div>
                     </div>
@@ -644,7 +644,7 @@
                         <div class="col-sm-9">
                             <input type="email" class="form-control" id="email" name="email" required>
                             <div class="invalid-feedback">
-                                Email tidak valid !
+                              Kolom wajib diisi !
                             </div>
                             <div class="valid-feedback">
                                 Email valid !
@@ -659,7 +659,7 @@
                                 Password valid !
                             </div>
                             <div class="invalid-feedback">
-                                Password tidak valid !
+                              Kolom wajib diisi !
                             </div>
                         </div>
                     </div>
@@ -671,14 +671,14 @@
                                 Konfirmasi password valid !
                             </div>
                             <div class="invalid-feedback">
-                                Konfirmasi password tidak sesuai !
+                               Kolom wajib diisi !
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Tambah</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Perbarui</button>
                 </div>
             </form>
         </div>
