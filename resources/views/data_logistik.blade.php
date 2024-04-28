@@ -388,14 +388,13 @@
             </div>
           </div>
           <div class="text-right">
-    <a href="#" class="btn btn-danger btn-lg" download>
-        <i class="fas fa-file-pdf"></i> Print
-    </a>
-    <button class="btn btn-primary btn-lg" onclick="window.location.href='tambah-data'">
-        <i class="fas fa-plus"></i> Tambah
-    </button>
-</div>
-
+              <a href="#" class="btn btn-danger btn-lg" download>
+                  <i class="fas fa-file-pdf"></i> Print
+              </a>
+              <button class="btn btn-primary btn-lg" onclick="window.location.href='tambah-data'">
+                  <i class="fas fa-plus"></i> Tambah
+              </button>
+          </div>
           <style>
               .text-right .btn {
                   margin-right: 8px; 
@@ -421,12 +420,6 @@
                     <div class="table-responsive">
                       <table class="table table-striped">
                         <tr>
-                          <th>
-                            <div class="custom-checkbox custom-control">
-                              <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
-                              <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-                            </div>
-                          </th>
                           <th>Task Name</th>
                           <th>Progress</th>
                           <th>Members</th>
@@ -435,12 +428,6 @@
                           <th>Action</th>
                         </tr>
                         <tr>
-                          <td class="p-0 text-center">
-                            <div class="custom-checkbox custom-control">
-                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
-                              <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
-                            </div>
-                          </td>
                           <td>Create a mobile app</td>
                           <td class="align-middle">
                             <div class="progress" data-height="4" data-toggle="tooltip" title="100%">
@@ -455,12 +442,6 @@
                           <td><a href="#" class="btn btn-secondary">Detail</a></td>
                         </tr>
                         <tr>
-                          <td class="p-0 text-center">
-                            <div class="custom-checkbox custom-control">
-                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-2">
-                              <label for="checkbox-2" class="custom-control-label">&nbsp;</label>
-                            </div>
-                          </td>
                           <td>Redesign homepage</td>
                           <td class="align-middle">
                             <div class="progress" data-height="4" data-toggle="tooltip" title="0%">
@@ -477,12 +458,6 @@
                           <td><a href="#" class="btn btn-secondary">Detail</a></td>
                         </tr>
                         <tr>
-                          <td class="p-0 text-center">
-                            <div class="custom-checkbox custom-control">
-                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-3">
-                              <label for="checkbox-3" class="custom-control-label">&nbsp;</label>
-                            </div>
-                          </td>
                           <td>Backup database</td>
                           <td class="align-middle">
                             <div class="progress" data-height="4" data-toggle="tooltip" title="70%">
@@ -498,12 +473,6 @@
                           <td><a href="#" class="btn btn-secondary">Detail</a></td>
                         </tr>
                         <tr>
-                          <td class="p-0 text-center">
-                            <div class="custom-checkbox custom-control">
-                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-4">
-                              <label for="checkbox-4" class="custom-control-label">&nbsp;</label>
-                            </div>
-                          </td>
                           <td>Input data</td>
                           <td class="align-middle">
                             <div class="progress" data-height="4" data-toggle="tooltip" title="100%">
