@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Blank Page &mdash; Stisla</title>
+  <title>Data Logistik</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -380,7 +380,12 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Blank Page</h1>
+            <h1>Data Logistik</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+              <div class="breadcrumb-item"><a href="{{ route('tambah_akun_admin') }}">Data Logistik</a></div>
+              <div class="breadcrumb-item">Admin</div>
+            </div>
           </div>
 
           <div class="section-body">
