@@ -271,7 +271,14 @@
                 <li class=active><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
               </ul>
             </li>
-            <li class="menu-header">Starter</li>
+            <li class="menu-header">Data</li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
+                <li><a class="nav-link" href="bootstrap-badge.html">Badge</a></li>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
               <ul class="dropdown-menu">
