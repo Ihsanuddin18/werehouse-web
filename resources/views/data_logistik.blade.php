@@ -388,16 +388,17 @@
             </div>
           </div>
           <div class="text-right">
-              <a href="#" class="btn btn-danger btn-lg" download>
-                  <i class="fas fa-file-pdf"></i> Print
-              </a>
-              <button class="btn btn-primary btn-lg" onclick="window.location.href='tambah-data'">
-                  <i class="fas fa-plus"></i> Tambah
-              </button>
-          </div>
+    <a href="#" class="btn btn-danger btn-lg" download>
+        <i class="fas fa-file-pdf"></i> Print
+    </a>
+    <button class="btn btn-primary btn-lg" onclick="window.location.href='tambah-data'">
+        <i class="fas fa-plus"></i> Tambah
+    </button>
+</div>
+
           <style>
               .text-right .btn {
-                  margin-right: 20px; 
+                  margin-right: 8px; 
               }
           </style> <br> 
           <div class="row">
