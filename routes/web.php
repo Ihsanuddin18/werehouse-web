@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TambahAkunAdminController;
 use App\Http\Controllers\TambahAkunAnggotaController;
 use App\Http\Controllers\DataLogistikController;
+use App\Http\Controllers\TambahDataController;
 
 
 /*
@@ -44,6 +45,7 @@ Route::middleware('auth')->group(function () {
 
 //Route Data Logistik
     Route::get('/data-logistik', [DataLogistikController::class, 'showDataLogistik'])->name('data_logistik');
+    Route::get('/tambah-data', [TambahDataController::class, 'showTambahData'])->name('tambah_data');
 
 
 
