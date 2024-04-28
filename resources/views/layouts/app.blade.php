@@ -276,7 +276,7 @@
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{ route('data_logistik') }}">Data Logistik</a></li>
-                <li><a class="nav-link" href="bootstrap-badge.html">Tambah Data</a></li>
+                <li><a class="nav-link" href="{{ route('tambah_data') }}">Tambah Data</a></li>
               </ul>
             </li>
             <li class="dropdown">
