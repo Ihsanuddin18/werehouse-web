@@ -273,10 +273,10 @@
             </li>
             <li class="menu-header">Data</li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="bootstrap-alert.html">Alert</a></li>
-                <li><a class="nav-link" href="bootstrap-badge.html">Badge</a></li>
+                <li><a class="nav-link" href="{{ route('data_logistik') }}">Data Logistik</a></li>
+                <li><a class="nav-link" href="bootstrap-badge.html">Tambah Data</a></li>
               </ul>
             </li>
             <li class="dropdown">
