@@ -236,17 +236,22 @@
                     @php
                         $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
                         $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
+                        $hours = floor($diffInMinutes / 60);
+                        $remainingMinutes = $diffInMinutes % 60;
                     @endphp
-                    @if($diffInMinutes > 1)
-                        Terakhir login {{ $diffInMinutes }} menit yang lalu
+                    @if($diffInMinutes > 60)
+                        Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
+                    @elseif($diffInMinutes > 1)
+                        Login {{ $diffInMinutes }} menit yang lalu
                     @elseif($diffInSeconds > 0)
-                        Terakhir login {{ $diffInSeconds }} detik yang lalu
+                        Login {{ $diffInSeconds }} detik yang lalu
                     @else
                         Baru Login
                     @endif
                 @else
                     Baru Login
                 @endif
+            </div>if
             </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile

@@ -226,10 +226,30 @@
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
+            <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
-              <a href="features-profile.html" class="dropdown-item has-icon">
+            <div class="dropdown-title">
+                @if(Auth::user()->last_login_at)
+                    @php
+                        $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
+                        $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
+                        $hours = floor($diffInMinutes / 60);
+                        $remainingMinutes = $diffInMinutes % 60;
+                    @endphp
+                    @if($diffInMinutes > 60)
+                        Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
+                    @elseif($diffInMinutes > 1)
+                        Login {{ $diffInMinutes }} menit yang lalu
+                    @elseif($diffInSeconds > 0)
+                        Login {{ $diffInSeconds }} detik yang lalu
+                    @else
+                        Baru Login
+                    @endif
+                @else
+                    Baru Login
+                @endif
+            </div>
+              <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
               <a href="features-activities.html" class="dropdown-item has-icon">
@@ -239,9 +259,12 @@
                 <i class="fas fa-cog"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"></i> Logout
-              </a>
+              <form method="POST" action="{{ route('logout') }}">
+                    @csrf 
+              <button class="dropdown-item has-icon text-danger" style="cursor: pointer;"> 
+                <i class="fas fa-sign-out-alt" style="display: block; margin-top: 8px;">
+                </i>Logout</button>
+             </form>
             </div>
           </li>
         </ul>
@@ -388,9 +411,9 @@
             </div>
           </div>
           <div class="text-right">
-              <a href="#" class="btn btn-danger btn-lg" download>
-                  <i class="fas fa-file-pdf"></i> Print
-              </a>
+            <a href="path_to_your_pdf_file.pdf" class="btn btn-danger btn-lg" download>
+                <i class="fas fa-file-pdf"></i> Print
+            </a>
               <button class="btn btn-primary btn-lg" onclick="window.location.href='tambah-data'">
                   <i class="fas fa-plus"></i> Tambah
               </button>
@@ -436,7 +459,7 @@
                           <td>2018-01-20</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
@@ -543,41 +566,45 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="nama" class="col-sm-3 col-form-label">Kode Logistik</label>
+                        <label for="kode_logistik" class="col-sm-3 col-form-label">Kode Logistik</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama" name="nama" required>
+                            <input type="text" class="form-control" id="kode_logistik" name="kode_logistik" value="LOG123" readonly>
+                            <!-- Ganti nilai value="LOG123" dengan nilai kode logistik yang Anda inginkan -->
                             <div class="invalid-feedback">
-                                Kolom wajib diisi !
+                                Kolom wajib diisi!
                             </div>
                             <div class="valid-feedback">
-                                Valid !
+                                Valid!
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nama" class="col-sm-3 col-form-label">Nama Logistik</label>
+                        <label for="nama_logistik" class="col-sm-3 col-form-label">Nama Logistik</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama" name="nama" required>
+                            <input type="text" class="form-control" id="nama_logistik" name="nama_logistik" value="Kursi Lipat" readonly>
+                            <!-- Ganti nilai value="Nama Logistik Anda" dengan nama logistik yang Anda inginkan -->
                             <div class="invalid-feedback">
-                                Kolom wajib diisi !
+                                Kolom wajib diisi!
                             </div>
                             <div class="valid-feedback">
-                                Valid !
+                                Valid!
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nama" class="col-sm-3 col-form-label">Supplier</label>
+                        <label for="supplier" class="col-sm-3 col-form-label">Supplier</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama" name="nama" required>
+                            <input type="text" class="form-control" id="supplier" name="supplier" value="APBD Provinsi Jawa Timur" readonly>
+                            <!-- Ganti nilai value="Nama Supplier Anda" dengan nama supplier yang Anda inginkan -->
                             <div class="invalid-feedback">
-                                Kolom wajib diisi !
+                                Kolom wajib diisi!
                             </div>
                             <div class="valid-feedback">
-                                Valid !
+                                Valid!
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label for="stok" class="col-sm-3 col-form-label">Stok Logistik</label>
                         <div class="col-sm-9">

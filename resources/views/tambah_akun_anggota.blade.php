@@ -233,11 +233,15 @@
                     @php
                         $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
                         $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
+                        $hours = floor($diffInMinutes / 60);
+                        $remainingMinutes = $diffInMinutes % 60;
                     @endphp
-                    @if($diffInMinutes > 1)
-                        Terakhir login {{ $diffInMinutes }} menit yang lalu
+                    @if($diffInMinutes > 60)
+                        Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
+                    @elseif($diffInMinutes > 1)
+                        Login {{ $diffInMinutes }} menit yang lalu
                     @elseif($diffInSeconds > 0)
-                        Terakhir login {{ $diffInSeconds }} detik yang lalu
+                        Login {{ $diffInSeconds }} detik yang lalu
                     @else
                         Baru Login
                     @endif
@@ -468,8 +472,8 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
-                          <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                         </td>
                       </tr>
                       <tr>
@@ -478,8 +482,8 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
-                          <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                         </td>
                       </tr>
                       <tr>
@@ -488,8 +492,8 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
-                          <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                         </td>
                       </tr>
                       <tr>
@@ -498,8 +502,8 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
-                          <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                         </td>
                       </tr>
                       <tr>
@@ -508,8 +512,8 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
-                          <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Anggota ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                         </td>
                       </tr>
                     </table>
