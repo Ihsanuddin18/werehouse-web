@@ -418,7 +418,7 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Tambah Data</h1>
+            <h1>Tambah Data Logistik</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
               <div class="breadcrumb-item"><a href="{{ route('data_logistik') }}">Stok Logistik</a></div>
@@ -429,69 +429,46 @@
               <div class="col-12 col-md-6 col-lg-6">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Input Text</h4>
+                    <h4>Form Tambah Data Logistik</h4>
                   </div>
                   <div class="card-body">
                     <div class="form-group">
-                      <label>Default Input Text</label>
+                      <label>Kode Logistik</label>
                       <input type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label>Phone Number (US Format)</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-phone"></i>
-                          </div>
-                        </div>
-                        <input type="text" class="form-control phone-number">
-                      </div>
+                      <label>Nama Logistik</label>
+                      <input type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label>Password Strength</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-lock"></i>
-                          </div>
-                        </div>
-                        <input type="password" class="form-control pwstrength" data-indicator="pwindicator">
-                      </div>
-                      <div id="pwindicator" class="pwindicator">
-                        <div class="bar"></div>
-                        <div class="label"></div>
-                      </div>
+                      <label>Supplier</label>
+                      <input type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label>Currency</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            $
-                          </div>
-                        </div>
-                        <input type="text" class="form-control currency">
-                      </div>
+                      <label>Stok Masuk</label>
+                      <input type="number" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label>Purchase Code</label>
-                      <input type="text" class="form-control purchase-code" placeholder="ASDF-GHIJ-KLMN-OPQR">
+                      <label>Satuan</label>
+                      <select class="form-control">
+                        <option value="kg">Kilogram (kg)</option>
+                        <option value="g">Gram (g)</option>
+                        <option value="mg">Miligram (mg)</option>
+                        <option value="lb">Pound (lb)</option>
+                        <option value="ltr">Liter (ltr)</option>
+                        <option value="pcs">Pieces (pcs)</option>
+                        <option value="unit">Unit</option>
+                        <option value="buah">Buah</option>
+                      </select>
                     </div>
                     <div class="form-group">
-                      <label>Invoice</label>
-                      <input type="text" class="form-control invoice-input">
+                      <label>Expayer</label>
+                      <input type="date" class="form-control">
                     </div>
-                    <div class="form-group">
-                      <label>Date</label>
-                      <input type="text" class="form-control datemask" placeholder="YYYY/MM/DD">
-                    </div>
-                    <div class="form-group">
-                      <label>Credit Card</label>
-                      <input type="text" class="form-control creditcard">
-                    </div>
-                    <div class="form-group">
-                      <label>Tags</label>
-                      <input type="text" class="form-control inputtags">
+                    <div class="row justify-content-end">
+                    <div class="col-auto">
+                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                        <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Tambah" data-confirm="Apakah anda yakin ingin menambahkan data ini?" data-confirm-yes="alert('Added')"><i class="fas fa-plus"></i> Tambah </a>
                     </div>
                   </div>
                 </div>
@@ -501,7 +478,7 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+         Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
         </div>
         <div class="footer-right">
         </div>

@@ -445,7 +445,7 @@
                           <th>No</th>
                           <th>Kode Logistik</th>
                           <th>Nama Logistik</th>
-                          <th>Bantuan Dari</th>
+                          <th>Supplier</th>
                           <th>Stok Logistik</th>
                           <th>Expayer</th>
                           <th>Aksi</th>
