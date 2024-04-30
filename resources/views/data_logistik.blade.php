@@ -420,14 +420,16 @@
                     <div class="table-responsive">
                       <table class="table table-striped">
                         <tr>
-                          <th>Task Name</th>
-                          <th>Progress</th>
-                          <th>Members</th>
-                          <th>Due Date</th>
-                          <th>Status</th>
-                          <th>Action</th>
+                          <th>No</th>
+                          <th>Kode Logistik</th>
+                          <th>Nama Logistik</th>
+                          <th>Bantuan Dari</th>
+                          <th>Stok Logistik</th>
+                          <th>Expayer</th>
+                          <th>Aksi</th>
                         </tr>
                         <tr>
+                          <td>1</td>
                           <td>Create a mobile app</td>
                           <td class="align-middle">
                             <div class="progress" data-height="4" data-toggle="tooltip" title="100%">
@@ -442,6 +444,7 @@
                           <td><a href="#" class="btn btn-secondary">Detail</a></td>
                         </tr>
                         <tr>
+                          <td>2</td>
                           <td>Redesign homepage</td>
                           <td class="align-middle">
                             <div class="progress" data-height="4" data-toggle="tooltip" title="0%">
@@ -458,6 +461,7 @@
                           <td><a href="#" class="btn btn-secondary">Detail</a></td>
                         </tr>
                         <tr>
+                          <td>3</td>
                           <td>Backup database</td>
                           <td class="align-middle">
                             <div class="progress" data-height="4" data-toggle="tooltip" title="70%">
@@ -473,6 +477,25 @@
                           <td><a href="#" class="btn btn-secondary">Detail</a></td>
                         </tr>
                         <tr>
+                          <td>4</td>
+                          <td>Input data</td>
+                          <td class="align-middle">
+                            <div class="progress" data-height="4" data-toggle="tooltip" title="100%">
+                              <div class="progress-bar bg-success" data-width="100"></div>
+                            </div>
+                          </td>
+                          <td>
+                            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-2.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Rizal Fakhri">
+                            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-5.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Isnap Kiswandi">
+                            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-4.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Yudi Nawawi">
+                            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Khaerul Anwar">
+                          </td>
+                          <td>2018-01-16</td>
+                          <td><div class="badge badge-success">Completed</div></td>
+                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                        </tr>
+                        <tr>
+                          <td>5</td>
                           <td>Input data</td>
                           <td class="align-middle">
                             <div class="progress" data-height="4" data-toggle="tooltip" title="100%">
