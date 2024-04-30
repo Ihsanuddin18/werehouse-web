@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Blank Page &mdash; Stisla</title>
+  <title>Tambah Data</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -226,10 +226,30 @@
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
+            <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
-              <a href="features-profile.html" class="dropdown-item has-icon">
+              <div class="dropdown-title">
+                @if(Auth::user()->last_login_at)
+                      @php
+                          $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
+                          $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
+                          $hours = floor($diffInMinutes / 60);
+                          $remainingMinutes = $diffInMinutes % 60;
+                      @endphp
+                      @if($diffInMinutes > 60)
+                          Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
+                      @elseif($diffInMinutes > 1)
+                          Login {{ $diffInMinutes }} menit yang lalu
+                      @elseif($diffInSeconds > 0)
+                          Login {{ $diffInSeconds }} detik yang lalu
+                      @else
+                          Baru Login
+                      @endif
+                  @else
+                      Baru Login
+                  @endif
+              </div>
+              <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
               <a href="features-activities.html" class="dropdown-item has-icon">
@@ -239,9 +259,12 @@
                 <i class="fas fa-cog"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"></i> Logout
-              </a>
+              <form method="POST" action="{{ route('logout') }}">
+                    @csrf 
+              <button class="dropdown-item has-icon text-danger" style="cursor: pointer;"> 
+                <i class="fas fa-sign-out-alt" style="display: block; margin-top: 8px;">
+                </i>Logout</button>
+             </form>
             </div>
           </li>
         </ul>
@@ -263,16 +286,14 @@
                 <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
               </ul>
             </li>
-            <li class="menu-header">Starter</li>
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
+            <li class="menu-header">Data</li>
+            <li class="dropdown active">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Stok Logistik</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="layout-default.html">Default Layout</a></li>
-                <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
-                <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
+                <li><a class="nav-link" href="{{ route('data_logistik') }}">Data Logistik</a></li>
+                <li class=active><a class="nav-link" href="{{ route('tambah_data') }}">Tambah Data</a></li>
               </ul>
             </li>
-            <li class=active><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
               <ul class="dropdown-menu">
@@ -397,9 +418,13 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Blank Page</h1>
+            <h1>Tambah Data</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+              <div class="breadcrumb-item"><a href="{{ route('data_logistik') }}">Stok Logistik</a></div>
+              <div class="breadcrumb-item">Tambah Data</div>
+            </div>
           </div>
-
           <div class="section-body">
           </div>
         </section>

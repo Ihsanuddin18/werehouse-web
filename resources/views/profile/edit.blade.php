@@ -251,7 +251,7 @@
                 @else
                     Baru Login
                 @endif
-            </div>if
+            
             </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
