@@ -441,7 +441,10 @@
                           </td>
                           <td>2018-01-20</td>
                           <td><div class="badge badge-success">Completed</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
                         </tr>
                         <tr>
                           <td>2</td>
@@ -458,7 +461,10 @@
                           </td>
                           <td>2018-04-10</td>
                           <td><div class="badge badge-info">Todo</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
                         </tr>
                         <tr>
                           <td>3</td>
@@ -474,7 +480,10 @@
                           </td>
                           <td>2018-01-29</td>
                           <td><div class="badge badge-warning">In Progress</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
                         </tr>
                         <tr>
                           <td>4</td>
@@ -492,7 +501,10 @@
                           </td>
                           <td>2018-01-16</td>
                           <td><div class="badge badge-success">Completed</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
                         </tr>
                         <tr>
                           <td>5</td>
@@ -510,7 +522,10 @@
                           </td>
                           <td>2018-01-16</td>
                           <td><div class="badge badge-success">Completed</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
                         </tr>
                       </table>
                     </div>
