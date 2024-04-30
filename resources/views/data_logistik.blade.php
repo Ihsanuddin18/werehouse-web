@@ -416,7 +416,6 @@
                       </form>
                     </div>
                   </div>
-                  <div class="card-body p-0">
                     <div class="table-responsive">
                       <table class="table table-striped">
                         <tr>
@@ -436,65 +435,90 @@
                           <td>14 Pcs</td>
                           <td>2018-01-20</td> 
                           <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
-                          <td>1</td>
+                          <td>2</td>
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>APBD Provinsi Jawa Timur</td>
                           <td>14 Pcs</td>
                           <td>2018-01-20</td> 
                           <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
-                          <td>1</td>
+                          <td>3</td>
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>APBD Provinsi Jawa Timur</td>
                           <td>14 Pcs</td>
                           <td>2018-01-20</td> 
                           <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
-                          <td>1</td>
+                          <td>4</td>
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>APBD Provinsi Jawa Timur</td>
                           <td>14 Pcs</td>
                           <td>2018-01-20</td> 
                           <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
-                          <td>1</td>
+                          <td>5</td>
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>APBD Provinsi Jawa Timur</td>
                           <td>14 Pcs</td>
                           <td>2018-01-20</td> 
                           <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                       </table>
                     </div>
+                    <div class="card">
+                    <div class="card-body">
+                        <div class="pagination-container">
+                            <nav aria-label="...">
+                                <ul class="pagination justify-content-end mb-0">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Halaman</a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Selanjutnya</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                  </div>
                   </div>
                 </div>
               </div>
-            </div>
-          <div class="section-body">
+          </div>
+            <div class="section-body">
           </div>
         </section>
       </div>
@@ -512,69 +536,96 @@
         <div class="modal-content">
             <form class="needs-validation" novalidate="">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tambahModalLabel">Edit Data </h5>
+                    <h5 class="modal-title" id="tambahModalLabel">Edit Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                        <label for="nama" class="col-sm-3 col-form-label">Kode Logistik</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="nama" name="nama" required>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi !
                             </div>
                             <div class="valid-feedback">
-                                Nama valid !
+                                Valid !
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="email" class="col-sm-3 col-form-label">Email</label>
+                        <label for="nama" class="col-sm-3 col-form-label">Nama Logistik</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="text" class="form-control" id="nama" name="nama" required>
                             <div class="invalid-feedback">
-                            Kolom wajib diisi !
+                                Kolom wajib diisi !
                             </div>
                             <div class="valid-feedback">
-                                Email valid !
+                                Valid !
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="password" class="col-sm-3 col-form-label">Password</label>
+                        <label for="nama" class="col-sm-3 col-form-label">Supplier</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="password" name="password" required>
-                            <div class="valid-feedback">
-                                Password valid !
-                            </div>
+                            <input type="text" class="form-control" id="nama" name="nama" required>
                             <div class="invalid-feedback">
-                            Kolom wajib diisi !
+                                Kolom wajib diisi !
+                            </div>
+                            <div class="valid-feedback">
+                                Valid !
                             </div>
                         </div>
                     </div>
-                    <div class="form-group mb-0 row">
-                        <label for="password_confirmation" class="col-sm-3 col-form-label">Konfirmasi Password</label>
+                    <div class="form-group row">
+                        <label for="stok" class="col-sm-3 col-form-label">Stok Logistik</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
-                            <div class="valid-feedback">
-                                Konfirmasi password valid !
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Jumlah" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="satuan" name="satuan" required>
+                                        <option value="">Pilih Satuan</option>
+                                        <option value="kg">Kilogram (kg)</option>
+                                        <option value="g">Gram (g)</option>
+                                        <option value="l">Liter (l)</option>
+                                        <option value="pcs">Pieces (pcs)</option>
+                                        <!-- tambahkan pilihan satuan lainnya jika nanti kurang -->
+                                    </select>
+                                </div>
                             </div>
                             <div class="invalid-feedback">
-                            Kolom wajib diisi !
+                                Kolom wajib diisi!
+                            </div>
+                            <div class="valid-feedback">
+                                Valid!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nama" class="col-sm-3 col-form-label">Expayer</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="nama" name="nama" required>
+                            <div class="invalid-feedback">
+                                Kolom wajib diisi!
+                            </div>
+                            <div class="valid-feedback">
+                                Valid!
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-primary">Perbarui</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
 
   <!-- General JS Scripts -->
   <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
