@@ -320,7 +320,15 @@
                 <li><a class="nav-link" href="bootstrap-typography.html">Typography</a></li>
               </ul>
             </li>
-            <li class="menu-header">Tambah Akun</li>
+            <li class="menu-header">Transaksi</li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Logistik</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="forms-advanced-form.html">Logistik Masuk</a></li>
+                <li><a class="nav-link" href="forms-editor.html">Logistik Keluar</a></li>
+              </ul>
+            </li>
+            <li class="menu-header">Informasi Akun</li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Tambah Akun</span></a>
               <ul class="dropdown-menu">
