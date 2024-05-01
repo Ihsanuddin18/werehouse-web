@@ -290,8 +290,8 @@
             <li class="dropdown active">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('data_logistik') }}">Stok Logistik</a></li>
-                <li class=active><a class="nav-link" href="{{ route('tambah_data') }}">Tambah Data</a></li>
+                <li><a class="nav-link" href="#">Stok Logistik</a></li>
+                <li class=active><a class="nav-link" href="#">Tambah Data</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -420,8 +420,8 @@
           <div class="section-header">
             <h1>Tambah Data Logistik</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="{{ route('data_logistik') }}">Data Logistik</a></div>
+              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+              <div class="breadcrumb-item"><a href="#}">Data Logistik</a></div>
               <div class="breadcrumb-item">Tambah Data</div>
             </div>
           </div>

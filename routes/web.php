@@ -51,8 +51,8 @@ Route::middleware('auth')->group(function () {
 
 
 //Route Data Supplier
-    Route::get('/data-supplier', [DataSupplierController::class, 'showDataSupplier'])->name('data_Supplier');
-    Route::get('/tambah-supplier', [TambahSupplierController::class, 'showTambahSupplier'])->name('tambah_Supplier');
+    Route::get('/data-supplier', [DataSupplierController::class, 'showDataSupplier'])->name('data_supplier');
+    Route::get('/tambah-supplier', [TambahSupplierController::class, 'showTambahSupplier'])->name('tambah_supplier');
 
 
 require __DIR__.'/auth.php';
