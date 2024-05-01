@@ -6,6 +6,8 @@ use App\Http\Controllers\TambahAkunAdminController;
 use App\Http\Controllers\TambahAkunAnggotaController;
 use App\Http\Controllers\DataLogistikController;
 use App\Http\Controllers\TambahDataController;
+use App\Http\Controllers\DataSupplierController;
+use App\Http\Controllers\TambahSupplierController;
 
 
 /*
@@ -47,6 +49,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/data-logistik', [DataLogistikController::class, 'showDataLogistik'])->name('data_logistik');
     Route::get('/tambah-data', [TambahDataController::class, 'showTambahData'])->name('tambah_data');
 
+
+//Route Data Supplier
+    Route::get('/data-supplier', [DataSupplierController::class, 'showDataSupplier'])->name('data_Supplier');
+    Route::get('/tambah-supplier', [TambahSupplierController::class, 'showTambahSupplier'])->name('tambah_Supplier');
 
 
 require __DIR__.'/auth.php';

@@ -282,8 +282,8 @@
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Data Sumber Logistik</span></a>
               <ul class="dropdown-menu">
-                <li><a href="">Data Supplier</a></li> 
-                <li><a href="">Tambah Supplier</a></li> 
+                <li><a href="{{ route('data_supplier') }}">Data Supplier</a></li> 
+                <li><a href="{{ route('tambah_supplier') }}">Tambah Supplier</a></li> 
               </ul>
             </li>
             <li class="dropdown">
