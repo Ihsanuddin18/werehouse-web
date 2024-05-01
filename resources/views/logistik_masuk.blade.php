@@ -433,7 +433,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Daftar Logistik</h4>
+                    <h4>Daftar Logistik Masuk</h4>
                     <div class="card-header-form">
                       <form>
                         <div class="input-group">
@@ -448,11 +448,15 @@
                     <div class="table-responsive">
                       <table class="table table-striped">
                         <tr>
-                          <th>No</th>
-                          <th>Kode Logistik</th>
-                          <th>Nama Logistik</th>
-                          <th>Supplier</th>
-                          <th>Stok Logistik</th>
+                          <th>NO</th>
+                          <th>NO TERIMA</th>
+                          <th>NAMA LOGISTIK</th>
+                          <th>JUMLAH</th>
+                          <th>SATUAN</th>
+                          <th>NAMA ADMIN</th>
+                          <th>NAMA SUPPLIER</th>
+                          <th>TANGGAL TERIMA</th>
+                          <th>EXPAYER</th>
                           <th>Expayer</th>
                           <th>Aksi</th>
                         </tr>
