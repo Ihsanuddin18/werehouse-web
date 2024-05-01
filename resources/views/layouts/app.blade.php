@@ -324,8 +324,8 @@
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Logistik</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="forms-advanced-form.html">Logistik Masuk</a></li>
-                <li><a class="nav-link" href="forms-editor.html">Logistik Keluar</a></li>
+                <li><a class="nav-link" href="{{ route('logistik_masuk')}}">Logistik Masuk</a></li>
+                <li><a class="nav-link" href="{{ route('logistik_keluar')}}">Logistik Keluar</a></li>
               </ul>
             </li>
             <li class="menu-header">Informasi Akun</li>

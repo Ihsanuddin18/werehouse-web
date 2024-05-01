@@ -8,6 +8,8 @@ use App\Http\Controllers\DataLogistikController;
 use App\Http\Controllers\TambahDataController;
 use App\Http\Controllers\DataSupplierController;
 use App\Http\Controllers\TambahSupplierController;
+use App\Http\Controllers\LogistikMasukController;
+use App\Http\Controllers\LogistikkeluarController;
 
 
 /*
@@ -53,6 +55,12 @@ Route::middleware('auth')->group(function () {
 //Route Data Supplier
     Route::get('/data-supplier', [DataSupplierController::class, 'showDataSupplier'])->name('data_supplier');
     Route::get('/tambah-supplier', [TambahSupplierController::class, 'showTambahSupplier'])->name('tambah_supplier');
+
+
+//Route Logistik masuk dan keluar
+    Route::get('/logistik-masuk', [LogistikMasukController::class, 'showLogistikMasuk'])->name('logistik_masuk');
+    Route::get('/logistik-keluar', [LogistikKeluarController::class, 'showLogistikKeluar'])->name('logistik_keluar');
+
 
 
 require __DIR__.'/auth.php';
