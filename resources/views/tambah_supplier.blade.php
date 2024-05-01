@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Tambah Data</title>
+  <title>Tambah Supplier</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -287,11 +287,18 @@
               </ul>
             </li>
             <li class="menu-header">Data</li>
-            <li class="dropdown active">
+            <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="#">Stok Logistik</a></li>
-                <li class=active><a class="nav-link" href="#">Tambah Data</a></li>
+                <li><a class="nav-link" href="#">Tambah Data</a></li>
+              </ul>
+            </li>
+            <li class="dropdown active">
+              <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Data Sumber Logistik</span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ route('data_supplier') }}">Data Supplier</a></li> 
+                <li class=active><a href="{{ route('tambah_supplier') }}">Tambah Supplier</a></li> 
               </ul>
             </li>
             <li class="dropdown">
@@ -418,56 +425,52 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Tambah Data Logistik</h1>
+            <h1>Tambah Supplier</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="#}">Data Logistik</a></div>
-              <div class="breadcrumb-item">Tambah Data</div>
+              <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+              <div class="breadcrumb-item"><a href="{{ route('data_supplier') }}">Data Sumber Logistik</a></div>
+              <div class="breadcrumb-item">Tambah Supplier</div>
             </div>
           </div>
           <div class="row">
               <div class="col-12 col-md-6 col-lg-6">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Form Tambah Data Logistik</h4>
+                    <h4>Form Tambah Supplier</h4>
                   </div>
                   <div class="card-body">
                     <div class="form-group">
-                      <label>Kode Logistik</label>
+                      <label>ID Supplier</label>
                       <input type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label>Nama Logistik</label>
-                      <input type="text" class="form-control">
+                        <label for="nama_supplier">Nama Supplier</label>
+                        <input type="text" class="form-control" id="nama_supplier" placeholder="Masukkan nama supplier">
                     </div>
                     <div class="form-group">
-                      <label>Supplier</label>
-                      <input type="text" class="form-control">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Masukkan alamat email" required>
                     </div>
                     <div class="form-group">
-                      <label>Stok Masuk</label>
-                      <input type="number" class="form-control">
+                        <label for="telepon">Telepon</label>
+                        <input type="tel" id="telepon" name="telepon" class="form-control" placeholder="Masukkan nomor telepon" required>
                     </div>
                     <div class="form-group">
-                      <label>Satuan</label>
-                      <select class="form-control">
-                        <option value="kg">Kilogram (kg)</option>
-                        <option value="g">Gram (g)</option>
-                        <option value="mg">Miligram (mg)</option>
-                        <option value="lb">Pound (lb)</option>
-                        <option value="ltr">Liter (ltr)</option>
-                        <option value="pcs">Pieces (pcs)</option>
-                        <option value="unit">Unit</option>
-                        <option value="buah">Buah</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>Expayer</label>
-                      <input type="date" class="form-control">
+                        <label for="instansi">Instansi</label>
+                        <select id="instansi" name="instansi" class="form-control" required>
+                            <option value="" selected disabled>Pilih instansi</option>
+                            <option value="intansi1">Pemerintah</option>
+                            <option value="intansi2">Kabupaten/Kota</option>
+                            <option value="intansi3">Kecamatan</option>
+                            <option value="intansi4">Desa/Kelurahan</option>
+                            <option value="intansi5">Swasta</option>
+                            <option value="intansi6">Umum</option>
+                            <option value="intansi7">Lainnya</option>
+                        </select>
                     </div>
                     <div class="row justify-content-end">
                     <div class="col-auto">
-                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin membatalkannya?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Batal </a>
                         <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Tambah" data-confirm="Apakah anda yakin ingin menambahkan data ini?" data-confirm-yes="alert('Added')"><i class="fas fa-plus"></i> Tambah </a>
                     </div>
                   </div>
