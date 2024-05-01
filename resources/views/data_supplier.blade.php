@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Stok Logistik</title>
+  <title>Data Supplier</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -287,11 +287,18 @@
               </ul>
             </li>
             <li class="menu-header">Data</li>
-            <li class="dropdown active">
+            <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
               <ul class="dropdown-menu">
-                <li class=active><a class="nav-link" href="#">Stok Logistik</a></li>
-                <li><a class="nav-link" href="#">Tambah Data</a></li>
+                <li><a class="nav-link" href="{{ route('data_logistik') }}">Stok Logistik</a></li>
+                <li><a class="nav-link" href="{{ route('tambah_data') }}">Tambah Data</a></li>
+              </ul>
+            </li>
+            <li class="dropdown active">
+              <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Data Sumber Logistik</span></a>
+              <ul class="dropdown-menu">
+                <li class=active><a href="{{ route('data_supplier') }}">Data Supplier</a></li> 
+                <li><a href="{{ route('tambah_supplier') }}">Tambah Supplier</a></li> 
               </ul>
             </li>
             <li class="dropdown">
@@ -403,18 +410,18 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Stok Logistik</h1>
+            <h1>Data Supplier</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="#">Data Logistik</a></div>
-              <div class="breadcrumb-item">Stok Logistik</div>
+              <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+              <div class="breadcrumb-item"><a href="{{ route('data_supplier') }}">Data Sumber Logistik</a></div>
+              <div class="breadcrumb-item">Data Supplier</div>
             </div>
           </div>
           <div class="text-right">
             <a href="path_to_your_pdf_file.pdf" class="btn btn-danger btn-lg" download>
                 <i class="fas fa-file-pdf"></i> Print
             </a>
-              <button class="btn btn-primary btn-lg" onclick="window.location.href='tambah-data'">
+              <button class="btn btn-primary btn-lg" onclick="window.location.href='tambah-supplier'">
                   <i class="fas fa-plus"></i> Tambah
               </button>
           </div>
@@ -427,7 +434,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Daftar Logistik</h4>
+                    <h4>Daftar Supllier</h4>
                     <div class="card-header-form">
                       <form>
                         <div class="input-group">
