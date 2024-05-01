@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Data Logistik</title>
+  <title>Stok Logistik</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -288,9 +288,9 @@
             </li>
             <li class="menu-header">Data</li>
             <li class="dropdown active">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Stok Logistik</span></a>
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
               <ul class="dropdown-menu">
-                <li class=active><a class="nav-link" href="{{ route('data_logistik') }}">Data Logistik</a></li>
+                <li class=active><a class="nav-link" href="{{ route('data_logistik') }}">Stok Logistik</a></li>
                 <li><a class="nav-link" href="{{ route('tambah_data') }}">Tambah Data</a></li>
               </ul>
             </li>
@@ -403,11 +403,11 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Data Logistik</h1>
+            <h1>Stok Logistik</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="{{ route('data_logistik') }}">Stok Logistik</a></div>
-              <div class="breadcrumb-item">Data Logistik</div>
+              <div class="breadcrumb-item"><a href="{{ route('data_logistik') }}">Data Logistik</a></div>
+              <div class="breadcrumb-item">Stok Logistik</div>
             </div>
           </div>
           <div class="text-right">
