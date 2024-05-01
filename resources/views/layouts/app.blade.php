@@ -326,7 +326,7 @@
               </li>
               <li>
                 <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Keluar</span></a>
-              </li>
+            </li>
             <li class="menu-header">Informasi Akun</li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Tambah Akun</span></a>

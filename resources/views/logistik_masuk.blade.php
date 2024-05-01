@@ -303,7 +303,13 @@
               </ul>
             </li>
             <li ><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
-            
+            <li class="menu-header">Transaksi</li>
+              <li>
+                <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Masuk</span></a>
+              </li>
+              <li>
+                <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Keluar</span></a>
+            </li>
             <li class="menu-header">Stisla</li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Components</span></a>
@@ -403,11 +409,11 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Stok Logistik</h1>
+            <h1>Logistik Masuk</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="{{ route('data_logistik') }}">Data Logistik</a></div>
-              <div class="breadcrumb-item">Stok Logistik</div>
+              <div class="breadcrumb-item"><a href="{{ route('logistik_masuk') }}">Logistik Masuk</a></div>
+              <div class="breadcrumb-item">Tambah Logistik</div>
             </div>
           </div>
           <div class="text-right">
