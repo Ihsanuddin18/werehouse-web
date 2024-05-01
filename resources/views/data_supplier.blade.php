@@ -450,20 +450,20 @@
                       <table class="table table-striped">
                         <tr>
                           <th>No</th>
-                          <th>Kode Logistik</th>
-                          <th>Nama Logistik</th>
-                          <th>Supplier</th>
-                          <th>Stok Logistik</th>
-                          <th>Expayer</th>
+                          <th>ID Supplier</th>
+                          <th>Nama Supplier</th>
+                          <th>Email</th>
+                          <th>Telepon</th>
+                          <th>Instansi</th>
                           <th>Aksi</th>
                         </tr>
                         <tr>
                           <td>1</td>
                           <td>09386437</td>
-                          <td>Kursi Lipat</td>
                           <td>APBD Provinsi Jawa Timur</td>
-                          <td>14 Pcs</td>
-                          <td>2018-01-20</td> 
+                          <td>apbd@gmail.com</td>
+                          <td>0862342332</td>
+                          <td>Pemerintah</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
@@ -472,10 +472,10 @@
                         <tr>
                           <td>2</td>
                           <td>09386437</td>
-                          <td>Kursi Lipat</td>
                           <td>APBD Provinsi Jawa Timur</td>
-                          <td>14 Pcs</td>
-                          <td>2018-01-20</td> 
+                          <td>apbd@gmail.com</td>
+                          <td>0862342332</td>
+                          <td>Pemerintah</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
@@ -484,10 +484,10 @@
                         <tr>
                           <td>3</td>
                           <td>09386437</td>
-                          <td>Kursi Lipat</td>
                           <td>APBD Provinsi Jawa Timur</td>
-                          <td>14 Pcs</td>
-                          <td>2018-01-20</td> 
+                          <td>apbd@gmail.com</td>
+                          <td>0862342332</td>
+                          <td>Pemerintah</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
@@ -496,10 +496,10 @@
                         <tr>
                           <td>4</td>
                           <td>09386437</td>
-                          <td>Kursi Lipat</td>
                           <td>APBD Provinsi Jawa Timur</td>
-                          <td>14 Pcs</td>
-                          <td>2018-01-20</td> 
+                          <td>apbd@gmail.com</td>
+                          <td>0862342332</td>
+                          <td>Pemerintah</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
@@ -508,10 +508,10 @@
                         <tr>
                           <td>5</td>
                           <td>09386437</td>
-                          <td>Kursi Lipat</td>
                           <td>APBD Provinsi Jawa Timur</td>
-                          <td>14 Pcs</td>
-                          <td>2018-01-20</td> 
+                          <td>apbd@gmail.com</td>
+                          <td>0862342332</td>
+                          <td>Pemerintah</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
@@ -573,9 +573,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="kode_logistik" class="col-sm-3 col-form-label">Kode Logistik</label>
+                        <label for="kode_logistik" class="col-sm-3 col-form-label">ID Supplier</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="kode_logistik" name="kode_logistik" value="LOG123" readonly>
+                            <input type="text" class="form-control" id="kode_logistik" name="kode_logistik" value="L23123" readonly>
                             <!-- Ganti nilai value="LOG123" dengan nilai kode logistik yang Anda inginkan -->
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
@@ -586,9 +586,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nama_logistik" class="col-sm-3 col-form-label">Nama Logistik</label>
+                        <label for="nama_logistik" class="col-sm-3 col-form-label">Nama Supplier</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama_logistik" name="nama_logistik" value="Kursi Lipat" readonly>
+                            <input type="text" class="form-control" id="nama_logistik" name="nama_logistik" value="APBD Provinsi Jawa Timur" readonly>
                             <!-- Ganti nilai value="Nama Logistik Anda" dengan nama logistik yang Anda inginkan -->
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
@@ -599,9 +599,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="supplier" class="col-sm-3 col-form-label">Supplier</label>
+                        <label for="supplier" class="col-sm-3 col-form-label">Email</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="supplier" name="supplier" value="APBD Provinsi Jawa Timur" readonly>
+                            <input type="text" class="form-control" id="supplier" name="supplier" value="apbd@gmail.com" readonly>
                             <!-- Ganti nilai value="Nama Supplier Anda" dengan nama supplier yang Anda inginkan -->
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
@@ -613,7 +613,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="stok" class="col-sm-3 col-form-label">Stok Logistik</label>
+                        <label for="stok" class="col-sm-3 col-form-label">Telepon</label>
                         <div class="col-sm-9">
                             <div class="row">
                                 <div class="col-sm-6">
@@ -639,7 +639,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nama" class="col-sm-3 col-form-label">Expayer</label>
+                        <label for="nama" class="col-sm-3 col-form-label">Instansi</label>
                         <div class="col-sm-9">
                             <input type="date" class="form-control" id="nama" name="nama" required>
                             <div class="invalid-feedback">
