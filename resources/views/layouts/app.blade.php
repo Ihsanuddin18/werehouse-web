@@ -280,6 +280,13 @@
               </ul>
             </li>
             <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Data Sumber Logistik</span></a>
+              <ul class="dropdown-menu">
+                <li><a href="">Data Supplier</a></li> 
+                <li><a href="">Tambah Supplier</a></li> 
+              </ul>
+            </li>
+            <li class="dropdown">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="layout-default.html">Default Layout</a></li>
