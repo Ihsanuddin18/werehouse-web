@@ -466,7 +466,7 @@
                           <td>Pemerintah</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Supplier ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
@@ -478,7 +478,7 @@
                           <td>Pemerintah</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Supplier ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
@@ -490,7 +490,7 @@
                           <td>Pemerintah</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Supplier ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
@@ -502,7 +502,7 @@
                           <td>Pemerintah</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Supplier ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
@@ -514,7 +514,7 @@
                           <td>Pemerintah</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Supplier ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                       </table>
@@ -573,10 +573,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="kode_logistik" class="col-sm-3 col-form-label">ID Supplier</label>
+                        <label for="id_supplier" class="col-sm-3 col-form-label">ID Supplier</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="kode_logistik" name="kode_logistik" value="L23123" readonly>
-                            <!-- Ganti nilai value="LOG123" dengan nilai kode logistik yang Anda inginkan -->
+                            <input type="text" class="form-control" id="id_supplier" name="id_supplier" value="L23123" readonly>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -586,10 +585,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nama_logistik" class="col-sm-3 col-form-label">Nama Supplier</label>
+                        <label for="nama_supplier" class="col-sm-3 col-form-label">Nama Supplier</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama_logistik" name="nama_logistik" value="APBD Provinsi Jawa Timur" readonly>
-                            <!-- Ganti nilai value="Nama Logistik Anda" dengan nama logistik yang Anda inginkan -->
+                            <input type="text" class="form-control" id="nama_supplier" name="nama_supplier" value="APBD Provinsi Jawa Timur" required>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -599,37 +597,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="supplier" class="col-sm-3 col-form-label">Email</label>
+                        <label for="email_supplier" class="col-sm-3 col-form-label">Email</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="supplier" name="supplier" value="apbd@gmail.com" readonly>
-                            <!-- Ganti nilai value="Nama Supplier Anda" dengan nama supplier yang Anda inginkan -->
-                            <div class="invalid-feedback">
-                                Kolom wajib diisi!
-                            </div>
-                            <div class="valid-feedback">
-                                Valid!
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="stok" class="col-sm-3 col-form-label">Telepon</label>
-                        <div class="col-sm-9">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Jumlah" required>
-                                </div>
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="satuan" name="satuan" required>
-                                        <option value="">Pilih Satuan</option>
-                                        <option value="kg">Kilogram (kg)</option>
-                                        <option value="g">Gram (g)</option>
-                                        <option value="l">Liter (l)</option>
-                                        <option value="pcs">Pieces (pcs)</option>
-                                        <!-- tambahkan pilihan satuan lainnya jika nanti kurang -->
-                                    </select>
-                                </div>
-                            </div>
+                            <input type="text" class="form-control" id="email_supplier" name="email_supplier" value="apbd@gmail.com" required>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -639,9 +609,30 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nama" class="col-sm-3 col-form-label">Instansi</label>
+                        <label for="telepon" class="col-sm-3 col-form-label">Telepon</label>
                         <div class="col-sm-9">
-                            <input type="date" class="form-control" id="nama" name="nama" required>
+                            <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Masukan nomor telepon baru" required>
+                            <div class="invalid-feedback">
+                                Kolom wajib diisi!
+                            </div>
+                            <div class="valid-feedback">
+                                Valid!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="instansi" class="col-sm-3 col-form-label">Instansi</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="instansi" name="instansi" required>
+                                <option value="">Pilih Instansi</option>
+                                <option value="Instansi 1">Pemerintah</option>
+                                <option value="Instansi 2">Kabupaten/Kota</option>
+                                <option value="Instansi 3">Kecamatan</option>
+                                <option value="Instansi 4">Desa/Kelurahan</option>
+                                <option value="Instansi 5">Swasta</option>
+                                <option value="Instansi 6">Umum</option>
+                                <option value="Instansi 7">Lainnya</option>
+                            </select>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -671,6 +662,7 @@
   <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
   
   <!-- JS Libraies -->
+  
 
   <!-- Page Specific JS File -->
   
