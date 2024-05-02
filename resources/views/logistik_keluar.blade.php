@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Stok Logistik</title>
+  <title>Logistik Keluar</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -287,10 +287,10 @@
               </ul>
             </li>
             <li class="menu-header">Data</li>
-            <li class="dropdown active">
+            <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
               <ul class="dropdown-menu">
-                <li class=active><a class="nav-link" href="{{ route('data_logistik') }}">Stok Logistik</a></li>
+                <li><a class="nav-link" href="{{ route('data_logistik') }}">Stok Logistik</a></li>
                 <li><a class="nav-link" href="{{ route('tambah_data') }}">Tambah Data</a></li>
               </ul>
             </li>
@@ -303,7 +303,13 @@
               </ul>
             </li>
             <li ><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
-            
+            <li class="menu-header">Transaksi</li>
+              <li class=active>
+                <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Masuk</span></a>
+              </li>
+              <li>
+                <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Keluar</span></a>
+            </li>
             <li class="menu-header">Stisla</li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Components</span></a>
@@ -403,11 +409,11 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Stok Logistik</h1>
+            <h1>Logistik Keluar</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="{{ route('data_logistik') }}">Data Logistik</a></div>
-              <div class="breadcrumb-item">Stok Logistik</div>
+              <div class="breadcrumb-item"><a href="{{ route('logistik_masuk') }}">Logistik Keluar</a></div>
+              <div class="breadcrumb-item">Tambah Logistik</div>
             </div>
           </div>
           <div class="text-right">
@@ -427,7 +433,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Daftar Logistik</h4>
+                    <h4>Daftar Logistik Tersedia</h4>
                     <div class="card-header-form">
                       <form>
                         <div class="input-group">
@@ -443,10 +449,12 @@
                       <table class="table table-striped">
                         <tr>
                           <th>No</th>
-                          <th>Kode Logistik</th>
+                          <th>No Terima</th>
                           <th>Nama Logistik</th>
-                          <th>Supplier</th>
-                          <th>Stok Logistik</th>
+                          <th>Jumlah</th>
+                          <th>Nama Admin</th>
+                          <th>Nama Supplier</th>
+                          <th>Tanggal Terima</th>
                           <th>Expayer</th>
                           <th>Aksi</th>
                         </tr>
@@ -454,8 +462,10 @@
                           <td>1</td>
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
-                          <td>APBD Provinsi Jawa Timur</td>
                           <td>14 Pcs</td>
+                          <td>Werehouse BPBD</td>
+                          <td>APBD Provinsi Jawa Timur</td>
+                          <td>2018-01-20</td> 
                           <td>2018-01-20</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
@@ -466,8 +476,10 @@
                           <td>2</td>
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
-                          <td>APBD Provinsi Jawa Timur</td>
                           <td>14 Pcs</td>
+                          <td>Werehouse BPBD</td>
+                          <td>APBD Provinsi Jawa Timur</td>
+                          <td>2018-01-20</td> 
                           <td>2018-01-20</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
@@ -478,9 +490,11 @@
                           <td>3</td>
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
-                          <td>APBD Provinsi Jawa Timur</td>
                           <td>14 Pcs</td>
+                          <td>Werehouse BPBD</td>
+                          <td>APBD Provinsi Jawa Timur</td>
                           <td>2018-01-20</td> 
+                          <td>2018-01-20</td>
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
@@ -490,8 +504,10 @@
                           <td>4</td>
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
-                          <td>APBD Provinsi Jawa Timur</td>
                           <td>14 Pcs</td>
+                          <td>Werehouse BPBD</td>
+                          <td>APBD Provinsi Jawa Timur</td>
+                          <td>2018-01-20</td> 
                           <td>2018-01-20</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
@@ -502,8 +518,10 @@
                           <td>5</td>
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
-                          <td>APBD Provinsi Jawa Timur</td>
                           <td>14 Pcs</td>
+                          <td>Werehouse BPBD</td>
+                          <td>APBD Provinsi Jawa Timur</td>
+                          <td>2018-01-20</td> 
                           <td>2018-01-20</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
