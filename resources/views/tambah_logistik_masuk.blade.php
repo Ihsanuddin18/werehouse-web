@@ -287,11 +287,11 @@
               </ul>
             </li>
             <li class="menu-header">Data</li>
-            <li class="dropdown active">
+            <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{ route('data_logistik') }}">Stok Logistik</a></li>
-                <li class=active><a class="nav-link" href="{{ route('tambah_data') }}">Tambah Data</a></li>
+                <li><a class="nav-link" href="{{ route('tambah_data') }}">Tambah Data</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -318,6 +318,13 @@
                 <li><a class="nav-link" href="bootstrap-tooltip.html">Tooltip</a></li>
                 <li><a class="nav-link" href="bootstrap-typography.html">Typography</a></li>
               </ul>
+            </li>
+            <li class="menu-header">Transaksi</li>
+              <li class=active>
+                <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Masuk</span></a>
+              </li>
+              <li>
+                <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Keluar</span></a>
             </li>
             <li class="menu-header">Stisla</li>
             <li class="dropdown">
@@ -418,18 +425,18 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Tambah Data Logistik</h1>
+          <h1>Tambah Logistik Masuk</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="{{ route('data_logistik') }}">Data Logistik</a></div>
-              <div class="breadcrumb-item">Tambah Data</div>
+              <div class="breadcrumb-item active"><a href="{{ route('logistik_masuk') }}">Logistik Masuk</a></div>
+              <div class="breadcrumb-item">Tambah Logistik Masuk</div>
             </div>
           </div>
           <div class="row">
               <div class="col-12 col-md-6 col-lg-6">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Form Tambah Data Logistik</h4>
+                    <h4>Form Tambah Logistik Masuk</h4>
                   </div>
                   <div class="card-body">
                     <div class="form-group">

@@ -9,7 +9,9 @@ use App\Http\Controllers\TambahDataController;
 use App\Http\Controllers\DataSupplierController;
 use App\Http\Controllers\TambahSupplierController;
 use App\Http\Controllers\LogistikMasukController;
-use App\Http\Controllers\LogistikkeluarController;
+use App\Http\Controllers\LogistikKeluarController;
+use App\Http\Controllers\TambahLogistikMasukController;
+use App\Http\Controllers\TambahLogistikKeluarController;
 
 
 /*
@@ -60,7 +62,10 @@ Route::middleware('auth')->group(function () {
 //Route Logistik masuk dan keluar
     Route::get('/logistik-masuk', [LogistikMasukController::class, 'showLogistikMasuk'])->name('logistik_masuk');
     Route::get('/logistik-keluar', [LogistikKeluarController::class, 'showLogistikKeluar'])->name('logistik_keluar');
+    Route::get('/tambah-logistik-masuk', [TambahLogistikMasukController::class, 'showTambahLogistikMasuk'])->name('tambah_logistik_masuk');
+    Route::get('/tambah-logistik-keluar', [TambahLogistikKeluarController::class, 'showTambahLogistikKeluar'])->name('tambah_logistik_keluar');
+ 
 
-
+    
 
 require __DIR__.'/auth.php';

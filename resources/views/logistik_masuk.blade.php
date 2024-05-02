@@ -420,7 +420,7 @@
             <a href="path_to_your_pdf_file.pdf" class="btn btn-danger btn-lg" download>
                 <i class="fas fa-file-pdf"></i> Print
             </a>
-              <button class="btn btn-primary btn-lg" onclick="window.location.href='tambah-data'">
+              <button class="btn btn-primary btn-lg" onclick="window.location.href='tambah-logistik-masuk'">
                   <i class="fas fa-plus"></i> Tambah
               </button>
           </div>
