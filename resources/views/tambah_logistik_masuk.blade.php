@@ -438,41 +438,41 @@
                   </div>
                   <div class="card-body">
                   <div class="form-row">
-                  <div class="form-group col-md-3"> <!-- Bagian Baru untuk Kolom Telepon -->
-                            <label for="inputPhone">1</label>
+                  <div class="form-group col-md-3">
+                            <label for="inputPhone">No Terima</label>
                             <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
                         </div>
-                        <div class="form-group col-md-3"> <!-- Bagian Baru untuk Kolom Telepon -->
-                            <label for="inputPhone">2</label>
+                        <div class="form-group col-md-3"> 
+                            <label for="inputPhone">Kode Admin</label>
                             <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
                         </div>
-                        <div class="form-group col-md-3"> <!-- Bagian Kolom Password -->
-                            <label for="inputPassword4">3</label>
+                        <div class="form-group col-md-3">
+                            <label for="inputPassword4">Nama Admin</label>
                             <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                     </div>
-                        <div class="form-group col-md-3"> <!-- Bagian Kolom Password -->
-                            <label for="inputPassword4">3</label>
+                        <div class="form-group col-md-3">
+                            <label for="inputPassword4">Tanggal Keluar</label>
                             <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                     </div>
                       <div class="form-group col-md-6">
-                        <label for="inputPassword4">Password</label>
+                        <label for="inputPassword4">Nama Penerima</label>
                         <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                       </div>
                       <div class="form-group col-md-6"> <!-- Bagian Baru untuk Kolom Telepon -->
-                            <label for="inputPhone">1</label>
+                            <label for="inputPhone">Nama Logistik</label>
                             <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
                         </div>
                       <div class="form-group col-md-6"> <!-- Bagian Baru untuk Kolom Telepon -->
-                            <label for="inputPhone">2</label>
+                            <label for="inputPhone">Jumlah</label>
                             <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
                         </div>
                       <div class="form-group col-md-6"> <!-- Bagian Baru untuk Kolom Telepon -->
-                            <label for="inputPhone">3</label>
+                            <label for="inputPhone">Satuan</label>
                             <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
                         </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputAddress">Address</label>
+                      <label for="inputAddress">Keterangan</label>
                       <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                     </div>
                   </div>
@@ -480,6 +480,47 @@
                     <button class="btn btn-primary">Submit</button>
                   </div>
                 </div>
+                <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Detail Logistik Masuk</h4>
+                    <div class="card-header-form">
+                      <form>
+                      </form>
+                    </div>
+                  </div>
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <tr>
+                          <th>No</th>
+                          <th>No Terima</th>
+                          <th>Nama Logistik</th>
+                          <th>Jumlah</th>
+                          <th>Nama Admin</th>
+                          <th>Nama Supplier</th>
+                          <th>Tanggal Terima</th>
+                          <th>Expayer</th>
+                          <th>Aksi</th>
+                        </tr>
+                        <tr>
+                          <td>1</td>
+                          <td>09386437</td>
+                          <td>Kursi Lipat</td>
+                          <td>14 Pcs</td>
+                          <td>Werehouse BPBD</td>
+                          <td>APBD Provinsi Jawa Timur</td>
+                          <td>2018-01-20</td> 
+                          <td>2018-01-20</td> 
+                          <td>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+          </div>
           <div class="section-body">
           </div>
         </section>
