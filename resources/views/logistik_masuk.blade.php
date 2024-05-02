@@ -287,10 +287,10 @@
               </ul>
             </li>
             <li class="menu-header">Data</li>
-            <li class="dropdown active">
+            <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
               <ul class="dropdown-menu">
-                <li class=active><a class="nav-link" href="{{ route('data_logistik') }}">Stok Logistik</a></li>
+                <li><a class="nav-link" href="{{ route('data_logistik') }}">Stok Logistik</a></li>
                 <li><a class="nav-link" href="{{ route('tambah_data') }}">Tambah Data</a></li>
               </ul>
             </li>
@@ -304,7 +304,7 @@
             </li>
             <li ><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
             <li class="menu-header">Transaksi</li>
-              <li>
+              <li class=active>
                 <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Masuk</span></a>
               </li>
               <li>
@@ -448,15 +448,13 @@
                     <div class="table-responsive">
                       <table class="table table-striped">
                         <tr>
-                          <th>NO</th>
-                          <th>NO TERIMA</th>
-                          <th>NAMA LOGISTIK</th>
-                          <th>JUMLAH</th>
-                          <th>SATUAN</th>
-                          <th>NAMA ADMIN</th>
-                          <th>NAMA SUPPLIER</th>
-                          <th>TANGGAL TERIMA</th>
-                          <th>EXPAYER</th>
+                          <th>No</th>
+                          <th>No Terima</th>
+                          <th>Nama Logistik</th>
+                          <th>Jumlah</th>
+                          <th>Nama Admin</th>
+                          <th>Nama Supplier</th>
+                          <th>Tanggal Terima</th>
                           <th>Expayer</th>
                           <th>Aksi</th>
                         </tr>
