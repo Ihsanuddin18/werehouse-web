@@ -434,14 +434,26 @@
           </div>
           <div class="card">
                   <div class="card-header">
-                    <h4>Horizontal Form</h4>
+                    <h4>Data Admin</h4>
                   </div>
                   <div class="card-body">
-                    <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                      </div>
+                  <div class="form-row">
+                  <div class="form-group col-md-3"> <!-- Bagian Baru untuk Kolom Telepon -->
+                            <label for="inputPhone">Phone</label>
+                            <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
+                        </div>
+                        <div class="form-group col-md-3"> <!-- Bagian Baru untuk Kolom Telepon -->
+                            <label for="inputPhone">Phone</label>
+                            <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
+                        </div>
+                        <div class="form-group col-md-3"> <!-- Bagian Baru untuk Kolom Telepon -->
+                            <label for="inputPhone">Phone</label>
+                            <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
+                        </div>
+                        <div class="form-group col-md-3"> <!-- Bagian Kolom Password -->
+                            <label for="inputPassword4">Password</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    </div>
                       <div class="form-group col-md-6">
                         <label for="inputPassword4">Password</label>
                         <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
