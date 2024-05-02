@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Tambah Data</title>
+  <title>Tambah Logistik Masuk</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -432,51 +432,57 @@
               <div class="breadcrumb-item">Tambah Logistik Masuk</div>
             </div>
           </div>
-          <div class="row">
-              <div class="col-12 col-md-6 col-lg-6">
-                <div class="card">
+          <div class="card">
                   <div class="card-header">
-                    <h4>Form Tambah Logistik Masuk</h4>
+                    <h4>Horizontal Form</h4>
                   </div>
                   <div class="card-body">
-                    <div class="form-group">
-                      <label>Kode Logistik</label>
-                      <input type="text" class="form-control">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputPassword4">Password</label>
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                      </div>
                     </div>
                     <div class="form-group">
-                      <label>Nama Logistik</label>
-                      <input type="text" class="form-control">
+                      <label for="inputAddress">Address</label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                     </div>
                     <div class="form-group">
-                      <label>Supplier</label>
-                      <input type="text" class="form-control">
+                      <label for="inputAddress2">Address 2</label>
+                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
                     </div>
-                    <div class="form-group">
-                      <label>Stok Masuk</label>
-                      <input type="number" class="form-control">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="inputCity">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <select id="inputState" class="form-control">
+                          <option selected>Choose...</option>
+                          <option>...</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="inputZip">
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label>Satuan</label>
-                      <select class="form-control">
-                        <option value="kg">Kilogram (kg)</option>
-                        <option value="g">Gram (g)</option>
-                        <option value="mg">Miligram (mg)</option>
-                        <option value="lb">Pound (lb)</option>
-                        <option value="ltr">Liter (ltr)</option>
-                        <option value="pcs">Pieces (pcs)</option>
-                        <option value="unit">Unit</option>
-                        <option value="buah">Buah</option>
-                      </select>
+                    <div class="form-group mb-0">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                          Check me out
+                        </label>
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label>Expayer</label>
-                      <input type="date" class="form-control">
-                    </div>
-                    <div class="row justify-content-end">
-                    <div class="col-auto">
-                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
-                        <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Tambah" data-confirm="Apakah anda yakin ingin menambahkan data ini?" data-confirm-yes="alert('Added')"><i class="fas fa-plus"></i> Tambah </a>
-                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn btn-primary">Submit</button>
                   </div>
                 </div>
           <div class="section-body">
