@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Logistik Keluar</title>
+  <title>Stok Logistik</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -304,10 +304,10 @@
             </li>
             <li ><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
             <li class="menu-header">Transaksi</li>
-              <li class=active>
+              <li>
                 <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Masuk</span></a>
               </li>
-              <li>
+              <li class=active>
                 <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Keluar</span></a>
             </li>
             <li class="menu-header">Stisla</li>
@@ -412,8 +412,7 @@
             <h1>Logistik Keluar</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="{{ route('logistik_masuk') }}">Logistik Keluar</a></div>
-              <div class="breadcrumb-item">Tambah Logistik</div>
+              <div class="breadcrumb-item">Logistik Keluar</div>
             </div>
           </div>
           <div class="text-right">
@@ -433,7 +432,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Daftar Logistik Tersedia</h4>
+                    <h4>Daftar Logistik Keluar</h4>
                     <div class="card-header-form">
                       <form>
                         <div class="input-group">
@@ -449,13 +448,14 @@
                       <table class="table table-striped">
                         <tr>
                           <th>No</th>
-                          <th>No Terima</th>
+                          <th>No Keluar</th>
                           <th>Nama Logistik</th>
                           <th>Jumlah</th>
                           <th>Nama Admin</th>
-                          <th>Nama Supplier</th>
-                          <th>Tanggal Terima</th>
-                          <th>Expayer</th>
+                          <th>Nama Penerima</th>
+                          <th>NIK / KK</th>
+                          <th>Tanggal Keluar</th>
+                          <th>Dokumentasi</th>
                           <th>Aksi</th>
                         </tr>
                         <tr>
@@ -464,9 +464,10 @@
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
                           <td>Werehouse BPBD</td>
-                          <td>APBD Provinsi Jawa Timur</td>
+                          <td>Rio Fahmi Dewanto</td>
+                          <td>35092100348239</td> 
                           <td>2018-01-20</td> 
-                          <td>2018-01-20</td> 
+                          <td>Dokumentasi 1</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
@@ -478,9 +479,10 @@
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
                           <td>Werehouse BPBD</td>
-                          <td>APBD Provinsi Jawa Timur</td>
+                          <td>Rio Fahmi Dewanto</td>
+                          <td>35092100348239</td> 
                           <td>2018-01-20</td> 
-                          <td>2018-01-20</td> 
+                          <td>Dokumentasi 2</td>
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
@@ -492,9 +494,10 @@
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
                           <td>Werehouse BPBD</td>
-                          <td>APBD Provinsi Jawa Timur</td>
+                          <td>Rio Fahmi Dewanto</td>
+                          <td>35092100348239</td> 
                           <td>2018-01-20</td> 
-                          <td>2018-01-20</td>
+                          <td>Dokumentasi 3</td>
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
@@ -506,9 +509,10 @@
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
                           <td>Werehouse BPBD</td>
-                          <td>APBD Provinsi Jawa Timur</td>
+                          <td>Rio Fahmi Dewanto</td>
+                          <td>35092100348239</td> 
                           <td>2018-01-20</td> 
-                          <td>2018-01-20</td> 
+                          <td>Dokumentasi 4</td>
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
@@ -520,9 +524,10 @@
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
                           <td>Werehouse BPBD</td>
-                          <td>APBD Provinsi Jawa Timur</td>
+                          <td>Rio Fahmi Dewanto</td>
+                          <td>35092100348239</td> 
                           <td>2018-01-20</td> 
-                          <td>2018-01-20</td> 
+                          <td>Dokumentasi 5</td>
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
@@ -582,25 +587,23 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group row">
-                        <label for="kode_logistik" class="col-sm-3 col-form-label">Kode Logistik</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="kode_logistik" name="kode_logistik" value="LOG123" readonly>
-                            <!-- Ganti nilai value="LOG123" dengan nilai kode logistik yang Anda inginkan -->
-                            <div class="invalid-feedback">
-                                Kolom wajib diisi!
-                            </div>
-                            <div class="valid-feedback">
-                                Valid!
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="no_terima" class="col-sm-3 col-form-label">No Keluar</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="no_terima" name="no_terima" value="09386437" readonly>
+                                <div class="invalid-feedback">
+                                    Kolom wajib diisi!
+                                </div>
+                                <div class="valid-feedback">
+                                    Valid!
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <div class="form-group row">
                         <label for="nama_logistik" class="col-sm-3 col-form-label">Nama Logistik</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="nama_logistik" name="nama_logistik" value="Kursi Lipat" readonly>
-                            <!-- Ganti nilai value="Nama Logistik Anda" dengan nama logistik yang Anda inginkan -->
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -610,25 +613,11 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="supplier" class="col-sm-3 col-form-label">Supplier</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="supplier" name="supplier" value="APBD Provinsi Jawa Timur" readonly>
-                            <!-- Ganti nilai value="Nama Supplier Anda" dengan nama supplier yang Anda inginkan -->
-                            <div class="invalid-feedback">
-                                Kolom wajib diisi!
-                            </div>
-                            <div class="valid-feedback">
-                                Valid!
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="stok" class="col-sm-3 col-form-label">Stok Logistik</label>
+                        <label for="stok" class="col-sm-3 col-form-label">Jumlah Keluar</label>
                         <div class="col-sm-9">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Jumlah" required>
+                                    <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="14" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <select class="form-control" id="satuan" name="satuan" required>
@@ -636,8 +625,13 @@
                                         <option value="kg">Kilogram (kg)</option>
                                         <option value="g">Gram (g)</option>
                                         <option value="l">Liter (l)</option>
-                                        <option value="pcs">Pieces (pcs)</option>
-                                        <!-- tambahkan pilihan satuan lainnya jika nanti kurang -->
+                                        <option value="l">Pieces (pcs)</option>
+                                        <option value="pcs">Unit (unit)</option>
+                                        <option value="pcs">Botol (botol)</option>
+                                        <option value="pcs">Kardus (kardus)</option>
+                                        <option value="pcs">Drum (drum)</option>
+                                        <option value="pcs">Roll (roll)</option>
+                                        <option value="pcs">Lainnya</option>
                                     </select>
                                 </div>
                             </div>
@@ -650,9 +644,45 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nama" class="col-sm-3 col-form-label">Expayer</label>
+                        <label for="nama_admin" class="col-sm-3 col-form-label">Nama Admin</label>
                         <div class="col-sm-9">
-                            <input type="date" class="form-control" id="nama" name="nama" required>
+                            <input type="text" class="form-control" id="nama_admin" name="nama_admin" value="Werehouse BPBD" readonly>
+                            <div class="invalid-feedback">
+                                Kolom wajib diisi!
+                            </div>
+                            <div class="valid-feedback">
+                                Valid!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nama_supplier" class="col-sm-3 col-form-label">Nama Penerima</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="nama_supplier" name="nama_supplier" value="Rio Fahmi Dewanto" readonly>
+                            <div class="invalid-feedback">
+                                Kolom wajib diisi!
+                            </div>
+                            <div class="valid-feedback">
+                                Valid!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nama_supplier" class="col-sm-3 col-form-label">NIK / KK</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="nama_supplier" name="nama_supplier" value="35092100348239" readonly>
+                            <div class="invalid-feedback">
+                                Kolom wajib diisi!
+                            </div>
+                            <div class="valid-feedback">
+                                Valid!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="tanggal_terima" class="col-sm-3 col-form-label">Tanggal Keluar</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" id="tanggal_terima" name="tanggal_terima" required>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>

@@ -412,8 +412,8 @@
             <h1>Logistik Masuk</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="{{ route('logistik_masuk') }}">Logistik Masuk</a></div>
-              <div class="breadcrumb-item">Tambah Logistik</div>
+              <div class="breadcrumb-item">Logistik Masuk</div>
+             
             </div>
           </div>
           <div class="text-right">
@@ -613,7 +613,7 @@
                         <div class="col-sm-9">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Jumlah" required>
+                                    <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="14" required>
                                 </div>
                                 <div class="col-sm-6">
                                     <select class="form-control" id="satuan" name="satuan" required>
@@ -621,8 +621,13 @@
                                         <option value="kg">Kilogram (kg)</option>
                                         <option value="g">Gram (g)</option>
                                         <option value="l">Liter (l)</option>
-                                        <option value="pcs">Pieces (pcs)</option>
-                                        <!-- tambahkan pilihan satuan lainnya jika nanti kurang -->
+                                        <option value="l">Pieces (pcs)</option>
+                                        <option value="pcs">Unit (unit)</option>
+                                        <option value="pcs">Botol (botol)</option>
+                                        <option value="pcs">Kardus (kardus)</option>
+                                        <option value="pcs">Drum (drum)</option>
+                                        <option value="pcs">Roll (roll)</option>
+                                        <option value="pcs">Lainnya</option>
                                     </select>
                                 </div>
                             </div>
@@ -671,9 +676,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nama" class="col-sm-3 col-form-label">Expayer</label>
+                        <label for="expayer" class="col-sm-3 col-form-label">Expayer</label>
                         <div class="col-sm-9">
-                            <input type="date" class="form-control" id="nama" name="nama" required>
+                            <input type="text" class="form-control" id="expayer" name="expayer" value="2024-05-02" readonly>
+                            <!-- Ganti nilai value dengan tanggal yang sesuai jika diperlukan -->
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
