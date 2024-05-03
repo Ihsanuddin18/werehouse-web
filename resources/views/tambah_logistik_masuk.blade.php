@@ -438,36 +438,48 @@
                   </div>
                   <div class="card-body">
                   <div class="form-row">
-                  <div class="form-group col-md-3">
-                            <label for="inputPhone">No Terima</label>
-                            <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
-                        </div>
-                        <div class="form-group col-md-3"> 
-                            <label for="inputPhone">Kode Admin</label>
-                            <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
+                    <div class="form-group col-md-3">
+                        <label for="NoTerima">No Masuk</label>
+                        <input type="text" class="form-control" id="inputNoMasuk" name="no_masuk" placeholder="No Masuk" required>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputTanggalMasuk">Tanggal Masuk</label>
+                        <input type="date" class="form-control" id="inputTanggalMasuk" placeholder="Tanggal Masuk">
+                    </div>
+                    <div class="col-md-12">
+                        <h4>Data Supplier</h4>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputKodeSupplier">Kode Supplier</label>
+                        <input type="text" class="form-control" id="inputKodeSupplier" placeholder="Masukkan Kode Supplier">
+                    </div>
+                    <div class="form-group col-md-6"> 
+                        <label for="inputNamaSupplier">Nama Supplier</label>
+                        <input type="text" class="form-control" id="inputNamaSupplier" placeholder="Nama Supplier">
+                    </div>
+                        <div class="col-md-12">
+                            <h4>Data Logistik</h4>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="inputPassword4">Nama Admin</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                    </div>
+                            <label for="inputNamaLogistik">Nama Logistik</label>
+                            <input type="text" class="form-control" id="inputNamaLogistik" placeholder="Nama Logistik">
+                        </div>
                         <div class="form-group col-md-3">
-                            <label for="inputPassword4">Tanggal Keluar</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                    </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputPassword4">Nama Penerima</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                      </div>
-                      <div class="form-group col-md-6"> <!-- Bagian Baru untuk Kolom Telepon -->
-                            <label for="inputPhone">Nama Logistik</label>
-                            <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
+                            <label for="inputJumlahPilihan">Jumlah Pilihan Nomor</label>
+                            <input type="number" class="form-control" id="inputJumlahPilihan" placeholder="Masukkan Jumlah">
                         </div>
-                      <div class="form-group col-md-6"> <!-- Bagian Baru untuk Kolom Telepon -->
-                            <label for="inputPhone">Jumlah</label>
-                            <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
+                        <div class="form-group col-md-3">
+                            <label for="inputSatuan">Satuan</label>
+                            <select class="form-control" id="inputSatuan">
+                                <option value="kg">Kilogram (kg)</option>
+                                <option value="g">Gram (g)</option>
+                                <option value="pcs">Pieces (pcs)</option>
+                                <option value="m">Meter (m)</option>
+                            </select>
                         </div>
-                      <div class="form-group col-md-6"> <!-- Bagian Baru untuk Kolom Telepon -->
-                            <label for="inputPhone">Satuan</label>
+
+                      <div class="form-group col-md-3"> <!-- Bagian Baru untuk Kolom Telepon -->
+                            <label for="inputPhone">Expayer</label>
                             <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
                         </div>
                     </div>
@@ -475,9 +487,6 @@
                       <label for="inputAddress">Keterangan</label>
                       <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                     </div>
-                  </div>
-                  <div class="card-footer">
-                    <button class="btn btn-primary">Submit</button>
                   </div>
                 </div>
                 <div class="row">
@@ -494,12 +503,11 @@
                       <table class="table table-striped">
                         <tr>
                           <th>No</th>
-                          <th>No Terima</th>
+                          <th>No Masuk</th>
                           <th>Nama Logistik</th>
                           <th>Jumlah</th>
-                          <th>Nama Admin</th>
                           <th>Nama Supplier</th>
-                          <th>Tanggal Terima</th>
+                          <th>Tanggal Masuk</th>
                           <th>Expayer</th>
                           <th>Aksi</th>
                         </tr>
@@ -508,7 +516,6 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>Werehouse BPBD</td>
                           <td>APBD Provinsi Jawa Timur</td>
                           <td>2018-01-20</td> 
                           <td>2018-01-20</td> 
@@ -517,6 +524,11 @@
                           </td>
                         </tr>
                       </table>
+                      <div class="card-footer d-flex justify-content-center">
+                          <button class="btn btn-primary">
+                              <i class="fas fa-save"></i> Tambahkan
+                          </button>
+                      </div>
                     </div>
                   </div>
                 </div>
