@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
+  <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/select2/dist/css/select2.min.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
@@ -477,17 +478,19 @@
                                 <option value="m">Meter (m)</option>
                             </select>
                         </div>
-
-                      <div class="form-group col-md-3"> <!-- Bagian Baru untuk Kolom Telepon -->
-                            <label for="inputPhone">Expayer</label>
-                            <input type="tel" class="form-control" id="inputPhone" placeholder="Phone">
+                        <div class="form-group col-md-3">
+                            <label for="inputExpayer">Expayer</label>
+                            <input type="date" class="form-control" id="inputExpayer">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputKeterangan">Keterangan</label>
+                            <input type="text" class="form-control" id="inputKeterangan" placeholder="Masukkan Keterangan">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputDokumentasi">Dokumentasi</label>
+                            <input type="file" class="form-control-file" id="inputDokumentasi">
                         </div>
                     </div>
-                    <div class="form-group">
-                      <label for="inputAddress">Keterangan</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                    </div>
-                  </div>
                 </div>
                 <div class="row">
               <div class="col-12">
