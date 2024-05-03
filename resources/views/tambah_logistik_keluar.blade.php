@@ -449,23 +449,27 @@
                   <div class="card-body">
                   <div class="form-row">
                     <div class="form-group col-md-3">
-                        <label for="NoTerima">No Masuk</label>
+                        <label for="NoTerima">No Keluar</label>
                         <input type="text" class="form-control" id="inputNoMasuk" name="no_masuk" placeholder="No Masuk" required>
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="inputTanggalMasuk">Tanggal Masuk</label>
+                        <label for="inputTanggalMasuk">Tanggal Keluar</label>
                         <input type="date" class="form-control" id="inputTanggalMasuk" placeholder="Tanggal Masuk">
                     </div>
                     <div class="col-md-12">
-                        <h4>Data Supplier</h4>
+                        <h4>Data Penerima Bantuan</h4>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputKodeSupplier">Kode Supplier</label>
-                        <input type="text" class="form-control" id="inputKodeSupplier" placeholder="Masukkan Kode Supplier">
+                    <div class="form-group col-md-3">
+                        <label for="inputKodeSupplier">Nama Penerima</label>
+                        <input type="text" class="form-control" id="inputKodeSupplier" placeholder="Nama Penerima">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputKodeSupplier">NIK / KK</label>
+                        <input type="text" class="form-control" id="inputKodeSupplier" placeholder="NIK / KK">
                     </div>
                     <div class="form-group col-md-6"> 
-                        <label for="inputNamaSupplier">Nama Supplier</label>
-                        <input type="text" class="form-control" id="inputNamaSupplier" placeholder="Nama Supplier">
+                        <label for="inputNamaSupplier">Alamat Penerima</label>
+                        <input type="text" class="form-control" id="inputNamaSupplier" placeholder="Alamat Penerima">
                     </div>
                         <div class="col-md-12">
                             <h4>Data Logistik</h4>
@@ -475,7 +479,7 @@
                             <input type="text" class="form-control" id="inputNamaLogistik" placeholder="Nama Logistik">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="inputJumlahPilihan">Jumlah Pilihan Nomor</label>
+                            <label for="inputJumlahPilihan">Jumlah</label>
                             <input type="number" class="form-control" id="inputJumlahPilihan" placeholder="Masukkan Jumlah">
                         </div>
                         <div class="form-group col-md-3">
@@ -487,17 +491,13 @@
                                 <option value="m">Meter (m)</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="inputExpayer">Expayer</label>
-                            <input type="date" class="form-control" id="inputExpayer">
-                        </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-6">
                             <label for="inputKeterangan">Keterangan</label>
                             <input type="text" class="form-control" id="inputKeterangan" placeholder="Masukkan Keterangan">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="inputDokumentasi">Dokumentasi</label>
-                            <input type="file" class="form-control-file" id="inputDokumentasi">
+                            <input type="file" class="form-control" id="inputDokumentasi">
                         </div>
                     </div>
                 </div>
@@ -505,7 +505,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Detail Logistik Masuk</h4>
+                    <h4>Detail Logistik Keluar</h4>
                     <div class="card-header-form">
                       <form>
                       </form>
@@ -515,12 +515,13 @@
                       <table class="table table-striped">
                         <tr>
                           <th>No</th>
-                          <th>No Masuk</th>
+                          <th>No Keluar</th>
                           <th>Nama Logistik</th>
                           <th>Jumlah</th>
-                          <th>Nama Supplier</th>
-                          <th>Tanggal Masuk</th>
-                          <th>Expayer</th>
+                          <th>Nama Penerima Bantuan</th>
+                          <th>NIK / KK</th>
+                          <th>Alamat Penerima</th>
+                          <th>Dokumentasi</th>
                           <th>Aksi</th>
                         </tr>
                         <tr>
@@ -528,21 +529,22 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>APBD Provinsi Jawa Timur</td>
-                          <td>2018-01-20</td> 
-                          <td>2018-01-20</td> 
+                          <td>Marselino Ferdinand</td>
+                          <td>35092109182387</td> 
+                          <td>Jember</td> 
+                          <td>Dokumentasi 1</td> 
                           <td>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                       </table>
-                      <div class="card-footer d-flex justify-content-center">
+                    </div>
+                  </div>
+                  <div class="card-footer d-flex justify-content-center">
                           <button class="btn btn-primary">
                               <i class="fas fa-save"></i> Tambahkan
                           </button>
                       </div>
-                    </div>
-                  </div>
                 </div>
           </div>
           <div class="section-body">

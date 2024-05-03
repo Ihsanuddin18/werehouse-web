@@ -15,16 +15,19 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-94034622-3');
+  </script>
+  
+  
+  <!-- /END GA --></head>
 
 <body>
   <div id="app">
@@ -466,7 +469,7 @@
                             <input type="text" class="form-control" id="inputNamaLogistik" placeholder="Nama Logistik">
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="inputJumlahPilihan">Jumlah Pilihan Nomor</label>
+                            <label for="inputJumlahPilihan">Jumlah</label>
                             <input type="number" class="form-control" id="inputJumlahPilihan" placeholder="Masukkan Jumlah">
                         </div>
                         <div class="form-group col-md-3">
@@ -482,16 +485,17 @@
                             <label for="inputExpayer">Expayer</label>
                             <input type="date" class="form-control" id="inputExpayer">
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-6">
                             <label for="inputKeterangan">Keterangan</label>
                             <input type="text" class="form-control" id="inputKeterangan" placeholder="Masukkan Keterangan">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="inputDokumentasi">Dokumentasi</label>
-                            <input type="file" class="form-control-file" id="inputDokumentasi">
+                            <input type="file" class="form-control" id="inputDokumentasi">
                         </div>
                     </div>
                 </div>
+                
                 <div class="row">
               <div class="col-12">
                 <div class="card">
@@ -512,6 +516,7 @@
                           <th>Nama Supplier</th>
                           <th>Tanggal Masuk</th>
                           <th>Expayer</th>
+                          <th>Dokumentasi</th>
                           <th>Aksi</th>
                         </tr>
                         <tr>
@@ -522,20 +527,67 @@
                           <td>APBD Provinsi Jawa Timur</td>
                           <td>2018-01-20</td> 
                           <td>2018-01-20</td> 
+                          <td>Dokumentasi 1</td> 
                           <td>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                       </table>
-                      <div class="card-footer d-flex justify-content-center">
+                    </div>
+                  </div>
+                  <div class="card-footer d-flex justify-content-center">
                           <button class="btn btn-primary">
                               <i class="fas fa-save"></i> Tambahkan
                           </button>
                       </div>
-                    </div>
-                  </div>
                 </div>
           </div>
+          <script>
+    document.getElementById('tambahInput').addEventListener('click', function() {
+        var formGroup = document.createElement('div');
+        formGroup.className = 'form-group row';
+
+        var inputs = [
+            { label: 'Nama Logistik', type: 'text', placeholder: 'Nama Logistik' },
+            { label: 'Jumlah Pilihan Nomor', type: 'number', placeholder: 'Masukkan Jumlah' },
+            { label: 'Satuan', type: 'select', options: ['Kilogram (kg)', 'Gram (g)', 'Pieces (pcs)', 'Meter (m)'] }
+        ];
+
+        inputs.forEach(function(input) {
+            var div = document.createElement('div');
+            div.className = 'col-md-3';
+
+            if (input.type === 'select') {
+                var select = document.createElement('select');
+                select.className = 'form-control';
+                input.options.forEach(function(optionText) {
+                    var option = document.createElement('option');
+                    option.value = optionText.toLowerCase().split(' ')[0];
+                    option.textContent = optionText;
+                    select.appendChild(option);
+                });
+                div.appendChild(select);
+            } else {
+                var inputElement = document.createElement('input');
+                inputElement.type = input.type;
+                inputElement.className = 'form-control';
+                inputElement.placeholder = input.placeholder;
+                div.appendChild(inputElement);
+            }
+
+            if (input.label) {
+                var label = document.createElement('label');
+                label.htmlFor = 'input' + input.label.replace(/\s+/g, '');
+                label.textContent = input.label;
+                div.insertBefore(label, div.firstChild);
+            }
+
+            formGroup.appendChild(div);
+        });
+
+        document.getElementById('logistikForm').appendChild(formGroup);
+    });
+</script>
           <div class="section-body">
           </div>
         </section>
