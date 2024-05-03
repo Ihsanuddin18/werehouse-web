@@ -452,7 +452,6 @@
                           <th>No Terima</th>
                           <th>Nama Logistik</th>
                           <th>Jumlah</th>
-                          <th>Nama Admin</th>
                           <th>Nama Supplier</th>
                           <th>Tanggal Terima</th>
                           <th>Expayer</th>
@@ -463,7 +462,6 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>Werehouse BPBD</td>
                           <td>APBD Provinsi Jawa Timur</td>
                           <td>2018-01-20</td> 
                           <td>2018-01-20</td> 
@@ -477,7 +475,6 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>Werehouse BPBD</td>
                           <td>APBD Provinsi Jawa Timur</td>
                           <td>2018-01-20</td> 
                           <td>2018-01-20</td> 
@@ -491,7 +488,6 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>Werehouse BPBD</td>
                           <td>APBD Provinsi Jawa Timur</td>
                           <td>2018-01-20</td> 
                           <td>2018-01-20</td>
@@ -505,7 +501,6 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>Werehouse BPBD</td>
                           <td>APBD Provinsi Jawa Timur</td>
                           <td>2018-01-20</td> 
                           <td>2018-01-20</td> 
@@ -519,7 +514,6 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>Werehouse BPBD</td>
                           <td>APBD Provinsi Jawa Timur</td>
                           <td>2018-01-20</td> 
                           <td>2018-01-20</td> 
