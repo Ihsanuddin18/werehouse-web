@@ -287,7 +287,7 @@
               </ul>
             </li>
             <li class="menu-header">Data</li>
-            <li class="dropdown active">
+            <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{ route('data_logistik') }}">Stok Logistik</a></li>
@@ -318,6 +318,23 @@
                 <li><a class="nav-link" href="bootstrap-tooltip.html">Tooltip</a></li>
                 <li><a class="nav-link" href="bootstrap-typography.html">Typography</a></li>
               </ul>
+            </li>
+            <li class="menu-header">Transaksi</li>
+              <li>
+                <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Masuk</span></a>
+              </li>
+              <li class=active>
+                <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Keluar</span></a>
+            </li>
+            <li class="menu-header">Stisla</li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Components</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="components-article.html">Article</a></li>                <li><a class="nav-link beep beep-sidebar" href="components-avatar.html">Avatar</a></li>                <li><a class="nav-link" href="components-chat-box.html">Chat Box</a></li>                <li><a class="nav-link beep beep-sidebar" href="components-empty-state.html">Empty State</a></li>                <li><a class="nav-link" href="components-gallery.html">Gallery</a></li>
+                <li><a class="nav-link beep beep-sidebar" href="components-hero.html">Hero</a></li>                <li><a class="nav-link" href="components-multiple-upload.html">Multiple Upload</a></li>
+                <li><a class="nav-link beep beep-sidebar" href="components-pricing.html">Pricing</a></li>                <li><a class="nav-link" href="components-statistic.html">Statistic</a></li>                <li><a class="nav-link" href="components-tab.html">Tab</a></li>
+                <li><a class="nav-link" href="components-table.html">Table</a></li>
+                <li><a class="nav-link" href="components-user.html">User</a></li>                <li><a class="nav-link beep beep-sidebar" href="components-wizard.html">Wizard</a></li>              </ul>
             </li>
             <li class="menu-header">Stisla</li>
             <li class="dropdown">
@@ -418,60 +435,116 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Tambah Data Logistik</h1>
+          <h1>Tambah Logistik Keluar </h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="{{ route('data_logistik') }}">Data Logistik</a></div>
-              <div class="breadcrumb-item">Tambah Data</div>
+              <div class="breadcrumb-item active"><a href="{{ route('logistik_keluar') }}">Logistik Keluar</a></div>
+              <div class="breadcrumb-item">Tambah Logistik Keluar</div>
             </div>
           </div>
-          <div class="row">
-              <div class="col-12 col-md-6 col-lg-6">
-                <div class="card">
+          <div class="card">
                   <div class="card-header">
-                    <h4>Form Tambah Data Logistik</h4>
+                    <h4>Form Tambah Logistik Keluar</h4>
                   </div>
                   <div class="card-body">
-                    <div class="form-group">
-                      <label>Kode Logistik</label>
-                      <input type="text" class="form-control">
+                  <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="NoTerima">No Masuk</label>
+                        <input type="text" class="form-control" id="inputNoMasuk" name="no_masuk" placeholder="No Masuk" required>
                     </div>
-                    <div class="form-group">
-                      <label>Nama Logistik</label>
-                      <input type="text" class="form-control">
+                    <div class="form-group col-md-3">
+                        <label for="inputTanggalMasuk">Tanggal Masuk</label>
+                        <input type="date" class="form-control" id="inputTanggalMasuk" placeholder="Tanggal Masuk">
                     </div>
-                    <div class="form-group">
-                      <label>Supplier</label>
-                      <input type="text" class="form-control">
+                    <div class="col-md-12">
+                        <h4>Data Supplier</h4>
                     </div>
-                    <div class="form-group">
-                      <label>Stok Masuk</label>
-                      <input type="number" class="form-control">
+                    <div class="form-group col-md-6">
+                        <label for="inputKodeSupplier">Kode Supplier</label>
+                        <input type="text" class="form-control" id="inputKodeSupplier" placeholder="Masukkan Kode Supplier">
                     </div>
-                    <div class="form-group">
-                      <label>Satuan</label>
-                      <select class="form-control">
-                        <option value="kg">Kilogram (kg)</option>
-                        <option value="g">Gram (g)</option>
-                        <option value="mg">Miligram (mg)</option>
-                        <option value="lb">Pound (lb)</option>
-                        <option value="ltr">Liter (ltr)</option>
-                        <option value="pcs">Pieces (pcs)</option>
-                        <option value="unit">Unit</option>
-                        <option value="buah">Buah</option>
-                      </select>
+                    <div class="form-group col-md-6"> 
+                        <label for="inputNamaSupplier">Nama Supplier</label>
+                        <input type="text" class="form-control" id="inputNamaSupplier" placeholder="Nama Supplier">
                     </div>
-                    <div class="form-group">
-                      <label>Expayer</label>
-                      <input type="date" class="form-control">
+                        <div class="col-md-12">
+                            <h4>Data Logistik</h4>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputNamaLogistik">Nama Logistik</label>
+                            <input type="text" class="form-control" id="inputNamaLogistik" placeholder="Nama Logistik">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputJumlahPilihan">Jumlah Pilihan Nomor</label>
+                            <input type="number" class="form-control" id="inputJumlahPilihan" placeholder="Masukkan Jumlah">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputSatuan">Satuan</label>
+                            <select class="form-control" id="inputSatuan">
+                                <option value="kg">Kilogram (kg)</option>
+                                <option value="g">Gram (g)</option>
+                                <option value="pcs">Pieces (pcs)</option>
+                                <option value="m">Meter (m)</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputExpayer">Expayer</label>
+                            <input type="date" class="form-control" id="inputExpayer">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputKeterangan">Keterangan</label>
+                            <input type="text" class="form-control" id="inputKeterangan" placeholder="Masukkan Keterangan">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputDokumentasi">Dokumentasi</label>
+                            <input type="file" class="form-control-file" id="inputDokumentasi">
+                        </div>
                     </div>
-                    <div class="row justify-content-end">
-                    <div class="col-auto">
-                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
-                        <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Tambah" data-confirm="Apakah anda yakin ingin menambahkan data ini?" data-confirm-yes="alert('Added')"><i class="fas fa-plus"></i> Tambah </a>
+                </div>
+                <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Detail Logistik Masuk</h4>
+                    <div class="card-header-form">
+                      <form>
+                      </form>
+                    </div>
+                  </div>
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <tr>
+                          <th>No</th>
+                          <th>No Masuk</th>
+                          <th>Nama Logistik</th>
+                          <th>Jumlah</th>
+                          <th>Nama Supplier</th>
+                          <th>Tanggal Masuk</th>
+                          <th>Expayer</th>
+                          <th>Aksi</th>
+                        </tr>
+                        <tr>
+                          <td>1</td>
+                          <td>09386437</td>
+                          <td>Kursi Lipat</td>
+                          <td>14 Pcs</td>
+                          <td>APBD Provinsi Jawa Timur</td>
+                          <td>2018-01-20</td> 
+                          <td>2018-01-20</td> 
+                          <td>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                          </td>
+                        </tr>
+                      </table>
+                      <div class="card-footer d-flex justify-content-center">
+                          <button class="btn btn-primary">
+                              <i class="fas fa-save"></i> Tambahkan
+                          </button>
+                      </div>
                     </div>
                   </div>
                 </div>
+          </div>
           <div class="section-body">
           </div>
         </section>
