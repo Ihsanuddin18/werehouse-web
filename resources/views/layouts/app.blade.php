@@ -163,24 +163,31 @@
           </div>
           <ul class="sidebar-menu">
               <li class=active>
-               <a href="#"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+               <a href="#"><i class="fas fa-home"></i><span>Dashboard</span></a>
               </li>
             <li class="menu-header">Master</li>
             <li class="dropdown">
-              <a href="{{ route('data_logistik') }}"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
+              <a href="{{ route('data_logistik') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
             </li>
             <li class="dropdown">
-               <a href="{{ route('data_supplier') }}"><i class="fas fa-columns"></i> <span>Data Supplier</span></a>
+               <a href="{{ route('data_supplier') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
             </li>
             <li class="dropdown">
               <a href="{{ route('tambah_akun_anggota')}}"><i class="far fa-user"></i> <span>Tambah Anggota</span></a>
             </li>
             <li class="menu-header">Aktivitas</li>
               <li>
-                <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Masuk</span></a>
+                <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="fas fa-sign-in-alt"></i> <span>Logistik Masuk</span></a>
               </li>
               <li>
-                <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Keluar</span></a>
+                <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i> <span>Logistik Keluar</span></a>
+            </li>
+            <li class="menu-header">Pengaturan</li>
+              <li>
+                <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i> <span>Profile</span></a>
+              </li>
+              <li>
+                <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="fas fa-cog"></i> <span>Pengaturan</span></a>
             </li>
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
                 <form method="POST" action="{{ route('logout') }}">
@@ -233,7 +240,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-success">
-                  <i class="far fa-file"></i>
+                  <i class="fas fa-sign-in-alt"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
@@ -248,7 +255,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-warning">
-                  <i class="far fa-file"></i>
+                  <i class="fas fa-sign-out-alt"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
