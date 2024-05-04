@@ -261,9 +261,9 @@
               <div class="dropdown-divider"></div>
               <form method="POST" action="{{ route('logout') }}">
                     @csrf 
-              <button class="dropdown-item has-icon text-danger" style="cursor: pointer;"> 
-                <i class="fas fa-sign-out-alt" style="display: block; margin-top: 8px;">
-                </i>Logout</button>
+                <button class="dropdown-item has-icon text-danger" style="cursor: pointer;"> 
+                  <i class="fas fa-sign-out-alt" style="display: block; margin-top: 8px;">
+                  </i>Logout</button>
              </form>
             </div>
           </li>

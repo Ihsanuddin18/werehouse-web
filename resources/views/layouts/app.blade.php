@@ -109,18 +109,35 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+            <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
+            <div class="dropdown-title">
+                @if(Auth::user()->last_login_at)
+                      @php
+                          $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
+                          $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
+                          $hours = floor($diffInMinutes / 60);
+                          $remainingMinutes = $diffInMinutes % 60;
+                      @endphp
+                      @if($diffInMinutes > 60)
+                          Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
+                      @elseif($diffInMinutes > 1)
+                          Login {{ $diffInMinutes }} menit yang lalu
+                      @elseif($diffInSeconds > 0)
+                          Login {{ $diffInSeconds }} detik yang lalu
+                      @else
+                          Baru Login
+                      @endif
+                  @else
+                      Baru Login
+                  @endif
+              </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
-              <a href="features-activities.html" class="dropdown-item has-icon">
-                <i class="fas fa-bolt"></i> Activities
-              </a>
               <a href="features-settings.html" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Settings
+                <i class="fas fa-cog"></i> Pengaturan
               </a>
               <div class="dropdown-divider"></div>
               <form method="POST" action="{{ route('logout') }}">
@@ -137,18 +154,20 @@
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
               <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png" style="width: 143px; height: auto; margin-top: 20px;">
-              <a href="{{ route('dashboard') }}"> Werehouse BPBD </a> 
+              <a href="{{ route('dashboard') }}"> Werehouse BPBD </a>
+              <hr style="margin-top: 3px; margin-bottom: 3px; border: none; border-bottom: 0.1px solid #C1C1C1; width: 80%;">
               <p><br></p>
           </div>
+          
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">WB</a>
           </div>
           <ul class="sidebar-menu">
-          <li class="menu-header">Dashboard</li>
+         
               <li class=active>
                <a href="#"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
-            <li class="menu-header">Data</li>
+            <li class="menu-header">Master</li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
               <ul class="dropdown-menu">
@@ -163,14 +182,6 @@
                 <li><a href="{{ route('tambah_supplier') }}">Tambah Supplier</a></li> 
               </ul>
             </li>
-            <li class="menu-header">Transaksi</li>
-              <li>
-                <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Masuk</span></a>
-              </li>
-              <li>
-                <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Keluar</span></a>
-            </li>
-            <li class="menu-header">Informasi Akun</li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Tambah Akun</span></a>
               <ul class="dropdown-menu">
@@ -178,11 +189,21 @@
                 <li><a href="{{ route('tambah_akun_anggota')}}">Anggota</a></li> 
               </ul>
             </li>
-          <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-              <i class="fas fa-rocket"></i> Logout
-            </a>
-          </div>        
+            <li class="menu-header">Aktivitas</li>
+              <li>
+                <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Masuk</span></a>
+              </li>
+              <li>
+                <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="far fa-file-alt"></i> <span>Logistik Keluar</span></a>
+            </li>
+            <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+                <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                    <button class="btn btn-primary btn-lg btn-block btn-icon-split" type="submit">
+                        <i class="fas fa-rocket"></i> Logout
+                    </button>
+                </form>
+            </div>       
         </aside>
       </div>
 
