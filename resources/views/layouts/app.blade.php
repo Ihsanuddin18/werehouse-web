@@ -134,17 +134,17 @@
                   @endif
               </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
-                <i class="far fa-user"></i> Profile
+                <i class="far fa-user"></i> Profil
               </a>
-              <a href="features-settings.html" class="dropdown-item has-icon">
+              <a href="{{ route('pengaturan') }}" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> Pengaturan
               </a>
               <div class="dropdown-divider"></div>
               <form method="POST" action="{{ route('logout') }}">
                     @csrf 
               <button class="dropdown-item has-icon text-danger" style="cursor: pointer;"> 
-                <i class="fas fa-sign-out-alt" style="display: block; margin-top: 8px;">
-                </i>Logout</button>
+                <i class="fas fa-door-open" style="display: block; margin-top: 8px;">
+                </i>Keluar</button>
              </form>
             </div>
           </li>
@@ -159,7 +159,7 @@
               <p><br></p>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">WB</a>
+            <a href="{{ route('dashboard') }}">WB</a>
           </div>
           <ul class="sidebar-menu">
               <li class=active>
@@ -184,16 +184,16 @@
             </li>
             <li class="menu-header">Pengaturan</li>
               <li>
-                <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i> <span>Profile</span></a>
+                <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i> <span>Profil</span></a>
               </li>
               <li>
-                <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="fas fa-cog"></i> <span>Pengaturan</span></a>
+                <a href="{{ route('pengaturan') }}" class="nav-link"><i class="fas fa-cog"></i> <span>Pengaturan</span></a>
             </li>
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
                 <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                     <button class="btn btn-primary btn-lg btn-block btn-icon-split" type="submit">
-                        <i class="fas fa-rocket"></i> Logout
+                        <i class="fas fa-door-open"></i> Keluar
                     </button>
                 </form>
             </div>       
@@ -202,7 +202,7 @@
 
        <!-- Main Content -->
        <div class="main-content">
-        <section class="section">
+       <section class="section">
           <div class="section-header">
             <h1>Dashboard</h1>
           </div>

@@ -12,6 +12,7 @@ use App\Http\Controllers\LogistikMasukController;
 use App\Http\Controllers\LogistikKeluarController;
 use App\Http\Controllers\TambahLogistikMasukController;
 use App\Http\Controllers\TambahLogistikKeluarController;
+use App\Http\Controllers\PengaturanController;
 
 
 /*
@@ -65,6 +66,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/tambah-logistik-masuk', [TambahLogistikMasukController::class, 'showTambahLogistikMasuk'])->name('tambah_logistik_masuk');
     Route::get('/tambah-logistik-keluar', [TambahLogistikKeluarController::class, 'showTambahLogistikKeluar'])->name('tambah_logistik_keluar');
  
+
+//Route Pengaturan
+    Route::get('/pengaturan', [PengaturanController::class, 'showPengaturan'])->name('pengaturan');   
 
     
 
