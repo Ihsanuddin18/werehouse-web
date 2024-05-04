@@ -158,36 +158,22 @@
               <hr style="margin-top: 3px; margin-bottom: 3px; border: none; border-bottom: 0.1px solid #C1C1C1; width: 80%;">
               <p><br></p>
           </div>
-          
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">WB</a>
           </div>
           <ul class="sidebar-menu">
-         
               <li class=active>
                <a href="#"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
             <li class="menu-header">Master</li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('data_logistik') }}">Stok Logistik</a></li>
-                <li><a class="nav-link" href="{{ route('tambah_data') }}">Tambah Data</a></li>
-              </ul>
+              <a href="{{ route('data_logistik') }}"><i class="fas fa-th"></i> <span>Data Logistik</span></a>
             </li>
             <li class="dropdown">
-               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Sumber Logistik</span></a>
-              <ul class="dropdown-menu">
-                <li><a href="{{ route('data_supplier') }}">Data Supplier</a></li> 
-                <li><a href="{{ route('tambah_supplier') }}">Tambah Supplier</a></li> 
-              </ul>
+               <a href="{{ route('data_supplier') }}"><i class="fas fa-columns"></i> <span>Data Supplier</span></a>
             </li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Tambah Akun</span></a>
-              <ul class="dropdown-menu">
-                <li><a href="{{ route('tambah_akun_admin')}}">Admin</a></li> 
-                <li><a href="{{ route('tambah_akun_anggota')}}">Anggota</a></li> 
-              </ul>
+              <a href="{{ route('tambah_akun_anggota')}}"><i class="far fa-user"></i> <span>Tambah Anggota</span></a>
             </li>
             <li class="menu-header">Aktivitas</li>
               <li>
