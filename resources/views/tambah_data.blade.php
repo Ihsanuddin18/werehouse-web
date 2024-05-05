@@ -441,15 +441,7 @@
                       <input type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label>Supplier</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label>Stok Masuk</label>
-                      <input type="number" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label>Satuan</label>
+                      <label>Jenis Satuan</label>
                       <select class="form-control">
                         <option value="kg">Kilogram (kg)</option>
                         <option value="g">Gram (g)</option>
@@ -461,13 +453,8 @@
                         <option value="buah">Buah</option>
                       </select>
                     </div>
-                    <div class="form-group">
-                      <label>Expayer</label>
-                      <input type="date" class="form-control">
-                    </div>
                     <div class="row justify-content-end">
                     <div class="col-auto">
-                        <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                         <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Tambah" data-confirm="Apakah anda yakin ingin menambahkan data ini?" data-confirm-yes="alert('Added')"><i class="fas fa-plus"></i> Tambah </a>
                     </div>
                   </div>
