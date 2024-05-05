@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Tambah Data</title>
+  <title>Data Logistik &rsaquo; Tambah Data &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -14,16 +14,17 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA -->
+</head>
 
 <body>
   <div id="app">
@@ -73,7 +74,7 @@
                 </script>
             <ul class="navbar-nav navbar-right"> </li>
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-              <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+              <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png" class="rounded-circle mr-1">
               <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
               <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">
@@ -127,7 +128,7 @@
           </div>
           <ul class="sidebar-menu">
               <li>
-               <a href="#"><i class="fas fa-home"></i><span>Dashboard</span></a>
+               <a href="{{ route('dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
               </li>
             <li class="menu-header">Master</li>
             <li class=active class="dropdown">

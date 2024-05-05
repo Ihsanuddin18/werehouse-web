@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Data Logistik</title>
+  <title>Dashboard &rsaquo; Data Logistik &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -27,7 +27,6 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   
-
   <!-- /END GA --></head>
 
 <body>
@@ -78,7 +77,7 @@
                 </script>
             <ul class="navbar-nav navbar-right"> </li>
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-              <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+              <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png" class="rounded-circle mr-1">
               <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
               <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">
@@ -132,7 +131,7 @@
           </div>
           <ul class="sidebar-menu">
               <li>
-               <a href="#"><i class="fas fa-home"></i><span>Dashboard</span></a>
+               <a href="{{ route('dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
               </li>
             <li class="menu-header">Master</li>
             <li class=active class="dropdown">

@@ -176,7 +176,7 @@
           </div>
           <ul class="sidebar-menu">
               <li class=active>
-               <a href="#"><i class="fas fa-home"></i><span>Dashboard</span></a>
+               <a href="{{ route('dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
               </li>
             <li class="menu-header">Master</li>
             <li class="dropdown">
