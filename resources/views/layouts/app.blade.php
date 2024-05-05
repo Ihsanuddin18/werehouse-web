@@ -89,8 +89,8 @@
                     <i class="fas fa-check"></i>
                   </div>
                   <div class="dropdown-item-desc">
-                    <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
-                    <div class="time">12 Hours Ago</div>
+                    <b>Kusnaedi</b> meminta list logistik yang dibutuhkan
+                  <div class="time">12 Jam yang lalu</div>    
                   </div>
                 </a>
                 <a href="#" class="dropdown-item">
@@ -98,8 +98,8 @@
                     <i class="fas fa-bell"></i>
                   </div>
                   <div class="dropdown-item-desc">
-                    Welcome to Stisla template!
-                    <div class="time">Yesterday</div>
+                      <b>Kusnaedi</b> meminta list logistik yang dibutuhkan
+                      <div class="time">Kemarin</div>
                   </div>
                 </a>
               </div>
