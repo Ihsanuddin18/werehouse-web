@@ -195,6 +195,9 @@
               <li>
                 <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i> <span>Logistik Keluar</span></a>
             </li>
+              <li>
+                <a href="{{ route('lokasi_pengiriman')}}" class="nav-link"><i class="fas fa-map-marker-alt"></i> <span>Lokasi Pengiriman</span></a>
+              </li>
             <li class="menu-header">Pengaturan</li>
               <li>
                 <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i> <span>Profil</span></a>
@@ -254,8 +257,8 @@
                     <div class="form-group row">
                         <label for="lokasi_pengiriman" class="col-sm-3 col-form-label">Lokasi Pengiriman</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="lokasi_pengiriman" name="lokasi_pengiriman" value="Nama Lokasi Pengiriman" readonly>
-                            <a href="link_lokasi_pengiriman" target="_blank">Buka Lokasi</a>
+                            <input type="text" class="form-control" id="lokasi_pengiriman" name="lokasi_pengiriman" value="Lokasi Pengiriman" readonly>
+                            <a href="{{ route('lokasi_pengiriman') }}" target="_blank">Buka Lokasi</a>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>

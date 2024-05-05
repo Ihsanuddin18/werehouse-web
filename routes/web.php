@@ -13,6 +13,7 @@ use App\Http\Controllers\LogistikKeluarController;
 use App\Http\Controllers\TambahLogistikMasukController;
 use App\Http\Controllers\TambahLogistikKeluarController;
 use App\Http\Controllers\PengaturanController;
+use App\Http\Controllers\LokasiPengirimanController;
 
 
 /*
@@ -71,5 +72,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/pengaturan', [PengaturanController::class, 'showPengaturan'])->name('pengaturan');   
 
     
+//Route Pengaturan
+    Route::get('/lokasi-pengiriman', [LokasiPengirimanController::class, 'showLokasiPengiriman'])->name('lokasi_pengiriman');   
+
 
 require __DIR__.'/auth.php';
