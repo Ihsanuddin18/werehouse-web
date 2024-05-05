@@ -14,6 +14,7 @@ use App\Http\Controllers\TambahLogistikMasukController;
 use App\Http\Controllers\TambahLogistikKeluarController;
 use App\Http\Controllers\PengaturanController;
 use App\Http\Controllers\LokasiPengirimanController;
+use App\Http\Controllers\CetakBarcodeLabelController;
 
 
 /*
@@ -72,8 +73,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/pengaturan', [PengaturanController::class, 'showPengaturan'])->name('pengaturan');   
 
     
-//Route Pengaturan
-    Route::get('/lokasi-pengiriman', [LokasiPengirimanController::class, 'showLokasiPengiriman'])->name('lokasi_pengiriman');   
+//Route Lokasi Pengiriman
+    Route::get('/lokasi-pengiriman', [LokasiPengirimanController::class, 'showLokasiPengiriman'])->name('lokasi_pengiriman');
+    
+    
+//Route Cetak Barcode Label
+    Route::get('/cetak-barcode-label', [CetakBarcodeLabelController::class, 'showCetakBarcodeLabel'])->name('cetak_barcode_label');   
 
 
 require __DIR__.'/auth.php';
