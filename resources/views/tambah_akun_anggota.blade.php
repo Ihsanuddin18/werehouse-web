@@ -193,7 +193,6 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                         </td>
                       </tr>
@@ -203,7 +202,6 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                         </td>
                       </tr>
@@ -213,7 +211,6 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                         </td>
                       </tr>
@@ -223,7 +220,6 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                         </td>
                       </tr>
@@ -233,7 +229,6 @@
                         <td><a href="mailto:hasan.basri@example.com">hasan.basri@example.com</a></td>
                         <td><div class="badge badge-info">Anggota</div></td>
                         <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                         </td>
                       </tr>
