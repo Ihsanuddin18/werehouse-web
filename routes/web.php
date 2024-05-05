@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TambahAkunAdminController;
 use App\Http\Controllers\TambahAkunAnggotaController;
 use App\Http\Controllers\DataLogistikController;
 use App\Http\Controllers\TambahDataController;
@@ -12,7 +11,6 @@ use App\Http\Controllers\LogistikMasukController;
 use App\Http\Controllers\LogistikKeluarController;
 use App\Http\Controllers\TambahLogistikMasukController;
 use App\Http\Controllers\TambahLogistikKeluarController;
-use App\Http\Controllers\PengaturanController;
 use App\Http\Controllers\LokasiPengirimanController;
 use App\Http\Controllers\CetakBarcodeLabelController;
 
@@ -47,8 +45,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-//Route Tambah Akun
-    Route::get('/tambah-akun-admin', [TambahAkunAdminController::class, 'showTambahAkunAdmin'])->name('tambah_akun_admin');    
+//Route Tambah Akun   
     Route::get('/tambah-akun-anggota', [TambahAkunAnggotaController::class, 'showTambahAkunAnggota'])->name('tambah_akun_anggota');    
 
 
@@ -66,11 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/logistik-masuk', [LogistikMasukController::class, 'showLogistikMasuk'])->name('logistik_masuk');
     Route::get('/logistik-keluar', [LogistikKeluarController::class, 'showLogistikKeluar'])->name('logistik_keluar');
     Route::get('/tambah-logistik-masuk', [TambahLogistikMasukController::class, 'showTambahLogistikMasuk'])->name('tambah_logistik_masuk');
-    Route::get('/tambah-logistik-keluar', [TambahLogistikKeluarController::class, 'showTambahLogistikKeluar'])->name('tambah_logistik_keluar');
- 
-
-//Route Pengaturan
-    Route::get('/pengaturan', [PengaturanController::class, 'showPengaturan'])->name('pengaturan');   
+    Route::get('/tambah-logistik-keluar', [TambahLogistikKeluarController::class, 'showTambahLogistikKeluar'])->name('tambah_logistik_keluar'); 
 
     
 //Route Lokasi Pengiriman

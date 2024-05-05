@@ -101,9 +101,6 @@
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profil
               </a>
-              <a href="{{ route('pengaturan') }}" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Pengaturan
-              </a>
               <div class="dropdown-divider"></div>
               <form method="POST" action="{{ route('logout') }}">
                     @csrf 
@@ -154,9 +151,6 @@
               <li>
                 <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i> <span>Profil</span></a>
               </li>
-              <li>
-                <a href="{{ route('pengaturan') }}" class="nav-link"><i class="fas fa-cog"></i> <span>Pengaturan</span></a>
-            </li>
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
                 <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -179,7 +173,7 @@
             </div>
           </div>
           <div class="section-body">
-            <h2 class="section-title">Lokasi Pengiriman</h2>
+            <h2 class="section-title">Lokasi Pengiriman Bantuan Logistik</h2>
             <div class="row">
               <div class="col-12">
                 <div class="card">
