@@ -28,6 +28,8 @@
 
     gtag('config', 'UA-94034622-3');
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
   <!-- /END GA -->
 </head>
@@ -83,26 +85,36 @@
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
               <div class="dropdown-header">Pemberitahuan !
               </div>
+              <script>
+                  function konfirmasi() {
+                      Swal.fire({
+                          title: 'Telah Dikonfirmasi',
+                          text: 'Permintaan ini telah dikonfirmasi!',
+                          icon: 'success',
+                          showCancelButton: true, 
+                          cancelButtonText: 'Kembali'
+                         })
+                      };
+              </script>
               <div class="dropdown-list-content dropdown-list-icons">
-                <a href="#" class="dropdown-item">
+              <a href="#" class="dropdown-item" onclick="konfirmasi()">
                   <div class="dropdown-item-icon bg-success text-white">
-                    <i class="fas fa-check"></i>
+                      <i class="fas fa-check"></i>
                   </div>
                   <div class="dropdown-item-desc">
-                    <b>Kusnaedi</b> meminta list logistik yang dibutuhkan
-                  <div class="time">12 Jam yang lalu</div>    
+                      <b>Kusnaedi</b> meminta list logistik yang dibutuhkan
+                      <div class="time">12 Jam yang lalu</div>    
                   </div>
-                </a>
-
+              </a>
                 <a href="#" class="dropdown-item" id="notification">
-    <div class="dropdown-item-icon bg-info text-white">
-        <i class="fas fa-bell"></i>
-    </div>
-    <div class="dropdown-item-desc">
-        <b>Kusnaedi</b> meminta list logistik yang dibutuhkan
-        <div class="time">Kemarin</div>
-    </div>
-</a>
+                    <div class="dropdown-item-icon bg-info text-white">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="dropdown-item-desc">
+                        <b>Kusnaedi</b> meminta list logistik yang dibutuhkan
+                        <div class="time">Kemarin</div>
+                    </div>
+                </a>
               </div>
               <div class="dropdown-footer text-center">
                 <a href="#"><i class="fas fa-chevron-right"></i></a>
@@ -204,16 +216,16 @@
               <div class="modal-dialog" role="document">
                   <div class="modal-content">
                       <div class="modal-header">
-                          <h5 class="modal-title" id="tambahModalLabel">Tambah Item Logistik</h5>
+                          <h5 class="modal-title" id="tambahModalLabel">Permintaan Logistik</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                           </button>
                       </div>
                       <div class="modal-body">
-                    <div class="form-group row">
-                        <label for="kode_logistik" class="col-sm-3 col-form-label">Kode Logistik</label>
+                      <div class="form-group row">
+                        <label for="nama_anggota" class="col-sm-3 col-form-label">Nama Anggota</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="kode_logistik" name="kode_logistik" value="LOG123" readonly>
+                            <input type="text" class="form-control" id="nama_anggota" name="nama_anggota" value="Kusnaedi" readonly>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -223,9 +235,14 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nama_logistik" class="col-sm-3 col-form-label">Nama Logistik</label>
+                        <label for="list_logistik" class="col-sm-3 col-form-label">List Logistik</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama_logistik" name="nama_logistik" value="Kursi Lipat" readonly>
+                            <textarea class="form-control" id="list_logistik" name="list_logistik" rows="3" readonly>
+                                Kursi Lipat - 10 buah
+                                Meja Lipat - 5 buah
+                                Sound System - 1 set
+                                Proyektor - 2 unit
+                            </textarea>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -235,46 +252,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="supplier" class="col-sm-3 col-form-label">Supplier</label>
+                        <label for="lokasi_pengiriman" class="col-sm-3 col-form-label">Lokasi Pengiriman</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="supplier" name="supplier" value="APBD Provinsi Jawa Timur" readonly>
-                            <div class="invalid-feedback">
-                                Kolom wajib diisi!
-                            </div>
-                            <div class="valid-feedback">
-                                Valid!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="stok" class="col-sm-3 col-form-label">Stok Logistik</label>
-                        <div class="col-sm-9">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Jumlah" required>
-                                </div>
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="satuan" name="satuan" required>
-                                        <option value="">Pilih Satuan</option>
-                                        <option value="kg">Kilogram (kg)</option>
-                                        <option value="g">Gram (g)</option>
-                                        <option value="l">Liter (l)</option>
-                                        <option value="pcs">Pieces (pcs)</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="invalid-feedback">
-                                Kolom wajib diisi!
-                            </div>
-                            <div class="valid-feedback">
-                                Valid!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="nama" class="col-sm-3 col-form-label">Expayer</label>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" id="nama" name="nama" required>
+                            <input type="text" class="form-control" id="lokasi_pengiriman" name="lokasi_pengiriman" value="Nama Lokasi Pengiriman" readonly>
+                            <a href="link_lokasi_pengiriman" target="_blank">Buka Lokasi</a>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -286,7 +267,7 @@
                 </div>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                          <button type="button" class="btn btn-primary">Simpan</button>
+                          <button type="button" class="btn btn-primary">Konfirmasi</button>
                       </div>
                   </div>
               </div>
