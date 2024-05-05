@@ -482,7 +482,6 @@
                         <label for="kode_logistik" class="col-sm-3 col-form-label">Kode Logistik</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="kode_logistik" name="kode_logistik" value="LOG123" readonly>
-                            <!-- Ganti nilai value="LOG123" dengan nilai kode logistik yang Anda inginkan -->
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -495,7 +494,6 @@
                         <label for="nama_logistik" class="col-sm-3 col-form-label">Nama Logistik</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="nama_logistik" name="nama_logistik" value="Kursi Lipat" readonly>
-                            <!-- Ganti nilai value="Nama Logistik Anda" dengan nama logistik yang Anda inginkan -->
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -508,7 +506,6 @@
                         <label for="supplier" class="col-sm-3 col-form-label">Supplier</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="supplier" name="supplier" value="APBD Provinsi Jawa Timur" readonly>
-                            <!-- Ganti nilai value="Nama Supplier Anda" dengan nama supplier yang Anda inginkan -->
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -517,7 +514,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <label for="stok" class="col-sm-3 col-form-label">Stok Logistik</label>
                         <div class="col-sm-9">
@@ -532,7 +528,6 @@
                                         <option value="g">Gram (g)</option>
                                         <option value="l">Liter (l)</option>
                                         <option value="pcs">Pieces (pcs)</option>
-                                        <!-- tambahkan pilihan satuan lainnya jika nanti kurang -->
                                     </select>
                                 </div>
                             </div>
