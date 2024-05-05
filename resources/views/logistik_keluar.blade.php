@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Dashboard &rsaquo; Tambah Logistik Keluar &mdash; Werehouse BPBD | Kabupaten Jember</title>
+  <title>Dashboard &rsaquo; Logistik Keluar &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -14,16 +14,17 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA -->
+</head>
 
 <body>
 <div id="app">
@@ -207,7 +208,6 @@
                           <th>No Keluar</th>
                           <th>Nama Logistik</th>
                           <th>Jumlah</th>
-                          <th>Nama Admin</th>
                           <th>Nama Penerima</th>
                           <th>NIK / KK</th>
                           <th>Tanggal Keluar</th>
@@ -219,14 +219,13 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>Werehouse BPBD</td>
                           <td>Rio Fahmi Dewanto</td>
                           <td>35092100348239</td> 
                           <td>2018-01-20</td> 
                           <td>Dokumentasi 1</td> 
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Logistik ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
@@ -234,14 +233,13 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>Werehouse BPBD</td>
                           <td>Rio Fahmi Dewanto</td>
                           <td>35092100348239</td> 
                           <td>2018-01-20</td> 
                           <td>Dokumentasi 2</td>
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
@@ -249,14 +247,13 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>Werehouse BPBD</td>
                           <td>Rio Fahmi Dewanto</td>
                           <td>35092100348239</td> 
                           <td>2018-01-20</td> 
                           <td>Dokumentasi 3</td>
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
@@ -264,14 +261,13 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>Werehouse BPBD</td>
                           <td>Rio Fahmi Dewanto</td>
                           <td>35092100348239</td> 
                           <td>2018-01-20</td> 
                           <td>Dokumentasi 4</td>
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                         <tr>
@@ -279,14 +275,13 @@
                           <td>09386437</td>
                           <td>Kursi Lipat</td>
                           <td>14 Pcs</td>
-                          <td>Werehouse BPBD</td>
                           <td>Rio Fahmi Dewanto</td>
                           <td>35092100348239</td> 
                           <td>2018-01-20</td> 
                           <td>Dokumentasi 5</td>
                           <td>
                             <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
                       </table>
@@ -359,7 +354,7 @@
                     <div class="form-group row">
                         <label for="nama_logistik" class="col-sm-3 col-form-label">Nama Logistik</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama_logistik" name="nama_logistik" value="Kursi Lipat" readonly>
+                            <input type="text" class="form-control" id="nama_logistik" name="nama_logistik" value="Kursi Lipat" required>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -400,21 +395,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nama_admin" class="col-sm-3 col-form-label">Nama Admin</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama_admin" name="nama_admin" value="Werehouse BPBD" readonly>
-                            <div class="invalid-feedback">
-                                Kolom wajib diisi!
-                            </div>
-                            <div class="valid-feedback">
-                                Valid!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <label for="nama_supplier" class="col-sm-3 col-form-label">Nama Penerima</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama_supplier" name="nama_supplier" value="Rio Fahmi Dewanto" readonly>
+                            <input type="text" class="form-control" id="nama_supplier" name="nama_supplier" value="Rio Fahmi Dewanto" required>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
@@ -426,7 +409,7 @@
                     <div class="form-group row">
                         <label for="nama_supplier" class="col-sm-3 col-form-label">NIK / KK</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama_supplier" name="nama_supplier" value="35092100348239" readonly>
+                            <input type="text" class="form-control" id="nama_supplier" name="nama_supplier" value="35092100348239" required>
                             <div class="invalid-feedback">
                                 Kolom wajib diisi!
                             </div>
