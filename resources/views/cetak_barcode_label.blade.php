@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Data Logistik &rsaquo; Tambah Data &mdash; Werehouse BPBD | Kabupaten Jember</title>
+  <title>Data Logistik &rsaquo; Cetak Barcode Label &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -172,18 +172,18 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Tambah Data Logistik</h1>
+            <h1>Cetak Barcode Label Baru</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
               <div class="breadcrumb-item"><a href="{{ route('data_logistik') }}">Data Logistik</a></div>
-              <div class="breadcrumb-item">Tambah Data</div>
+              <div class="breadcrumb-item">Cetak Barcode Label</div>
             </div>
           </div>
           <div class="row">
               <div class="col-12 col-md-6 col-lg-6">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Form Tambah Data Logistik</h4>
+                    <h4>Form Tambah Barcode Label Baru</h4>
                   </div>
                   <div class="card-body">
                     <div class="form-group">
@@ -209,7 +209,7 @@
                     </div>
                     <div class="row justify-content-end">
                     <div class="col-auto">
-                        <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Tambah" data-confirm="Apakah anda yakin ingin menambahkan data ini dalam daftar logistik?" data-confirm-yes="alert('Added')"><i class="fas fa-plus"></i> Tambah </a>
+                        <a class="btn btn-warning btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Tambah" data-confirm="Apakah anda yakin ingin mencetak barcode label ini?" data-confirm-yes="alert('Added')"><i class="fas fa-barcode"></i> Cetak </a>
                     </div>
                   </div>
                 </div>
