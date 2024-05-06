@@ -13,6 +13,8 @@ use App\Http\Controllers\TambahLogistikMasukController;
 use App\Http\Controllers\TambahLogistikKeluarController;
 use App\Http\Controllers\LokasiPengirimanController;
 use App\Http\Controllers\CetakBarcodeLabelController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AboutController;
 
 
 /*
@@ -26,6 +28,8 @@ use App\Http\Controllers\CetakBarcodeLabelController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/about', [AboutController::class, 'showAbout'])->name('about');   
+Route::get('/contact', [ContactController::class, 'showContact'])->name('contact');   
 
 
 // Route dashboard 

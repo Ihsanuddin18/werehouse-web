@@ -9,15 +9,15 @@
     <!--====== Favicon Icon ======-->
     <link
       rel="shortcut icon"
-      href="assets/images/favicon.svg"
-      type="image/svg"
+      href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png"
+      type="image/png"
     />
 
     <!-- ===== All CSS files ===== -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/lineicons.css" />
-    <link rel="stylesheet" href="assets/css/ud-styles.css" />
+    <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/animate.css" />
+    <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/lineicons.css" />
+    <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/ud-styles.css" />
   </head>
   <body>
 
@@ -28,7 +28,7 @@
           <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg">
               <a class="navbar-brand" href="/">
-                <img src="assets/images/logo/logo.svg" alt="Logo" />
+                <img src="{{ asset('landingpages') }}/assets/images/logo/logo.svg" alt="Logo" />
               </a>
               <button class="navbar-toggler">
                 <span class="toggler-icon"> </span>
@@ -72,10 +72,32 @@
                 </ul>
               </div>
               <div class="navbar-btn d-none d-sm-inline-block">
-                <a href="{{ route('login') }}" class="ud-main-btn ud-login-btn">
-                  Login
+                <a href="{{ route('login') }}" class="btn btn-primary">
+                Login
                 </a>
               </div>
+              <style>
+                .btn {
+                    background-color: white;
+                    color: #000000;
+                    border: 1px solid #007bff; 
+                    border-radius: 5px; 
+                    padding: 10px 20px; 
+                    font-size: 16px; 
+                    cursor: pointer; 
+                    transition: background-color 0.3s, color 0.3s; 
+                  }
+
+                  .btn:hover {
+                    background-color: #007bff;
+                    color: white; 
+                  }
+
+                  i {
+                    font-size: 18px;
+                    margin-right: 5px; 
+                  }
+              </style>
             </nav>
           </div>
         </div>
@@ -187,13 +209,13 @@
    <!-- ====== Footer Start ====== -->
    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
       <div class="shape shape-1">
-        <img src="assets/images/footer/shape-1.svg" alt="shape" />
+        <img src="{{ asset('landingpages') }}/assets/images/footer/shape-1.svg" alt="shape" />
       </div>
       <div class="shape shape-2">
-        <img src="assets/images/footer/shape-2.svg" alt="shape" />
+        <img src="{{ asset('landingpages') }}/assets/images/footer/shape-2.svg" alt="shape" />
       </div>
       <div class="shape shape-3">
-        <img src="assets/images/footer/shape-3.svg" alt="shape" />
+        <img src="{{ asset('landingpages') }}/assets/images/footer/shape-3.svg" alt="shape" />
       </div>
       <div class="ud-footer-widgets">
         <div class="container">
@@ -201,7 +223,7 @@
             <div class="col-xl-3 col-lg-4 col-md-6">
               <div class="ud-widget">
                 <a href="index.html" class="ud-footer-logo">
-                  <img src="assets/images/logo/logo.svg" alt="logo" />
+                  <img src="{{ asset('landingpages') }}/assets/images/logo/logo.svg" alt="logo" />
                 </a>
                 <p class="ud-widget-desc">
                 Website ini bertujuan untuk meningkatkan efisiensi, transparansi, 
@@ -297,8 +319,8 @@
     <!-- ====== Back To Top End ====== -->
 
     <!-- ====== All Javascript Files ====== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="{{ asset('landingpages') }}/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('landingpages') }}/assets/js/wow.min.js"></script>
+    <script src="{{ asset('landingpages') }}/assets/js/main.js"></script>
   </body>
 </html>

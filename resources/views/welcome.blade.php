@@ -54,12 +54,12 @@
                     <a href="javascript:void(0)"> Halaman </a>
                     <ul class="ud-submenu">
                       <li class="ud-submenu-item">
-                        <a href="" class="ud-submenu-link">
+                        <a href="{{ route('about') }}" class="ud-submenu-link">
                           Halaman Profil
                         </a>
                       </li>
                       <li class="ud-submenu-item">
-                      <a href="" class="ud-submenu-link">
+                      <a href="{{ route('contact') }}" class="ud-submenu-link">
                           Hubungi Kami
                         </a>
                       </li>
@@ -73,10 +73,32 @@
                 </ul>
               </div>
               <div class="navbar-btn d-none d-sm-inline-block">
-                <a href="{{ route('login') }}" class="ud-main-btn ud-login-btn">
+                <a href="{{ route('login') }}" class="btn btn-primary">
                 Login
                 </a>
               </div>
+              <style>
+                .btn {
+                    background-color: white;
+                    color: #000000;
+                    border: 1px solid #007bff; 
+                    border-radius: 5px; 
+                    padding: 10px 20px; 
+                    font-size: 16px; 
+                    cursor: pointer; 
+                    transition: background-color 0.3s, color 0.3s; 
+                  }
+
+                  .btn:hover {
+                    background-color: #007bff;
+                    color: white; 
+                  }
+
+                  i {
+                    font-size: 18px;
+                    margin-right: 5px; 
+                  }
+              </style>
             </nav>
           </div>
         </div>
@@ -98,7 +120,7 @@
               </p>
               <ul class="ud-hero-buttons">
                 <li>
-                  <a href="https://links.uideck.com/play-bootstrap-download" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-white-btn">
+                  <a href="" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-white-btn">
                     Unduh Aplikasi
                   </a>
                 </li>
@@ -110,12 +132,14 @@
             >
             </div>
             <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
+              
               <img src="{{ asset('landingpages') }}/assets/images/hero/dashboard-img.png" alt="hero-image" />
-              <img
-                src="{{ asset('landingpages') }}/assets/images/hero/dotted-shape.svg"
-                alt="shape"
-                class="shape shape-1"
-              />
+              
+                <img
+                  src="{{ asset('landingpages') }}/assets/images/hero/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
               <img
                 src="{{ asset('landingpages') }}/assets/images/hero/dotted-shape.svg"
                 alt="shape"
@@ -216,7 +240,7 @@
               <p>
                 Website Manajemen Stok Logistik "Werehouse BPBD Kabupaten Jember"
               </p>
-              <a href="" class="ud-main-btn">
+              <a href="{{ route('about') }}" class="ud-main-btn">
                 Selengkapnya
               </a>
             </div>
