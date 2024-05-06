@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengeluaran_logistik', function (Blueprint $table) {
-            $table->id('id_keluar');
+        Schema::create('logistik_keluar', function (Blueprint $table) {
+            $table->id('kode_logistik');
+            $table->string('nama_logistik');
             $table->string('nama_penerima');
             $table->integer('nik_kk_penerima');
-            $table->date('tgl_keluar');
+            $table->string('alamat_penerima');
+            $table->date('tanggal_keluar');
             $table->string('keterangan_keluar');
-            $table->string('jenis_logistik');
             $table->integer('jumlah_keluar');
             $table->string('satuan_keluar');
+            $table->string('dokumentasi');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengeluaran_logistik');
+        Schema::dropIfExists('logistik_keluar');
     }
 };
