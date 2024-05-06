@@ -94,7 +94,7 @@ Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('
     Route::get('/tambah-supplier', [TambahSupplierController::class, 'showTambahSupplier'])->name('tambah_supplier');
 
 
-//Route Logistik masuk 
+//Route Logistik Masuk 
     Route::get('/logistik_masuk', [LogistikMasukController::class, 'index'])->name('logistik_masuk.index');
     Route::get('/logistik_masuk/{id}/edit', [LogistikMasukController::class, 'edit'])->name('logistik_masuk.edit');
     Route::put('/logistik_masuk/{id}', [LogistikMasukController::class, 'update'])->name('logistik_masuk.update');
@@ -102,8 +102,12 @@ Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('
     Route::get('/tambah-logistik-masuk', [TambahLogistikMasukController::class, 'showTambahLogistikMasuk'])->name('tambah_logistik_masuk');
 
 
-//Route Logistik keluar
-    Route::get('/logistik-keluar', [LogistikKeluarController::class, 'showLogistikKeluar'])->name('logistik_keluar');
+//Route Logistik Keluar
+    Route::get('/logistik_keluar', [LogistikKeluarController::class, 'index'])->name('logistik_keluar.index');
+    Route::get('/logistik_keluar/{id}/edit', [LogistikKeluarController::class, 'edit'])->name('logistik_keluar.edit');
+    Route::put('/logistik_keluar/{id}', [LogistikKeluarController::class, 'update'])->name('logistik_keluar.update');
+    Route::delete('/logistik_keluar/{id}', [LogistikKeluarController::class, 'destroy'])->name('logistik_keluar.destroy');
+    Route::get('/logistik_keluar/print', [LogistikKeluarController::class, 'printPdf'])->name('logistik_keluar.printPdf');
     Route::get('/tambah-logistik-keluar', [TambahLogistikKeluarController::class, 'showTambahLogistikKeluar'])->name('tambah_logistik_keluar'); 
 
     
