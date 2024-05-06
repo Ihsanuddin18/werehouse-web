@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TambahAkunAnggotaController;
+use App\Http\Controllers\TambahAnggotaController;
 use App\Http\Controllers\DataLogistikController;
 use App\Http\Controllers\TambahDataController;
 use App\Http\Controllers\DataSupplierController;
@@ -49,8 +49,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
-//Route Tambah Akun   
-    Route::get('/tambah-akun-anggota', [TambahAkunAnggotaController::class, 'showTambahAkunAnggota'])->name('tambah_akun_anggota');    
+//Route Tambah Akun Anggota  
+    Route::get('/tambah-anggota', [TambahAnggotaController::class, 'showTambahAnggota'])->name('tambah_anggota');    
 
 
 //Route Data Logistik

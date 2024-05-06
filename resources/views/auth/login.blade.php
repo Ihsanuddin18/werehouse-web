@@ -23,23 +23,23 @@
             }
 
             .container-fluid {
-                padding-top: 90px; /* Atur jarak dari atas */
+                padding-top: 90px; 
                 text-align: center;
             }
 
             @media screen and (max-width: 768px) {
                 .container-fluid {
-                    padding-top: 50px; /* Atur jarak dari atas untuk layar kecil */
+                    padding-top: 50px;
                 }
             }
 
             .login-info {
-                margin-top: 20px; /* Atur jarak dari teks ke kotak login */
+                margin-top: 20px;
             }
 
             @media screen and (max-width: 768px) {
                 .login-info {
-                    margin-top: 40px; /* Atur jarak dari teks ke kotak login untuk layar kecil */
+                    margin-top: 40px;
                 }
             }
         </style>
