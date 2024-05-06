@@ -9,15 +9,15 @@
     <!--====== Favicon Icon ======-->
     <link
       rel="shortcut icon"
-      href="{{ asset('landingpages') }}/assets/images/favicon.svg"
+      href="assets/images/favicon.svg"
       type="image/svg"
     />
 
     <!-- ===== All CSS files ===== -->
-    <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/animate.css" />
-    <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/lineicons.css" />
-    <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/ud-styles.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/ud-styles.css" />
   </head>
   <body>
     <!-- ====== Header Start ====== -->
@@ -27,7 +27,7 @@
           <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg">
               <a class="navbar-brand" href="/">
-                <img src="{{ asset('landingpages') }}/assets/images/logo/logo.svg" alt="logo" />
+                <img src="assets/images/logo/logo.svg" alt="Logo" />
               </a>
               <button class="navbar-toggler">
                 <span class="toggler-icon"> </span>
@@ -54,12 +54,12 @@
                     <a href="javascript:void(0)"> Halaman </a>
                     <ul class="ud-submenu">
                       <li class="ud-submenu-item">
-                        <a href="" class="ud-submenu-link">
+                        <a href="{{ route('about') }}" class="ud-submenu-link">
                           Halaman Profil
                         </a>
                       </li>
                       <li class="ud-submenu-item">
-                      <a href="" class="ud-submenu-link">
+                      <a href="{{ route('contact') }}" class="ud-submenu-link">
                           Hubungi Kami
                         </a>
                       </li>
@@ -110,14 +110,14 @@
             >
             </div>
             <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
-              <img src="{{ asset('landingpages') }}/assets/images/hero/dashboard-img.png" alt="hero-image" />
+              <img src="assets/images/hero/hero-image.svg" alt="hero-image" />
               <img
-                src="{{ asset('landingpages') }}/assets/images/hero/dotted-shape.svg"
+                src="assets/images/hero/dotted-shape.svg"
                 alt="shape"
                 class="shape shape-1"
               />
               <img
-                src="{{ asset('landingpages') }}/assets/images/hero/dotted-shape.svg"
+                src="assets/images/hero/dotted-shape.svg"
                 alt="shape"
                 class="shape shape-2"
               />
@@ -216,13 +216,13 @@
               <p>
                 Website Manajemen Stok Logistik "Werehouse BPBD Kabupaten Jember"
               </p>
-              <a href="" class="ud-main-btn">
+              <a href="{{ route('about') }}" class="ud-main-btn">
                 Selengkapnya
               </a>
             </div>
           </div>
           <div class="ud-about-image">
-            <img src="{{ asset('landingpages') }}/assets/images/about/about-image.svg" alt="about-image" />
+            <img src="assets/images/about/about-image.svg" alt="about-image" />
           </div>
         </div>
       </div>
@@ -232,7 +232,7 @@
     <!-- ====== FAQ Start ====== -->
     <section id="faq" class="ud-faq">
       <div class="shape">
-        <img src="{{ asset('landingpages') }}/assets/images/faq/shape.svg" alt="shape" />
+        <img src="assets/images/faq/shape.svg" alt="shape" />
       </div>
       <div class="container">
         <div class="row">
@@ -423,7 +423,7 @@
               <div class="ud-testimonial-info">
                 <div class="ud-testimonial-image">
                   <img
-                    src="{{ asset('landingpages') }}/assets/images/testimonials/author-01.png"
+                    src="assets/images/testimonials/author-01.png"
                     alt="author"
                   />
                 </div>
@@ -454,7 +454,7 @@
               <div class="ud-testimonial-info">
                 <div class="ud-testimonial-image">
                   <img
-                    src="{{ asset('landingpages') }}/assets/images/testimonials/author-02.png"
+                    src="assets/images/testimonials/author-02.png"
                     alt="author"
                   />
                 </div>
@@ -485,7 +485,7 @@
               <div class="ud-testimonial-info">
                 <div class="ud-testimonial-image">
                   <img
-                    src="{{ asset('landingpages') }}/assets/images/testimonials/author-03.png"
+                    src="assets/images/testimonials/author-03.png"
                     alt="author"
                   />
                 </div>
@@ -523,16 +523,16 @@
             <div class="ud-single-team wow fadeInUp" data-wow-delay=".1s">
               <div class="ud-team-image-wrapper">
                 <div class="ud-team-image">
-                  <img src="{{ asset('landingpages') }}/assets/images/team/team-01.png" alt="team" />
+                  <img src="assets/images/team/team-01.png" alt="team" />
                 </div>
 
                 <img
-                  src="{{ asset('landingpages') }}/assets/images/team/dotted-shape.svg"
+                  src="assets/images/team/dotted-shape.svg"
                   alt="shape"
                   class="shape shape-1"
                 />
                 <img
-                  src="{{ asset('landingpages') }}/assets/images/team/shape-2.svg"
+                  src="assets/images/team/shape-2.svg"
                   alt="shape"
                   class="shape shape-2"
                 />
@@ -554,16 +554,16 @@
             <div class="ud-single-team wow fadeInUp" data-wow-delay=".15s">
               <div class="ud-team-image-wrapper">
                 <div class="ud-team-image">
-                  <img src="{{ asset('landingpages') }}/assets/images/team/team-02.png" alt="team" />
+                  <img src="assets/images/team/team-02.png" alt="team" />
                 </div>
 
                 <img
-                  src="{{ asset('landingpages') }}/assets/images/team/dotted-shape.svg"
+                  src="assets/images/team/dotted-shape.svg"
                   alt="shape"
                   class="shape shape-1"
                 />
                 <img
-                  src="{{ asset('landingpages') }}/assets/images/team/shape-2.svg"
+                  src="assets/images/team/shape-2.svg"
                   alt="shape"
                   class="shape shape-2"
                 />
@@ -585,16 +585,16 @@
             <div class="ud-single-team wow fadeInUp" data-wow-delay=".2s">
               <div class="ud-team-image-wrapper">
                 <div class="ud-team-image">
-                  <img src="{{ asset('landingpages') }}/assets/images/team/team-03.png" alt="team" />
+                  <img src="assets/images/team/team-03.png" alt="team" />
                 </div>
 
                 <img
-                  src="{{ asset('landingpages') }}/assets/images/team/dotted-shape.svg"
+                  src="assets/images/team/dotted-shape.svg"
                   alt="shape"
                   class="shape shape-1"
                 />
                 <img
-                  src="{{ asset('landingpages') }}/assets/images/team/shape-2.svg"
+                  src="assets/images/team/shape-2.svg"
                   alt="shape"
                   class="shape shape-2"
                 />
@@ -616,16 +616,16 @@
             <div class="ud-single-team wow fadeInUp" data-wow-delay=".25s">
               <div class="ud-team-image-wrapper">
                 <div class="ud-team-image">
-                  <img src="{{ asset('landingpages') }}/assets/images/team/team-04.png" alt="team" />
+                  <img src="assets/images/team/team-04.png" alt="team" />
                 </div>
 
                 <img
-                  src="{{ asset('landingpages') }}/assets/images/team/dotted-shape.svg"
+                  src="assets/images/team/dotted-shape.svg"
                   alt="shape"
                   class="shape shape-1"
                 />
                 <img
-                  src="{{ asset('landingpages') }}/assets/images/team/shape-2.svg"
+                  src="assets/images/team/shape-2.svg"
                   alt="shape"
                   class="shape shape-2"
                 />
@@ -739,13 +739,13 @@
     <!-- ====== Footer Start ====== -->
     <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
       <div class="shape shape-1">
-        <img src="{{ asset('landingpages') }}/assets/images/footer/shape-1.svg" alt="shape" />
+        <img src="assets/images/footer/shape-1.svg" alt="shape" />
       </div>
       <div class="shape shape-2">
-        <img src="{{ asset('landingpages') }}/assets/images/footer/shape-2.svg" alt="shape" />
+        <img src="assets/images/footer/shape-2.svg" alt="shape" />
       </div>
       <div class="shape shape-3">
-        <img src="{{ asset('landingpages') }}/assets/images/footer/shape-3.svg" alt="shape" />
+        <img src="assets/images/footer/shape-3.svg" alt="shape" />
       </div>
       <div class="ud-footer-widgets">
         <div class="container">
@@ -753,7 +753,7 @@
             <div class="col-xl-3 col-lg-4 col-md-6">
               <div class="ud-widget">
                 <a href="index.html" class="ud-footer-logo">
-                  <img src="{{ asset('landingpages') }}/assets/images/logo/logo.svg" alt="logo" />
+                  <img src="assets/images/logo/logo.svg" alt="logo" />
                 </a>
                 <p class="ud-widget-desc">
                 Website ini bertujuan untuk meningkatkan efisiensi, transparansi, 
@@ -849,9 +849,9 @@
     <!-- ====== Back To Top End ====== -->
 
     <!-- ====== All Javascript Files ====== -->
-    <script src="{{ asset('landingpages') }}/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('landingpages') }}/assets/js/wow.min.js"></script>
-    <script src="{{ asset('landingpages') }}/assets/js/main.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/main.js"></script>
     <script>
       // ==== for menu scroll
       const pageLink = document.querySelectorAll(".ud-menu-scroll");
@@ -897,43 +897,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-      
-    
-
-
-
-
