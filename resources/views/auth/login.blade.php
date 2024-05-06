@@ -12,9 +12,50 @@
     <link rel="stylesheet" type="text/css" href="{{ asset ('tloginjadi') }}/assets/css/style.css" />
 
 </head>
+        <style>
+            body {
+                background-image: url('{{ asset("tloginjadi") }}/assets/images/abstrak1.jpg');
+                background-size: cover;
+                background-position: center, center;
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
+
+            .container-fluid {
+                padding-top: 90px; /* Atur jarak dari atas */
+                text-align: center;
+            }
+
+            @media screen and (max-width: 768px) {
+                .container-fluid {
+                    padding-top: 50px; /* Atur jarak dari atas untuk layar kecil */
+                }
+            }
+
+            .login-info {
+                margin-top: 20px; /* Atur jarak dari teks ke kotak login */
+            }
+
+            @media screen and (max-width: 768px) {
+                .login-info {
+                    margin-top: 40px; /* Atur jarak dari teks ke kotak login untuk layar kecil */
+                }
+            }
+        </style>
+    <style>
+    body {
+        background-image: url('{{ asset("tloginjadi") }}/assets/images/abstrak1.jpg');
+        background-size: cover;
+        background-position: center, center;
+    }
+    </style>
 
 <body>
     <div class="container-fluid ">
+            <div class="text-center">
+                <p style="font-size: 28px; font-family: 'Merriweather', serif; color: white;">Login ini hanya khusus admin gudang !</p>
+            </div>
         <div class="container ">
             <div class="row cdvfdfd">
                 <div class="col-lg-10 col-md-12 login-box">
@@ -72,6 +113,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="text-center">
+                <p style="font-size: 15px; font-family: 'Merriweather', serif; color: white; margin-top: 20px;">Silahkan isi semua kolom dengan benar.</p>
             </div>
         </div>
     </div>
