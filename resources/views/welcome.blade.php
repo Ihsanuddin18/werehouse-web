@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Werehouse | BPBD</title>
+    <title>Selamat Datang Di Werehouse BPBD | Kabupaten Jember</title>
 
     <!--====== Favicon Icon ======-->
     <link
       rel="shortcut icon"
-      href="{{ asset('landingpages') }}/assets/images/favicon.svg"
-      type="image/svg"
+      href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png"
+      type="image/png"
     />
 
     <!-- ===== All CSS files ===== -->
@@ -644,6 +644,38 @@
               </ul>
             </div>
           </div>
+        <div class="row justify-content-center">
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-team wow fadeInUp" data-wow-delay=".25s">
+              <div class="ud-team-image-wrapper">
+                <div class="ud-team-image">
+                  <img src="{{ asset('landingpages') }}/assets/images/team/team-04.png" alt="team" />
+                </div>
+                <img
+                  src="{{ asset('landingpages') }}/assets/images/team/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
+                <img
+                  src="{{ asset('landingpages') }}/assets/images/team/shape-2.svg"
+                  alt="shape"
+                  class="shape shape-2"
+                />
+              </div>
+              <div class="ud-team-info">
+                <h5>Rayhan Cahyadi</h5>
+                <h6>Manajemen Perangkat Lunak</h6>
+              </div>
+              <ul class="ud-team-socials">
+                <li>
+                  <a href="https://www.instagram.com/alicaesar42/">
+                    <i class="lni lni-instagram-filled"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </section>
@@ -897,43 +929,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-      
-    
-
-
-
-

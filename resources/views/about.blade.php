@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Werehouse | BPBD</title>
-    
+    <title>Werehouse| BPBD</title>
+
     <!--====== Favicon Icon ======-->
     <link
       rel="shortcut icon"
@@ -20,8 +20,8 @@
     <link rel="stylesheet" href="assets/css/ud-styles.css" />
   </head>
   <body>
-   <!-- ====== Header Start ====== -->
-   <header class="ud-header">
+    <!-- ====== Header Start ====== -->
+    <header class="ud-header">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -40,11 +40,12 @@
                   <li class="nav-item">
                     <a class="ud-menu-scroll" href="/">Beranda</a>
                   </li>
+
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="/#about">Profil</a>
+                    <a class="ud-menu-scroll" href="#about">Profil</a>
                   </li>
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="/#team">Tim</a>
+                    <a class="ud-menu-scroll" href="#team">Tim</a>
                   </li>
                   <li class="nav-item">
                     <a class="ud-menu-scroll" href="/#contact">Kontak</a>
@@ -88,7 +89,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="ud-banner-content">
-              <h1>Halaman Login</h1>
+              <h1>Halaman Profil</h1>
             </div>
           </div>
         </div>
@@ -96,46 +97,183 @@
     </section>
     <!-- ====== Banner End ====== -->
 
-    <!-- ====== Login Start ====== -->
-    <section class="ud-login">
+    <!-- ====== About Start ====== -->
+    <section id="about" class="ud-about">
+      <div class="container">
+        <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
+          <div class="ud-about-content-wrapper">
+            <div class="ud-about-content">
+              <span class="tag">Profil</span>
+              <h2>Werehouse BPBD <br> Kabupaten Jember
+              </h2>
+              <p>
+                Website Manajemen Stok Logistik "Werehouse BPBD Kabupaten Jember" adalah sebuah
+                platform digital yang dirancang khusus untuk membantu Badan Penanggulangan Bencana
+                Daerah (BPBD) Kabupaten Jember dalam mengelola dan mengoptimalkan manajemen stok
+                logistik. Website ini memiliki berbagai fitur dan fungsionalitas yang
+                dirancang untuk meningkatkan efisiensi, visibilitas, dan responsivitas dalam pengelolaan
+                persediaan barang dan layanan logistik dalam konteks penanggulangan bencana.
+              </p>
+            </div>
+          </div>
+          <div class="ud-about-image">
+            <img src="assets/images/about/about-image.svg" alt="about-image" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== About End ====== -->
+
+     <!-- ====== Team Start ====== -->
+     <section id="team" class="ud-team">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <div class="ud-login-wrapper">
-              <div class="ud-login-logo">
-                <img src="assets/images/logo/logo-2.svg" alt="logo" />
+            <div class="ud-section-title mx-auto text-center">
+              <span>Tim Kami</span>
+              <p>
+                Kami bekerja sama untuk merancang, mengembangkan, dan 
+                meluncurkan website yang memenuhi standar kualitas
+                dan mencerminkan komitmen BPBD Kabupaten Jember dalam
+                memberikan layanan terbaik kepada masyarakat.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-team wow fadeInUp" data-wow-delay=".1s">
+              <div class="ud-team-image-wrapper">
+                <div class="ud-team-image">
+                  <img src="assets/images/team/team-01.png" alt="team" />
+                </div>
+
+                <img
+                  src="assets/images/team/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
+                <img
+                  src="assets/images/team/shape-2.svg"
+                  alt="shape"
+                  class="shape shape-2"
+                />
               </div>
-              <form class="ud-login-form">
-                <div class="ud-form-group">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email/username"
-                  />
+              <div class="ud-team-info">
+                <h5>Mohammad Ihsanuddin</h5>
+                <h6>Web Developer</h6>
+              </div>
+              <ul class="ud-team-socials">
+                <li>
+                  <a href="https://www.instagram.com/isan.nuddin/">
+                    <i class="lni lni-instagram-filled"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-team wow fadeInUp" data-wow-delay=".15s">
+              <div class="ud-team-image-wrapper">
+                <div class="ud-team-image">
+                  <img src="assets/images/team/team-02.png" alt="team" />
                 </div>
-                <div class="ud-form-group">
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="*********"
-                  />
+
+                <img
+                  src="assets/images/team/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
+                <img
+                  src="assets/images/team/shape-2.svg"
+                  alt="shape"
+                  class="shape shape-2"
+                />
+              </div>
+              <div class="ud-team-info">
+                <h5>Muhammad Guntur Wijaya</h5>
+                <h6>App Developer</h6>
+              </div>
+              <ul class="ud-team-socials">
+                <li>
+                  <a href="https://www.instagram.com/gunturwijayahh/">
+                    <i class="lni lni-instagram-filled"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-team wow fadeInUp" data-wow-delay=".2s">
+              <div class="ud-team-image-wrapper">
+                <div class="ud-team-image">
+                  <img src="assets/images/team/team-03.png" alt="team" />
                 </div>
-                <div class="ud-form-group">
-                  <button type="submit" class="ud-main-btn w-100">Login</button>
+
+                <img
+                  src="assets/images/team/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
+                <img
+                  src="assets/images/team/shape-2.svg"
+                  alt="shape"
+                  class="shape shape-2"
+                />
+              </div>
+              <div class="ud-team-info">
+                <h5>Fahmi Fahreza</h5>
+                <h6>UI/UX Design</h6>
+              </div>
+              <ul class="ud-team-socials">
+                <li>
+                  <a href="https://www.instagram.com/reezzaaaa__/">
+                    <i class="lni lni-instagram-filled"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-team wow fadeInUp" data-wow-delay=".25s">
+              <div class="ud-team-image-wrapper">
+                <div class="ud-team-image">
+                  <img src="assets/images/team/team-04.png" alt="team" />
                 </div>
-              </form>
-              <a class="forget-pass" href="javascript:void(0)">
-                Forget Password?
-              </a>
+
+                <img
+                  src="assets/images/team/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
+                <img
+                  src="assets/images/team/shape-2.svg"
+                  alt="shape"
+                  class="shape shape-2"
+                />
+              </div>
+              <div class="ud-team-info">
+                <h5>Caesar Ali</h5>
+                <h6>Quality Assurance Analyst</h6>
+              </div>
+              <ul class="ud-team-socials">
+                <li>
+                  <a href="https://www.instagram.com/alicaesar42/">
+                    <i class="lni lni-instagram-filled"></i>
+                  </a>
+                </li>
+                
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- ====== Login End ====== -->
+    <!-- ====== Team End ====== -->
 
-    <!-- ====== Footer Start ====== -->
-   <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
+   <!-- ====== Footer Start ====== -->
+    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
       <div class="shape shape-1">
         <img src="assets/images/footer/shape-1.svg" alt="shape" />
       </div>
@@ -188,7 +326,7 @@
                   <a href="/#about">Profil</a>
                   </li>
                   <li>
-                    <a href="/#team">Tim</a>
+                    <a href="#team">Tim</a>
                   </li>
                   <li>
                     <a href="/#contact">Kontak</a>
@@ -224,7 +362,7 @@
             <div class="col-md-8">
               <ul class="ud-footer-bottom-left">
                 <li>
-                  <a href="/#team">Tim Servis</a>
+                  <a href="#team">Tim Servis</a>
                 </li>
               </ul>
             </div>
@@ -252,4 +390,3 @@
     <script src="assets/js/main.js"></script>
   </body>
 </html>
-
