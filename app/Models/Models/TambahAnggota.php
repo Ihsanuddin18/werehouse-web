@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-class TambahAnggota extends Authenticatable
+class TambahAnggota extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The table associated with the model.
@@ -30,9 +30,9 @@ class TambahAnggota extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 
-        'email', 
-        'password', 
+        'nama_anggota', 
+        'email_anggota', 
+        'password_anggota', 
         'role'
     ];
 
@@ -42,7 +42,7 @@ class TambahAnggota extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 
+        'password_anggota', 
         'remember_token',
     ];
 

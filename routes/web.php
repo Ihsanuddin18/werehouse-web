@@ -49,13 +49,44 @@ Route::middleware('auth')->group(function () {
 });
 
 
-//Route Tambah Akun Anggota  
-    Route::get('/tambah-anggota', [TambahAnggotaController::class, 'showTambahAnggota'])->name('tambah_anggota');    
+// Route untuk menampilkan daftar anggota
+Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('tambah_anggota');
+
+    // Route untuk menyimpan data anggota baru
+    Route::post('/tambah-anggota', [TambahAnggotaController::class, 'store'])->name('tambah_anggota.store');
+
+    // Route untuk menghapus anggota
+    Route::delete('/tambah-anggota/{id}', [TambahAnggotaController::class, 'destroy'])->name('tambah_anggota.destroy');
 
 
-//Route Data Logistik
-    Route::get('/data-logistik', [DataLogistikController::class, 'showDataLogistik'])->name('data_logistik');
+
+// Route untuk menampilkan DATA LOGISTIK
+ Route::get('/data-logistik', [DataLogistikController::class, 'showDataLogistik'])->name('data_logistik');
+
+    // Route untuk menampilkan halaman tambah data logistik
     Route::get('/tambah-data', [TambahDataController::class, 'showTambahData'])->name('tambah_data');
+
+    // Route untuk menambahkan data logistik
+    Route::post('/tambah-data', [TambahDataController::class, 'tambahDataLogistik'])->name('tambah_data_post');
+
+    // Route untuk menampilkan halaman edit data logistik
+    Route::get('/edit-data/{id}', [DataLogistikController::class, 'showEditDataLogistik'])->name('edit_data');
+
+    // Route untuk menyimpan perubahan pada data logistik yang diedit
+    Route::post('/edit-data/{id}', [DataLogistikController::class, 'editDataLogistik'])->name('edit_data_post');
+
+    // Route untuk menghapus data logistik
+    Route::post('/hapus-data/{id}', [DataLogistikController::class, 'hapusDataLogistik'])->name('hapus_data');
+
+    // Route untuk menampilkan halaman scanner barcode
+    Route::get('/scanner', [ScannerController::class, 'showScanner'])->name('scanner');
+
+    // Route untuk melakukan proses scanning barcode dan menambahkan data logistik baru
+    Route::post('/scanner', [ScannerController::class, 'scannerBarcode'])->name('scanner_post');
+
+    // Route untuk mencetak/print sticker barcode label
+    Route::get('/cetak-sticker/{id}', [DataLogistikController::class, 'cetakSticker'])->name('cetak_sticker');
+
 
 
 //Route Data Supplier

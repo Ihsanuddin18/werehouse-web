@@ -12,14 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('data_logistik', function (Blueprint $table) {
-            $table->id('id_logistik');
+            $table->id('kode_logistik');
             $table->string('nama_logistik');
-            $table->string('bantuan_dari');
-            $table->integer('stok_masuk');
-            $table->integer('stok_keluar');
-            $table->integer('sisa_logistik');
             $table->string('satuan_logistik');
-            $table->date('expayer');
             $table->timestamps();
         });
     }
