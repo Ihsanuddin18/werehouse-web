@@ -32,4 +32,10 @@ class LogistikMasukController extends Controller
         $logistikMasuk->delete();
         return redirect()->route('logistik_masuk.index')->with('success', 'Data logistik berhasil dihapus.');
     }
+
+    // Fungsi untuk mencetak laporan ke PDF
+    public function printPdf()
+    {
+        // Logika untuk mencetak PDF
+    }
 }

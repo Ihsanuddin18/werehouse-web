@@ -90,7 +90,10 @@ Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('
 
 
 //Route Data Supplier
-    Route::get('/data-supplier', [DataSupplierController::class, 'showDataSupplier'])->name('data_supplier');
+Route::get('/data-supplier', [DataSupplierController::class, 'index'])->name('data-supplier.index');
+    Route::get('/data-supplier/{id}/edit', [DataSupplierController::class, 'edit'])->name('data-supplier.edit');
+    Route::put('/data-supplier/{id}', [DataSupplierController::class, 'update'])->name('data-supplier.update');
+    Route::delete('/data-supplier/{id}', [DataSupplierController::class, 'destroy'])->name('data-supplier.destroy');
     Route::get('/tambah-supplier', [TambahSupplierController::class, 'showTambahSupplier'])->name('tambah_supplier');
 
 
@@ -99,6 +102,7 @@ Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('
     Route::get('/logistik_masuk/{id}/edit', [LogistikMasukController::class, 'edit'])->name('logistik_masuk.edit');
     Route::put('/logistik_masuk/{id}', [LogistikMasukController::class, 'update'])->name('logistik_masuk.update');
     Route::delete('/logistik_masuk/{id}', [LogistikMasukController::class, 'destroy'])->name('logistik_masuk.destroy');
+    Route::get('/logistik_masuk/print', [LogistikMasukController::class, 'printPdf'])->name('logistik_masuk.printPdf');
     Route::get('/tambah-logistik-masuk', [TambahLogistikMasukController::class, 'showTambahLogistikMasuk'])->name('tambah_logistik_masuk');
 
 
