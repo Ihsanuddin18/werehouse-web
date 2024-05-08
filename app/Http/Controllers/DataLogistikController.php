@@ -9,11 +9,7 @@ class DataLogistikController extends Controller
 {
     public function showDataLogistik()
     {
-        // Mengambil semua data logistik dari database
-        $dataLogistik = DataLogistik::all();
-
-        // Mengirim data logistik ke view
-        return view('data_logistik.index', compact('dataLogistik'));
+        return view('data_logistik');
     }
 
     public function showEditDataLogistik($id)

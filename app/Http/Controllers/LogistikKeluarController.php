@@ -7,10 +7,9 @@ use Illuminate\Http\Request;
 
 class LogistikKeluarController extends Controller
 {
-    public function index()
+    public function showLogistikKeluar()
     {
-        $logistikKeluar = LogistikKeluar::all();
-        return view('logistik_keluar.index', compact('logistikKeluar'));
+        return view('logistik_keluar');
     }
 
     public function edit($id)

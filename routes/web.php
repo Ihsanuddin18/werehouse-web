@@ -49,8 +49,9 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// Route untuk menampilkan daftar anggota
+// Route Tambah Anggota
 Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('tambah_anggota');
+Route::get('/tambah-anggota', [TambahAnggotaController::class, 'showTambahAnggota'])->name('tambah_anggota'); 
 
     // Route untuk menyimpan data anggota baru
     Route::post('/tambah-anggota', [TambahAnggotaController::class, 'store'])->name('tambah_anggota.store');
@@ -62,6 +63,8 @@ Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('
 
 // Route untuk menampilkan DATA LOGISTIK
  Route::get('/data-logistik', [DataLogistikController::class, 'showDataLogistik'])->name('data_logistik');
+
+ 
 
     // Route untuk menampilkan halaman tambah data logistik
     Route::get('/tambah-data', [TambahDataController::class, 'showTambahData'])->name('tambah_data');
@@ -91,6 +94,7 @@ Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('
 
 //Route Data Supplier
 Route::get('/data-supplier', [DataSupplierController::class, 'index'])->name('data-supplier.index');
+Route::get('/data-supplier', [DataSupplierController::class, 'showDataSupplier'])->name('data_supplier'); 
     Route::get('/data-supplier/{id}/edit', [DataSupplierController::class, 'edit'])->name('data-supplier.edit');
     Route::put('/data-supplier/{id}', [DataSupplierController::class, 'update'])->name('data-supplier.update');
     Route::delete('/data-supplier/{id}', [DataSupplierController::class, 'destroy'])->name('data-supplier.destroy');
@@ -98,7 +102,8 @@ Route::get('/data-supplier', [DataSupplierController::class, 'index'])->name('da
 
 
 //Route Logistik Masuk 
-    Route::get('/logistik_masuk', [LogistikMasukController::class, 'index'])->name('logistik_masuk.index');
+Route::get('/logistik_masuk', [LogistikMasukController::class, 'index'])->name('logistik_masuk.index');
+Route::get('/logistik-masuk', [LogistikMasukController::class, 'showLogistikMasuk'])->name('logistik_masuk'); 
     Route::get('/logistik_masuk/{id}/edit', [LogistikMasukController::class, 'edit'])->name('logistik_masuk.edit');
     Route::put('/logistik_masuk/{id}', [LogistikMasukController::class, 'update'])->name('logistik_masuk.update');
     Route::delete('/logistik_masuk/{id}', [LogistikMasukController::class, 'destroy'])->name('logistik_masuk.destroy');
@@ -107,14 +112,15 @@ Route::get('/data-supplier', [DataSupplierController::class, 'index'])->name('da
 
 
 //Route Logistik Keluar
-    Route::get('/logistik_keluar', [LogistikKeluarController::class, 'index'])->name('logistik_keluar.index');
+Route::get('/logistik_keluar', [LogistikKeluarController::class, 'index'])->name('logistik_keluar.index');
+Route::get('/logistik-keluar', [LogistikKeluarController::class, 'showLogistikKeluar'])->name('logistik_keluar'); 
     Route::get('/logistik_keluar/{id}/edit', [LogistikKeluarController::class, 'edit'])->name('logistik_keluar.edit');
     Route::put('/logistik_keluar/{id}', [LogistikKeluarController::class, 'update'])->name('logistik_keluar.update');
     Route::delete('/logistik_keluar/{id}', [LogistikKeluarController::class, 'destroy'])->name('logistik_keluar.destroy');
     Route::get('/logistik_keluar/print', [LogistikKeluarController::class, 'printPdf'])->name('logistik_keluar.printPdf');
     Route::get('/tambah-logistik-keluar', [TambahLogistikKeluarController::class, 'showTambahLogistikKeluar'])->name('tambah_logistik_keluar'); 
 
-    
+
 //Route Lokasi Pengiriman
     Route::get('/lokasi-pengiriman', [LokasiPengirimanController::class, 'showLokasiPengiriman'])->name('lokasi_pengiriman');
     

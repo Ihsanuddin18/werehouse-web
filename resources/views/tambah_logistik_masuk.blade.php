@@ -138,7 +138,7 @@
                <a href="{{ route('data_supplier') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
             </li>
             <li class="dropdown">
-              <a href="{{ route('tambah_akun_anggota')}}"><i class="far fa-user"></i> <span>Tambah Anggota</span></a>
+              <a href="{{ route('tambah_anggota')}}"><i class="far fa-user"></i> <span>Tambah Anggota</span></a>
             </li>
             <li class="menu-header">Aktivitas</li>
               <li class=active>

@@ -7,13 +7,9 @@ use Illuminate\Http\Request;
 
 class TambahAnggotaController extends Controller
 {
-    public function index()
+    public function showTambahAnggota()
     {
-        // Mengambil semua anggota dari database
-        $anggota = TambahAnggota::all();
-
-        // Menampilkan halaman daftar anggota dengan data yang diambil
-        return view('tambah_anggota.index', compact('anggota'));
+        return view('tambah_anggota');
     }
 
     public function store(Request $request)

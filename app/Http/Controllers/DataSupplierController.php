@@ -7,10 +7,9 @@ use Illuminate\Http\Request;
 
 class DataSupplierController extends Controller
 {
-    public function index()
+    public function showDataSupplier()
     {
-        $suppliers = DataSupplier::all();
-        return view('data-supplier.index', compact('suppliers'));
+        return view('data_supplier');
     }
 
     public function edit($id)
