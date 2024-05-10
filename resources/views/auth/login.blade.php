@@ -5,6 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> Login</title>
+
+    <!--====== Favicon Icon ======-->
+    <link
+      rel="shortcut icon"
+      href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png"
+      type="image/png"
+    />
  
     <link rel="shortcut icon" href="{{ asset ('tloginjadi') }}/assets/images/fav.jpg">
     <link rel="stylesheet" href="{{ asset ('tloginjadi') }}/assets/css/bootstrap.min.css">
@@ -64,11 +71,17 @@
                             <div class="small-logo">
                                 <img src="{{ asset ('tloginjadi') }}/assets/images/logo1login.svg" alt="Logo">
                             </div>
-                            <p class="dfmn">Login Administrator</p>
+                            <p class="dfmn">Login Admin Gudang</p>
                             
                             <div class="text-box-cont">
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-warehouse"></i></span>
+                                    </div>
+                                    <input class="form-control font-weight-bold" placeholder="Admin Gudang" aria-describedby="basic-addon1" readonly>
+                                </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
@@ -82,7 +95,7 @@
                                     <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="input-group center">
-                                    <button class="btn btn-danger" style="background-color: rgb(110, 110, 255); border-color: rgb(110, 110, 252);"> SIGN IN</button>
+                                    <button class="btn btn-danger" style="background-color: rgb(110, 110, 255); border-color: rgb(110, 110, 252);">Login</button>
                                 </div>
                                 <div class="row">
                                     <p class="forget-p">Werehouse | BPBD</span></p>
@@ -115,7 +128,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <p style="font-size: 15px; font-family: 'Merriweather', serif; color: white; margin-top: 20px;">Silahkan isi semua kolom dengan benar.</p>
+                <p style="font-size: 15px; font-family: 'Merriweather', serif; color: white; margin-top: 20px;">Silahkan isi Email dan Password dengan benar.</p>
             </div>
         </div>
     </div>

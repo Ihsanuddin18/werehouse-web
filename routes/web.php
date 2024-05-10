@@ -39,8 +39,9 @@ Route::get('/contact', [ContactController::class, 'showContact'])->name('contact
         })->middleware(['auth', 'verified'])->name('dashboard');*/
 
 
-// Route new url Home(tampilan dashboard)
+// Route new url Home( tampilan dashboard)
 Route::get('/home',[HomeController::class,'index'])->middleware('auth')->name('home');
+        Route::get('post',[HomeController::class,'post'])->middleware(['auth','anggota']);
 
 
 //Route Profile
