@@ -278,12 +278,22 @@
           </script>
           @if(session('loginSuccessNotification'))
               <script>
-                  Swal.fire({
-                      title: 'Berhasil!',
-                      text: '{{ session('loginSuccessNotification') }}',
-                      icon: 'success',
+                  const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
                       showConfirmButton: false,
-                      timer: 2000
+                      timer: 9000,
+                      timerProgressBar: true,
+                      didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer);
+                          toast.addEventListener('mouseleave', Swal.resumeTimer);
+                      }
+                  });
+
+                  // Tampilkan notifikasi Toast dengan pesan yang diterima dari session
+                  Toast.fire({
+                      icon: 'success',
+                      title: '{{ session('loginSuccessNotification') }}'
                   });
               </script>
           @endif

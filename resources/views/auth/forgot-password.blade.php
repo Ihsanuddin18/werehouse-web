@@ -17,8 +17,13 @@
     <link rel="stylesheet" href="{{ asset('tloginjadi') }}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tloginjadi') }}/assets/css/fontawsom-all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('tloginjadi') }}/assets/css/style.css" />
+
+    <!-- Start GA -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- /END GA -->
+
 </head>
-<style>
+        <style>
             body {
                 background-image: url('{{ asset("tloginjadi") }}/assets/images/abstrak1.jpg');
                 background-size: cover;
@@ -49,13 +54,6 @@
                 }
             }
         </style>
-    <style>
-    body {
-        background-image: url('{{ asset("tloginjadi") }}/assets/images/abstrak1.jpg');
-        background-size: cover;
-        background-position: center, center;
-    }
-    </style>
 
 <body>
     <div class="container-fluid ">
@@ -68,7 +66,6 @@
                                 <img src="{{ asset('tloginjadi') }}/assets/images/logo1login.svg" alt="Logo">
                             </div>
                             <p class="dfmn">Forgot Password</p>
-                            
                             <div class="text-box-cont">
                                 <form method="POST" action="{{ route('password.email') }}">
                                     @csrf
@@ -90,6 +87,33 @@
                                 </div>   
                             </div>
                         </div>
+                        @if(Session::has('success') || Session::has('error'))
+                            <script>
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 9000,
+                                    timerProgressBar: true,
+                                    didOpen: (toast) => {
+                                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                                    }
+                                });
+                                
+                                @if(Session::has('success'))
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: '{{ Session::get('success') }}'
+                                    });
+                                @elseif(Session::has('error'))
+                                    Toast.fire({
+                                        icon: 'error',
+                                        title: '{{ Session::get('error') }}'
+                                    });
+                                @endif
+                            </script>
+                        @endif
                         <div class="col-lg-6 col-md-6 box-de">
                             <div class="inn-cover">
                                 <div class="ditk-inf">
@@ -113,6 +137,8 @@
         </div>
     </div>
 </body>
+
+
 
 <script src="{{ asset('tloginjadi') }}/assets/js/jquery-3.2.1.min.js"></script>
 <script src="{{ asset('tloginjadi') }}/assets/js/popper.min.js"></script>

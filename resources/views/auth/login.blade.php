@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="{{ asset ('tloginjadi') }}/assets/css/fontawsom-all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset ('tloginjadi') }}/assets/css/style.css" />
 
+    <!-- Start GA -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- /END GA -->
+
+
 </head>
         <style>
             body {
@@ -106,7 +111,35 @@
                                 </form>   
                             </div>
                         </div>
-                        
+                        @if(session('status') || $errors->any())
+                            <script>
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 9000,
+                                    timerProgressBar: true,
+                                    didOpen: (toast) => {
+                                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                                    }
+                                });
+
+                                @if(session('status'))
+                                    Toast.fire({
+                                        icon: 'success',
+                                        title: 'Berhasil',
+                                        text: '{{ session('status') }}'
+                                    });
+                                @elseif($errors->any())
+                                    Toast.fire({
+                                        icon: 'error',
+                                        title: 'Gagal!',
+                                        text: '{{ $errors->first() }}'
+                                    });
+                                @endif
+                            </script>
+                        @endif
                         <div class="col-lg-6 col-md-6 box-de">
                            <div class="inn-cover">
                                <div class="ditk-inf">

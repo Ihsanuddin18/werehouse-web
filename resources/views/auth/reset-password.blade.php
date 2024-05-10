@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('tloginjadi') }}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tloginjadi') }}/assets/css/fontawsom-all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('tloginjadi') }}/assets/css/style.css" />
+
 </head>
 <style>
             body {
@@ -68,7 +69,6 @@
                         <img src="{{ asset('tloginjadi') }}/assets/images/logo1login.svg" alt="Logo">
                     </div>
                     <p class="dfmn">Forgot Password</p>
-                    
                     <div class="text-box-cont">
                         <form method="POST" action="{{ route('password.store') }}"> <!-- Sesuaikan action route dengan yang Anda miliki -->
                             @csrf <!-- Tambahkan CSRF token -->
@@ -99,7 +99,7 @@
                             </div>
 
                             <div class="input-group center">
-                                <button type="submit" class="btn btn-danger" style="background-color: rgb(110, 110, 255); border-color: rgb(110, 110, 252);">Reset Password</button>
+                                <button type="submit" class="btn btn-danger" style="background-color: rgb(110, 110, 255); border-color: rgb(110, 110, 252);">Perbarui Password</button>
                             </div>
                         </form>
                         <div class="row">
