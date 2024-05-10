@@ -31,6 +31,8 @@ Route::get('/', function () {
 });
 Route::get('/about', [AboutController::class, 'showAbout'])->name('about');   
 Route::get('/contact', [ContactController::class, 'showContact'])->name('contact');   
+Route::post('/submit-form', [ContactController::class, 'submitForm'])->name('submit.form');
+
 
 
         // Route dashboard 

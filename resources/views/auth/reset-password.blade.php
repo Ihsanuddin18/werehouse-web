@@ -28,7 +28,7 @@
                 font-family: Arial, sans-serif;
             }
 
-            .container-fluid {
+            .container-fluid {p
                 padding-top: 90px; 
                 text-align: center;
             }

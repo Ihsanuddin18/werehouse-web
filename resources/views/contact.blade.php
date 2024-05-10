@@ -157,10 +157,10 @@
           <div class="col-xl-4 col-lg-5">
             <div
               class="ud-contact-form-wrapper wow fadeInUp"
-              data-wow-delay=".2s"
-            >
+              data-wow-delay=".2s">
               <h3 class="ud-contact-form-title">Kirim Pesan</h3>
-              <form class="ud-contact-form">
+                <form class="ud-contact-form" method="POST" action="{{ route('submit.form') }}">
+                  @csrf <!-- Tambahkan ini untuk keamanan CSRF -->
                 <div class="ud-form-group">
                   <label for="fullName">Nama Lengkap</label>
                   <input
