@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
 
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;

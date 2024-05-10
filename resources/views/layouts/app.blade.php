@@ -276,6 +276,17 @@
                   $('#tambahModal').modal('show');
               });
           </script>
+          @if(session('loginSuccessNotification'))
+              <script>
+                  Swal.fire({
+                      title: 'Berhasil!',
+                      text: '{{ session('loginSuccessNotification') }}',
+                      icon: 'success',
+                      showConfirmButton: false,
+                      timer: 2000
+                  });
+              </script>
+          @endif
       
        <!-- Main Content -->
        <div class="main-content">

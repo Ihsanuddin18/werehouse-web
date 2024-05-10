@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Forgot Password</title>
+    <title>Forgot Password &rsaquo; Werehouse BPBD | Kabupaten Jember</title>
 
     <!--====== Favicon Icon ======-->
     <link

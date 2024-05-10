@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use App\Notifications\LoginSuccessNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Carbon\Carbon;
+
 
 class AuthenticatedSessionController extends Controller
 {
@@ -28,10 +30,16 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+         // Set notifikasi dalam session
+         $request->session()->flash('loginSuccessNotification', 'Anda telah berhasil Login!');
+
         // Update last_login_at
         $request->user()->update(['last_login_at' => Carbon::now()]);
 
         $request->session()->regenerate();
+
+        // Kirim notifikasi berhasil masuk
+        $request->user()->notify(new LoginSuccessNotification());
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
