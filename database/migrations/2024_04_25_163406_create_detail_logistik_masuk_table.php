@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_logistik', function (Blueprint $table) {
-            $table->id('kode_data_logistik');
-            $table->string('nama_logistik');
-            $table->string('satuan_logistik');
-            $table->string('qr_code_logistik');
+        Schema::create('detail_logistik_masuk', function (Blueprint $table) {
+            $table->id('kode_detail_logistik_masuk');
+            $table->unsignedBigInteger('kode_data_logistik');
+            $table->unsignedBigInteger('id_supplier');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_logistik');
+        Schema::dropIfExists('detail_logistik_masuk');
     }
 };

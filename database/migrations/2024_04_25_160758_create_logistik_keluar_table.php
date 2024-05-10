@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('logistik_keluar', function (Blueprint $table) {
             $table->id('kode_logistik');
-            $table->string('nama_logistik');
+            $table->foreign('kode_data_logistik');
+            $table->foreign('id');
             $table->string('nama_penerima');
             $table->integer('nik_kk_penerima');
             $table->string('alamat_penerima');
@@ -21,7 +22,8 @@ return new class extends Migration
             $table->string('keterangan_keluar');
             $table->integer('jumlah_keluar');
             $table->string('satuan_keluar');
-            $table->string('dokumentasi');
+            $table->string('dokumentasi_keluar');
+            $table->foreign('id_anggota');
             $table->timestamps();
         });
     }

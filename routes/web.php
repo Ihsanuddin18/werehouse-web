@@ -15,8 +15,9 @@ use App\Http\Controllers\LokasiPengirimanController;
 use App\Http\Controllers\CetakBarcodeLabelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\HomeController;
 
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,10 +33,14 @@ Route::get('/about', [AboutController::class, 'showAbout'])->name('about');
 Route::get('/contact', [ContactController::class, 'showContact'])->name('contact');   
 
 
-// Route dashboard 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+        // Route dashboard 
+        /*Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->middleware(['auth', 'verified'])->name('dashboard');*/
+
+
+// Route new url Home(tampilan dashboard)
+Route::get('/home',[HomeController::class,'index'])->middleware('auth')->name('home');
 
 
 //Route Profile

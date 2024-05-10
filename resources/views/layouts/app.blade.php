@@ -164,16 +164,16 @@
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
               <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png" style="width: 143px; height: auto; margin-top: 20px;">
-              <a href="{{ route('dashboard') }}"> Werehouse BPBD </a>
+              <a href="{{ route('home') }}"> Werehouse BPBD </a>
               <hr style="margin-top: 3px; margin-bottom: 3px; border: none; border-bottom: 0.1px solid #C1C1C1; width: 80%;">
               <p><br></p>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ route('dashboard') }}">WB</a>
+            <a href="{{ route('home') }}">WB</a>
           </div>
           <ul class="sidebar-menu">
               <li class=active>
-               <a href="{{ route('dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
+               <a href="{{ route('home') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
               </li>
             <li class="menu-header">Master</li>
             <li class="dropdown">
