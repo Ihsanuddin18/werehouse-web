@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('detail_logistik_masuk', function (Blueprint $table) {
             $table->id('kode_detail_logistik_masuk');
-            $table->unsignedBigInteger('kode_data_logistik');
-            $table->unsignedBigInteger('id_supplier');
+            $table->string('kode_data_logistik');
+            $table->string('id_supplier');
             $table->timestamps();
         });
     }

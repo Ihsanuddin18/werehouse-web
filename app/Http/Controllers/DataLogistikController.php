@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class DataLogistikController extends Controller
 {
-    public function showDataLogistik()
+    public function index()
     {
-        return view('data_logistik');
+        return view('datalogistik.index');
     }
 
     public function showEditDataLogistik($id)
@@ -39,7 +39,7 @@ class DataLogistikController extends Controller
         ]);
 
         // Redirect ke halaman data logistik dengan pesan sukses
-        return redirect()->route('data_logistik')->with('success', 'Data logistik berhasil diperbarui.');
+        return redirect()->route('datalogistik.index')->with('success', 'Data logistik berhasil diperbarui.');
     }
 
     public function hapusDataLogistik($id)
@@ -48,7 +48,7 @@ class DataLogistikController extends Controller
         DataLogistik::findOrFail($id)->delete();
 
         // Redirect ke halaman data logistik dengan pesan sukses
-        return redirect()->route('data_logistik')->with('success', 'Data logistik berhasil dihapus.');
+        return redirect()->route('datalogistik.index')->with('success', 'Data logistik berhasil dihapus.');
     }
 
     public function cetakSticker($id)

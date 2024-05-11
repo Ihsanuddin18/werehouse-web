@@ -119,7 +119,7 @@
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
               <img alt="image" src="{{ asset('tdashboard') }}/assets/img/avatar/logobpbd1.png" style="width: 143px; height: auto; margin-top: 20px;">
-              <a href="{{ route('dashboard') }}"> Werehouse BPBD </a>
+              <a href="{{ route('home') }}"> Werehouse BPBD </a>
               <hr style="margin-top: 3px; margin-bottom: 3px; border: none; border-bottom: 0.1px solid #C1C1C1; width: 80%;">
               <p><br></p>
           </div>
@@ -128,11 +128,11 @@
           </div>
           <ul class="sidebar-menu">
               <li>
-               <a href="{{ route('dashboard') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
+               <a href="{{ route('home') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
               </li>
             <li class="menu-header">Master</li>
             <li class=active class="dropdown">
-              <a href="{{ route('data_logistik') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
+              <a href="{{ route('datalogistik.index') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
             </li>
             <li class="dropdown">
                <a href="{{ route('data_supplier') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
@@ -171,7 +171,7 @@
           <div class="section-header">
             <h1>Data Logistik</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+              <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
               <div class="breadcrumb-item">Data Logistik</div>
             </div>
           </div>
@@ -211,7 +211,6 @@
                     <div class="card-header-form">
                     </div>
                   </div>
-                  
                     <div class="table-responsive">
                       <table class="table table-striped">
                         <tr>
@@ -231,51 +230,9 @@
                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
                           </td>
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>09386437</td>
-                          <td>Kursi Lipat</td>
-                          <td>Pcs</td>
-                          <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
-                          </td>
-                        </tr>
-                        <tr>
-                        <tr>
-                          <td>3</td>
-                          <td>09386437</td>
-                          <td>Kursi Lipat</td>
-                          <td>Pcs</td>
-                          <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>09386437</td>
-                          <td>Kursi Lipat</td>
-                          <td>Pcs</td>
-                          <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>5</td>
-                          <td>09386437</td>
-                          <td>Kursi Lipat</td>
-                          <td>Pcs</td>
-                          <td>
-                            <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i> Edit </a>
-                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data Admin ini?" data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i> Hapus </a>
-                          </td>
-                        </tr>
                       </table>
                     </div>
                     <div class="card">
-                   
                   </div>
                   </div>
                 </div>

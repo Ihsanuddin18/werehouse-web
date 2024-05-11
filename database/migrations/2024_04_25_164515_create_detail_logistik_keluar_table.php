@@ -13,15 +13,10 @@ return new class extends Migration
     {
         Schema::create('detail_logistik_keluar', function (Blueprint $table) {
             $table->id('kode_detail_logistik_keluar');
-            $table->unsignedBigInteger('kode_logistik_keluar');
-            $table->unsignedBigInteger('kode_data_logistik');
+            $table->string('kode_logistik_keluar');
+            $table->integer('kode_data_logistik');
             $table->timestamps();
 
-            // Menambahkan kunci asing untuk kode_logistik_keluar
-            $table->foreign('kode_logistik_keluar')->references('id')->on('logistik_kelaur');
-            
-            // Menambahkan kunci asing untuk kode_data_logistik
-            $table->foreign('kode_data_logistik')->references('id')->on('data_logistik');
         });
     }
 

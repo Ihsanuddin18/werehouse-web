@@ -17,64 +17,34 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
 
- 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-*/
 
-// Route landing-pages 
+
+// landing pages 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/about', [AboutController::class, 'showAbout'])->name('about');   
-Route::get('/contact', [ContactController::class, 'showContact'])->name('contact');   
-Route::post('/submit-form', [ContactController::class, 'submitForm'])->name('submit.form');
+    return view('welcome');});
+    Route::get('/about', [AboutController::class, 'showAbout'])->name('about');   
+    Route::get('/contact', [ContactController::class, 'showContact'])->name('contact');   
+    Route::post('/submit-form', [ContactController::class, 'submitForm'])->name('submit.form');
 
-
-
-        // Route dashboard 
-        /*Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->middleware(['auth', 'verified'])->name('dashboard');*/
-
-
-// Route new url Home( tampilan dashboard)
+// dashboard admin/user
 Route::get('/home',[HomeController::class,'index'])->middleware('auth')->name('home');
-        Route::get('post',[HomeController::class,'post'])->middleware(['auth','anggota']);
+    Route::get('post',[HomeController::class,'post'])->middleware(['auth','anggota']);
 
-
-//Route Profile
+// profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::put('/profile/{id}/biography', [ProfileController::class, 'updateBiography'])->name('profile.updateBiography');
     Route::delete('/profile/{id}/biography', [ProfileController::class, 'destroyBiography'])->name('profile.destroyBiography');
-    
-});
+    });
 
+// data logistik
+Route::controller('datalogistik')->group(function () {
+    Route::get('/data-logistik', [DataLogistikController::class, 'index'])->name('datalogistik.index');
 
-// Route Tambah Anggota
-Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('tambah_anggota');
-Route::get('/tambah-anggota', [TambahAnggotaController::class, 'showTambahAnggota'])->name('tambah_anggota'); 
+    });
 
-    // Route untuk menyimpan data anggota baru
-    Route::post('/tambah-anggota', [TambahAnggotaController::class, 'store'])->name('tambah_anggota.store');
-
-    // Route untuk menghapus anggota
-    Route::delete('/tambah-anggota/{id}', [TambahAnggotaController::class, 'destroy'])->name('tambah_anggota.destroy');
-
-
-
-// Route untuk menampilkan DATA LOGISTIK
- Route::get('/data-logistik', [DataLogistikController::class, 'showDataLogistik'])->name('data_logistik');
-
- 
-
-    // Route untuk menampilkan halaman tambah data logistik
     Route::get('/tambah-data', [TambahDataController::class, 'showTambahData'])->name('tambah_data');
 
     // Route untuk menambahkan data logistik
@@ -97,6 +67,20 @@ Route::get('/tambah-anggota', [TambahAnggotaController::class, 'showTambahAnggot
 
     // Route untuk mencetak/print sticker barcode label
     Route::get('/cetak-sticker/{id}', [DataLogistikController::class, 'cetakSticker'])->name('cetak_sticker');
+
+
+
+// Route Tambah Anggota
+Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('tambah_anggota');
+Route::get('/tambah-anggota', [TambahAnggotaController::class, 'showTambahAnggota'])->name('tambah_anggota'); 
+
+    // Route untuk menyimpan data anggota baru
+    Route::post('/tambah-anggota', [TambahAnggotaController::class, 'store'])->name('tambah_anggota.store');
+
+    // Route untuk menghapus anggota
+    Route::delete('/tambah-anggota/{id}', [TambahAnggotaController::class, 'destroy'])->name('tambah_anggota.destroy');
+
+
 
 
 
