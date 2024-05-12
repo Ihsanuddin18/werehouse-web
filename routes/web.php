@@ -15,12 +15,12 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupplierController;
 
 
 
 // landing pages 
-Route::get('/', function () {
-    return view('welcome');});
+Route::get('/', function () { return view('welcome');});
     Route::get('/about', [AboutController::class, 'showAbout'])->name('about');   
     Route::get('/contact', [ContactController::class, 'showContact'])->name('contact');   
     Route::post('/submit-form', [ContactController::class, 'submitForm'])->name('submit.form');
@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-//coba crud product
+//COBA CRUD PRODUCTSSSSS
 Route::controller(ProductController::class)->prefix('products')->group(function () {
     Route::get('', 'index')->name('products');
     Route::get('create', 'create')->name('products.create');
@@ -49,6 +49,22 @@ Route::controller(ProductController::class)->prefix('products')->group(function 
     Route::get('edit/{id}', 'edit')->name('products.edit');
     Route::put('edit/{id}', 'update')->name('products.update');
     Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
+    });
+
+
+
+
+
+
+//SUPPLIERSS NI BOS!!!
+Route::controller(SupplierController::class)->prefix('suppliers')->group(function () {
+    Route::get('', 'index')->name('suppliers');
+    Route::get('create', 'create')->name('suppliers.create');
+    Route::post('store', 'store')->name('suppliers.store');
+    Route::get('show/{id}', 'show')->name('suppliers.show');
+    Route::get('edit/{id}', 'edit')->name('suppliers.edit');
+    Route::put('edit/{id}', 'update')->name('suppliers.update');
+    Route::delete('destroy/{id}', 'destroy')->name('suppliers.destroy');
     });
 
 
@@ -75,18 +91,6 @@ Route::get('/tambah-anggota', [TambahAnggotaController::class, 'showTambahAnggot
 
     // Route untuk menghapus anggota
     Route::delete('/tambah-anggota/{id}', [TambahAnggotaController::class, 'destroy'])->name('tambah_anggota.destroy');
-
-
-
-
-
-//Route Data Supplier
-Route::get('/data-supplier', [DataSupplierController::class, 'index'])->name('data-supplier.index');
-Route::get('/data-supplier', [DataSupplierController::class, 'showDataSupplier'])->name('data_supplier'); 
-    Route::get('/data-supplier/{id}/edit', [DataSupplierController::class, 'edit'])->name('data-supplier.edit');
-    Route::put('/data-supplier/{id}', [DataSupplierController::class, 'update'])->name('data-supplier.update');
-    Route::delete('/data-supplier/{id}', [DataSupplierController::class, 'destroy'])->name('data-supplier.destroy');
-    Route::get('/tambah-supplier', [TambahSupplierController::class, 'showTambahSupplier'])->name('tambah_supplier');
 
 
 //Route Logistik Masuk 
