@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Dashboard &rsaquo; Data Logistik &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Dashboard &rsaquo; Data Supplier &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -15,7 +15,6 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -25,15 +24,12 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     <!-- /END GA -->
 </head>
 
 <body>
     <div id="app">
-        <div class="main-wrapper main-wrapper-1">
+        <div="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
             <nav class="navbar navbar-expand-lg main-navbar">
                 <form class="form-inline mr-auto">
@@ -143,7 +139,7 @@
                         </li>
                         <li class="menu-header">Master</li>
                         <li class=active class="dropdown">
-                            <a href="{{ route('products') }}"><i class="fas fa-database"></i> <span>Data
+                            <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data
                                     Logistik</span></a>
                         </li>
                         <li class="dropdown">
@@ -187,16 +183,15 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>List Product</h1>
+                        <h1>Data Logistik</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item">List Product</div>
+                            <div class="breadcrumb-item">Data Logistik</div>
                         </div>
                     </div>
                     <div class="button-container">
                         <div class="d-flex align-items-center justify-content-between">
-                            <h1 class="mb-0">List Product</h1>
-                            <a href="{{ route('products.create') }}" class="btn btn-primary">Add Product</a>
+                            <a href="{{ route('logistics.create') }}" class="btn btn-primary">Tambah</a>
                         </div>
                         @if(Session::has('success'))
                             <div class="alert alert-success" role="alert">
@@ -208,70 +203,68 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Daftar Produk</h4>
+                                    <h4>Daftar Logistik</h4>
                                 </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead class="table-primary">
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Title</th>
-                                                    <th>Price</th>
-                                                    <th>Product Code</th>
-                                                    <th>Description</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @if($products->count() > 0)
-                                                    @foreach($products as $product)
-                                                        <tr>
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ $product->title }}</td>
-                                                            <td>{{ $product->price }}</td>
-                                                            <td>{{ $product->product_code }}</td>
-                                                            <td>{{ $product->description }}</td>
-                                                            <td>
-                                                                <div class="btn-group" role="group" aria-label="Basic example">
-                                                                    <a href="{{ route('products.show', $product->id) }}"
-                                                                        type="button" class="btn btn-secondary">Detail</a>
-                                                                    <a href="{{ route('products.edit', $product->id)}}"
-                                                                        type="button" class="btn btn-warning">Edit</a>
-                                                                    <form action="{{ route('products.destroy', $product->id) }}"
-                                                                        method="POST" class="btn btn-danger p-0"
-                                                                        onsubmit="return confirm('Delete?')">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger m-0">Delete</button>
-                                                                    </form>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                @else
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead class="table-primary">
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Kode Logistik</th>
+                                                <th>Nama</th>
+                                                <th>Satuan</th>
+                                                <th>QR Code Label</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if($logistics->count() > 0)
+                                                @foreach($logistics as $logistic)
                                                     <tr>
-                                                        <td colspan="6" class="text-center">No products found</td>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $logistic->kode_logistik }}</td>
+                                                        <td>{{ $logistic->nama_logistik }}</td>
+                                                        <td>{{ $logistic->satuan_logistik }}</td>
+                                                        <td>{{ $logistic->qr_code_label }}</td>
+                                                        <td>
+                                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                                <a href="{{ route('logistics.show', $logistic->id) }}"
+                                                                    type="button" class="btn btn-secondary">Detail</a>
+                                                                <a href="{{ route('logistics.edit', $logistic->id)}}"
+                                                                    type="button" class="btn btn-warning">Edit</a>
+                                                                <form action="{{ route('logistics.destroy', $logistic->id) }}"
+                                                                    method="POST" class="btn btn-danger p-0"
+                                                                    onsubmit="return confirm('Delete?')">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger m-0">Delete</button>
+                                                                </form>
+                                                            </div>
+                                                        </td>
                                                     </tr>
-                                                @endif
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="6" class="text-center">Tidak ada data supplier !</td>
+                                                </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
+    </div>
+    <footer class="main-footer">
+        <div class="footer-left">
+            Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
         </div>
-        <footer class="main-footer">
-            <div class="footer-left">
-                Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
-            </div>
-            <div class="footer-right">
-            </div>
-        </footer>
+        <div class="footer-right">
+        </div>
+    </footer>
     </div>
     </div>
 
@@ -286,6 +279,7 @@
     <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
     <!-- JS Libraies -->
+
 
     <!-- Page Specific JS File -->
 

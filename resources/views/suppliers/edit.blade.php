@@ -224,7 +224,7 @@
                                     <div class="form-group">
                                         <label for="instansi_supplier">Instansi</label>
                                         <select name="instansi_supplier" class="form-control">
-                                            <option value="{{ $supplier->instansi_supplier }}" selected disabled>*Pilih
+                                            <option value="{{ $supplier->instansi_supplier }}" selected>*Pilih
                                                 instansi</option>
                                             <option value="Pemerintah">Pemerintah</option>
                                             <option value="Kabupaten/Kota">Kabupaten/Kota</option>

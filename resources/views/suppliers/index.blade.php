@@ -139,7 +139,7 @@
                         </li>
                         <li class="menu-header">Master</li>
                         <li class="dropdown">
-                            <a href="{{ route('products') }}"><i class="fas fa-database"></i> <span>Data
+                            <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data
                                     Logistik</span></a>
                         </li>
                         <li class=active class="dropdown">

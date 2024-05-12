@@ -85,7 +85,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-warehouse"></i></span>
                                     </div>
-                                    <input class="form-control font-weight-bold" placeholder="Admin Gudang" aria-describedby="basic-addon1" readonly>
+                                    <input class="form-control font-weight-bold" placeholder="Admin Gudang" aria-describedby="basic-addon1" disabled readonly>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">

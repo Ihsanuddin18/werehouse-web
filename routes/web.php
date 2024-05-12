@@ -3,8 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TambahAnggotaController;
-use App\Http\Controllers\DataSupplierController;
-use App\Http\Controllers\TambahSupplierController;
 use App\Http\Controllers\LogistikMasukController;
 use App\Http\Controllers\LogistikKeluarController;
 use App\Http\Controllers\TambahLogistikMasukController;
@@ -14,8 +12,9 @@ use App\Http\Controllers\CetakBarcodeLabelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\LogisticController;
+
 
 
 
@@ -38,25 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/{id}/biography', [ProfileController::class, 'destroyBiography'])->name('profile.destroyBiography');
     });
 
-
-
-//COBA CRUD PRODUCTSSSSS
-Route::controller(ProductController::class)->prefix('products')->group(function () {
-    Route::get('', 'index')->name('products');
-    Route::get('create', 'create')->name('products.create');
-    Route::post('store', 'store')->name('products.store');
-    Route::get('show/{id}', 'show')->name('products.show');
-    Route::get('edit/{id}', 'edit')->name('products.edit');
-    Route::put('edit/{id}', 'update')->name('products.update');
-    Route::delete('destroy/{id}', 'destroy')->name('products.destroy');
-    });
-
-
-
-
-
-
-//SUPPLIERSS NI BOS!!!
+//  supplier
 Route::controller(SupplierController::class)->prefix('suppliers')->group(function () {
     Route::get('', 'index')->name('suppliers');
     Route::get('create', 'create')->name('suppliers.create');
@@ -67,20 +48,16 @@ Route::controller(SupplierController::class)->prefix('suppliers')->group(functio
     Route::delete('destroy/{id}', 'destroy')->name('suppliers.destroy');
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//  logistik
+Route::controller(LogisticController::class)->prefix('logistics')->group(function () {
+    Route::get('', 'index')->name('logistics');
+    Route::get('create', 'create')->name('logistics.create');
+    Route::post('store', 'store')->name('logistics.store');
+    Route::get('show/{id}', 'show')->name('logistics.show');
+    Route::get('edit/{id}', 'edit')->name('logistics.edit');
+    Route::put('edit/{id}', 'update')->name('logistics.update');
+    Route::delete('destroy/{id}', 'destroy')->name('logistics.destroy');
+    }); 
 
 // Route Tambah Anggota
 Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('tambah_anggota');

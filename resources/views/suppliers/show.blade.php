@@ -138,7 +138,7 @@
                     </li>
                     <li class="menu-header">Master</li>
                     <li class="dropdown">
-                        <a href="{{ route('products') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
+                        <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
                     </li>
                     <li class=active class="dropdown">
                         <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
@@ -180,18 +180,18 @@
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h1>Tambah Supplier</h1>
+                    <h1>Detail Data Supplier</h1>
                     <div class="section-header-breadcrumb">
                         <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                         <div class="breadcrumb-item"><a href="{{ route('suppliers') }}">Data Supplier</a></div>
-                        <div class="breadcrumb-item">Tambah Supplier</div>
+                        <div class="breadcrumb-item">Detail Data Supplier</div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Form Tambah Supplier</h4>
+                                <h4>Detail Supplier</h4>
                             </div>
                             <div class="card-body">
                                 <form action="{{ route('suppliers.store', $supplier->id) }}" method="POST">
@@ -225,6 +225,18 @@
                                         <input type="text" name="instansi_supplier" class="form-control"
                                             placeholder=""
                                             value="{{ $supplier->instansi_supplier }}" disabled readonly>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <label class="form-label">Ditambahkan Pada</label>
+                                            <input type="text" name="created_at" class="form-control" placeholder="Created At"
+                                            value="{{ $supplier->created_at }}" disabled readonly>
+                                        </div>
+                                        <div class="col mb-3">
+                                            <label class="form-label">Diperbarui Pada</label>
+                                            <input type="text" name="updated_at" class="form-control" placeholder="Updated At"
+                                            value="{{ $supplier->updated_at }}" disabled readonly>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="d-grid">

@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Logistic extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title',
-        'price',
-        'product_code',
-        'description',
+        'kode_logistik',
+        'nama_logistik',
+        'satuan_logistik',
+        'qr_code_label',
     ];
 }

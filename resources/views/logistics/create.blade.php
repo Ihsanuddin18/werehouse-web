@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Data Supplier &rsaquo; Tambah Supplier &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Data Logistik &rsaquo; Tambah Logistik &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
 
     <!-- General CSS Files -->
@@ -137,10 +137,11 @@
                         <a href="{{ route('home') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
                     </li>
                     <li class="menu-header">Master</li>
-                    <li class="dropdown">
-                        <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
-                    </li>
                     <li class=active class="dropdown">
+                        <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data
+                                Logistik</span></a>
+                    </li>
+                    <li class="dropdown">
                         <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
                     </li>
                     <li class="dropdown">
@@ -180,55 +181,53 @@
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h1>Tambah Supplier</h1>
+                    <h1>Tambah Data Logistik</h1>
                     <div class="section-header-breadcrumb">
                         <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                        <div class="breadcrumb-item"><a href="{{ route('suppliers') }}">Data Supplier</a></div>
-                        <div class="breadcrumb-item">Tambah Supplier</div>
+                        <div class="breadcrumb-item"><a href="{{ route('logistics') }}">Data Logistik</a></div>
+                        <div class="breadcrumb-item">Tambah Data Logistik</div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Form Tambah Supplier</h4>
+                                <h4>Form Tambah Data Logistik</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('suppliers.store') }}" method="POST"
-                                    enctype="multipart/form-data">
+                                <form action="{{ route('logistics.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="kode_supplier">Kode Supplier</label>
-                                        <input type="text" class="form-control" name="kode_supplier"
-                                            placeholder="*Masukkan kode supplier">
+                                        <label for="kode_logistik">Kode Logistik</label>
+                                        <input type="text" class="form-control" name="kode_logistik"
+                                            placeholder="*Masukkan kode logistik">
                                     </div>
                                     <div class="form-group">
-                                        <label for="nama_supplier">Nama Supplier</label>
-                                        <input type="text" class="form-control" name="nama_supplier"
-                                            placeholder="*Masukkan nama supplier">
+                                        <label for="nama_logistik">Nama Logistik</label>
+                                        <input type="text" class="form-control" name="nama_logistik"
+                                            placeholder="*Masukkan nama logistik">
                                     </div>
                                     <div class="form-group">
-                                        <label for="email_supplier">Email</label>
-                                        <input type="email" name="email_supplier" class="form-control"
-                                            placeholder="*Masukkan alamat email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="telepon_supplier">Telepon</label>
-                                        <input type="tel" name="telepon_supplier" class="form-control"
-                                            placeholder="*Masukkan nomor telepon">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="instansi_supplier">Instansi</label>
-                                        <select name="instansi_supplier" class="form-control">
-                                            <option value="" selected disabled>*Pilih instansi</option>
-                                            <option value="Pemerintah">Pemerintah</option>
-                                            <option value="Kabupaten/Kota">Kabupaten/Kota</option>
-                                            <option value="Kecamatan">Kecamatan</option>
-                                            <option value="Desa/Kelurahan">Desa/Kelurahan</option>
-                                            <option value="Swasta">Swasta</option>
-                                            <option value="Umum">Umum</option>
+                                        <label for="satuan_logistik">Satuan</label>
+                                        <select name="satuan_logistik" class="form-control">
+                                            <option value="" selected disabled>*Pilih satuan</option>
+                                            <option value="Kilogram (kg)">Kilogram (kg)</option>
+                                            <option value="Gram (g)">Gram (g)</option>
+                                            <option value="Liter (l)">Liter (l)</option>
+                                            <option value="Pieces (pcs)">Pieces (pcs)</option>
+                                            <option value="Unit (unit)">Unit (unit)</option>
+                                            <option value="Botol (botol)">Botol (botol)</option>
+                                            <option value="Kardus (kardus)">Kardus (kardus)</option>
+                                            <option value="Drum (drum)">Drum (drum)</option>
+                                            <option value="Roll (roll)">Roll (roll)</option>
+                                            <option value="Karton (karton)">Karton (karton)</option>
                                             <option value="Lainnya">Lainnya</option>
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="qr_code_label">QR Label</label>
+                                        <input type="text" name="qr_code_label" class="form-control"
+                                            placeholder="*Masukkan qr label">
                                     </div>
                                     <div class="row">
                                         <div class="d-grid">

@@ -186,7 +186,7 @@
             </li>
             <li class="menu-header">Master</li>
             <li class="dropdown">
-              <a href="{{ route('products') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
+              <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
             </li>
             <li class="dropdown">
               <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
