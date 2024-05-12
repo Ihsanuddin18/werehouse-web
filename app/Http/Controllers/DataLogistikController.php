@@ -1,62 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\DataLogistik;
 use Illuminate\Http\Request;
 
 class DataLogistikController extends Controller
+
 {
+
     public function index()
     {
         return view('datalogistik.index');
     }
-
-    public function showEditDataLogistik($id)
+    public function create()
     {
-        // Mengambil data logistik berdasarkan ID
-        $dataLogistik = DataLogistik::findOrFail($id);
-
-        // Menampilkan halaman edit data logistik dengan data yang dipilih
-        return view('data_logistik.edit', compact('dataLogistik'));
+        return view('datalogistik.create');
     }
 
-    public function editDataLogistik(Request $request, $id)
+    public function store(Request $request)
     {
-        // Validasi data yang dikirim
-        $request->validate([
-            'nama_logistik' => 'required|string',
-            'satuan_logistik' => 'required|string',
-        ]);
+        datalogistik::create($request->all());
+        return redirect()->route('datalogistik')->with('Berhasil','Data Logistik Berhasil Ditambahkan!');
 
-        // Mengambil data logistik berdasarkan ID
-        $dataLogistik = DataLogistik::findOrFail($id);
-
-        // Mengupdate data logistik
-        $dataLogistik->update([
-            'nama_logistik' => $request->nama_logistik,
-            'satuan_logistik' => $request->satuan_logistik,
-        ]);
-
-        // Redirect ke halaman data logistik dengan pesan sukses
-        return redirect()->route('datalogistik.index')->with('success', 'Data logistik berhasil diperbarui.');
     }
 
-    public function hapusDataLogistik($id)
-    {
-        // Menghapus data logistik berdasarkan ID
-        DataLogistik::findOrFail($id)->delete();
-
-        // Redirect ke halaman data logistik dengan pesan sukses
-        return redirect()->route('datalogistik.index')->with('success', 'Data logistik berhasil dihapus.');
-    }
-
-    public function cetakSticker($id)
-    {
-        // Mengambil data logistik berdasarkan ID
-        $dataLogistik = DataLogistik::findOrFail($id);
-
-        // Mengirim data logistik ke view untuk dicetak
-        return view('data_logistik.print', compact('dataLogistik'));
-    }
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Dashboard &rsaquo; Data Logistik &mdash; Werehouse BPBD | Kabupaten Jember</title>
+  <title>Data Logistik &rsaquo; Tambah Data &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -14,20 +14,17 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-
   <!-- Start GA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'UA-94034622-3');
+    gtag('config', 'UA-94034622-3');
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  
-  <!-- /END GA --></head>
+  <!-- /END GA -->
+</head>
 
 <body>
   <div id="app">
@@ -42,7 +39,7 @@
           <div class="search-element">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-          </div>
+            </div>
           <div id="clock" style="color: white; margin-left: 15px;"></div>
         </form>
               <script>
@@ -168,87 +165,58 @@
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
-          <div class="section-header">
-            <h1>Data Logistik</h1>
+            <div class="section-header">
+            <h1>Tambah Data Logistik</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-              <div class="breadcrumb-item">Data Logistik</div>
+                <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
+                <div class="breadcrumb-item"><a href="{{ route('datalogistik.index') }}">Data Logistik</a></div>
+                <div class="breadcrumb-item">Tambah Data</div>
             </div>
-          </div>
-          <div class="button-container">
-              <div class="text-left">
-                  <button class="btn btn-primary btn-lg" onclick="window.location.href='tambah-data'">
-                      <i class="fas fa-plus"></i> Tambah
-                  </button>
-              </div>
-              <div class="text-right">
-                  <span class="button-text">Buat dan cetak barcode label Logistik baru?<br> Tekan tombol dibawah ini</br></span>
-                  <button class="btn btn-warning btn-lg" onclick="window.location.href='cetak-barcode-label'">
-                      <i class="fas fa-barcode"></i> Buat
-                  </button>
-              </div>
-          </div>
-          <style>
-              .button-container {
-                  display: flex;
-                  justify-content: space-between;
-              }
-              .text-left,
-              .text-right {
-                  flex: 1;
-                  text-align: center; 
-              }
-              .button-text {
-                  margin-right: 8px; 
-              } 
-
-          </style> <br> 
-          <div class="row">
-              <div class="col-12">
+            </div>
+            <div class="row">
+            <div class="col-12 col-md-6 col-lg-6">
                 <div class="card">
-                  <div class="card-header">
-                    <h4>Daftar Logistik</h4>
-                    <div class="card-header-form">
-                    </div>
-                  </div>
-                    <div class="table-responsive">
-                      <table class="table table-striped">
-                        <tr>
-                          <th>No</th>
-                          <th>Kode Logistik</th>
-                          <th>Nama Logistik</th>
-                          <th>Jenis Satuan</th>
-                          <th>Aksi</th>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>09386437</td>
-                          <td>Kursi Lipat</td>
-                          <td>Pcs</td>
-                          <td>
-                              <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit">
-                                  <i class="fas fa-pencil-alt"></i>
-                              </a>
-                              <a class="btn btn-info btn-action mr-1" data-toggle="tooltip" title="Show">
-                                  <i class="fas fa-eye"></i>
-                              </a>
-                              <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data ini?" data-confirm-yes="alert('Deleted')">
-                                  <i class="fas fa-trash"></i>
-                              </a>
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
-                    <div class="card">
-                  </div>
-                  </div>
+                <div class="card-header">
+                <h4>Form Tambah Data Logistik</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('datalogistik.store') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="kode_logistik">Kode Logistik</label>
+                            <input type="text" class="form-control" id="kode_logistik" name="kode_logistik">
+                        </div>
+                        <div class="form-group">
+                            <label for="nama_logistik">Nama Logistik</label>
+                            <input type="text" class="form-control" id="nama_logistik" name="nama_logistik">
+                        </div>
+                        <div class="form-group">
+                            <label for="jenis_satuan">Jenis Satuan</label>
+                            <select class="form-control" id="jenis_satuan" name="jenis_satuan">
+                                <option value="kg">Kilogram (kg)</option>
+                                <option value="g">Gram (g)</option>
+                                <option value="mg">Miligram (mg)</option>
+                                <option value="lb">Pound (lb)</option>
+                                <option value="ltr">Liter (ltr)</option>
+                                <option value="pcs">Pieces (pcs)</option>
+                                <option value="unit">Unit</option>
+                                <option value="buah">Buah</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
               </div>
+            </div>
           </div>
-            <div class="section-body">
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
+    </div>
+
       <footer class="main-footer">
         <div class="footer-left">
          Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
@@ -258,73 +226,6 @@
       </footer>
     </div>
   </div>
-  <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form class="needs-validation" novalidate="">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tambahModalLabel">Edit Data</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group row">
-                        <label for="kode_logistik" class="col-sm-3 col-form-label">Kode Logistik</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="kode_logistik" name="kode_logistik" value="LOG123" required>
-                            <div class="invalid-feedback">
-                                Kolom wajib diisi!
-                            </div>
-                            <div class="valid-feedback">
-                                Valid!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="nama_logistik" class="col-sm-3 col-form-label">Nama Logistik</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama_logistik" name="nama_logistik" value="Kursi Lipat" required>
-                            <div class="invalid-feedback">
-                                Kolom wajib diisi!
-                            </div>
-                            <div class="valid-feedback">
-                                Valid!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="stok" class="col-sm-3 col-form-label">Jenis Satuan</label>
-                        <div class="col-sm-9">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="satuan" name="satuan" required>
-                                        <option value="">Pilih Satuan</option>
-                                        <option value="kg">Kilogram (kg)</option>
-                                        <option value="g">Gram (g)</option>
-                                        <option value="l">Liter (l)</option>
-                                        <option value="pcs">Pieces (pcs)</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="invalid-feedback">
-                                Kolom wajib diisi!
-                            </div>
-                            <div class="valid-feedback">
-                                Valid!
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Perbarui</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 
   <!-- General JS Scripts -->
   <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>

@@ -132,7 +132,7 @@
               </li>
             <li class="menu-header">Master</li>
             <li class=active class="dropdown">
-              <a href="{{ route('datalogistik.index') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
+              <a href="{{ route('products') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
             </li>
             <li class="dropdown">
                <a href="{{ route('data_supplier') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
@@ -167,87 +167,81 @@
 
       <!-- Main Content -->
       <div class="main-content">
-        <section class="section">
-          <div class="section-header">
-            <h1>Data Logistik</h1>
+    <section class="section">
+        <div class="section-header">
+            <h1>List Product</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-              <div class="breadcrumb-item">Data Logistik</div>
+                <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
+                <div class="breadcrumb-item">List Product</div>
             </div>
-          </div>
-          <div class="button-container">
-              <div class="text-left">
-                  <button class="btn btn-primary btn-lg" onclick="window.location.href='tambah-data'">
-                      <i class="fas fa-plus"></i> Tambah
-                  </button>
-              </div>
-              <div class="text-right">
-                  <span class="button-text">Buat dan cetak barcode label Logistik baru?<br> Tekan tombol dibawah ini</br></span>
-                  <button class="btn btn-warning btn-lg" onclick="window.location.href='cetak-barcode-label'">
-                      <i class="fas fa-barcode"></i> Buat
-                  </button>
-              </div>
-          </div>
-          <style>
-              .button-container {
-                  display: flex;
-                  justify-content: space-between;
-              }
-              .text-left,
-              .text-right {
-                  flex: 1;
-                  text-align: center; 
-              }
-              .button-text {
-                  margin-right: 8px; 
-              } 
-
-          </style> <br> 
-          <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Daftar Logistik</h4>
-                    <div class="card-header-form">
-                    </div>
-                  </div>
-                    <div class="table-responsive">
-                      <table class="table table-striped">
-                        <tr>
-                          <th>No</th>
-                          <th>Kode Logistik</th>
-                          <th>Nama Logistik</th>
-                          <th>Jenis Satuan</th>
-                          <th>Aksi</th>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>09386437</td>
-                          <td>Kursi Lipat</td>
-                          <td>Pcs</td>
-                          <td>
-                              <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Edit">
-                                  <i class="fas fa-pencil-alt"></i>
-                              </a>
-                              <a class="btn btn-info btn-action mr-1" data-toggle="tooltip" title="Show">
-                                  <i class="fas fa-eye"></i>
-                              </a>
-                              <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?|Apakah anda yakin ingin menghapus Data ini?" data-confirm-yes="alert('Deleted')">
-                                  <i class="fas fa-trash"></i>
-                              </a>
-                          </td>
-                        </tr>
-                      </table>
-                    </div>
-                    <div class="card">
-                  </div>
-                  </div>
+        </div>
+        <div class="button-container">
+            <div class="d-flex align-items-center justify-content-between">
+                <h1 class="mb-0">List Product</h1>
+                <a href="{{ route('products.create') }}" class="btn btn-primary">Add Product</a>
+            </div>
+            @if(Session::has('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('success') }}
                 </div>
-              </div>
-          </div>
-            <div class="section-body">
-          </div>
-        </section>
+            @endif
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Daftar Produk</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Price</th>
+                                        <th>Product Code</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @if($products->count() > 0)
+                                    @foreach($products as $product)
+                                            <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $product->title }}</td>
+                                            <td>{{ $product->price }}</td>
+                                            <td>{{ $product->product_code }}</td>
+                                            <td>{{ $product->description }}</td>
+                                                <td>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="{{ route('products.show', $product->id) }}" type="button" class="btn btn-secondary">Detail</a>
+                                                    <a href="{{ route('products.edit', $product->id)}}" type="button" class="btn btn-warning">Edit</a>
+                                                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger m-0">Delete</button>
+                                                    </form>
+                                                </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td colspan="6" class="text-center">No products found</td>
+                                        </tr>
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
       </div>
       <footer class="main-footer">
         <div class="footer-left">

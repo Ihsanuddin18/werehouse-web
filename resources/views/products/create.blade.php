@@ -129,7 +129,7 @@
               </li>
             <li class="menu-header">Master</li>
             <li class=active class="dropdown">
-              <a href="{{ route('data_logistik') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
+              <a href="{{ route('products.create') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
             </li>
             <li class="dropdown">
                <a href="{{ route('data_supplier') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
@@ -165,52 +165,53 @@
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
-          <div class="section-header">
+            <div class="section-header">
             <h1>Tambah Data Logistik</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="{{ route('data_logistik') }}">Data Logistik</a></div>
-              <div class="breadcrumb-item">Tambah Data</div>
+                <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
+                <div class="breadcrumb-item"><a href="{{ route('products') }}">Data Logistik</a></div>
+                <div class="breadcrumb-item">Tambah Data</div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                <div class="card-header">
+                <h4>Form Tambah Data Logistik</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="text" name="title" class="form-control" placeholder="Title">
+                            </div>
+                            <div class="col">
+                                <input type="text" name="price" class="form-control" placeholder="Price">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="text" name="product_code" class="form-control" placeholder="Product Code">
+                            </div>
+                            <div class="col">
+                                <textarea class="form-control" name="description" placeholder="Descriptoin"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Tambah</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row">
-              <div class="col-12 col-md-6 col-lg-6">
-                <div class="card">
-                  <div class="card-header">
-                    <h4>Form Tambah Data Logistik</h4>
-                  </div>
-                  <div class="card-body">
-                    <div class="form-group">
-                      <label>Kode Logistik</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label>Nama Logistik</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label>Jenis Satuan</label>
-                      <select class="form-control">
-                        <option value="kg">Kilogram (kg)</option>
-                        <option value="g">Gram (g)</option>
-                        <option value="mg">Miligram (mg)</option>
-                        <option value="lb">Pound (lb)</option>
-                        <option value="ltr">Liter (ltr)</option>
-                        <option value="pcs">Pieces (pcs)</option>
-                        <option value="unit">Unit</option>
-                        <option value="buah">Buah</option>
-                      </select>
-                    </div>
-                    <div class="row justify-content-end">
-                    <div class="col-auto">
-                        <a class="btn btn-primary btn-action mr-1" data-toggle="modal" data-target="#tambahModal" data-toggle="tooltip" title="Tambah" data-confirm="Apakah anda yakin ingin menambahkan data ini dalam daftar logistik?" data-confirm-yes="alert('Added')"><i class="fas fa-plus"></i> Tambah </a>
-                    </div>
-                  </div>
-                </div>
-          <div class="section-body">
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
+    </div>
+
       <footer class="main-footer">
         <div class="footer-left">
          Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
