@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_supplier', function (Blueprint $table) {
-            $table->id('id_supplier');
-            $table->string('nama_supplier');
-            $table->string('email_supplier');
-            $table->string('telepon_supplier');
-            $table->string('instansi_supplier');
+        Schema::create('inlogistics', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_supplier');
+        Schema::dropIfExists('inlogistics');
     }
 };

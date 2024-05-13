@@ -191,9 +191,7 @@
             <li class="dropdown">
               <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
             </li>
-            <li class="dropdown">
-              <a href="{{ route('tambah_anggota')}}"><i class="far fa-user"></i> <span>Tambah Anggota</span></a>
-            </li>
+           
             <li class="menu-header">Aktivitas</li>
             <li>
               <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="fas fa-sign-in-alt"></i> <span>Logistik
