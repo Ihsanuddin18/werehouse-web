@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('inlogistics', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_logistik_masuk');
+            $table->string('satuan_logistik_masuk');
+            $table->integer('jumlah_logistik_masuk');
+            $table->string('nama_supplier');
+            $table->date('tanggal_masuk');
+            $table->date('expayer_logistik');
+            $table->string('keterangan_masuk');
             $table->timestamps();
         });
     }

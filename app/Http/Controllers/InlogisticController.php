@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Inlogistic;
 
 class InlogisticController extends Controller
 {
@@ -11,7 +12,8 @@ class InlogisticController extends Controller
      */
     public function index()
     {
-        //
+        $inlogistics = inlogistic::all();
+        return view('inlogistics.index', ['inlogistics' => $inlogistics]);
     }
 
     /**
@@ -19,7 +21,7 @@ class InlogisticController extends Controller
      */
     public function create()
     {
-        //
+        return view('inlogistics.create');
     }
 
     /**
@@ -27,7 +29,9 @@ class InlogisticController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Inlogistic::create($request->all());
+
+        return redirect()->route('inlogistics')->with('success', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -35,7 +39,9 @@ class InlogisticController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $inlogistic = Inlogistic::findOrFail($id);
+
+        return view('inlogistics.show', compact('inlogistic'));
     }
 
     /**
@@ -43,7 +49,9 @@ class InlogisticController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $inlogistic = Inlogistic::findOrFail($id);
+
+        return view('inlogistics.edit', compact('inlogistic'));
     }
 
     /**
@@ -51,7 +59,11 @@ class InlogisticController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $inlogistic = Inlogistic::findOrFail($id);
+  
+        $inlogistic->update($request->all());
+  
+        return redirect()->route('inlogistics')->with('success', 'Data berhasil Dirubah !');
     }
 
     /**
@@ -59,6 +71,10 @@ class InlogisticController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $inlogistic = Inlogistic::findOrFail($id);
+  
+        $inlogistic->delete();
+  
+        return redirect()->route('inlogistics')->with('success', 'Data berhasil Dihapus !');
     }
 }

@@ -154,53 +154,6 @@
               </div>
             </div>
           </div>
-          <div class="col-xl-4 col-lg-5">
-            <div
-              class="ud-contact-form-wrapper wow fadeInUp"
-              data-wow-delay=".2s">
-              <h3 class="ud-contact-form-title">Kirim Pesan</h3>
-                <form class="ud-contact-form" method="POST" action="{{ route('submit.form') }}">
-                  @csrf <!-- Tambahkan ini untuk keamanan CSRF -->
-                <div class="ud-form-group">
-                  <label for="fullName">Nama Lengkap</label>
-                  <input
-                    type="text"
-                    name="fullName"
-                    placeholder="*nama lengkap"
-                  />
-                </div>
-                <div class="ud-form-group">
-                  <label for="email">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="*email@gmail.com"
-                  />
-                </div>
-                <div class="ud-form-group">
-                  <label for="phone">Telepon</label>
-                  <input
-                    type="text"
-                    name="phone"
-                    placeholder="*(+62) 123-456-789"
-                  />
-                </div>
-                <div class="ud-form-group">
-                  <label for="message">Pesan</label>
-                  <textarea
-                    name="message"
-                    rows="1"
-                    placeholder="*isi pesan"
-                  ></textarea>
-                </div>
-                <div class="ud-form-group mb-0">
-                  <button type="submit" class="ud-main-btn">
-                  Kirim 
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
         </div>
       </div>
     </section>

@@ -9,12 +9,12 @@ class Inlogistic extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'kode_logistik_masuk',
-        'id_suppliers',
-        'id_logistics',
-        'jumlah_masuk',
+        'nama_logistik_masuk',
+        'satuan_logistik_masuk',
+        'jumlah_logistik_masuk',
+        'nama_supplier',
         'tanggal_masuk',
         'expayer_logistik',
-        'dokumentasi_masuk',
+        'keterangan_masuk',
     ];
 }

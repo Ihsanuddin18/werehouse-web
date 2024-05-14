@@ -3,9 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TambahAnggotaController;
-use App\Http\Controllers\LogistikMasukController;
 use App\Http\Controllers\LogistikKeluarController;
-use App\Http\Controllers\TambahLogistikMasukController;
 use App\Http\Controllers\TambahLogistikKeluarController;
 use App\Http\Controllers\LokasiPengirimanController;
 use App\Http\Controllers\CetakBarcodeLabelController;
@@ -14,6 +12,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\LogisticController;
+use App\Http\Controllers\InlogisticController;
 
 
 
@@ -59,6 +58,34 @@ Route::controller(LogisticController::class)->prefix('logistics')->group(functio
     Route::delete('destroy/{id}', 'destroy')->name('logistics.destroy');
     }); 
 
+
+//  logistik masuk
+Route::controller(InlogisticController::class)->prefix('inlogistics')->group(function () {
+    Route::get('', 'index')->name('inlogistics');
+    Route::get('create', 'create')->name('inlogistics.create');
+    Route::post('store', 'store')->name('inlogistics.store');
+    Route::get('show/{id}', 'show')->name('inlogistics.show');
+    Route::get('edit/{id}', 'edit')->name('inlogistics.edit');
+    Route::put('edit/{id}', 'update')->name('inlogistics.update');
+    Route::delete('destroy/{id}', 'destroy')->name('inlogistics.destroy');
+    }); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Route Tambah Anggota
 Route::get('/tambah-anggota', [TambahAnggotaController::class, 'index'])->name('tambah_anggota');
 Route::get('/tambah-anggota', [TambahAnggotaController::class, 'showTambahAnggota'])->name('tambah_anggota'); 
@@ -68,16 +95,6 @@ Route::get('/tambah-anggota', [TambahAnggotaController::class, 'showTambahAnggot
 
     // Route untuk menghapus anggota
     Route::delete('/tambah-anggota/{id}', [TambahAnggotaController::class, 'destroy'])->name('tambah_anggota.destroy');
-
-
-//Route Logistik Masuk 
-Route::get('/logistik_masuk', [LogistikMasukController::class, 'index'])->name('logistik_masuk.index');
-Route::get('/logistik-masuk', [LogistikMasukController::class, 'showLogistikMasuk'])->name('logistik_masuk'); 
-    Route::get('/logistik_masuk/{id}/edit', [LogistikMasukController::class, 'edit'])->name('logistik_masuk.edit');
-    Route::put('/logistik_masuk/{id}', [LogistikMasukController::class, 'update'])->name('logistik_masuk.update');
-    Route::delete('/logistik_masuk/{id}', [LogistikMasukController::class, 'destroy'])->name('logistik_masuk.destroy');
-    Route::get('/logistik_masuk/print', [LogistikMasukController::class, 'printPdf'])->name('logistik_masuk.printPdf');
-    Route::get('/tambah-logistik-masuk', [TambahLogistikMasukController::class, 'showTambahLogistikMasuk'])->name('tambah_logistik_masuk');
 
 
 //Route Logistik Keluar

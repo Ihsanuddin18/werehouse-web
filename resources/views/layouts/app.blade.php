@@ -194,16 +194,12 @@
            
             <li class="menu-header">Aktivitas</li>
             <li>
-              <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="fas fa-sign-in-alt"></i> <span>Logistik
+              <a href="{{ route('inlogistics')}}" class="nav-link"><i class="fas fa-sign-in-alt"></i> <span>Logistik
                   Masuk</span></a>
             </li>
             <li>
               <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                 <span>Logistik Keluar</span></a>
-            </li>
-            <li>
-              <a href="{{ route('lokasi_pengiriman')}}" class="nav-link"><i class="fas fa-map-marker-alt"></i>
-                <span>Lokasi Pengiriman</span></a>
             </li>
             <li class="menu-header">Pengaturan</li>
             <li>
