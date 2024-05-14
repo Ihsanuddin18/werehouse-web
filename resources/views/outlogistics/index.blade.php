@@ -147,11 +147,11 @@
                                     Supplier</span></a>
                         </li>
                         <li class="menu-header">Aktivitas</li>
-                        <li class=active>
+                        <li>
                             <a href="{{ route('inlogistics')}}" class="nav-link"><i class="fas fa-sign-in-alt"></i>
                                 <span>Logistik Masuk</span></a>
                         </li>
-                        <li>
+                        <li class=active>
                             <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                                 <span>Logistik Keluar</span></a>
                         </li>
@@ -183,7 +183,7 @@
                     </div>
                     <div class="button-container">
                         <div class="d-flex align-items-center justify-content-between">
-                            <a href="{{ route('inlogistics.create') }}" class="btn btn-primary">Tambah</a>
+                            <a href="{{ route('outlogistics.create') }}" class="btn btn-primary">Tambah</a>
                         </div>
                         @if(Session::has('success'))
                             <div class="alert alert-success" role="alert">
@@ -205,32 +205,32 @@
                                                 <th>Nama Logistik</th>
                                                 <th>Satuan Logistik</th>
                                                 <th>Jumlah Logistik</th>
-                                                <th>Nama Supplier</th>
-                                                <th>Tanggal Masuk</th>
-                                                <th>Tanggal Kadaluarsa</th>
+                                                <th>Nama Penerima</th>
+                                                <th>NIK / KK</th>
+                                                <th>Alamat Penerima</th>
                                                 <th>Keterangan</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($inlogistics->count() > 0)
-                                                @foreach($inlogistics as $inlogistic)
+                                            @if($outlogistics->count() > 0)
+                                                @foreach($outlogistics as $outlogistic)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $inlogistic->nama_logistik_masuk }}</td>
-                                                        <td>{{ $inlogistic->satuan_logistik_masuk }}</td>
-                                                        <td>{{ $inlogistic->jumlah_logistik_masuk }}</td>
-                                                        <td>{{ $inlogistic->nama_supplier }}</td>
-                                                        <td>{{ $inlogistic->tanggal_masuk }}</td>
-                                                        <td>{{ $inlogistic->expayer_logistik }}</td>
-                                                        <td>{{ $inlogistic->keterangan_masuk }}</td>
+                                                        <td>{{ $outlogistic->nama_logistik_keluar }}</td>
+                                                        <td>{{ $outlogistic->satuan_logistik_keluar }}</td>
+                                                        <td>{{ $outlogistic->jumlah_logistik_keluar }}</td>
+                                                        <td>{{ $outlogistic->nama_penerima }}</td>
+                                                        <td>{{ $outlogistic->nik_kk_penerima }}</td>
+                                                        <td>{{ $outlogistic->alamat_penerima }}</td>
+                                                        <td>{{ $outlogistic->keterangan_keluar }}</td>
                                                         <td>
                                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                                <a href="{{ route('inlogistics.show', $inlogistic->id) }}"
+                                                                <a href="{{ route('outlogistics.show', $outlogistic->id) }}"
                                                                     type="button" class="btn btn-secondary">Detail</a>
-                                                                <a href="{{ route('inlogistics.edit', $inlogistic->id)}}"
+                                                                <a href="{{ route('outlogistics.edit', $outlogistic->id)}}"
                                                                     type="button" class="btn btn-warning">Edit</a>
-                                                                <form action="{{ route('inlogistics.destroy', $inlogistic->id) }}"
+                                                                <form action="{{ route('outlogistics.destroy', $outlogistic->id) }}"
                                                                     method="POST" class="btn btn-danger p-0"
                                                                     onsubmit="return confirm('Delete?')">
                                                                     @csrf

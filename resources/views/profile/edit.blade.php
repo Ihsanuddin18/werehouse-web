@@ -132,24 +132,18 @@
               </li>
             <li class="menu-header">Master</li>
             <li class="dropdown">
-              <a href="{{ route('datalogistik.data_logistik') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
+              <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
             </li>
             <li class="dropdown">
-               <a href="{{ route('data_supplier') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
-            </li>
-            <li class="dropdown">
-              <a href="{{ route('tambah_anggota')}}"><i class="far fa-user"></i> <span>Tambah Anggota</span></a>
+               <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
             </li>
             <li class="menu-header">Aktivitas</li>
               <li>
-                <a href="{{ route('logistik_masuk')}}" class="nav-link"><i class="fas fa-sign-in-alt"></i> <span>Logistik Masuk</span></a>
+                <a href="{{ route('inlogistics')}}" class="nav-link"><i class="fas fa-sign-in-alt"></i> <span>Logistik Masuk</span></a>
               </li>
               <li>
-                <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i> <span>Logistik Keluar</span></a>
+                <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i> <span>Logistik Keluar</span></a>
             </li>
-              <li>
-                <a href="{{ route('lokasi_pengiriman')}}" class="nav-link"><i class="fas fa-map-marker-alt"></i> <span>Lokasi Pengiriman</span></a>
-              </li>
             <li class="menu-header">Pengaturan</li>
               <li class=active>
                 <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i> <span>Profil</span></a>

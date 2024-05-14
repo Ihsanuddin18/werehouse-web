@@ -198,7 +198,7 @@
                   Masuk</span></a>
             </li>
             <li>
-              <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
+              <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                 <span>Logistik Keluar</span></a>
             </li>
             <li class="menu-header">Pengaturan</li>
@@ -262,7 +262,6 @@
                 <div class="col-sm-9">
                   <input type="text" class="form-control" id="lokasi_pengiriman" name="lokasi_pengiriman"
                     value="Lokasi Pengiriman" readonly>
-                  <a href="{{ route('lokasi_pengiriman') }}" target="_blank">Buka Lokasi</a>
                   <div class="invalid-feedback">
                     Kolom wajib diisi!
                   </div>

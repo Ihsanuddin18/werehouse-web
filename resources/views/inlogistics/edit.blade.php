@@ -156,7 +156,7 @@
                                 <span>Logistik Masuk</span></a>
                         </li>
                         <li>
-                            <a href="{{ route('logistik_keluar')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
+                            <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                                 <span>Logistik Keluar</span></a>
                         </li>
                         <li class="menu-header">Pengaturan</li>

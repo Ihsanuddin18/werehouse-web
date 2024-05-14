@@ -4,17 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Dashboard &rsaquo; Data Supplier &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Logistik Masuk &rsaquo; Tambah Logistik Masuk &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
     <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/select2/dist/css/select2.min.css">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
+
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -24,12 +26,14 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
+
+
     <!-- /END GA -->
 </head>
 
 <body>
     <div id="app">
-        <div="main-wrapper main-wrapper-1">
+        <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
             <nav class="navbar navbar-expand-lg main-navbar">
                 <form class="form-inline mr-auto">
@@ -147,11 +151,11 @@
                                     Supplier</span></a>
                         </li>
                         <li class="menu-header">Aktivitas</li>
-                        <li class=active>
+                        <li>
                             <a href="{{ route('inlogistics')}}" class="nav-link"><i class="fas fa-sign-in-alt"></i>
                                 <span>Logistik Masuk</span></a>
                         </li>
-                        <li>
+                        <li class=active>
                             <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                                 <span>Logistik Keluar</span></a>
                         </li>
@@ -175,97 +179,112 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Data Logistik</h1>
+                        <h1>Tambah Logistik Keluar</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item">Data Logistik</div>
+                            <div class="breadcrumb-item active"><a href="{{ route('outlogistics') }}">Logistik Masuk</a>
+                            </div>
+                            <div class="breadcrumb-item">Tambah Logistik Masuk</div>
                         </div>
                     </div>
-                    <div class="button-container">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <a href="{{ route('inlogistics.create') }}" class="btn btn-primary">Tambah</a>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Form Tambah Logistik Masuk</h4>
                         </div>
-                        @if(Session::has('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ Session::get('success') }}
-                            </div>
-                        @endif
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Daftar Logistik</h4>
+                        <div class="card-body">
+                            <form action="{{ route('outlogistics.update', $outlogistic->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="tanggal_keluar">Tanggal Keluar</label>
+                                        <input type="date" class="form-control" name="tanggal_keluar"
+                                            placeholder="*Tanggal Keluar" value="{{ $outlogistic->tanggal_keluar }}">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h4>Data Penerima</h4>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="nama_penerima">Nama Penerima</label>
+                                        <input type="text" class="form-control" name="nama_penerima"
+                                            placeholder="*Nama Penerima" value="{{ $outlogistic->nama_penerima }}">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="nik_kk_penerima">NIK / KK</label>
+                                        <input type="number" class="form-control" name="nik_kk_penerima"
+                                            placeholder="*Nik/Kk" value="{{ $outlogistic->nik_kk_penerima }}">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="alamat_penerima">Alamat Penerima</label>
+                                        <input type="text" class="form-control" name="alamat_penerima"
+                                            placeholder="*Alamat Penerima" value="{{ $outlogistic->alamat_penerima }}">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h4>Data Logistik</h4>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="nama_logistik_keluar">Nama Logistik</label>
+                                        <input type="text" class="form-control" name="nama_logistik_keluar"
+                                            placeholder="*Nama Logistik"
+                                            value="{{ $outlogistic->nama_logistik_keluar }}">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="jumlah_logistik_keluar">Jumlah</label>
+                                        <input type="number" class="form-control" name="jumlah_logistik_keluar"
+                                            placeholder="*Masukkan Jumlah"
+                                            value="{{ $outlogistic->jumlah_logistik_keluar }}">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="satuan_logistik_keluar">Satuan</label>
+                                        <select class="form-control" name="satuan_logistik_keluar">
+                                            <option value="{{ $outlogistic->satuan_logistik_keluar }}" selected>*Pilih
+                                                satuan</option>
+                                            <option value="" selected disabled>*Pilih satuan</option>
+                                            <option value="Kilogram (kg)">Kilogram (kg)</option>
+                                            <option value="Gram (g)">Gram (g)</option>
+                                            <option value="Liter (l)">Liter (l)</option>
+                                            <option value="Pieces (pcs)">Pieces (pcs)</option>
+                                            <option value="Unit (unit)">Unit (unit)</option>
+                                            <option value="Botol (botol)">Botol (botol)</option>
+                                            <option value="Kardus (kardus)">Kardus (kardus)</option>
+                                            <option value="Drum (drum)">Drum (drum)</option>
+                                            <option value="Roll (roll)">Roll (roll)</option>
+                                            <option value="Karton (karton)">Karton (karton)</option>
+                                            <option value="Lainnya">Lainnya</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="keterangan_keluar">Keterangan</label>
+                                        <input type="text" class="form-control" name="keterangan_keluar"
+                                            placeholder="*Masukkan Keterangan"
+                                            value="{{ $outlogistic->keterangan_keluar }}">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <label class="form-label">Ditambahkan Pada</label>
+                                            <input type="text" name="created_at" class="form-control"
+                                                placeholder="Created At" value="{{ $outlogistic->created_at }}" disabled
+                                                readonly>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead class="table-primary">
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama Logistik</th>
-                                                <th>Satuan Logistik</th>
-                                                <th>Jumlah Logistik</th>
-                                                <th>Nama Supplier</th>
-                                                <th>Tanggal Masuk</th>
-                                                <th>Tanggal Kadaluarsa</th>
-                                                <th>Keterangan</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if($inlogistics->count() > 0)
-                                                @foreach($inlogistics as $inlogistic)
-                                                    <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $inlogistic->nama_logistik_masuk }}</td>
-                                                        <td>{{ $inlogistic->satuan_logistik_masuk }}</td>
-                                                        <td>{{ $inlogistic->jumlah_logistik_masuk }}</td>
-                                                        <td>{{ $inlogistic->nama_supplier }}</td>
-                                                        <td>{{ $inlogistic->tanggal_masuk }}</td>
-                                                        <td>{{ $inlogistic->expayer_logistik }}</td>
-                                                        <td>{{ $inlogistic->keterangan_masuk }}</td>
-                                                        <td>
-                                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                                <a href="{{ route('inlogistics.show', $inlogistic->id) }}"
-                                                                    type="button" class="btn btn-secondary">Detail</a>
-                                                                <a href="{{ route('inlogistics.edit', $inlogistic->id)}}"
-                                                                    type="button" class="btn btn-warning">Edit</a>
-                                                                <form action="{{ route('inlogistics.destroy', $inlogistic->id) }}"
-                                                                    method="POST" class="btn btn-danger p-0"
-                                                                    onsubmit="return confirm('Delete?')">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit"
-                                                                        class="btn btn-danger m-0">Delete</button>
-                                                                </form>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                            @else
-                                                <tr>
-                                                    <td colspan="6" class="text-center">Tidak ada data !</td>
-                                                </tr>
-                                            @endif
-                                        </tbody>
-                                    </table>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Tambah</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </section>
             </div>
-    </div>
-    <footer class="main-footer">
-        <div class="footer-left">
-            Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
+            <footer class="main-footer">
+                <div class="footer-left">
+                    Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
+                </div>
+                <div class="footer-right">
+                </div>
+            </footer>
         </div>
-        <div class="footer-right">
-        </div>
-    </footer>
     </div>
-    </div>
-
 
     <!-- General JS Scripts -->
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
@@ -277,7 +296,6 @@
     <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
     <!-- JS Libraies -->
-
 
     <!-- Page Specific JS File -->
 
