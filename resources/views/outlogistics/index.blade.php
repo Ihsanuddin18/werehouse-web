@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Dashboard &rsaquo; Data Supplier &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Dashboard &rsaquo; DAta Logistik Keluar &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -175,16 +175,17 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Data Logistik</h1>
+                        <h1>Data Logistik Keluar</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item">Data Logistik</div>
+                            <div class="breadcrumb-item">Data Logistik Keluar</div>
                         </div>
                     </div>
                     <div class="button-container">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <a href="{{ route('outlogistics.create') }}" class="btn btn-primary">Tambah</a>
-                        </div>
+                        <div class="d-flex align-items-center justify-content-end">
+                            <a href="{{ route('outlogistics.create') }}" class="btn btn-primary"> <i class="fas fa-plus">
+                                </i> Logistik Keluar </a>
+                        </div> <br>
                         @if(Session::has('success'))
                             <div class="alert alert-success" role="alert">
                                 {{ Session::get('success') }}
@@ -195,7 +196,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Daftar Logistik</h4>
+                                    <h4>Daftar Logistik Keluar</h4>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
@@ -230,7 +231,8 @@
                                                                     type="button" class="btn btn-secondary">Detail</a>
                                                                 <a href="{{ route('outlogistics.edit', $outlogistic->id)}}"
                                                                     type="button" class="btn btn-warning">Edit</a>
-                                                                <form action="{{ route('outlogistics.destroy', $outlogistic->id) }}"
+                                                                <form
+                                                                    action="{{ route('outlogistics.destroy', $outlogistic->id) }}"
                                                                     method="POST" class="btn btn-danger p-0"
                                                                     onsubmit="return confirm('Delete?')">
                                                                     @csrf

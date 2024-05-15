@@ -175,16 +175,17 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Data Logistik</h1>
+                        <h1>Data Logistik Masuk</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item">Data Logistik</div>
+                            <div class="breadcrumb-item">Data Logistik Masuk</div>
                         </div>
                     </div>
                     <div class="button-container">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <a href="{{ route('inlogistics.create') }}" class="btn btn-primary">Tambah</a>
-                        </div>
+                    <div class="d-flex align-items-center justify-content-end">
+                            <a href="{{ route('inlogistics.create') }}" class="btn btn-primary"> <i class="fas fa-plus">
+                                </i> Tambah </a>
+                        </div> <br>
                         @if(Session::has('success'))
                             <div class="alert alert-success" role="alert">
                                 {{ Session::get('success') }}
@@ -195,7 +196,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Daftar Logistik</h4>
+                                    <h4>Daftar Logistik Masuk</h4>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped">

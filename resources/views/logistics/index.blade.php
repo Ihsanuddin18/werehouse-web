@@ -182,9 +182,10 @@
                         </div>
                     </div>
                     <div class="button-container">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <a href="{{ route('logistics.create') }}" class="btn btn-primary">Tambah</a>
-                        </div>
+                        <div class="d-flex align-items-center justify-content-end">
+                            <a href="{{ route('logistics.create') }}" class="btn btn-primary"> <i class="fas fa-plus">
+                                </i> Tambah Data </a>
+                        </div> <br>
                         @if(Session::has('success'))
                             <div class="alert alert-success" role="alert">
                                 {{ Session::get('success') }}
@@ -205,7 +206,6 @@
                                                 <th>Kode Logistik</th>
                                                 <th>Nama</th>
                                                 <th>Satuan</th>
-                                                <th>QR Code Label</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -217,13 +217,12 @@
                                                         <td>{{ $logistic->kode_logistik }}</td>
                                                         <td>{{ $logistic->nama_logistik }}</td>
                                                         <td>{{ $logistic->satuan_logistik }}</td>
-                                                        <td>{{ $logistic->qr_code_label }}</td>
                                                         <td>
                                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                                 <a href="{{ route('logistics.show', $logistic->id) }}"
                                                                     type="button" class="btn btn-secondary">Detail</a>
                                                                 <a href="{{ route('logistics.edit', $logistic->id)}}"
-                                                                    type="button" class="btn btn-warning">Edit</a>
+                                                                    type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"> </i> Edit </a>
                                                                 <form action="{{ route('logistics.destroy', $logistic->id) }}"
                                                                     method="POST" class="btn btn-danger p-0"
                                                                     onsubmit="return confirm('Delete?')">

@@ -182,9 +182,10 @@
                         </div>
                     </div>
                     <div class="button-container">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <a href="{{ route('suppliers.create') }}" class="btn btn-primary">Tambah</a>
-                        </div>
+                    <div class="d-flex align-items-center justify-content-end">
+                            <a href="{{ route('suppliers.create') }}" class="btn btn-primary"> <i class="fas fa-plus">
+                                </i> Tambah Data </a>
+                        </div> <br>
                         @if(Session::has('success'))
                             <div class="alert alert-success" role="alert">
                                 {{ Session::get('success') }}

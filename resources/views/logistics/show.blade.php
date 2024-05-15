@@ -207,12 +207,6 @@
                                             placeholder=""
                                             value="{{ $logistic->satuan_logistik }}" disabled readonly>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="qr_code_label">QR Label</label>
-                                        <input type="text" name="qr_code_label" class="form-control"
-                                            placeholder="*Masukkan qr label"
-                                            value="{{ $logistic->qr_code_label }}" disabled readonly>
-                                    </div>
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label class="form-label">Ditambahkan Pada</label>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Logistik Masuk &rsaquo; Tambah Logistik Masuk &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Logistik Keluar &rsaquo; Tambah Logistik Keluar &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -182,9 +182,9 @@
                         <h1>Tambah Logistik Keluar</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item active"><a href="{{ route('outlogistics') }}">Logistik Masuk</a>
+                            <div class="breadcrumb-item active"><a href="{{ route('outlogistics') }}">Data Logistik Keluar</a>
                             </div>
-                            <div class="breadcrumb-item">Tambah Logistik Masuk</div>
+                            <div class="breadcrumb-item">Tambah Logistik Keluar</div>
                         </div>
                     </div>
                     <div class="card">

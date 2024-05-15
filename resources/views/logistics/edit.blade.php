@@ -220,12 +220,6 @@
                                             <option value="Lainnya">Lainnya</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="qr_code_label">QR Label</label>
-                                        <input type="text" name="qr_code_label" class="form-control"
-                                            placeholder="*Masukkan qr label" 
-                                            value="{{ $logistic->qr_code_label }}">
-                                    </div>
                                     <div class="row">
                                         <div class="d-grid">
                                             <button type="submit" class="btn btn-primary">Tambah</button>

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('kode_logistik');
             $table->string('nama_logistik');
             $table->string('satuan_logistik');
-            $table->string('qr_code_label');
             $table->timestamps();
         });
     }

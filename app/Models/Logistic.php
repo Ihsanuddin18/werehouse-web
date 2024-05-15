@@ -12,6 +12,5 @@ class Logistic extends Model
         'kode_logistik',
         'nama_logistik',
         'satuan_logistik',
-        'qr_code_label',
     ];
 }
