@@ -57,6 +57,7 @@ Route::controller(LogisticController::class)->prefix('logistics')->group(functio
 
 
 Route::controller(InlogisticController::class)->prefix('inlogistics')->group(function () {
+    Route::resource('inlogistics', InlogisticController::class);
     Route::get('', 'index')->name('inlogistics');
     Route::get('create', 'create')->name('inlogistics.create');
     Route::post('store', 'store')->name('inlogistics.store');

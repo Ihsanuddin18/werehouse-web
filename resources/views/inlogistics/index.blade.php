@@ -204,6 +204,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama Logistik</th>
+                                                <th>Id Logistik</th>
                                                 <th>Satuan Logistik</th>
                                                 <th>Jumlah Logistik</th>
                                                 <th>Nama Supplier</th>
@@ -219,6 +220,7 @@
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $inlogistic->nama_logistik_masuk }}</td>
+                                                        <td>{{ optional($inlogistic->logistic)->nama_logistik }}</td>
                                                         <td>{{ $inlogistic->satuan_logistik_masuk }}</td>
                                                         <td>{{ $inlogistic->jumlah_logistik_masuk }}</td>
                                                         <td>{{ $inlogistic->nama_supplier }}</td>

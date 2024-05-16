@@ -216,6 +216,16 @@
                                         <input type="text" class="form-control" name="nama_logistik_masuk"
                                             placeholder="*Nama Logistik">
                                     </div>
+                                    @if(isset($logistics))
+                                        <div class="form-group col-md-3">
+                                            <label for="id_logistik">Logistic ID</label>
+                                            <select class="form-control" name="id_logistik" required>
+                                                @foreach($logistics as $logistic)
+                                                    <option value="{{ $logistic->id }}">{{ $logistic->nama_logistik }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
                                     <div class="form-group col-md-3">
                                         <label for="jumlah_logistik_masuk">Jumlah</label>
                                         <input type="number" class="form-control" name="jumlah_logistik_masuk"

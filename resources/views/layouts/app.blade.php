@@ -323,7 +323,7 @@
                     <h4>Jumlah Logistik</h4>
                   </div>
                   <div class="card-body">
-                    10
+                    2
                   </div>
                 </div>
               </div>
@@ -335,10 +335,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Jumlah Anggota</h4>
+                    <h4>Jumlah Supplier</h4>
                   </div>
                   <div class="card-body">
-                    42
+                    2
                   </div>
                 </div>
               </div>
@@ -353,7 +353,7 @@
                     <h4>Jumlah Penerimaan</h4>
                   </div>
                   <div class="card-body">
-                    1,201
+                    3
                   </div>
                 </div>
               </div>
@@ -368,7 +368,7 @@
                     <h4>Jumlah Pengeluaran</h4>
                   </div>
                   <div class="card-body">
-                    47
+                    8
                   </div>
                 </div>
               </div>

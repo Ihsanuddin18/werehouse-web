@@ -211,7 +211,7 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="nik_kk_penerima">NIK / KK</label>
-                                        <input type="number" class="form-control" name="nik_kk_penerima"
+                                        <input type="text" class="form-control" name="nik_kk_penerima"
                                             placeholder="*Nik/Kk" value="{{ $outlogistic->nik_kk_penerima }}">
                                     </div>
                                     <div class="form-group col-md-3">

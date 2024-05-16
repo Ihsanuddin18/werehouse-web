@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('jumlah_logistik_keluar');
             $table->date('tanggal_keluar');
             $table->string('nama_penerima');
-            $table->integer('nik_kk_penerima');
+            $table->string('nik_kk_penerima');
             $table->string('alamat_penerima');
             $table->string('keterangan_keluar');
             $table->timestamps();
