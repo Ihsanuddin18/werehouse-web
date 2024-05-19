@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Logistic;
+use App\Models\Supplier;
 
 class Inlogistic extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
-        'nama_logistik_masuk',
         'id_logistik',
-        'satuan_logistik_masuk',
+        'id_supplier',
         'jumlah_logistik_masuk',
-        'nama_supplier',
         'tanggal_masuk',
         'expayer_logistik',
         'keterangan_masuk',
@@ -24,5 +22,9 @@ class Inlogistic extends Model
     public function logistic()
     {
         return $this->belongsTo(Logistic::class, 'id_logistik', 'id');
+    }
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class, 'id_supplier', 'id');
     }
 }

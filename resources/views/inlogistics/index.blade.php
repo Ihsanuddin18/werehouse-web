@@ -204,7 +204,6 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama Logistik</th>
-                                                <th>Id Logistik</th>
                                                 <th>Satuan Logistik</th>
                                                 <th>Jumlah Logistik</th>
                                                 <th>Nama Supplier</th>
@@ -219,11 +218,10 @@
                                                 @foreach($inlogistics as $inlogistic)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $inlogistic->nama_logistik_masuk }}</td>
                                                         <td>{{ optional($inlogistic->logistic)->nama_logistik }}</td>
-                                                        <td>{{ $inlogistic->satuan_logistik_masuk }}</td>
+                                                        <td>{{ optional($inlogistic->logistic)->satuan_logistik }}</td>
                                                         <td>{{ $inlogistic->jumlah_logistik_masuk }}</td>
-                                                        <td>{{ $inlogistic->nama_supplier }}</td>
+                                                        <td>{{ optional($inlogistic->supplier)->nama_supplier }}</td>
                                                         <td>{{ $inlogistic->tanggal_masuk }}</td>
                                                         <td>{{ $inlogistic->expayer_logistik }}</td>
                                                         <td>{{ $inlogistic->keterangan_masuk }}</td>

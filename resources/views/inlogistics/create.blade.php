@@ -203,50 +203,52 @@
                                     <div class="col-md-12">
                                         <h4>Data Supplier</h4>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="nama_supplier">Nama Supplier</label>
-                                        <input type="text" class="form-control" name="nama_supplier"
-                                            placeholder="*Nama Supplier">
-                                    </div>
+                                    @if(isset($suppliers))
+                                        <div class="form-group col-md-6">
+                                            <label for="id_supplier">Nama Supplier</label>
+                                            <select class="form-control" name="id_supplier" id="id_supplier" required>
+                                                <option value="" selected disabled>*Pilih Nama Supplier</option>
+                                                @foreach($suppliers as $supplier)
+                                                    <option value="{{ $supplier->id }}">
+                                                        {{ $supplier->nama_supplier }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
                                     <div class="col-md-12">
                                         <h4>Data Logistik</h4>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="nama_logistik_masuk">Nama Logistik</label>
-                                        <input type="text" class="form-control" name="nama_logistik_masuk"
-                                            placeholder="*Nama Logistik">
-                                    </div>
                                     @if(isset($logistics))
-                                        <div class="form-group col-md-3">
-                                            <label for="id_logistik">Logistic ID</label>
-                                            <select class="form-control" name="id_logistik" required>
+                                        <div class="form-group col-md-12">
+                                            <label for="id_logistik">Nama Logistik</label>
+                                            <select class="form-control" name="id_logistik" id="id_logistik" required>
+                                                <option value="" selected disabled>*Pilih Nama Logistik</option>
                                                 @foreach($logistics as $logistic)
-                                                    <option value="{{ $logistic->id }}">{{ $logistic->nama_logistik }}</option>
+                                                    <option value="{{ $logistic->id }}"
+                                                        data-kode="{{ $logistic->kode_logistik }}"
+                                                        data-satuan="{{ $logistic->satuan_logistik }}">
+                                                        {{ $logistic->nama_logistik }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     @endif
                                     <div class="form-group col-md-3">
+                                        <label for="kode_logistik">Kode Logistik</label>
+                                        <input type="text" class="form-control" name="kode_logistik" id="kode_logistik"
+                                            disabled readonly>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="satuan_logistik">Satuan Logistik</label>
+                                        <input type="text" class="form-control" name="satuan_logistik"
+                                            id="satuan_logistik" disabled readonly>
+                                    </div>
+                                    <div class="form-group col-md-3">
                                         <label for="jumlah_logistik_masuk">Jumlah</label>
                                         <input type="number" class="form-control" name="jumlah_logistik_masuk"
                                             placeholder="*Masukkan Jumlah">
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="satuan_logistik_masuk">Satuan</label>
-                                        <select class="form-control" name="satuan_logistik_masuk">
-                                            <option value="" selected disabled>*Pilih satuan</option>
-                                            <option value="Kilogram (kg)">Kilogram (kg)</option>
-                                            <option value="Gram (g)">Gram (g)</option>
-                                            <option value="Liter (l)">Liter (l)</option>
-                                            <option value="Pieces (pcs)">Pieces (pcs)</option>
-                                            <option value="Unit (unit)">Unit (unit)</option>
-                                            <option value="Botol (botol)">Botol (botol)</option>
-                                            <option value="Kardus (kardus)">Kardus (kardus)</option>
-                                            <option value="Drum (drum)">Drum (drum)</option>
-                                            <option value="Roll (roll)">Roll (roll)</option>
-                                            <option value="Karton (karton)">Karton (karton)</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                        </select>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="expayer_logistik">Tanggal Kadaluarsa</label>
@@ -258,6 +260,22 @@
                                             placeholder="*Masukkan Keterangan">
                                     </div>
                                 </div>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        const logisticSelect = document.getElementById('id_logistik');
+                                        const kodeLogistikInput = document.getElementById('kode_logistik');
+                                        const satuanLogistikInput = document.getElementById('satuan_logistik');
+
+                                        logisticSelect.addEventListener('change', function () {
+                                            const selectedOption = logisticSelect.options[logisticSelect.selectedIndex];
+                                            const kodeLogistik = selectedOption.getAttribute('data-kode');
+                                            const satuanLogistik = selectedOption.getAttribute('data-satuan');
+
+                                            kodeLogistikInput.value = kodeLogistik;
+                                            satuanLogistikInput.value = satuanLogistik;
+                                        });
+                                    });
+                                </script>
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-primary">Tambah</button>
                                 </div>

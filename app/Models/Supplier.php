@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Inlogistic;
 
 class Supplier extends Model
 {
@@ -15,4 +16,9 @@ class Supplier extends Model
         'telepon_supplier',
         'instansi_supplier',
     ];
+
+    public function inlogistics()
+    {
+        return $this->hasMany(Inlogistic::class, 'id_supplier','id');
+    }
 }

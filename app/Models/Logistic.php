@@ -10,7 +10,6 @@ class Logistic extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
         'kode_logistik',
         'nama_logistik',
         'satuan_logistik',

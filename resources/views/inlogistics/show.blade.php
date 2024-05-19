@@ -189,7 +189,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <h4>Form Tambah Logistik Masuk</h4>
+                            <h4>Detail Logistik Masuk</h4>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('inlogistics.store') }}" method="POST">
@@ -204,54 +204,45 @@
                                     <div class="col-md-12">
                                         <h4>Data Supplier</h4>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-12">
                                         <label for="nama_supplier">Nama Supplier</label>
-                                        <input type="text" class="form-control" name="nama_supplier"
-                                            placeholder="*Nama Supplier"
-                                            value="{{ $inlogistic->nama_supplier }}" disabled readonly>
+                                        <input type="text" class="form-control" name="nama_supplier" id="nama_supplier"
+                                            value="{{ $inlogistic->supplier->nama_supplier }}" readonly disabled>
                                     </div>
                                     <div class="col-md-12">
                                         <h4>Data Logistik</h4>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="nama_logistik_masuk">Nama Logistik</label>
-                                        <input type="text" class="form-control" name="nama_logistik_masuk"
-                                            placeholder="*Nama Logistik"
-                                            value="{{ $inlogistic->nama_logistik_masuk }}" disabled readonly>
+                                    <div class="form-group col-md-12">
+                                        <label for="nama_logistik">Nama Logistik</label>
+                                        <input type="text" class="form-control" name="nama_logistik" id="nama_logistik"
+                                            value="{{ $inlogistic->logistic->nama_logistik }}" readonly disabled>
                                     </div>
-                                    @if(isset($logistics))
-                                        <div class="form-group col-md-3">
-                                            <label for="id_logistik">Logistic ID</label>
-                                            <select class="form-control" name="id_logistik" required disabled >
-                                                @foreach($logistics as $logistic)
-                                                    <option value="{{ $logistic->id }}">{{ $logistic->nama_logistik }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    @endif
+                                    <div class="form-group col-md-3">
+                                        <label for="kode_logistik">Kode Logistik</label>
+                                        <input type="text" class="form-control" name="kode_logistik" id="kode_logistik"
+                                            value="{{ $inlogistic->logistic->kode_logistik }}" readonly disabled>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="satuan_logistik">Satuan Logistik</label>
+                                        <input type="text" class="form-control" name="satuan_logistik" id="satuan_logistik"
+                                            value="{{ $inlogistic->logistic->satuan_logistik }}" readonly disabled>
+                                    </div>
                                     <div class="form-group col-md-3">
                                         <label for="jumlah_logistik_masuk">Jumlah</label>
                                         <input type="number" class="form-control" name="jumlah_logistik_masuk"
                                             placeholder="*Masukkan Jumlah"
-                                            value="{{ $inlogistic->jumlah_logistik_masuk }}" disabled readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="satuan_logistik_masuk">Satuan</label>
-                                        <input type="text" name="satuan_logistik_masuk" class="form-control"
-                                            placeholder=""
-                                            value="{{ $inlogistic->satuan_logistik_masuk }}" disabled readonly>
+                                            value="{{ $inlogistic->jumlah_logistik_masuk }}" readonly disabled>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="expayer_logistik">Tanggal Kadaluarsa</label>
                                         <input type="date" class="form-control" name="expayer_logistik"
-                                            placeholder=""
-                                            value="{{ $inlogistic->expayer_logistik }}" disabled readonly>
+                                            value="{{ $inlogistic->expayer_logistik }}" readonly disabled>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="keterangan_masuk">Keterangan</label>
                                         <input type="text" class="form-control" name="keterangan_masuk"
                                             placeholder="*Masukkan Keterangan"
-                                            value="{{ $inlogistic->keterangan_masuk }}" disabled readonly>
+                                            value="{{ $inlogistic->keterangan_masuk }}" readonly disabled>
                                     </div>
                                     <div class="row">
                                         <div class="col mb-3">
@@ -266,6 +257,22 @@
                                         </div>
                                     </div>
                                 </div>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        const logisticSelect = document.getElementById('id_logistik');
+                                        const kodeLogistikInput = document.getElementById('kode_logistik');
+                                        const satuanLogistikInput = document.getElementById('satuan_logistik');
+
+                                        logisticSelect.addEventListener('change', function () {
+                                            const selectedOption = logisticSelect.options[logisticSelect.selectedIndex];
+                                            const kodeLogistik = selectedOption.getAttribute('data-kode');
+                                            const satuanLogistik = selectedOption.getAttribute('data-satuan');
+
+                                            kodeLogistikInput.value = kodeLogistik;
+                                            satuanLogistikInput.value = satuanLogistik;
+                                        });
+                                    });
+                                </script>
                                 <div class="row">
                                     <div class="d-grid">
                                         <a href="{{ route('inlogistics') }}" class="btn btn-primary">
@@ -273,7 +280,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </form>
+                            </form> 
                         </div>
                     </div>
                 </section>
