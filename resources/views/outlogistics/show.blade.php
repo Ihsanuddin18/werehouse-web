@@ -179,17 +179,17 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Tambah Logistik Keluar</h1>
+                        <h1>Detail Logistik Keluar</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                             <div class="breadcrumb-item active"><a href="{{ route('outlogistics') }}">Data Logistik Keluar</a>
                             </div>
-                            <div class="breadcrumb-item">Tambah Logistik Keluar</div>
+                            <div class="breadcrumb-item">Detail Logistik Keluar</div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <h4>Form Tambah Logistik Keluar</h4>
+                            <h4>Detail Logistik Keluar</h4>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('outlogistics.store', $outlogistic->id) }}" method="POST">
@@ -198,7 +198,7 @@
                                     <div class="form-group col-md-3">
                                         <label for="tanggal_keluar">Tanggal Keluar</label>
                                         <input type="date" class="form-control" name="tanggal_keluar"
-                                            placeholder="*Tanggal Keluar" value="{{ $outlogistic->tanggal_keluar }}"
+                                            value="{{ $outlogistic->tanggal_keluar }}"
                                             disabled readonly>
                                     </div>
                                     <div class="col-md-12">
@@ -207,19 +207,19 @@
                                     <div class="form-group col-md-3">
                                         <label for="nama_penerima">Nama Penerima</label>
                                         <input type="text" class="form-control" name="nama_penerima"
-                                            placeholder="*Nama Penerima" value="{{ $outlogistic->nama_penerima }}"
+                                            value="{{ $outlogistic->nama_penerima }}"
                                             disabled readonly>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="nik_kk_penerima">NIK / KK</label>
                                         <input type="text" class="form-control" name="nik_kk_penerima"
-                                            placeholder="*Nik/Kk" value="{{ $outlogistic->nik_kk_penerima }}" disabled
+                                            value="{{ $outlogistic->nik_kk_penerima }}" disabled
                                             readonly>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="alamat_penerima">Alamat Penerima</label>
                                         <input type="text" class="form-control" name="alamat_penerima"
-                                            placeholder="*Alamat Penerima" value="{{ $outlogistic->alamat_penerima }}"
+                                            value="{{ $outlogistic->alamat_penerima }}"
                                             disabled readonly>
                                     </div>
                                     <div class="col-md-12">
@@ -228,25 +228,27 @@
                                     <div class="form-group col-md-3">
                                         <label for="nama_logistik_keluar">Nama Logistik</label>
                                         <input type="text" class="form-control" name="nama_logistik_keluar"
-                                            placeholder="*Nama Logistik"
-                                            value="{{ $outlogistic->nama_logistik_keluar }}" disabled readonly>
+                                            value="{{ $outlogistic->logistic->nama_logistik }}" disabled readonly>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="kode_logistik">Kode Logistik</label>
+                                        <input type="text" class="form-control" name="kode_logistik" id="kode_logistik"
+                                            value="{{ $outlogistic->logistic->kode_logistik }}" readonly disabled>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="jumlah_logistik_keluar">Jumlah</label>
                                         <input type="number" class="form-control" name="jumlah_logistik_keluar"
-                                            placeholder="*Masukkan Jumlah"
                                             value="{{ $outlogistic->jumlah_logistik_keluar }}" disabled readonly>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="satuan_logistik_keluar">Satuan</label>
                                         <input type="text" name="satuan_logistik_keluar" class="form-control"
-                                            placeholder="" value="{{ $outlogistic->satuan_logistik_keluar }}" disabled
+                                            value="{{ $outlogistic->logistic->satuan_logistik }}" disabled
                                             readonly>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="keterangan_keluar">Keterangan</label>
                                         <input type="text" class="form-control" name="keterangan_keluar"
-                                            placeholder="*Masukkan Keterangan"
                                             value="{{ $outlogistic->keterangan_keluar }}" disabled readonly>
                                     </div>
                                     <div class="row">
@@ -262,7 +264,19 @@
                                                 placeholder="Updated At" value="{{ $outlogistic->updated_at }}" disabled
                                                 readonly>
                                         </div>
+                                        <div class=" col-md-6">
+                                        <label for="keterangan_keluar">Dokumentasi</label>
+                                        <input type="text" class="form-control" name="keterangan_keluar" readonly disabled>
+                                        <img src="{{ asset($outlogistic->keterangan_keluar) }}" width='50' height='50' class="img img-responsive"/>
                                     </div>
+                                    </div>
+                                    <script>
+                                        document.getElementById('id_logistik').addEventListener('change', function () {
+                                            var selectedOption = this.options[this.selectedIndex];
+                                            document.getElementById('kode_logistik').value = selectedOption.getAttribute('data-kode');
+                                            document.getElementById('satuan_logistik').value = selectedOption.getAttribute('data-satuan');
+                                        });
+                                    </script>
                                 </div>
                                 <div class="row">
                                     <div class="d-grid">

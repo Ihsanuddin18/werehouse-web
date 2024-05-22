@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CetakBarcodeLabelController;
 use App\Http\Controllers\ContactController;
@@ -65,10 +66,14 @@ Route::controller(InlogisticController::class)->prefix('inlogistics')->group(fun
     Route::get('edit/{id}', 'edit')->name('inlogistics.edit');
     Route::put('edit/{id}', 'update')->name('inlogistics.update');
     Route::delete('destroy/{id}', 'destroy')->name('inlogistics.destroy');
+    Route::get('/export_inlogistic_pdf', [InlogisticController::class, 'export_inlogistic_pdf'])->name('export_inlogistic_pdf');
     }); 
 
 
+
+
 Route::controller(OutlogisticController::class)->prefix('outlogistics')->group(function () {
+    Route::resource('outlogistics', OutlogisticController::class);
     Route::get('', 'index')->name('outlogistics');
     Route::get('create', 'create')->name('outlogistics.create');
     Route::post('store', 'store')->name('outlogistics.store');
@@ -76,6 +81,7 @@ Route::controller(OutlogisticController::class)->prefix('outlogistics')->group(f
     Route::get('edit/{id}', 'edit')->name('outlogistics.edit');
     Route::put('edit/{id}', 'update')->name('outlogistics.update');
     Route::delete('destroy/{id}', 'destroy')->name('outlogistics.destroy');
+    Route::get('/export_outlogistic_pdf', [OutlogisticController::class, 'export_outlogistic_pdf'])->name('export_outlogistic_pdf');
     }); 
 
 

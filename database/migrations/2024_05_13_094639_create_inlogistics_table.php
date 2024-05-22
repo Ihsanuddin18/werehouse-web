@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('tanggal_masuk');
             $table->date('expayer_logistik');
             $table->string('keterangan_masuk');
+            $table->string('dokumentasi_masuk');
             $table->timestamps();
         });
     }

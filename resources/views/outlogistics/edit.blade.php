@@ -179,30 +179,27 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Tambah Logistik Keluar</h1>
+                        <h1>Edit Logistik Keluar</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item active"><a href="{{ route('outlogistics') }}">Logistik Masuk</a>
+                            <div class="breadcrumb-item active"><a href="{{ route('outlogistics') }}">Logistik Keluar</a>
                             </div>
-                            <div class="breadcrumb-item">Tambah Logistik Masuk</div>
+                            <div class="breadcrumb-item">Edit Logistik Keluar</div>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header">
-                            <h4>Form Tambah Logistik Masuk</h4>
-                        </div>
                         <div class="card-body">
                             <form action="{{ route('outlogistics.update', $outlogistic->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
-                                        <label for="tanggal_keluar">Tanggal Keluar</label>
+                                        <label for="tanggal_keluar" style="font-size: larger;">Tanggal Keluar</label>
                                         <input type="date" class="form-control" name="tanggal_keluar"
                                             placeholder="*Tanggal Keluar" value="{{ $outlogistic->tanggal_keluar }}">
                                     </div>
                                     <div class="col-md-12">
-                                        <h4>Data Penerima</h4>
+                                        <h4 style="color: blue;">Data Penerima</h4>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="nama_penerima">Nama Penerima</label>
@@ -220,13 +217,27 @@
                                             placeholder="*Alamat Penerima" value="{{ $outlogistic->alamat_penerima }}">
                                     </div>
                                     <div class="col-md-12">
-                                        <h4>Data Logistik</h4>
+                                        <h4 style="color: blue;">Data Logistik</h4>
                                     </div>
+                                    @if(isset($logistics))
+                                        <div class="form-group col-md-12">
+                                            <label for="id_logistik">Nama Logistik</label>
+                                            <select class="form-control" name="id_logistik" id="id_logistik" required>
+                                                <option value="" selected disabled>*Pilih Nama Logistik</option>
+                                                @foreach($logistics as $logistic)
+                                                    <option value="{{ $logistic->id }}"
+                                                        data-kode="{{ $logistic->kode_logistik }}"
+                                                        data-satuan="{{ $logistic->satuan_logistik }}" {{ $logistic->id == $outlogistic->id_logistik ? 'selected' : '' }}>
+                                                        {{ $logistic->nama_logistik }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
                                     <div class="form-group col-md-3">
-                                        <label for="nama_logistik_keluar">Nama Logistik</label>
-                                        <input type="text" class="form-control" name="nama_logistik_keluar"
-                                            placeholder="*Nama Logistik"
-                                            value="{{ $outlogistic->nama_logistik_keluar }}">
+                                        <label for="kode_logistik">Kode Logistik</label>
+                                        <input type="text" class="form-control" name="kode_logistik" id="kode_logistik"
+                                            value="{{ optional($outlogistic->logistic)->kode_logistik }}" readonly>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="jumlah_logistik_keluar">Jumlah</label>
@@ -235,23 +246,10 @@
                                             value="{{ $outlogistic->jumlah_logistik_keluar }}">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="satuan_logistik_keluar">Satuan</label>
-                                        <select class="form-control" name="satuan_logistik_keluar">
-                                            <option value="{{ $outlogistic->satuan_logistik_keluar }}" selected>*Pilih
-                                                satuan</option>
-                                            <option value="" selected disabled>*Pilih satuan</option>
-                                            <option value="Kilogram (kg)">Kilogram (kg)</option>
-                                            <option value="Gram (g)">Gram (g)</option>
-                                            <option value="Liter (l)">Liter (l)</option>
-                                            <option value="Pieces (pcs)">Pieces (pcs)</option>
-                                            <option value="Unit (unit)">Unit (unit)</option>
-                                            <option value="Botol (botol)">Botol (botol)</option>
-                                            <option value="Kardus (kardus)">Kardus (kardus)</option>
-                                            <option value="Drum (drum)">Drum (drum)</option>
-                                            <option value="Roll (roll)">Roll (roll)</option>
-                                            <option value="Karton (karton)">Karton (karton)</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                        </select>
+                                        <label for="satuan_logistik">Satuan Logistik</label>
+                                        <input type="text" class="form-control" name="satuan_logistik"
+                                            id="satuan_logistik" 
+                                            value="{{ optional($outlogistic->logistic)->satuan_logistik }}" disabled readonly>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="keterangan_keluar">Keterangan</label>
@@ -259,14 +257,27 @@
                                             placeholder="*Masukkan Keterangan"
                                             value="{{ $outlogistic->keterangan_keluar }}">
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="dokumentasi_keluar">Dokumentasi</label>
+                                        <input type="file" class="form-control" name="dokumentasi_keluar"
+                                            placeholder="*Masukkan Keterangan"
+                                            value="{{ $outlogistic->dokumentasi_keluar }}">
+                                    </div>
                                     <div class="row">
                                         <div class="col mb-3">
-                                            <label class="form-label">Ditambahkan Pada</label>
+                                            <label class="form-label">Dikeluarkan Pada</label>
                                             <input type="text" name="created_at" class="form-control"
                                                 placeholder="Created At" value="{{ $outlogistic->created_at }}" disabled
                                                 readonly>
                                         </div>
                                     </div>
+                                    <script>
+                                        document.getElementById('id_logistik').addEventListener('change', function () {
+                                            var selectedOption = this.options[this.selectedIndex];
+                                            document.getElementById('kode_logistik').value = selectedOption.getAttribute('data-kode');
+                                            document.getElementById('satuan_logistik').value = selectedOption.getAttribute('data-satuan');
+                                        });
+                                    </script>
                                 </div>
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-primary">Tambah</button>

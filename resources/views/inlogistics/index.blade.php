@@ -182,10 +182,15 @@
                         </div>
                     </div>
                     <div class="button-container">
-                    <div class="d-flex align-items-center justify-content-end">
-                            <a href="{{ route('inlogistics.create') }}" class="btn btn-primary"> <i class="fas fa-plus">
-                                </i> Tambah </a>
-                        </div> <br>
+                        <div class="d-flex align-items-center justify-content-end">
+                            <a href="{{ route('inlogistics.create') }}" class="btn btn-primary mr-2">
+                                <i class="fas fa-plus"></i> Tambah
+                            </a>
+                            <a href="{{ route('export_inlogistic_pdf') }}" class="btn btn-danger">
+                                <i class="fas fa-file-pdf"></i> Export PDF
+                            </a>
+                        </div>
+                        <br>
                         @if(Session::has('success'))
                             <div class="alert alert-success" role="alert">
                                 {{ Session::get('success') }}
@@ -202,36 +207,46 @@
                                     <table class="table table-striped">
                                         <thead class="table-primary">
                                             <tr>
-                                                <th>No</th>
-                                                <th>Nama Logistik</th>
-                                                <th>Satuan Logistik</th>
-                                                <th>Jumlah Logistik</th>
-                                                <th>Nama Supplier</th>
-                                                <th>Tanggal Masuk</th>
-                                                <th>Tanggal Kadaluarsa</th>
-                                                <th>Keterangan</th>
-                                                <th>Aksi</th>
+                                                <th style="text-align: center;">No</th>
+                                                <th style="text-align: center;">Nama Logistik</th>
+                                                <th style="text-align: center;">Jumlah</th>
+                                                <th style="text-align: center;">Satuan</th>
+                                                <th style="text-align: center;">Supplier</th>
+                                                <th style="text-align: center;">Tanggal Masuk</th>
+                                                <th style="text-align: center;">Tanggal Kadaluarsa</th>
+                                                <th style="text-align: center;">Dokumentasi</th>
+                                                <th style="text-align: center;">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @if($inlogistics->count() > 0)
                                                 @foreach($inlogistics as $inlogistic)
                                                     <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ optional($inlogistic->logistic)->nama_logistik }}</td>
-                                                        <td>{{ optional($inlogistic->logistic)->satuan_logistik }}</td>
-                                                        <td>{{ $inlogistic->jumlah_logistik_masuk }}</td>
-                                                        <td>{{ optional($inlogistic->supplier)->nama_supplier }}</td>
-                                                        <td>{{ $inlogistic->tanggal_masuk }}</td>
-                                                        <td>{{ $inlogistic->expayer_logistik }}</td>
-                                                        <td>{{ $inlogistic->keterangan_masuk }}</td>
-                                                        <td>
+                                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                                        <td class="text-center">
+                                                            {{ optional($inlogistic->logistic)->nama_logistik }}
+                                                        </td>
+                                                        <td class="text-center">{{ $inlogistic->jumlah_logistik_masuk }}</td>
+                                                        <td class="text-center">
+                                                            {{ optional($inlogistic->logistic)->satuan_logistik }}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            {{ optional($inlogistic->supplier)->nama_supplier }}
+                                                        </td>
+                                                        <td class="text-center">{{ $inlogistic->tanggal_masuk }}</td>
+                                                        <td class="text-center">{{ $inlogistic->expayer_logistik }}</td>
+                                                        <td class="text-center">
+                                                            <img src="{{ asset($inlogistic->dokumentasi_masuk) }}" width='50'
+                                                                height='50' class="img img-responsive" />
+                                                        </td>
+                                                        <td class="text-center">
                                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                                 <a href="{{ route('inlogistics.show', $inlogistic->id) }}"
                                                                     type="button" class="btn btn-secondary">Detail</a>
                                                                 <a href="{{ route('inlogistics.edit', $inlogistic->id)}}"
                                                                     type="button" class="btn btn-warning">Edit</a>
-                                                                <form action="{{ route('inlogistics.destroy', $inlogistic->id) }}"
+                                                                <form
+                                                                    action="{{ route('inlogistics.destroy', $inlogistic->id) }}"
                                                                     method="POST" class="btn btn-danger p-0"
                                                                     onsubmit="return confirm('Delete?')">
                                                                     @csrf

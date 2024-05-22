@@ -17,6 +17,7 @@ class Inlogistic extends Model
         'tanggal_masuk',
         'expayer_logistik',
         'keterangan_masuk',
+        'dokumentasi_masuk',
     ];
 
     public function logistic()

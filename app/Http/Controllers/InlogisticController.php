@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Inlogistic;
 use App\Models\Logistic;
 use App\Models\Supplier;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class InlogisticController extends Controller
 {
@@ -15,13 +16,21 @@ class InlogisticController extends Controller
         $inlogistics = Inlogistic::with('logistic', 'supplier')->get();
         $logistics = Logistic::with('inlogistics')->get();
         $suppliers = Supplier::all();
-
+        $inlogistics = Inlogistic::all();
         return view('inlogistics.index', [
             'inlogistics' => $inlogistics,
             'logistics' => $logistics,
             'suppliers' => $suppliers
         ]);
     }
+
+    public function export_inlogistic_pdf()
+    {
+        $inlogistics = Inlogistic::all();
+        $pdf = PDF::loadView('pdf.export_inlogistic_pdf', ['inlogistics' => $inlogistics]);
+        return $pdf->download('export_inlogistic_pdf.pdf');
+    }
+
 
     public function create()
     {
@@ -33,14 +42,19 @@ class InlogisticController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-        'jumlah_logistik_masuk' => 'required|integer',
-        'tanggal_masuk' => 'required|date',
-        'expayer_logistik' => 'nullable|date',
-        'keterangan_masuk' => 'nullable|string',
-        'id_logistik' => 'required|exists:logistics,id',
-        'id_supplier' => 'required|exists:suppliers,id',
-    ]);
-
+            'id_logistik' => 'required|exists:logistics,id',
+            'id_supplier' => 'required|exists:suppliers,id',
+            'jumlah_logistik_masuk' => 'required|integer',
+            'tanggal_masuk' => 'required|date',
+            'expayer_logistik' => 'nullable|date',
+            'keterangan_masuk' => 'nullable|string',
+            'dokumentasi_masuk' => 'nullable|string|max:20000',
+        ]);
+        if ($request->hasFile('dokumentasi_masuk')) {
+            $fileName = time() . $request->file('dokumentasi_masuk')->getClientOriginalName();
+            $path = $request->file('dokumentasi_masuk')->storeAs('images', $fileName, 'public');
+            $validatedData['dokumentasi_masuk'] = '/storage/' . $path;
+        }
         Inlogistic::create($validatedData);
         return redirect()->route('inlogistics.index')->with('success', 'Data Berhasil Ditambahkan!');
     }
@@ -55,7 +69,7 @@ class InlogisticController extends Controller
     public function edit(string $id)
     {
         $inlogistic = Inlogistic::findOrFail($id);
-        $logistics = Logistic::all(); 
+        $logistics = Logistic::all();
         $suppliers = Supplier::all();
         return view('inlogistics.edit', compact('inlogistic', 'logistics', 'suppliers'));
     }

@@ -179,46 +179,68 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Tambah Logistik Masuk</h1>
+                        <h1>Edit Logistik Masuk</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                             <div class="breadcrumb-item active"><a href="{{ route('inlogistics') }}">Logistik Masuk</a>
                             </div>
-                            <div class="breadcrumb-item">Tambah Logistik Masuk</div>
+                            <div class="breadcrumb-item">Edit Logistik Masuk</div>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header">
-                            <h4>Form Edit Logistik Masuk</h4>
-                        </div>
                         <div class="card-body">
                             <form action="{{ route('inlogistics.update', $inlogistic->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
-                                        <label for="tanggal_masuk">Tanggal Masuk</label>
+                                        <label for="tanggal_masuk" style="font-size: larger;">Tanggal Masuk
+                                            Logistik</label>
                                         <input type="date" class="form-control" name="tanggal_masuk"
-                                            placeholder="*Tanggal Masuk" value="{{ $inlogistic->tanggal_masuk }}">
+                                            value="{{ $inlogistic->tanggal_masuk }}">
                                     </div>
                                     <div class="col-md-12">
-                                        <h4>Data Supplier</h4>
+                                        <h4 style="color: blue;">Data Supplier</h4>
                                     </div>
                                     @if(isset($suppliers))
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-12">
                                             <label for="id_supplier">Nama Supplier</label>
                                             <select class="form-control" name="id_supplier" id="id_supplier" required>
-                                                <option value="" disabled>*Pilih Nama Supplier</option>
+                                                <option value="" selected disabled>*Pilih Nama Supplier</option>
                                                 @foreach($suppliers as $supplier)
-                                                    <option value="{{ $supplier->id }}" {{ $supplier->id == $inlogistic->id_supplier ? 'selected' : '' }}>
+                                                    <option value="{{ $supplier->id }}"
+                                                        data-kode="{{ $supplier->kode_supplier }}"
+                                                        data-instansi="{{ $supplier->instansi_supplier }}"
+                                                        data-email="{{ $supplier->email_supplier }}"
+                                                        data-telepon="{{ $supplier->telepon_supplier }}" {{ $supplier->id == $inlogistic->id_supplier ? 'selected' : '' }}>
                                                         {{ $supplier->nama_supplier }}
                                                     </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     @endif
+                                    <div class="form-group col-md-3">
+                                        <label for="kode_supplier">Kode Supplier</label>
+                                        <input type="text" class="form-control" name="kode_supplier" id="kode_supplier"
+                                            disabled readonly>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="instansi_supplier">Instansi Supplier</label>
+                                        <input type="text" class="form-control" name="instansi_supplier"
+                                            id="instansi_supplier" disabled readonly>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="email_supplier">Email Supplier</label>
+                                        <input type="text" class="form-control" name="email_supplier"
+                                            id="email_supplier" disabled readonly>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="telepon_supplier">Telepon Supplier</label>
+                                        <input type="text" class="form-control" name="telepon_supplier"
+                                            id="telepon_supplier" disabled readonly>
+                                    </div>
                                     <div class="col-md-12">
-                                        <h4>Data Logistik</h4>
+                                        <h4 style="color: blue;">Data Logistik</h4>
                                     </div>
                                     @if(isset($logistics))
                                         <div class="form-group col-md-12">
@@ -249,7 +271,6 @@
                                     <div class="form-group col-md-3">
                                         <label for="jumlah_logistik_masuk">Jumlah</label>
                                         <input type="number" class="form-control" name="jumlah_logistik_masuk"
-                                            placeholder="*Masukkan Jumlah"
                                             value="{{ $inlogistic->jumlah_logistik_masuk }}">
                                     </div>
                                     <div class="form-group col-md-3">
@@ -260,8 +281,12 @@
                                     <div class="form-group col-md-6">
                                         <label for="keterangan_masuk">Keterangan</label>
                                         <input type="text" class="form-control" name="keterangan_masuk"
-                                            placeholder="*Masukkan Keterangan"
                                             value="{{ $inlogistic->keterangan_masuk }}">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="dokumentasi_masuk">Dokumentasi</label>
+                                        <input type="file" class="form-control" name="dokumentasi_masuk"
+                                            value="{{ $inlogistic->dokumentasi_masuk }}">
                                     </div>
                                     <div class="row">
                                         <div class="col mb-3">
@@ -276,18 +301,33 @@
                                             const logisticSelect = document.getElementById('id_logistik');
                                             const kodeLogistikInput = document.getElementById('kode_logistik');
                                             const satuanLogistikInput = document.getElementById('satuan_logistik');
-
-                                            logisticSelect.addEventListener('change', function () {
+                                            const supplierSelect = document.getElementById('id_supplier');
+                                            const kodeSupplierInput = document.getElementById('kode_supplier');
+                                            const instansiSupplierInput = document.getElementById('instansi_supplier');
+                                            const emailSupplierInput = document.getElementById('email_supplier');
+                                            const teleponSupplierInput = document.getElementById('telepon_supplier');
+                                            function updateLogisticDetails() {
                                                 const selectedOption = logisticSelect.options[logisticSelect.selectedIndex];
                                                 const kodeLogistik = selectedOption.getAttribute('data-kode');
                                                 const satuanLogistik = selectedOption.getAttribute('data-satuan');
-
                                                 kodeLogistikInput.value = kodeLogistik;
                                                 satuanLogistikInput.value = satuanLogistik;
-                                            });
-
-                                            // Trigger the change event to populate the initial values
+                                            }
+                                            function updateSupplierDetails() {
+                                                const selectedOption = supplierSelect.options[supplierSelect.selectedIndex];
+                                                const kodeSupplier = selectedOption.getAttribute('data-kode');
+                                                const instansiSupplier = selectedOption.getAttribute('data-instansi');
+                                                const emailSupplier = selectedOption.getAttribute('data-email');
+                                                const teleponSupplier = selectedOption.getAttribute('data-telepon');
+                                                kodeSupplierInput.value = kodeSupplier;
+                                                instansiSupplierInput.value = instansiSupplier;
+                                                emailSupplierInput.value = emailSupplier;
+                                                teleponSupplierInput.value = teleponSupplier;
+                                            }
+                                            logisticSelect.addEventListener('change', updateLogisticDetails);
+                                            supplierSelect.addEventListener('change', updateSupplierDetails);
                                             logisticSelect.dispatchEvent(new Event('change'));
+                                            supplierSelect.dispatchEvent(new Event('change'));
                                         });
                                     </script>
                                 </div>

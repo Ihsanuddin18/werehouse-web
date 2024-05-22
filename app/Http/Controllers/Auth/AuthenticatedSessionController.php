@@ -38,9 +38,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // Kirim notifikasi berhasil masuk
-        $request->user()->notify(new LoginSuccessNotification());
-
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

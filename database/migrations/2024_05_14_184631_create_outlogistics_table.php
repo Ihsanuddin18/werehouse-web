@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('outlogistics', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_logistik_keluar');
-            $table->string('satuan_logistik_keluar');
+            $table->foreignId('id_logistik')->constrained('logistics')->onDelete('cascade');
             $table->integer('jumlah_logistik_keluar');
             $table->date('tanggal_keluar');
             $table->string('nama_penerima');
             $table->string('nik_kk_penerima');
             $table->string('alamat_penerima');
             $table->string('keterangan_keluar');
+            $table->string('dokumentasi_keluar');
             $table->timestamps();
         });
     }

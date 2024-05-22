@@ -182,23 +182,20 @@
                         <h1>Tambah Logistik Keluar</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item active"><a href="{{ route('outlogistics') }}">Logistik Keluar</a>
-                            </div>
-                            <div class="breadcrumb-item">Tambah Logistik Masuk</div>
+                            <div class="breadcrumb-item active"><a href="{{ route('outlogistics') }}">Logistik
+                                    Keluar</a></div>
+                            <div class="breadcrumb-item">Tambah Logistik Keluar</div>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header">
-                            <h4>Form Tambah Logistik Masuk</h4>
-                        </div>
                         <div class="card-body">
-                            <form action="{{ route('outlogistics.store') }}" method="POST">
+                            <form id="logisticForm">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
-                                        <label for="tanggal_keluar">Tanggal Keluar</label>
+                                        <label for="tanggal_keluar">Tanggal Keluar Logistik</label>
                                         <input type="date" class="form-control" name="tanggal_keluar"
-                                            placeholder="*Tanggal Keluar">
+                                            id="tanggal_keluar" placeholder="*Tanggal Keluar">
                                     </div>
                                     <div class="col-md-12">
                                         <h4>Data Penerima</h4>
@@ -219,49 +216,156 @@
                                             placeholder="*Alamat Penerima">
                                     </div>
                                     <div class="col-md-12">
-                                        <h4>Data Logistik</h4>
+                                        <h4 style="color: blue;">Data Logistik</h4>
                                     </div>
+                                    @if(isset($logistics))
+                                        <div class="form-group col-md-12">
+                                            <label for="id_logistik">Nama Logistik</label>
+                                            <select class="form-control" name="id_logistik" id="id_logistik" required>
+                                                <option value="" selected disabled>*Pilih Nama Logistik</option>
+                                                @foreach($logistics as $logistic)
+                                                    <option value="{{ $logistic->id }}"
+                                                        data-kode="{{ $logistic->kode_logistik }}"
+                                                        data-satuan="{{ $logistic->satuan_logistik }}">
+                                                        {{ $logistic->nama_logistik }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
                                     <div class="form-group col-md-3">
-                                        <label for="nama_logistik_keluar">Nama Logistik</label>
-                                        <input type="text" class="form-control" name="nama_logistik_keluar"
-                                            placeholder="*Nama Logistik">
+                                        <label for="kode_logistik">Kode Logistik</label>
+                                        <input type="text" class="form-control" name="kode_logistik" id="kode_logistik"
+                                            disabled readonly>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="jumlah_logistik_keluar">Jumlah</label>
                                         <input type="number" class="form-control" name="jumlah_logistik_keluar"
-                                            placeholder="*Masukkan Jumlah">
+                                            id="jumlah_logistik_keluar" placeholder="*Masukkan Jumlah">
                                     </div>
                                     <div class="form-group col-md-3">
-                                        <label for="satuan_logistik_keluar">Satuan</label>
-                                        <select class="form-control" name="satuan_logistik_keluar">
-                                            <option value="" selected disabled>*Pilih satuan</option>
-                                            <option value="Kilogram (kg)">Kilogram (kg)</option>
-                                            <option value="Gram (g)">Gram (g)</option>
-                                            <option value="Liter (l)">Liter (l)</option>
-                                            <option value="Pieces (pcs)">Pieces (pcs)</option>
-                                            <option value="Unit (unit)">Unit (unit)</option>
-                                            <option value="Botol (botol)">Botol (botol)</option>
-                                            <option value="Kardus (kardus)">Kardus (kardus)</option>
-                                            <option value="Drum (drum)">Drum (drum)</option>
-                                            <option value="Roll (roll)">Roll (roll)</option>
-                                            <option value="Karton (karton)">Karton (karton)</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                        </select>
+                                        <label for="satuan_logistik">Satuan Logistik</label>
+                                        <input type="text" class="form-control" name="satuan_logistik"
+                                            id="satuan_logistik" disabled readonly>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="keterangan_keluar">Keterangan</label>
                                         <input type="text" class="form-control" name="keterangan_keluar"
                                             placeholder="*Masukkan Keterangan">
                                     </div>
-                                </div>
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                    <div class="form-group col-md-6">
+                                        <label for="dokumentasi_keluar">Dokumentasi Keluar</label>
+                                        <input type="file" class="form-control" name="dokumentasi_keluar"
+                                            id="dokumentasi_keluar" placeholder="*Masukkan Keterangan">
+                                    </div>
+                                    <button type="button" id="addLogistic" class="btn btn-primary">Tambahkan ke
+                                        Tabel</button>
                                 </div>
                             </form>
+                            <div class="mt-4">
+                                <h3>Detail Logistik Keluar</h3>
+                                <table class="table table-striped" id="logisticTable">
+                                    <thead class="table-primary">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Logistik</th>
+                                            <th>Jumlah</th>
+                                            <th>Satuan</th>
+                                            <th>Nama Penerima</th>
+                                            <th>NIK / KK</th>
+                                            <th>Alamat Penerima</th>
+                                            <th>Tanggal Keluar</th>
+                                            <th>Dokumentasi</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Rows will be added dynamically here -->
+                                    </tbody>
+                                </table>
+                                <button type="button" id="saveLogistics" class="btn btn-success"
+                                    style="display: none;">Tambah Logistik Keluar</button>
+                            </div>
                         </div>
                     </div>
                 </section>
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const logisticSelect = document.getElementById('id_logistik');
+                    const kodeLogistikInput = document.getElementById('kode_logistik');
+                    const satuanLogistikInput = document.getElementById('satuan_logistik');
+
+                    function updateLogisticDetails() {
+                        const selectedOption = logisticSelect.options[logisticSelect.selectedIndex];
+                        const kodeLogistik = selectedOption.getAttribute('data-kode');
+                        const satuanLogistik = selectedOption.getAttribute('data-satuan');
+
+                        kodeLogistikInput.value = kodeLogistik;
+                        satuanLogistikInput.value = satuanLogistik;
+                    }
+
+                    logisticSelect.addEventListener('change', updateLogisticDetails);
+
+                    document.getElementById('addLogistic').addEventListener('click', function () {
+                        this.disabled = true;
+                        const tanggalKeluar = document.getElementById('tanggal_keluar').value;
+                        const namaPenerima = document.getElementById('nama_penerima').value;
+                        const nikKkPenerima = document.getElementById('nik_kk_penerima').value;
+                        const alamatPenerima = document.getElementById('alamat_penerima').value;
+                        const logisticText = logisticSelect.options[logisticSelect.selectedIndex].text;
+                        const jumlah = document.getElementById('jumlah_logistik_keluar').value;
+                        const satuan = satuanLogistikInput.value;
+                        const dokumentasi = document.getElementById('dokumentasi_keluar').files[0] ? document.getElementById('dokumentasi_keluar').files[0].name : '';
+
+                        const table = document.getElementById('logisticTable').getElementsByTagName('tbody')[0];
+                        const newRow = table.insertRow();
+                        const cell1 = newRow.insertCell(0);
+                        const cell2 = newRow.insertCell(1);
+                        const cell3 = newRow.insertCell(2);
+                        const cell4 = newRow.insertCell(3);
+                        const cell5 = newRow.insertCell(4);
+                        const cell6 = newRow.insertCell(5);
+                        const cell7 = newRow.insertCell(6);
+                        const cell8 = newRow.insertCell(7);
+                        const cell9 = newRow.insertCell(8);
+                        const cell10 = newRow.insertCell(9);
+
+                        cell1.innerHTML = table.rows.length;
+                        cell2.innerHTML = logisticText + `<input type="hidden" name="id_logistik[]" value="${logisticSelect.value}">`;
+                        cell3.innerHTML = jumlah + `<input type="hidden" name="jumlah_logistik_keluar[]" value="${jumlah}">`;
+                        cell4.innerHTML = satuan + `<input type="hidden" name="satuan_logistik[]" value="${satuan}">`;
+                        cell5.innerHTML = namaPenerima + `<input type="hidden" name="nama_penerima[]" value="${namaPenerima}">`;
+                        cell6.innerHTML = nikKkPenerima + `<input type="hidden" name="nik_kk_penerima[]" value="${nikKkPenerima}">`;
+                        cell7.innerHTML = alamatPenerima + `<input type="hidden" name="alamat_penerima[]" value="${alamatPenerima}">`;
+                        cell8.innerHTML = tanggalKeluar + `<input type="hidden" name="tanggal_keluar[]" value="${tanggalKeluar}">`;
+                        cell9.innerHTML = dokumentasi + `<input type="hidden" name="dokumentasi_keluar[]" value="${dokumentasi}">`;
+                        cell10.innerHTML = '<button type="button" class="btn btn-danger remove-logistic">Hapus</button>';
+
+                        document.querySelectorAll('.remove-row').forEach(button => {
+                            button.addEventListener('click', function () {
+                                this.closest('tr').remove();
+                                document.getElementById('addLogistic').disabled = false;
+                            });
+                        });
+                    });
+
+                    document.getElementById('addLogistic').addEventListener('click', function () {
+                        // Tambahkan baris kode berikut di dalam event listener
+                        document.getElementById('saveLogistics').style.display = 'block';
+                    });
+
+                    document.getElementById('saveLogistics').addEventListener('click', function () {
+                        const logisticForm = document.getElementById('logisticForm');
+                        logisticForm.action = "{{ route('outlogistics.store') }}";
+                        logisticForm.method = 'POST';
+                        logisticForm.submit();
+                    });
+                });
+            </script>
+
+
             <footer class="main-footer">
                 <div class="footer-left">
                     Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
