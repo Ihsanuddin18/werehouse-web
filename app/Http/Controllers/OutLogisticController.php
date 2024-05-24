@@ -12,7 +12,7 @@ class OutLogisticController extends Controller
     public function index()
     {
         $outlogistics = Outlogistic::with('logistic')->get();
-        $logistics = Logistic::all();
+        $logistics = Logistic::with('outlogistics')->get();
         $outlogistics = Outlogistic::all();
         return view('outlogistics.index', [
             'outlogistics' => $outlogistics,
@@ -30,6 +30,7 @@ class OutLogisticController extends Controller
     public function create()
     {
         $logistics = Logistic::all();
+        $outlogistics = Outlogistic::all();
         return view('outlogistics.create', compact('logistics'));
     }
 

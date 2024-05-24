@@ -310,14 +310,14 @@
                                         <!-- Rows will be added dynamically here -->
                                     </tbody>
                                 </table>
-                                <button type="button" id="saveLogistics" class="btn btn-success"
-                                    style="display: none;">Tambah Logistik Masuk</button>
+                                <button type="button" id="saveLogistics" class="btn btn-success">Tambah Logistik
+                                    Masuk</button>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
-            
+
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     const logisticSelect = document.getElementById('id_logistik');
@@ -329,6 +329,9 @@
                     const instansiSupplierInput = document.getElementById('instansi_supplier');
                     const emailSupplierInput = document.getElementById('email_supplier');
                     const teleponSupplierInput = document.getElementById('telepon_supplier');
+
+                    const addLogisticButton = document.getElementById('addLogistic');
+                    const logisticTable = document.getElementById('logisticTable').getElementsByTagName('tbody')[0];
 
                     function updateLogisticDetails() {
                         const selectedOption = logisticSelect.options[logisticSelect.selectedIndex];
@@ -352,11 +355,25 @@
                         teleponSupplierInput.value = teleponSupplier;
                     }
 
+                    function enableAddLogisticButton() {
+                        addLogisticButton.disabled = false;
+                    }
+
+                    function disableAddLogisticButton() {
+                        addLogisticButton.disabled = true;
+                    }
+
+                    function addRemoveButtonHandler(button) {
+                        button.addEventListener('click', function () {
+                            this.closest('tr').remove();
+                            enableAddLogisticButton(); // Re-enable the "Add to Table" button when a row is removed
+                        });
+                    }
+
                     logisticSelect.addEventListener('change', updateLogisticDetails);
                     supplierSelect.addEventListener('change', updateSupplierDetails);
 
-                    document.getElementById('addLogistic').addEventListener('click', function () {
-                        this.disabled = true;
+                    addLogisticButton.addEventListener('click', function () {
                         const tanggalMasuk = document.getElementById('tanggal_masuk').value;
                         const supplierText = supplierSelect.options[supplierSelect.selectedIndex].text;
                         const logisticText = logisticSelect.options[logisticSelect.selectedIndex].text;
@@ -365,8 +382,7 @@
                         const tanggalKadaluarsa = document.getElementById('expayer_logistik').value;
                         const dokumentasi = document.getElementById('dokumentasi_masuk').files[0] ? document.getElementById('dokumentasi_masuk').files[0].name : '';
 
-                        const table = document.getElementById('logisticTable').getElementsByTagName('tbody')[0];
-                        const newRow = table.insertRow();
+                        const newRow = logisticTable.insertRow();
                         const cell1 = newRow.insertCell(0);
                         const cell2 = newRow.insertCell(1);
                         const cell3 = newRow.insertCell(2);
@@ -377,7 +393,7 @@
                         const cell8 = newRow.insertCell(7);
                         const cell9 = newRow.insertCell(8);
 
-                        cell1.innerHTML = table.rows.length;
+                        cell1.innerHTML = logisticTable.rows.length;
                         cell2.innerHTML = logisticText + `<input type="hidden" name="id_logistik[]" value="${logisticSelect.value}">`;
                         cell3.innerHTML = jumlah + `<input type="hidden" name="jumlah_logistik_masuk[]" value="${jumlah}">`;
                         cell4.innerHTML = satuan + `<input type="hidden" name="satuan_logistik[]" value="${satuan}">`;
@@ -388,15 +404,10 @@
                         cell9.innerHTML = '<button type="button" class="btn btn-danger btn-sm remove-row">Hapus</button>';
 
                         document.querySelectorAll('.remove-row').forEach(button => {
-                            button.addEventListener('click', function () {
-                                this.closest('tr').remove();
-                                document.getElementById('addLogistic').disabled = false; 
-                            });
+                            addRemoveButtonHandler(button);
                         });
-                    });
-                    document.getElementById('addLogistic').addEventListener('click', function () {
-                        // Tambahkan baris kode berikut di dalam event listener
-                        document.getElementById('saveLogistics').style.display = 'block';
+
+                        disableAddLogisticButton(); // Disable the "Add to Table" button after adding a row
                     });
 
                     document.getElementById('saveLogistics').addEventListener('click', function () {
@@ -406,6 +417,7 @@
                         logisticForm.submit();
                     });
                 });
+
             </script>
             <footer class="main-footer">
                 <div class="footer-left">
@@ -435,4 +447,4 @@
     <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
 </body>
 
-</html>
+</html

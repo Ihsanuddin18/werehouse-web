@@ -352,7 +352,6 @@
                     });
 
                     document.getElementById('addLogistic').addEventListener('click', function () {
-                        // Tambahkan baris kode berikut di dalam event listener
                         document.getElementById('saveLogistics').style.display = 'block';
                     });
 
@@ -364,8 +363,6 @@
                     });
                 });
             </script>
-
-
             <footer class="main-footer">
                 <div class="footer-left">
                     Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
