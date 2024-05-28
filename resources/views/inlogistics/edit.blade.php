@@ -4,21 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Logistik Masuk &rsaquo; Tambah Logistik Masuk &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title> Logistik Masuk &rsaquo; Edit logistik masuk &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
-    <!-- General CSS Files -->
+    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
+
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/select2/dist/css/select2.min.css">
 
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
 
-    <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -27,8 +26,6 @@
         gtag('config', 'UA-94034622-3');
     </script>
 
-
-    <!-- /END GA -->
 </head>
 
 <body>
@@ -39,14 +36,16 @@
                 <form class="form-inline mr-auto">
                     <ul class="navbar-nav mr-3">
                         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i
-                                    class="fas fa-bars"></i></a></li>
+                                    class="fas fa-bars"></i></a>
+                        </li>
                         <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
                                     class="fas fa-search"></i></a></li>
                     </ul>
                     <div class="search-element">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                            data-width="250">
-                        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                        <input id="search-input" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search" data-width="250">
+                        <button class="btn" type="button" onclick="performSearch()"><i
+                                class="fas fa-search"></i></button>
                     </div>
                     <div id="clock" style="color: white; margin-left: 15px;"></div>
                 </form>
@@ -175,16 +174,16 @@
                 </aside>
             </div>
 
-            <!-- Main Content -->
+            <!-- Main -->
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Edit Logistik Masuk</h1>
+                        <h1>Edit logistik masuk</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                             <div class="breadcrumb-item active"><a href="{{ route('inlogistics') }}">Logistik Masuk</a>
                             </div>
-                            <div class="breadcrumb-item">Edit Logistik Masuk</div>
+                            <div class="breadcrumb-item">Edit logistik masuk</div>
                         </div>
                     </div>
                     <div class="card">
@@ -198,6 +197,12 @@
                                             Logistik</label>
                                         <input type="date" class="form-control" name="tanggal_masuk"
                                             value="{{ $inlogistic->tanggal_masuk }}">
+                                    </div>
+                                    <div style="position: absolute; top: 0; right: 0;">
+                                        <a href="{{ route('inlogistics') }}" class="btn btn-primary mx-2"
+                                            style="background-color: silver !important; color: black !important;">
+                                            <i class="fas fa-arrow-left"></i> Kembali
+                                        </a>
                                     </div>
                                     <div class="col-md-12">
                                         <h4 style="color: blue;">Data Supplier</h4>
@@ -331,7 +336,11 @@
                                         });
                                     </script>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <div class="form-group col-md-12 d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i> Perbarui Data
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -347,7 +356,9 @@
         </div>
     </div>
 
-    <!-- General JS Scripts -->
+   
+
+
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
@@ -356,13 +367,25 @@
     <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-    <!-- JS Libraies -->
-
-    <!-- Page Specific JS File -->
-
-    <!-- Template JS File -->
     <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+
+    <script>
+        function performSearch() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const tableRows = document.querySelectorAll('table tbody tr');
+            tableRows.forEach(row => {
+                const rowData = row.innerText.toLowerCase();
+                if (rowData.includes(searchQuery)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        document.getElementById('search-input').addEventListener('input', performSearch);
+    </script>
+
 </body>
 
 </html>

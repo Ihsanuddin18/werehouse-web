@@ -4,20 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Data Logistik &rsaquo; Tambah Logistik &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title> Data Logistik &rsaquo; Edit data logistik &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
+    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
 
-    <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <!-- CSS Libraries -->
-
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-    <!-- Start GA -->
+   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -25,7 +23,7 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-    <!-- /END GA -->
+
 </head>
 
 <div id="app">
@@ -40,8 +38,9 @@
                                 class="fas fa-search"></i></a></li>
                 </ul>
                 <div class="search-element">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                    <input id="search-input" class="form-control" type="search" placeholder="Search" aria-label="Search"
+                        data-width="250">
+                    <button class="btn" type="button" onclick="performSearch()"><i class="fas fa-search"></i></button>
                 </div>
                 <div id="clock" style="color: white; margin-left: 15px;"></div>
             </form>
@@ -169,22 +168,22 @@
             </aside>
         </div>
 
-        <!-- Main Content -->
+        <!-- Main -->
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h1>Tambah Data Logistik</h1>
+                    <h1>Edit data logistik</h1>
                     <div class="section-header-breadcrumb">
                         <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                         <div class="breadcrumb-item"><a href="{{ route('logistics') }}">Data Logistik</a></div>
-                        <div class="breadcrumb-item">Tambah Data Logistik</div>
+                        <div class="breadcrumb-item">Edit data logistik</div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Form Tambah Data Logistik</h4>
+                                <h4>Form edit data logistik</h4>
                             </div>
                             <div class="card-body">
                                 <form action="{{ route('logistics.update', $logistic->id) }}" method="POST">
@@ -205,57 +204,73 @@
                                     <div class="form-group">
                                         <label for="satuan_logistik">Satuan</label>
                                         <select name="satuan_logistik" class="form-control">
-                                            <option value="{{ $logistic->satuan_logistik }}" selected>*Pilih
-                                                satuan</option>
-                                            <option value="Kilogram (kg)">Kilogram (kg)</option>
-                                            <option value="Gram (g)">Gram (g)</option>
-                                            <option value="Liter (l)">Liter (l)</option>
-                                            <option value="Pieces (pcs)">Pieces (pcs)</option>
-                                            <option value="Unit (unit)">Unit (unit)</option>
-                                            <option value="Botol (botol)">Botol (botol)</option>
-                                            <option value="Kardus (kardus)">Kardus (kardus)</option>
-                                            <option value="Drum (drum)">Drum (drum)</option>
-                                            <option value="Roll (roll)">Roll (roll)</option>
-                                            <option value="Karton (karton)">Karton (karton)</option>
-                                            <option value="Lainnya">Lainnya</option>
+                                            <option value="" disabled>*Pilih satuan</option>
+                                            <option value="Kilogram (kg)" {{ $logistic->satuan_logistik == "Kilogram (kg)" ? 'selected' : '' }}>Kilogram (kg)</option>
+                                            <option value="Gram (g)" {{ $logistic->satuan_logistik == "Gram (g)" ? 'selected' : '' }}>Gram (g)</option>
+                                            <option value="Liter (l)" {{ $logistic->satuan_logistik == "Liter (l)" ? 'selected' : '' }}>Liter (l)</option>
+                                            <option value="Pieces (pcs)" {{ $logistic->satuan_logistik == "Pieces (pcs)" ? 'selected' : '' }}>Pieces (pcs)</option>
+                                            <option value="Unit (unit)" {{ $logistic->satuan_logistik == "Unit (unit)" ? 'selected' : '' }}>Unit (unit)</option>
+                                            <option value="Botol (botol)" {{ $logistic->satuan_logistik == "Botol (botol)" ? 'selected' : '' }}>Botol (botol)</option>
+                                            <option value="Kardus (kardus)" {{ $logistic->satuan_logistik == "Kardus (kardus)" ? 'selected' : '' }}>Kardus (kardus)</option>
+                                            <option value="Drum (drum)" {{ $logistic->satuan_logistik == "Drum (drum)" ? 'selected' : '' }}>Drum (drum)</option>
+                                            <option value="Roll (roll)" {{ $logistic->satuan_logistik == "Roll (roll)" ? 'selected' : '' }}>Roll (roll)</option>
+                                            <option value="Karton (karton)" {{ $logistic->satuan_logistik == "Karton (karton)" ? 'selected' : '' }}>Karton (karton)</option>
+                                            <option value="Lainnya" {{ $logistic->satuan_logistik == "Lainnya" ? 'selected' : '' }}>Lainnya</option>
                                         </select>
                                     </div>
-                                    <div class="row">
-                                        <div class="d-grid">
-                                            <button type="submit" class="btn btn-primary">Tambah</button>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
+                            <div class="container position-relative" style="margin-top: -50px; padding-bottom: 80px;">
+                                <a href="{{ route('logistics') }}" class="btn btn-primary"
+                                    style="background-color: silver !important; color: black !important; position: absolute; bottom: 20px; left: 20px;">
+                                    <i class="fas fa-arrow-left"></i> Kembali
+                                </a>
+                                <button type="submit" class="btn btn-primary"
+                                    style="position: absolute; bottom: 20px; right: 20px;"> Perbarui </button>
+                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </section>
         </div>
-        <footer class="main-footer">
-            <div class="footer-left">
-                Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
-            </div>
-        </footer>
+        </section>
     </div>
+    <footer class="main-footer">
+        <div class="footer-left">
+            Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
+        </div>
+    </footer>
+</div>
 </div>
 
-<!-- General JS Scripts -->
-<script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-<!-- JS Libraies -->
 
-<!-- Page Specific JS File -->
+    <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-<!-- Template JS File -->
-<script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+
+    <script>
+        function performSearch() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const tableRows = document.querySelectorAll('table tbody tr');
+            tableRows.forEach(row => {
+                const rowData = row.innerText.toLowerCase();
+                if (rowData.includes(searchQuery)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        document.getElementById('search-input').addEventListener('input', performSearch);
+    </script>
+
 </body>
 
 </html>

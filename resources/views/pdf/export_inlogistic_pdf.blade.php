@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <style>
         #customers {
@@ -42,27 +43,27 @@
             <th>Nama Logistik</th>
             <th>Jumlah</th>
             <th>Satuan</th>
-            <th>Supplier</th> 
-            <th>Tanggal Masuk</th> 
-            <th>Tanggal Kadaluarsa</th> 
-            <th>Dokumentasi</th> 
+            <th>Supplier</th>
+            <th>Tanggal Masuk</th>
+            <th>Tanggal Kadaluarsa</th>
+            <th>Dokumentasi</th>
         </tr>
         @if($inlogistics->count() > 0)
-        @foreach($inlogistics as $inlogistic)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ optional($inlogistic->logistic)->nama_logistik }}</td>
-            <td>{{ $inlogistic->jumlah_logistik_masuk }}</td>
-            <td>{{ optional($inlogistic->logistic)->satuan_logistik }}</td>
-            <td>{{ optional($inlogistic->supplier)->nama_supplier }}</td>
-            <td>{{ $inlogistic->tanggal_masuk }}</td>
-            <td>{{ $inlogistic->expayer_logistik }}</td>
-            <td>{{ asset($inlogistic->dokumentasi_masuk) }}</td>
-        </tr>
-        @endforeach
+            @foreach($inlogistics as $inlogistic)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ optional($inlogistic->logistic)->nama_logistik }}</td>
+                    <td>{{ $inlogistic->jumlah_logistik_masuk }}</td>
+                    <td>{{ optional($inlogistic->logistic)->satuan_logistik }}</td>
+                    <td>{{ optional($inlogistic->supplier)->nama_supplier }}</td>
+                    <td>{{ $inlogistic->tanggal_masuk }}</td>
+                    <td>{{ $inlogistic->expayer_logistik }}</td>
+                    <td>{{ asset($inlogistic->dokumentasi_masuk) }}</td>
+                </tr>
+            @endforeach
         @else
             <tr>
-                <td colspan="8">Tidak ada data logistik masuk</td>
+                <td colspan="8"> Tidak ada data logistik masuk !</td>
             </tr>
         @endif
     </table>

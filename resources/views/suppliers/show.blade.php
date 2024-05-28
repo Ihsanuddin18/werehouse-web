@@ -6,18 +6,16 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Data Supplier &rsaquo; Tambah Supplier &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
+    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
 
-    <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <!-- CSS Libraries -->
-
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-    <!-- Start GA -->
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -25,7 +23,7 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-    <!-- /END GA -->
+
 </head>
 
 <div id="app">
@@ -40,8 +38,9 @@
                                 class="fas fa-search"></i></a></li>
                 </ul>
                 <div class="search-element">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                    <input id="search-input" class="form-control" type="search" placeholder="Search" aria-label="Search"
+                        data-width="250">
+                    <button class="btn" type="button" onclick="performSearch()"><i class="fas fa-search"></i></button>
                 </div>
                 <div id="clock" style="color: white; margin-left: 15px;"></div>
             </form>
@@ -138,7 +137,8 @@
                     </li>
                     <li class="menu-header">Master</li>
                     <li class="dropdown">
-                        <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
+                        <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data
+                                Logistik</span></a>
                     </li>
                     <li class=active class="dropdown">
                         <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
@@ -168,82 +168,97 @@
             </aside>
         </div>
 
-        <!-- Main Content -->
+        <!-- Main -->
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h1>Detail Data Supplier</h1>
+                    <h1>Detail data supplier</h1>
                     <div class="section-header-breadcrumb">
                         <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                         <div class="breadcrumb-item"><a href="{{ route('suppliers') }}">Data Supplier</a></div>
-                        <div class="breadcrumb-item">Detail Data Supplier</div>
+                        <div class="breadcrumb-item">Detail data supplier</div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-6">
+                <div class="row justify-content-center">
+                    <div class="col-12">
                         <div class="card">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <a href="{{ route('suppliers') }}" class="btn btn-primary mr-2"
+                                    style="margin-top: 10px; background-color: silver !important; color: black !important;">
+                                    <i class="fas fa-arrow-left"></i> Kembali
+                                </a>
+                                <a href="{{ route('export_show_supplier_pdf', ['id' => $supplier->id]) }}"
+                                    class="btn btn-danger mr-2" style="margin-top: 10px;">
+                                    <i class="fas fa-file-pdf"></i> Export PDF
+                                </a>
+                            </div>
                             <div class="card-header">
-                                <h4>Detail Supplier</h4>
+                                <h4 style="font-size: 2rem;">Detail supplier</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('suppliers.store', $supplier->id) }}" method="POST">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="kode_supplier">Kode Supplier</label>
-                                        <input type="text" class="form-control" name="kode_supplier"
-                                            placeholder="*Masukkan kode supplier"
-                                            value="{{ $supplier->kode_supplier }}" disabled readonly>
+                                <div class="form-group">
+                                    <label>Kode Supplier:</label>
+                                    <p>{{ $supplier->kode_supplier }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nama Supplier:</label>
+                                    <p>{{ $supplier->nama_supplier }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email:</label>
+                                    <p>{{ $supplier->email_supplier }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Telepon:</label>
+                                    <p>{{ $supplier->telepon_supplier }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Instansi:</label>
+                                    <p>{{ $supplier->instansi_supplier }}</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label>Ditambahkan Pada:</label>
+                                        <p>{{ $supplier->created_at }}</p>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="nama_supplier">Nama Supplier</label>
-                                        <input type="text" class="form-control" name="nama_supplier"
-                                            placeholder="*Masukkan nama supplier"
-                                            value="{{ $supplier->nama_supplier }}" disabled readonly>
+                                    <div class="col mb-3">
+                                        <label>Diperbarui Pada:</label>
+                                        <p>{{ $supplier->updated_at }}</p>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="email_supplier">Email</label>
-                                        <input type="email" name="email_supplier" class="form-control"
-                                            placeholder="*Masukkan alamat email"
-                                            value="{{ $supplier->email_supplier }}" disabled readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="telepon_supplier">Telepon</label>
-                                        <input type="tel" name="telepon_supplier" class="form-control"
-                                            placeholder="*Masukkan nomor telepon"
-                                            value="{{ $supplier->telepon_supplier }}" disabled readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="instansi_supplier">Instansi</label>
-                                        <input type="text" name="instansi_supplier" class="form-control"
-                                            placeholder=""
-                                            value="{{ $supplier->instansi_supplier }}" disabled readonly>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col mb-3">
-                                            <label class="form-label">Ditambahkan Pada</label>
-                                            <input type="text" name="created_at" class="form-control" placeholder="Created At"
-                                            value="{{ $supplier->created_at }}" disabled readonly>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead class="table-primary">
+                                                    <tr>
+                                                        <th class="text-center">Kode Supplier</th>
+                                                        <th class="text-center">Nama Supplier</th>
+                                                        <th class="text-center">Email</th>
+                                                        <th class="text-center">Telepon</th>
+                                                        <th class="text-center">Instansi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">{{ $supplier->kode_supplier }}</td>
+                                                        <td class="text-center">{{ $supplier->nama_supplier }}</td>
+                                                        <td class="text-center">{{ $supplier->email_supplier }}</td>
+                                                        <td class="text-center">{{ $supplier->telepon_supplier }}</td>
+                                                        <td class="text-center">{{ $supplier->instansi_supplier }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                        <div class="col mb-3">
-                                            <label class="form-label">Diperbarui Pada</label>
-                                            <input type="text" name="updated_at" class="form-control" placeholder="Updated At"
-                                            value="{{ $supplier->updated_at }}" disabled readonly>
-                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="d-grid">
-                                            <a href="{{ route('suppliers') }}" class="btn btn-primary">
-                                                <i class="fas fa-arrow-left me-1"></i> Kembali
-                                            </a>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
+
         <footer class="main-footer">
             <div class="footer-left">
                 Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
@@ -252,22 +267,37 @@
     </div>
 </div>
 
-<!-- General JS Scripts -->
-<script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-<!-- JS Libraies -->
 
-<!-- Page Specific JS File -->
 
-<!-- Template JS File -->
-<script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
+
+    <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+
+    <script>
+        function performSearch() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const tableRows = document.querySelectorAll('table tbody tr');
+            tableRows.forEach(row => {
+                const rowData = row.innerText.toLowerCase();
+                if (rowData.includes(searchQuery)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        document.getElementById('search-input').addEventListener('input', performSearch);
+    </script>
+    
+
 </body>
 
 </html>

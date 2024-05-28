@@ -4,39 +4,64 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Supplier;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SupplierController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        $suppliers = Supplier::all();
-        return view('suppliers.index', ['suppliers' => $suppliers]);
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        $query = Supplier::query();
+
+        if ($month && $year) {
+            $query->whereYear('created_at', $year)
+                ->whereMonth('created_at', $month);
+        } elseif ($year) {
+            $query->whereYear('created_at', $year);
+        }
+
+        $suppliers = $query->latest()->paginate(15);
+
+        $firstYear = 2024;
+        $currentYear = date('Y');
+
+        return view('suppliers.index', [
+            'suppliers' => $suppliers,
+            'firstYear' => $firstYear,
+            'currentYear' => $currentYear,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function export_supplier_pdf()
+    {
+        $suppliers = Supplier::latest()->paginate(15);
+
+        $pdf = PDF::loadView('pdf.export_supplier_pdf', compact('suppliers'));
+        return $pdf->download('export_supplier.pdf');
+    }
+
+    public function export_show_supplier_pdf($id)
+    {
+        $supplier = Supplier::findOrFail($id);
+
+        $pdf = PDF::loadView('pdf.export_show_supplier_pdf', compact('supplier'));
+        return $pdf->download('export_show_supplier.pdf');
+    }
+
     public function create()
     {
         return view('suppliers.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         Supplier::create($request->all());
 
-        return redirect()->route('suppliers')->with('success', 'Data Berhasil Ditambahkan!');
+        return redirect()->route('suppliers')->with('success', 'Data berhasil ditambahkan !');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $supplier = Supplier::findOrFail($id);
@@ -44,9 +69,6 @@ class SupplierController extends Controller
         return view('suppliers.show', compact('supplier'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $supplier = Supplier::findOrFail($id);
@@ -54,27 +76,21 @@ class SupplierController extends Controller
         return view('suppliers.edit', compact('supplier'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $supplier = Supplier::findOrFail($id);
-  
+
         $supplier->update($request->all());
-  
-        return redirect()->route('suppliers')->with('success', 'Data berhasil Dirubah !');
+
+        return redirect()->route('suppliers')->with('success', 'Data berhasil diubah !');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $supplier = Supplier::findOrFail($id);
-  
+
         $supplier->delete();
-  
-        return redirect()->route('suppliers')->with('success', 'Data berhasil Dihapus !');
+
+        return redirect()->route('suppliers')->with('success', 'Data berhasil dihapus !');
     }
 }

@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Dashboard &rsaquo; Data Supplier &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Dashboard &rsaquo; Data Logistik Masuk &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
-    <!-- General CSS Files -->
+    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
+
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <!-- CSS Libraries -->
-
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-    <!-- Start GA -->
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -24,7 +24,7 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-    <!-- /END GA -->
+
 </head>
 
 <body>
@@ -40,9 +40,10 @@
                                     class="fas fa-search"></i></a></li>
                     </ul>
                     <div class="search-element">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                            data-width="250">
-                        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                        <input id="search-input" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search" data-width="250">
+                        <button class="btn" type="button" onclick="performSearch()"><i
+                                class="fas fa-search"></i></button>
                     </div>
                     <div id="clock" style="color: white; margin-left: 15px;"></div>
                 </form>
@@ -171,7 +172,7 @@
                 </aside>
             </div>
 
-            <!-- Main Content -->
+            <!-- Main -->
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
@@ -191,17 +192,55 @@
                             </a>
                         </div>
                         <br>
-                        @if(Session::has('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ Session::get('success') }}
+                        <form method="GET" action="{{ route('inlogistics.index') }}" class="form-inline">
+                            <div class="form-group mb-2">
+                                <label for="month" class="mr-2">Bulan:</label>
+                                <select name="month" id="month" class="form-control mr-2">
+                                    <option value="">Pilih Bulan</option>
+                                    @foreach(range(1, 12) as $month)
+                                        <option value="{{ $month }}">
+                                            {{ DateTime::createFromFormat('!m', $month)->format('F') }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
+                            <div class="form-group mb-2">
+                                <label for="year" class="mr-2">Tahun:</label>
+                                <select name="year" id="year" class="form-control mr-2">
+                                    <option value="">Pilih Tahun</option>
+                                    @foreach(range($firstYear, date('Y')) as $year)
+                                        <option value="{{ $year }}">{{ $year }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Filter</button>
+                        </form>
+                        @if(Session::has('success'))
+                            <script>
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 4000,
+                                    timerProgressBar: true,
+                                    didOpen: (toast) => {
+                                        toast.onmouseenter = Swal.stopTimer;
+                                        toast.onmouseleave = Swal.resumeTimer;
+                                    }
+                                });
+
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: '{{ Session::get('success') }}'
+                                });
+                            </script>
                         @endif
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Daftar Logistik Masuk</h4>
+                                    <h4>Daftar data logistik masuk</h4>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
@@ -222,7 +261,7 @@
                                             @if($inlogistics->count() > 0)
                                                 @foreach($inlogistics as $inlogistic)
                                                     <tr>
-                                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                                        <td class="text-center">{{ ($inlogistics->currentPage() - 1) * $inlogistics->perPage() + $loop->iteration }}</td>
                                                         <td class="text-center">
                                                             {{ optional($inlogistic->logistic)->nama_logistik }}
                                                         </td>
@@ -240,19 +279,24 @@
                                                                 height='50' class="img img-responsive" />
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                            <div class="d-flex justify-content-center" role="group"
+                                                                aria-label="Basic example">
                                                                 <a href="{{ route('inlogistics.show', $inlogistic->id) }}"
-                                                                    type="button" class="btn btn-secondary">Detail</a>
+                                                                    class="btn btn-success mr-2" title="Detail">
+                                                                    <i class="fas fa-eye"></i>
+                                                                </a>
                                                                 <a href="{{ route('inlogistics.edit', $inlogistic->id)}}"
-                                                                    type="button" class="btn btn-warning">Edit</a>
-                                                                <form
-                                                                    action="{{ route('inlogistics.destroy', $inlogistic->id) }}"
-                                                                    method="POST" class="btn btn-danger p-0"
+                                                                    class="btn btn-warning mr-2" title="Edit">
+                                                                    <i class="fas fa-pencil-alt"></i>
+                                                                </a>
+                                                                <form action="{{ route('inlogistics.destroy', $inlogistic->id) }}"
+                                                                    method="POST" class="p-0"
                                                                     onsubmit="return confirm('Delete?')">
                                                                     @csrf
                                                                     @method('DELETE')
-                                                                    <button type="submit"
-                                                                        class="btn btn-danger m-0">Delete</button>
+                                                                    <button type="submit" class="btn btn-danger" title="Delete">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </button>
                                                                 </form>
                                                             </div>
                                                         </td>
@@ -265,12 +309,26 @@
                                             @endif
                                         </tbody>
                                     </table>
+                                    <div class="container">
+                                        <div class="row justify-content-end">
+                                            <div class="col-auto">
+                                                {{ $inlogistics->links() }}
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-end mt-2">
+                                            <div class="col-auto">
+                                                <span> Halaman {{ $inlogistics->currentPage() }} dari
+                                                    {{ $inlogistics->lastPage() }} halaman </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
             </div>
+            </section>
+    </div>
     </div>
     <footer class="main-footer">
         <div class="footer-left">
@@ -283,7 +341,7 @@
     </div>
 
 
-    <!-- General JS Scripts -->
+   
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
@@ -292,14 +350,25 @@
     <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-    <!-- JS Libraies -->
-
-
-    <!-- Page Specific JS File -->
-
-    <!-- Template JS File -->
     <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+
+    <script>
+        function performSearch() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const tableRows = document.querySelectorAll('table tbody tr');
+            tableRows.forEach(row => {
+                const rowData = row.innerText.toLowerCase();
+                if (rowData.includes(searchQuery)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        document.getElementById('search-input').addEventListener('input', performSearch);
+    </script>
+
 </body>
 
 </html>

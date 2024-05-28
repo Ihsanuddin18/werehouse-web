@@ -4,20 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Data Supplier &rsaquo; Tambah Supplier &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Data Supplier &rsaquo; Tambah supplier &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
+    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
 
-    <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <!-- CSS Libraries -->
-
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-    <!-- Start GA -->
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -25,7 +23,7 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-    <!-- /END GA -->
+
 </head>
 
 <div id="app">
@@ -40,8 +38,9 @@
                                 class="fas fa-search"></i></a></li>
                 </ul>
                 <div class="search-element">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                    <input id="search-input" class="form-control" type="search" placeholder="Search" aria-label="Search"
+                        data-width="250">
+                    <button class="btn" type="button" onclick="performSearch()"><i class="fas fa-search"></i></button>
                 </div>
                 <div id="clock" style="color: white; margin-left: 15px;"></div>
             </form>
@@ -138,7 +137,8 @@
                     </li>
                     <li class="menu-header">Master</li>
                     <li class="dropdown">
-                        <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data Logistik</span></a>
+                        <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data
+                                Logistik</span></a>
                     </li>
                     <li class=active class="dropdown">
                         <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
@@ -168,22 +168,22 @@
             </aside>
         </div>
 
-        <!-- Main Content -->
+        <!-- Main -->
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h1>Tambah Supplier</h1>
+                    <h1>Tambah supplier</h1>
                     <div class="section-header-breadcrumb">
                         <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                         <div class="breadcrumb-item"><a href="{{ route('suppliers') }}">Data Supplier</a></div>
-                        <div class="breadcrumb-item">Tambah Supplier</div>
+                        <div class="breadcrumb-item">Tambah supplier</div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Form Tambah Supplier</h4>
+                                <h4>Form tambah supplier</h4>
                             </div>
                             <div class="card-body">
                                 <form action="{{ route('suppliers.store') }}" method="POST"
@@ -223,8 +223,12 @@
                                         </select>
                                     </div>
                                     <div class="row">
-                                        <div class="d-grid">
-                                            <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="{{ route('suppliers') }}" class="btn btn-primary mx-2"
+                                                style="background-color: silver !important; color: black !important;">
+                                                <i class="fas fa-arrow-left"></i> Kembali
+                                            </a>
+                                            <button type="submit" class="btn btn-primary mx-2">Tambah</button>
                                         </div>
                                     </div>
                                 </form>
@@ -242,22 +246,36 @@
     </div>
 </div>
 
-<!-- General JS Scripts -->
-<script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-<!-- JS Libraies -->
 
-<!-- Page Specific JS File -->
 
-<!-- Template JS File -->
-<script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
-<script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
+
+    <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
+    <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+
+    <script>
+        function performSearch() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const tableRows = document.querySelectorAll('table tbody tr');
+            tableRows.forEach(row => {
+                const rowData = row.innerText.toLowerCase();
+                if (rowData.includes(searchQuery)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        document.getElementById('search-input').addEventListener('input', performSearch);
+    </script>
+
 </body>
 
 </html>

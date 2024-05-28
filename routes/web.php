@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CetakBarcodeLabelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
@@ -13,17 +11,14 @@ use App\Http\Controllers\InlogisticController;
 use App\Http\Controllers\OutlogisticController;
 
 
-
-
-
-Route::get('/', function () { return view('welcome');});
-    Route::get('/about', [AboutController::class, 'showAbout'])->name('about');   
-    Route::get('/contact', [ContactController::class, 'showContact'])->name('contact');   
+Route::get('/', function () {return view('welcome'); });
+    Route::get('/about', [AboutController::class, 'showAbout'])->name('about');
+    Route::get('/contact', [ContactController::class, 'showContact'])->name('contact');
     Route::post('/submit-form', [ContactController::class, 'submitForm'])->name('submit.form');
 
 
-Route::get('/home',[HomeController::class,'index'])->middleware('auth')->name('home');
-    Route::get('post',[HomeController::class,'post'])->middleware(['auth','anggota']);
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
+    Route::get('post', [HomeController::class, 'post'])->middleware(['auth', 'anggota']);
 
 
 Route::middleware('auth')->group(function () {
@@ -32,10 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::put('/profile/{id}/biography', [ProfileController::class, 'updateBiography'])->name('profile.updateBiography');
     Route::delete('/profile/{id}/biography', [ProfileController::class, 'destroyBiography'])->name('profile.destroyBiography');
-    });
+});
 
 
 Route::controller(SupplierController::class)->prefix('suppliers')->group(function () {
+    Route::resource('suppliers', SupplierController::class);
     Route::get('', 'index')->name('suppliers');
     Route::get('create', 'create')->name('suppliers.create');
     Route::post('store', 'store')->name('suppliers.store');
@@ -43,10 +39,13 @@ Route::controller(SupplierController::class)->prefix('suppliers')->group(functio
     Route::get('edit/{id}', 'edit')->name('suppliers.edit');
     Route::put('edit/{id}', 'update')->name('suppliers.update');
     Route::delete('destroy/{id}', 'destroy')->name('suppliers.destroy');
-    });
+    Route::get('/export_supplier_pdf', [SupplierController::class, 'export_supplier_pdf'])->name('export_supplier_pdf');
+    Route::get('/suppliers/{id}/export_show_supplier_pdf', [SupplierController::class, 'export_show_supplier_pdf'])->name('export_show_supplier_pdf');
+});
 
 
 Route::controller(LogisticController::class)->prefix('logistics')->group(function () {
+    Route::resource('logistics', LogisticController::class);
     Route::get('', 'index')->name('logistics');
     Route::get('create', 'create')->name('logistics.create');
     Route::post('store', 'store')->name('logistics.store');
@@ -54,7 +53,9 @@ Route::controller(LogisticController::class)->prefix('logistics')->group(functio
     Route::get('edit/{id}', 'edit')->name('logistics.edit');
     Route::put('edit/{id}', 'update')->name('logistics.update');
     Route::delete('destroy/{id}', 'destroy')->name('logistics.destroy');
-    }); 
+    Route::get('/export_logistic_pdf', [LogisticController::class, 'export_logistic_pdf'])->name('export_logistic_pdf');
+    Route::get('/logistics/{id}/export_show_logistic_pdf', [LogisticController::class, 'export_show_logistic_pdf'])->name('export_show_logistic_pdf');
+});
 
 
 Route::controller(InlogisticController::class)->prefix('inlogistics')->group(function () {
@@ -67,9 +68,8 @@ Route::controller(InlogisticController::class)->prefix('inlogistics')->group(fun
     Route::put('edit/{id}', 'update')->name('inlogistics.update');
     Route::delete('destroy/{id}', 'destroy')->name('inlogistics.destroy');
     Route::get('/export_inlogistic_pdf', [InlogisticController::class, 'export_inlogistic_pdf'])->name('export_inlogistic_pdf');
-    }); 
-
-
+    Route::get('/inlogistics/{id}/export_show_inlogistic_pdf', [InlogisticController::class, 'export_show_inlogistic_pdf'])->name('export_show_inlogistic_pdf');
+});
 
 
 Route::controller(OutlogisticController::class)->prefix('outlogistics')->group(function () {
@@ -82,26 +82,7 @@ Route::controller(OutlogisticController::class)->prefix('outlogistics')->group(f
     Route::put('edit/{id}', 'update')->name('outlogistics.update');
     Route::delete('destroy/{id}', 'destroy')->name('outlogistics.destroy');
     Route::get('/export_outlogistic_pdf', [OutlogisticController::class, 'export_outlogistic_pdf'])->name('export_outlogistic_pdf');
-    }); 
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-//Route Cetak Barcode Label
-    Route::get('/cetak-barcode-label', [CetakBarcodeLabelController::class, 'showCetakBarcodeLabel'])->name('cetak_barcode_label');   
-
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,8 +10,7 @@
     <link
       rel="shortcut icon"
       href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png"
-      type="image/png"
-    />
+      type="image/png"/>
 
     <!-- ===== All CSS files ===== -->
     <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/bootstrap.min.css" />

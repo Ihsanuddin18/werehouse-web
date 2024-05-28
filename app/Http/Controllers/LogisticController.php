@@ -4,39 +4,70 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Logistic;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class LogisticController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        $logistics = Logistic::all();
-        return view('logistics.index', ['logistics' => $logistics]);
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        $query = Logistic::query();
+
+        if ($month && $year) {
+            $query->whereYear('created_at', $year)
+                ->whereMonth('created_at', $month);
+        } elseif ($year) {
+            $query->whereYear('created_at', $year);
+        }
+
+        $logistics = $query->latest()->paginate(15);
+
+        $firstYear = 2024;
+        $currentYear = date('Y');
+
+        return view('logistics.index', [
+            'logistics' => $logistics,
+            'firstYear' => $firstYear,
+            'currentYear' => $currentYear,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function export_logistic_pdf()
+    {
+        $logistics = Logistic::latest()->paginate(15);
+
+        $pdf = PDF::loadView('pdf.export_logistic_pdf', compact('logistics'));
+        return $pdf->download('export_logistic.pdf');
+    }
+
+    public function export_show_logistic_pdf($id)
+    {
+        $logistic = Logistic::findOrFail($id);
+
+        $pdf = PDF::loadView('pdf.export_show_logistic_pdf', compact('logistic'));
+        return $pdf->download('export_show_logistic.pdf');
+    }
+
     public function create()
     {
         return view('logistics.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
+        $request->validate([
+            'kode_logistik' => 'required',
+            'nama_logistik' => 'required',
+            'satuan_logistik' => 'required',
+        ]);
+
         Logistic::create($request->all());
 
-        return redirect()->route('logistics')->with('success', 'Data Berhasil Ditambahkan!');
+        return redirect()->route('logistics')->with('success', 'Data berhasil ditambahkan !');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $logistic = Logistic::findOrFail($id);
@@ -44,9 +75,6 @@ class LogisticController extends Controller
         return view('logistics.show', compact('logistic'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $logistic = Logistic::findOrFail($id);
@@ -54,27 +82,21 @@ class LogisticController extends Controller
         return view('logistics.edit', compact('logistic'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $logistic = Logistic::findOrFail($id);
-  
+
         $logistic->update($request->all());
-  
-        return redirect()->route('logistics')->with('success', 'Data berhasil Dirubah !');
+
+        return redirect()->route('logistics', $id)->with('success', 'Data berhasil diubah !');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $logistic = Logistic::findOrFail($id);
-  
+
         $logistic->delete();
-  
-        return redirect()->route('logistics')->with('success', 'Data berhasil Dihapus !');
+
+        return redirect()->route('logistics')->with('success', 'Data berhasil dihapus !');
     }
 }

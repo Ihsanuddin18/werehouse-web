@@ -4,20 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Data Logistik &rsaquo; Tambah Logistik &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Data Logistik &rsaquo; Detail Logistik &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
+    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
 
-    <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <!-- CSS Libraries -->
-
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-    <!-- Start GA -->
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -25,7 +23,7 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-    <!-- /END GA -->
+
 </head>
 
 <div id="app">
@@ -40,8 +38,9 @@
                                 class="fas fa-search"></i></a></li>
                 </ul>
                 <div class="search-element">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                    <input id="search-input" class="form-control" type="search" placeholder="Search" aria-label="Search"
+                        data-width="250">
+                    <button class="btn" type="button" onclick="performSearch()"><i class="fas fa-search"></i></button>
                 </div>
                 <div id="clock" style="color: white; margin-left: 15px;"></div>
             </form>
@@ -169,64 +168,78 @@
             </aside>
         </div>
 
-        <!-- Main Content -->
+        <!-- Main -->
         <div class="main-content">
             <section class="section">
                 <div class="section-header">
-                    <h1>Detail Data Logistik</h1>
+                    <h1>Detail data logistik</h1>
                     <div class="section-header-breadcrumb">
                         <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                         <div class="breadcrumb-item"><a href="{{ route('logistics') }}">Data Logistik</a></div>
-                        <div class="breadcrumb-item">Detail Data Logistik</div>
+                        <div class="breadcrumb-item">Detail data logistik</div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-6">
+                <div class="row justify-content-center">
+                    <div class="col-12">
                         <div class="card">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <a href="{{ route('logistics') }}" class="btn btn-primary mr-2"
+                                    style="margin-top: 10px; background-color: silver !important; color: black !important;">
+                                    <i class="fas fa-arrow-left"></i> Kembali
+                                </a>
+                                <a href="{{ route('export_show_logistic_pdf', ['id' => $logistic->id]) }}"
+                                    class="btn btn-danger mr-2" style="margin-top: 10px;">
+                                    <i class="fas fa-file-pdf"></i> Export PDF
+                                </a>
+                            </div>
                             <div class="card-header">
-                                <h4>Detail Logistik</h4>
+                                <h4 style="font-size: 2rem;">Detail logistik</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('logistics.store') }}" method="POST">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="kode_logistik">Kode Logistik</label>
-                                        <input type="text" class="form-control" name="kode_logistik"
-                                            placeholder="*Masukkan kode logistik"
-                                            value="{{ $logistic->kode_logistik }}" disabled readonly>
+                                <div class="form-group">
+                                    <label>Kode Logistik:</label>
+                                    <p>{{ $logistic->kode_logistik }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nama Logistik:</label>
+                                    <p>{{ $logistic->nama_logistik }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Satuan:</label>
+                                    <p>{{ $logistic->satuan_logistik }}</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label>Ditambahkan Pada:</label>
+                                        <p>{{ $logistic->created_at }}</p>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="nama_logistik">Nama Logistik</label>
-                                        <input type="text" class="form-control" name="nama_logistik"
-                                            placeholder="*Masukkan nama logistik"
-                                            value="{{ $logistic->nama_logistik }}" disabled readonly>
+                                    <div class="col mb-3">
+                                        <label>Diperbarui Pada:</label>
+                                        <p>{{ $logistic->updated_at }}</p>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="satuan_logistik">Satuan</label>
-                                        <input type="text" name="satuan_logistik" class="form-control"
-                                            placeholder=""
-                                            value="{{ $logistic->satuan_logistik }}" disabled readonly>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col mb-3">
-                                            <label class="form-label">Ditambahkan Pada</label>
-                                            <input type="text" name="created_at" class="form-control" placeholder="Created At"
-                                            value="{{ $logistic->created_at }}" disabled readonly>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead class="table-primary">
+                                                    <tr>
+                                                        <th class="text-center">Kode Logistik</th>
+                                                        <th class="text-center">Nama Logistik</th>
+                                                        <th class="text-center">Satuan</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">{{ $logistic->kode_logistik }}</td>
+                                                        <td class="text-center">{{ $logistic->nama_logistik }}</td>
+                                                        <td class="text-center">{{ $logistic->satuan_logistik }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                        <div class="col mb-3">
-                                            <label class="form-label">Diperbarui Pada</label>
-                                            <input type="text" name="updated_at" class="form-control" placeholder="Updated At"
-                                            value="{{ $logistic->updated_at }}" disabled readonly>
-                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="d-grid">
-                                            <a href="{{ route('logistics') }}" class="btn btn-primary">
-                                                <i class="fas fa-arrow-left me-1"></i> Kembali
-                                            </a>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -241,7 +254,8 @@
     </div>
 </div>
 
-<!-- General JS Scripts -->
+
+
 <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
 <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
 <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
@@ -250,13 +264,25 @@
 <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
 <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-<!-- JS Libraies -->
-
-<!-- Page Specific JS File -->
-
-<!-- Template JS File -->
 <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
 <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+
+<script>
+    function performSearch() {
+        const searchQuery = document.getElementById('search-input').value.toLowerCase();
+        const tableRows = document.querySelectorAll('table tbody tr');
+        tableRows.forEach(row => {
+            const rowData = row.innerText.toLowerCase();
+            if (rowData.includes(searchQuery)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    document.getElementById('search-input').addEventListener('input', performSearch);
+</script>
+
 </body>
 
 </html>

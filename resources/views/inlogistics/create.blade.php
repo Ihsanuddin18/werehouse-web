@@ -4,20 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Logistik Masuk &rsaquo; Tambah Logistik Masuk &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Logistik Masuk &rsaquo; Tambah logistik masuk &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
-    <!-- General CSS Files -->
+    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
+
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/select2/dist/css/select2.min.css">
 
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
 
-    <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -27,8 +25,6 @@
         gtag('config', 'UA-94034622-3');
     </script>
 
-
-    <!-- /END GA -->
 </head>
 
 <body>
@@ -39,14 +35,16 @@
                 <form class="form-inline mr-auto">
                     <ul class="navbar-nav mr-3">
                         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i
-                                    class="fas fa-bars"></i></a></li>
+                                    class="fas fa-bars"></i></a>
+                        </li>
                         <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
                                     class="fas fa-search"></i></a></li>
                     </ul>
                     <div class="search-element">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                            data-width="250">
-                        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                        <input id="search-input" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search" data-width="250">
+                        <button class="btn" type="button" onclick="performSearch()"><i
+                                class="fas fa-search"></i></button>
                     </div>
                     <div id="clock" style="color: white; margin-left: 15px;"></div>
                 </form>
@@ -175,16 +173,16 @@
                 </aside>
             </div>
 
-            <!-- Main Content -->
+            <!-- Main -->
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Tambah Logistik Masuk</h1>
+                        <h1>Tambah logistik masuk</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
                             <div class="breadcrumb-item active"><a href="{{ route('inlogistics') }}">Logistik Masuk</a>
                             </div>
-                            <div class="breadcrumb-item">Tambah Logistik Masuk</div>
+                            <div class="breadcrumb-item">Tambah logistik masuk</div>
                         </div>
                     </div>
                     <div class="card">
@@ -192,11 +190,20 @@
                             <form id="logisticForm">
                                 @csrf
                                 <div class="form-row">
-                                    <div class="form-group col-md-3">
-                                        <label for="tanggal_masuk" style="font-size: larger;">Tanggal Masuk
-                                            Logistik</label>
-                                        <input type="date" class="form-control" name="tanggal_masuk" id="tanggal_masuk"
-                                            placeholder="*Tanggal Masuk">
+                                    <div class="form-container"
+                                        style="position: relative; width: 100%; padding-top: 60px;">
+                                        <div class="form-group col-md-3">
+                                            <label for="tanggal_masuk" style="font-size: larger;">Tanggal Masuk
+                                                Logistik</label>
+                                            <input type="date" class="form-control" name="tanggal_masuk"
+                                                id="tanggal_masuk" placeholder="*Tanggal Masuk">
+                                        </div>
+                                        <div style="position: absolute; top: 0; right: 0;">
+                                            <a href="{{ route('inlogistics') }}" class="btn btn-primary mx-2"
+                                                style="background-color: silver !important; color: black !important;">
+                                                <i class="fas fa-arrow-left"></i> Kembali
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="col-md-12">
                                         <h4 style="color: blue;">Data Supplier</h4>
@@ -287,11 +294,14 @@
                                             id="dokumentasi_masuk" placeholder="*Masukkan Keterangan">
                                     </div>
                                 </div>
-                                <button type="button" id="addLogistic" class="btn btn-primary">Tambahkan ke
-                                    Tabel</button>
+                                <div style="text-align: right;">
+                                    <button type="button" id="addLogistic" class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Lihat Detail
+                                    </button>
+                                </div>
                             </form>
                             <div class="mt-4">
-                                <h3>Detail Logistik Masuk</h3>
+                                <h3>Detail logistik masuk</h3>
                                 <table class="table table-striped" id="logisticTable">
                                     <thead class="table-primary">
                                         <tr>
@@ -307,11 +317,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- Rows will be added dynamically here -->
                                     </tbody>
                                 </table>
-                                <button type="button" id="saveLogistics" class="btn btn-success">Tambah Logistik
-                                    Masuk</button>
+                                <div style="display: flex; justify-content: center;">
+                                    <button type="button" id="saveLogistics" class="btn btn-primary">
+                                        <i class="fas fa-save"></i> Tambah Logistik Masuk
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -366,7 +378,7 @@
                     function addRemoveButtonHandler(button) {
                         button.addEventListener('click', function () {
                             this.closest('tr').remove();
-                            enableAddLogisticButton(); // Re-enable the "Add to Table" button when a row is removed
+                            enableAddLogisticButton();
                         });
                     }
 
@@ -407,7 +419,7 @@
                             addRemoveButtonHandler(button);
                         });
 
-                        disableAddLogisticButton(); // Disable the "Add to Table" button after adding a row
+                        disableAddLogisticButton();
                     });
 
                     document.getElementById('saveLogistics').addEventListener('click', function () {
@@ -429,7 +441,9 @@
         </div>
     </div>
 
-    <!-- General JS Scripts -->
+
+
+
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
@@ -438,13 +452,26 @@
     <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-    <!-- JS Libraies -->
-
-    <!-- Page Specific JS File -->
-
-    <!-- Template JS File -->
     <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+
+    <script>
+        function performSearch() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const tableRows = document.querySelectorAll('table tbody tr');
+            tableRows.forEach(row => {
+                const rowData = row.innerText.toLowerCase();
+                if (rowData.includes(searchQuery)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        document.getElementById('search-input').addEventListener('input', performSearch);
+    </script>
+
+
 </body>
 
 </html

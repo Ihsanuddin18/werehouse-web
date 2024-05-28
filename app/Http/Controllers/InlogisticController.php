@@ -10,17 +10,35 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class InlogisticController extends Controller
 {
-
-    public function index()
+    public function index(Request $request)
     {
-        $inlogistics = Inlogistic::with('logistic', 'supplier')->get();
+        $query = InLogistic::with('logistic', 'supplier');
+
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        if ($month && $year) {
+            $query->whereYear('tanggal_masuk', $year)
+                ->whereMonth('tanggal_masuk', $month);
+        } elseif ($year) {
+            $query->whereYear('tanggal_masuk', $year);
+        }
+
+        $inlogistics = $query->latest()->paginate(15);
+
         $logistics = Logistic::with('inlogistics')->get();
         $suppliers = Supplier::all();
-        $inlogistics = Inlogistic::all();
+
+        $firstYearDate = InLogistic::min('tanggal_masuk');
+        $firstYear = $firstYearDate ? date('Y', strtotime($firstYearDate)) : date('Y');
+        $currentYear = date('Y');
+
         return view('inlogistics.index', [
             'inlogistics' => $inlogistics,
             'logistics' => $logistics,
-            'suppliers' => $suppliers
+            'suppliers' => $suppliers,
+            'firstYear' => $firstYear,
+            'currentYear' => $currentYear,
         ]);
     }
 
@@ -31,6 +49,13 @@ class InlogisticController extends Controller
         return $pdf->download('export_inlogistic_pdf.pdf');
     }
 
+    public function export_show_inlogistic_pdf($id)
+    {
+        $inlogistic = Inlogistic::findOrFail($id);
+
+        $pdf = PDF::loadView('pdf.export_show_inlogistic_pdf', compact('inlogistic'));
+        return $pdf->download('export_show_inlogistic.pdf');
+    }
 
     public function create()
     {
@@ -56,7 +81,7 @@ class InlogisticController extends Controller
             $validatedData['dokumentasi_masuk'] = '/storage/' . $path;
         }
         Inlogistic::create($validatedData);
-        return redirect()->route('inlogistics.index')->with('success', 'Data Berhasil Ditambahkan!');
+        return redirect()->route('inlogistics.index')->with('success', 'Data berhasil ditambahkan !');
     }
 
     public function show(string $id)
@@ -78,13 +103,13 @@ class InlogisticController extends Controller
     {
         $inlogistic = Inlogistic::findOrFail($id);
         $inlogistic->update($request->all());
-        return redirect()->route('inlogistics')->with('success', 'Data berhasil Dirubah !');
+        return redirect()->route('inlogistics')->with('success', 'Data berhasil diubah !');
     }
 
     public function destroy(string $id)
     {
         $inlogistic = Inlogistic::findOrFail($id);
         $inlogistic->delete();
-        return redirect()->route('inlogistics')->with('success', 'Data berhasil Dihapus !');
+        return redirect()->route('inlogistics')->with('success', 'Data berhasil dihapus !');
     }
 }

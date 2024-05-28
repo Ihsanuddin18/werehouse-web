@@ -4,7 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Werehouse BPBD | Kabupaten Jember</title>
+  <title> Dashboard &rsaquo; Werehouse BPBD | Kabupaten Jember </title>
+
+  <!--====== Favicon Icon ======-->
+  <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
@@ -14,8 +17,7 @@
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/jqvmap/dist/jqvmap.min.css">
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/summernote/summernote-bs4.css">
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
-  <link rel="stylesheet"
-    href="{{ asset('tdashboard') }}/assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
+  <link rel="stylesheet"href="{{ asset('tdashboard') }}/assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
@@ -23,6 +25,7 @@
 
   <!-- Start GA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -30,6 +33,7 @@
 
     gtag('config', 'UA-94034622-3');
   </script>
+  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
@@ -48,11 +52,13 @@
                   class="fas fa-search"></i></a></li>
           </ul>
           <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+            <input id="search-input" class="form-control" type="search" placeholder="Search" aria-label="Search"
+              data-width="250">
+            <button class="btn" type="button" onclick="performSearch()"><i class="fas fa-search"></i></button>
           </div>
           <div id="clock" style="color: white; margin-left: 15px;"></div>
         </form>
+
         <script>
           function updateClock() {
             var now = new Date();
@@ -83,11 +89,12 @@
 
           updateClock();
         </script>
+
         <ul class="navbar-nav navbar-right">
           <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
               class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
-              <div class="dropdown-header">Pemberitahuan !
+              <div class="dropdown-header"> Permintaan !
               </div>
               <script>
                 function konfirmasi() {
@@ -120,9 +127,6 @@
                   </div>
                 </a>
               </div>
-              <div class="dropdown-footer text-center">
-                <a href="#"><i class="fas fa-chevron-right"></i></a>
-              </div>
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown"
@@ -134,24 +138,24 @@
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">
                 @if(Auth::user()->last_login_at)
-                  @php
-          $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
-          $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
-          $hours = floor($diffInMinutes / 60);
-          $remainingMinutes = $diffInMinutes % 60;
-        @endphp
-                  @if($diffInMinutes > 60)
-          Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
-        @elseif($diffInMinutes > 1)
-      Login {{ $diffInMinutes }} menit yang lalu
-    @elseif($diffInSeconds > 0)
-    Login {{ $diffInSeconds }} detik yang lalu
-  @else
-  Baru Login
-@endif
-        @else
-      Baru Login
-    @endif
+                                  @php
+                          $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
+                          $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
+                          $hours = floor($diffInMinutes / 60);
+                          $remainingMinutes = $diffInMinutes % 60;
+                        @endphp
+                                  @if($diffInMinutes > 60)
+                          Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
+                        @elseif($diffInMinutes > 1)
+                      Login {{ $diffInMinutes }} menit yang lalu
+                    @elseif($diffInSeconds > 0)
+                    Login {{ $diffInSeconds }} detik yang lalu
+                  @else
+                  Baru Login
+                @endif
+                        @else
+                      Baru Login
+                    @endif
               </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profil
@@ -191,7 +195,7 @@
             <li class="dropdown">
               <a href="{{ route('suppliers') }}"><i class="fas fa-table"></i> <span>Data Supplier</span></a>
             </li>
-           
+
             <li class="menu-header">Aktivitas</li>
             <li>
               <a href="{{ route('inlogistics')}}" class="nav-link"><i class="fas fa-sign-in-alt"></i> <span>Logistik
@@ -323,14 +327,14 @@
                     <h4>Jumlah Logistik</h4>
                   </div>
                   <div class="card-body">
-                    2
+                    {{$logisticsCount}}
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-danger">
+                <div class="card-icon bg-warning">
                   <i class="far fa-user"></i>
                 </div>
                 <div class="card-wrap">
@@ -338,7 +342,7 @@
                     <h4>Jumlah Supplier</h4>
                   </div>
                   <div class="card-body">
-                    2
+                    {{ $suppliersCount }}
                   </div>
                 </div>
               </div>
@@ -353,14 +357,14 @@
                     <h4>Jumlah Penerimaan</h4>
                   </div>
                   <div class="card-body">
-                    3
+                    {{ $inlogisticsCount }}
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
+                <div class="card-icon bg-danger">
                   <i class="fas fa-sign-out-alt"></i>
                 </div>
                 <div class="card-wrap">
@@ -368,7 +372,7 @@
                     <h4>Jumlah Pengeluaran</h4>
                   </div>
                   <div class="card-body">
-                    8
+                    {{ $outlogisticsCount }}
                   </div>
                 </div>
               </div>
@@ -378,7 +382,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Daftar Logistik</h4>
+                  <h4>Daftar stok data logistik</h4>
                   <div class="card-header-form">
                     <form>
 
@@ -387,81 +391,37 @@
                 </div>
                 <div class="table-responsive">
                   <table class="table table-striped">
-                    <tr>
-                      <th>No</th>
-                      <th>Kode Logistik</th>
-                      <th>Nama Logistik</th>
-                      <th>Supplier</th>
-                      <th>Stok Logistik</th>
-                      <th>Expayer</th>
-
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>09386437</td>
-                      <td>Kursi Lipat</td>
-                      <td>APBD Provinsi Jawa Timur</td>
-                      <td>14 Pcs</td>
-                      <td>2018-01-20</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>09386437</td>
-                      <td>Kursi Lipat</td>
-                      <td>APBD Provinsi Jawa Timur</td>
-                      <td>14 Pcs</td>
-                      <td>2018-01-20</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>09386437</td>
-                      <td>Kursi Lipat</td>
-                      <td>APBD Provinsi Jawa Timur</td>
-                      <td>14 Pcs</td>
-                      <td>2018-01-20</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>09386437</td>
-                      <td>Kursi Lipat</td>
-                      <td>APBD Provinsi Jawa Timur</td>
-                      <td>14 Pcs</td>
-                      <td>2018-01-20</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>09386437</td>
-                      <td>Kursi Lipat</td>
-                      <td>APBD Provinsi Jawa Timur</td>
-                      <td>14 Pcs</td>
-                      <td>2018-01-20</td>
-                    </tr>
+                    <thead class="table-primary">
+                      <tr>
+                        <th style="text-align: center;">No</th>
+                        <th style="text-align: center;">Kode Logistik</th>
+                        <th style="text-align: center;">Nama Logistik</th>
+                        <th style="text-align: center;">Supplier</th>
+                        <th style="text-align: center;">Stok Logistik</th>
+                        <th style="text-align: center;">Expayer</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @if($inlogistics->count() > 0)
+                              @foreach($inlogistics as $inlogistic)
+                          <tr>
+                          <td class="text-center">{{ $loop->iteration }}</td>
+                          <td class="text-center">{{ optional($inlogistic->logistic)->kode_logistik }}</td>
+                          <td class="text-center">{{ optional($inlogistic->logistic)->nama_logistik }}</td>
+                          <td class="text-center">{{ optional($inlogistic->supplier)->nama_supplier }}</td>
+                          <td class="text-center">{{ $inlogistic->jumlah_logistik_masuk }}
+                          {{ optional($inlogistic->logistic)->satuan_logistik }}
+                          </td>
+                          <td class="text-center">{{ $inlogistic->expayer_logistik }}</td>
+                          </tr>
+                        @endforeach
+                            @else
+                        <tr>
+                          <td colspan="6" class="text-center"> Tidak ada data ! </td>
+                        </tr>
+                      @endif
+                    </tbody>
                   </table>
-                </div>
-                <div class="card">
-                  <div class="card-body">
-                    <div class="pagination-container">
-                      <nav aria-label="...">
-                        <ul class="pagination justify-content-end mb-0">
-                          <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Halaman</a>
-                          </li>
-                          <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">Selanjutnya</a>
-                          </li>
-                        </ul>
-                      </nav>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -500,8 +460,34 @@
   <!-- Template JS File -->
   <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
   <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+  <script>
+    // Fungsi untuk memfilter baris tabel berdasarkan input pencarian
+    function performSearch() {
+      // Ambil nilai dari input pencarian
+      const searchQuery = document.getElementById('search-input').value.toLowerCase();
 
+      // Ambil semua baris dari tabel
+      const tableRows = document.querySelectorAll('table tbody tr');
 
+      // Loop melalui semua baris tabel
+      tableRows.forEach(row => {
+        // Ambil teks dari setiap kolom dalam baris
+        const rowData = row.innerText.toLowerCase();
+
+        // Cek apakah teks baris mengandung nilai pencarian
+        if (rowData.includes(searchQuery)) {
+          // Jika cocok, tampilkan baris
+          row.style.display = '';
+        } else {
+          // Jika tidak cocok, sembunyikan baris
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // Tambahkan event listener untuk input pencarian
+    document.getElementById('search-input').addEventListener('input', performSearch);
+  </script>
 </body>
 
 </html>

@@ -181,9 +181,8 @@
                     <div class="section-header">
                         <h1>Tambah Logistik Keluar</h1>
                         <div class="section-header-breadcrumb">
-                            <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item active"><a href="{{ route('outlogistics') }}">Logistik
-                                    Keluar</a></div>
+                            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+                            <div class="breadcrumb-item active"><a href="#">Logistik Keluar</a></div>
                             <div class="breadcrumb-item">Tambah Logistik Keluar</div>
                         </div>
                     </div>
@@ -202,18 +201,18 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="nama_penerima">Nama Penerima</label>
-                                        <input type="text" class="form-control" name="nama_penerima"
+                                        <input type="text" class="form-control" name="nama_penerima" id="nama_penerima"
                                             placeholder="*Nama Penerima">
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="nik_kk_penerima">NIK / KK</label>
                                         <input type="text" class="form-control" name="nik_kk_penerima"
-                                            placeholder="*Nik/Kk">
+                                            id="nik_kk_penerima" placeholder="*Nik/Kk">
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="alamat_penerima">Alamat Penerima</label>
                                         <input type="text" class="form-control" name="alamat_penerima"
-                                            placeholder="*Alamat Penerima">
+                                            id="alamat_penerima" placeholder="*Alamat Penerima">
                                     </div>
                                     <div class="col-md-12">
                                         <h4 style="color: blue;">Data Logistik</h4>
@@ -251,7 +250,7 @@
                                     <div class="form-group col-md-6">
                                         <label for="keterangan_keluar">Keterangan</label>
                                         <input type="text" class="form-control" name="keterangan_keluar"
-                                            placeholder="*Masukkan Keterangan">
+                                            id="keterangan_keluar" placeholder="*Masukkan Keterangan">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="dokumentasi_keluar">Dokumentasi Keluar</label>
@@ -296,11 +295,15 @@
                     const logisticSelect = document.getElementById('id_logistik');
                     const kodeLogistikInput = document.getElementById('kode_logistik');
                     const satuanLogistikInput = document.getElementById('satuan_logistik');
+                    const addLogisticButton = document.getElementById('addLogistic');
+                    const saveLogisticsButton = document.getElementById('saveLogistics');
 
                     function updateLogisticDetails() {
                         const selectedOption = logisticSelect.options[logisticSelect.selectedIndex];
                         const kodeLogistik = selectedOption.getAttribute('data-kode');
                         const satuanLogistik = selectedOption.getAttribute('data-satuan');
+
+                        console.log('Updating details:', kodeLogistik, satuanLogistik);
 
                         kodeLogistikInput.value = kodeLogistik;
                         satuanLogistikInput.value = satuanLogistik;
@@ -308,8 +311,9 @@
 
                     logisticSelect.addEventListener('change', updateLogisticDetails);
 
-                    document.getElementById('addLogistic').addEventListener('click', function () {
-                        this.disabled = true;
+                    addLogisticButton.addEventListener('click', function () {
+                        console.log('Add Logistic button clicked');
+
                         const tanggalKeluar = document.getElementById('tanggal_keluar').value;
                         const namaPenerima = document.getElementById('nama_penerima').value;
                         const nikKkPenerima = document.getElementById('nik_kk_penerima').value;
@@ -318,6 +322,22 @@
                         const jumlah = document.getElementById('jumlah_logistik_keluar').value;
                         const satuan = satuanLogistikInput.value;
                         const dokumentasi = document.getElementById('dokumentasi_keluar').files[0] ? document.getElementById('dokumentasi_keluar').files[0].name : '';
+
+                        console.log('Form Data:', {
+                            tanggalKeluar,
+                            namaPenerima,
+                            nikKkPenerima,
+                            alamatPenerima,
+                            logisticText,
+                            jumlah,
+                            satuan,
+                            dokumentasi
+                        });
+
+                        if (!tanggalKeluar || !namaPenerima || !nikKkPenerima || !alamatPenerima || !logisticSelect.value || !jumlah) {
+                            alert("Mohon lengkapi semua data yang dibutuhkan!");
+                            return;
+                        }
 
                         const table = document.getElementById('logisticTable').getElementsByTagName('tbody')[0];
                         const newRow = table.insertRow();
@@ -343,26 +363,35 @@
                         cell9.innerHTML = dokumentasi + `<input type="hidden" name="dokumentasi_keluar[]" value="${dokumentasi}">`;
                         cell10.innerHTML = '<button type="button" class="btn btn-danger remove-logistic">Hapus</button>';
 
-                        document.querySelectorAll('.remove-row').forEach(button => {
+                        console.log('Row added to table');
+
+                        document.querySelectorAll('.remove-logistic').forEach(button => {
                             button.addEventListener('click', function () {
                                 this.closest('tr').remove();
-                                document.getElementById('addLogistic').disabled = false;
+                                console.log('Row removed from table');
+                                // Re-enable the "Tambahkan ke Tabel" button if the table is empty
+                                if (table.rows.length === 0) {
+                                    saveLogisticsButton.style.display = 'none';
+                                }
                             });
                         });
+
+                        // Show the save button after adding the row
+                        saveLogisticsButton.style.display = 'block';
                     });
 
-                    document.getElementById('addLogistic').addEventListener('click', function () {
-                        document.getElementById('saveLogistics').style.display = 'block';
-                    });
-
-                    document.getElementById('saveLogistics').addEventListener('click', function () {
+                    saveLogisticsButton.addEventListener('click', function () {
+                        console.log('Save Logistics button clicked');
                         const logisticForm = document.getElementById('logisticForm');
                         logisticForm.action = "{{ route('outlogistics.store') }}";
                         logisticForm.method = 'POST';
                         logisticForm.submit();
                     });
+
+                    console.log('Event listeners added');
                 });
             </script>
+
             <footer class="main-footer">
                 <div class="footer-left">
                     Werehouse BPBD<div class="bullet"></div> Kabupaten Jember

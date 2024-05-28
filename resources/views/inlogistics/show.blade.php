@@ -4,20 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Logistik Masuk &rsaquo; Tambah Logistik Masuk &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Logistik Masuk &rsaquo; Detail logistik masuk &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
-    <!-- General CSS Files -->
+    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
+
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/select2/dist/css/select2.min.css">
 
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
 
-    <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -27,8 +25,6 @@
         gtag('config', 'UA-94034622-3');
     </script>
 
-
-    <!-- /END GA -->
 </head>
 
 <body>
@@ -39,14 +35,16 @@
                 <form class="form-inline mr-auto">
                     <ul class="navbar-nav mr-3">
                         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i
-                                    class="fas fa-bars"></i></a></li>
+                                    class="fas fa-bars"></i></a>
+                        </li>
                         <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
                                     class="fas fa-search"></i></a></li>
                     </ul>
                     <div class="search-element">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                            data-width="250">
-                        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                        <input id="search-input" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search" data-width="250">
+                        <button class="btn" type="button" onclick="performSearch()"><i
+                                class="fas fa-search"></i></button>
                     </div>
                     <div id="clock" style="color: white; margin-left: 15px;"></div>
                 </form>
@@ -175,156 +173,152 @@
                 </aside>
             </div>
 
-            <!-- Main Content -->
+            <!-- Main -->
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Detail Logistik Masuk</h1>
+                        <h1>Detail logistik masuk</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item active"><a href="{{ route('inlogistics') }}">Logistik Masuk</a>
-                            </div>
-                            <div class="breadcrumb-item">Detail Logistik Masuk</div>
+                            <div class="breadcrumb-item"><a href="{{ route('inlogistics') }}">Logistik Masuk</a></div>
+                            <div class="breadcrumb-item">Detail logistik masuk</div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="{{ route('inlogistics.store') }}" method="POST">
-                                @csrf
-                                <div class="form-row">
-                                    <div class="form-group col-md-3">
-                                        <label for="tanggal_masuk">Tanggal Masuk</label>
-                                        <input type="date" class="form-control" name="tanggal_masuk"
-                                            placeholder="*Tanggal Masuk"
-                                            value="{{ $inlogistic->tanggal_masuk }}" disabled readonly>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <h4>Data Supplier</h4>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label for="nama_supplier">Nama Supplier</label>
-                                        <input type="text" class="form-control" name="nama_supplier" id="nama_supplier"
-                                            value="{{ $inlogistic->supplier->nama_supplier }}" readonly disabled>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="kode_supplier">Kode Supplier</label>
-                                        <input type="text" class="form-control" name="kode_supplier" id="kode_supplier"
-                                            value="{{ $inlogistic->supplier->kode_supplier }}" disabled readonly>
-                                    </div>
-
-                                    <div class="form-group col-md-3">
-                                        <label for="instansi_supplier">Instansi Supplier</label>
-                                        <input type="text" class="form-control" name="instansi_supplier"
-                                            id="instansi_supplier" 
-                                            value="{{ $inlogistic->supplier->instansi_supplier }}" disabled readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="email_supplier">Email Supplier</label>
-                                        <input type="text" class="form-control" name="email_supplier"
-                                            id="email_supplier" 
-                                            value="{{ $inlogistic->supplier->email_supplier }}" disabled readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="telepon_supplier">Telepon Supplier</label>
-                                        <input type="text" class="form-control" name="telepon_supplier"
-                                            id="telepon_supplier" 
-                                            value="{{ $inlogistic->supplier->telepon_supplier }}" disabled readonly>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <h4>Data Logistik</h4>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label for="nama_logistik">Nama Logistik</label>
-                                        <input type="text" class="form-control" name="nama_logistik" id="nama_logistik"
-                                            value="{{ $inlogistic->logistic->nama_logistik }}" readonly disabled>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="kode_logistik">Kode Logistik</label>
-                                        <input type="text" class="form-control" name="kode_logistik" id="kode_logistik"
-                                            value="{{ $inlogistic->logistic->kode_logistik }}" readonly disabled>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="satuan_logistik">Satuan Logistik</label>
-                                        <input type="text" class="form-control" name="satuan_logistik" id="satuan_logistik"
-                                            value="{{ $inlogistic->logistic->satuan_logistik }}" readonly disabled>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="jumlah_logistik_masuk">Jumlah</label>
-                                        <input type="number" class="form-control" name="jumlah_logistik_masuk"
-                                            placeholder="*Masukkan Jumlah"
-                                            value="{{ $inlogistic->jumlah_logistik_masuk }}" readonly disabled>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="expayer_logistik">Tanggal Kadaluarsa</label>
-                                        <input type="date" class="form-control" name="expayer_logistik"
-                                            value="{{ $inlogistic->expayer_logistik }}" readonly disabled>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="keterangan_masuk">Keterangan</label>
-                                        <input type="text" class="form-control" name="keterangan_masuk"
-                                            placeholder="*Masukkan Keterangan"
-                                            value="{{ $inlogistic->keterangan_masuk }}" readonly disabled>
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="d-flex align-items-center justify-content-end">
+                                    <a href="{{ route('inlogistics') }}" class="btn btn-primary mr-2"
+                                        style="margin-top: 10px; background-color: silver !important; color: black !important;">
+                                        <i class="fas fa-arrow-left"></i> Kembali
+                                    </a>
+                                    <a href="{{ route('export_show_inlogistic_pdf', ['id' => $inlogistic->id]) }}"
+                                        class="btn btn-danger mr-2" style="margin-top: 10px;">
+                                        <i class="fas fa-file-pdf"></i> Export PDF
+                                    </a>
+                                </div>
+                                <div class="card-header">
+                                    <h4 style="font-size: 2rem;">Detail logistik masuk</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <h4 style="color: blue;">Data Supplier</h4>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nama_supplier">Nama Supplier:</label>
+                                                <p>{{ $inlogistic->supplier->nama_supplier }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="kode_supplier">Kode Supplier:</label>
+                                                <p>{{ $inlogistic->supplier->kode_supplier }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="instansi_supplier">Instansi Supplier:</label>
+                                                <p>{{ $inlogistic->supplier->instansi_supplier }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email_supplier">Email Supplier:</label>
+                                                <p>{{ $inlogistic->supplier->email_supplier }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="telepon_supplier">Telepon Supplier:</label>
+                                                <p>{{ $inlogistic->supplier->telepon_supplier }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="tanggal_masuk">Tanggal Masuk:</label>
+                                                <p>{{ $inlogistic->tanggal_masuk }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <h4 style="color: blue;">Data Logistik</h4>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nama_logistik">Nama Logistik:</label>
+                                                <p>{{ $inlogistic->logistic->nama_logistik }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="kode_logistik">Kode Logistik:</label>
+                                                <p>{{ $inlogistic->logistic->kode_logistik }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="satuan_logistik">Satuan Logistik:</label>
+                                                <p>{{ $inlogistic->logistic->satuan_logistik }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="jumlah_logistik_masuk">Jumlah:</label>
+                                                <p>{{ $inlogistic->jumlah_logistik_masuk }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="expayer_logistik">Tanggal Kadaluarsa:</label>
+                                                <p>{{ $inlogistic->expayer_logistik }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="keterangan_masuk">Keterangan:</label>
+                                                <p>{{ $inlogistic->keterangan_masuk }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="dokumentasi_masuk">Dokumentasi:</label>
+                                                <img src="{{ asset($inlogistic->dokumentasi_masuk) }}" width='50'
+                                                    height='50' class="img img-responsive" />
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col mb-3">
-                                            <label class="form-label">Ditambahkan Pada</label>
-                                            <input type="text" name="created_at" class="form-control" placeholder="Created At"
-                                            value="{{ $inlogistic->created_at }}" disabled readonly>
+                                            <label>Ditambahkan Pada:</label>
+                                            <p>{{ $inlogistic->created_at }}</p>
                                         </div>
                                         <div class="col mb-3">
-                                            <label class="form-label">Diperbarui Pada</label>
-                                            <input type="text" name="updated_at" class="form-control" placeholder="Updated At"
-                                            value="{{ $inlogistic->updated_at }}" disabled readonly>
+                                            <label>Diperbarui Pada:</label>
+                                            <p>{{ $inlogistic->updated_at }}</p>
                                         </div>
-                                        <div class=" col-md-6">
-                                        <label for="keterangan_masuk">Dokumentasi</label>
-                                        <input type="text" class="form-control" name="keterangan_masuk" readonly disabled>
-                                        <img src="{{ asset($inlogistic->dokumentasi_masuk) }}" width='50' height='50' class="img img-responsive"/>
                                     </div>
-                                    </div>
-                                </div>
-                                <script>
-                                        document.addEventListener('DOMContentLoaded', function () {
-                                            const logisticSelect = document.getElementById('id_logistik');
-                                            const kodeLogistikInput = document.getElementById('kode_logistik');
-                                            const satuanLogistikInput = document.getElementById('satuan_logistik');
-                                            const supplierSelect = document.getElementById('id_supplier');
-                                            const kodeSupplierInput = document.getElementById('kode_supplier');
-                                            const instansiSupplierInput = document.getElementById('instansi_supplier');
-                                            const emailSupplierInput = document.getElementById('email_supplier');
-                                            const teleponSupplierInput = document.getElementById('telepon_supplier');
-                                            function updateLogisticDetails() {
-                                                const selectedOption = logisticSelect.options[logisticSelect.selectedIndex];
-                                                const kodeLogistik = selectedOption.getAttribute('data-kode');
-                                                const satuanLogistik = selectedOption.getAttribute('data-satuan');
-                                                kodeLogistikInput.value = kodeLogistik;
-                                                satuanLogistikInput.value = satuanLogistik;
-                                            }
-                                            function updateSupplierDetails() {
-                                                const selectedOption = supplierSelect.options[supplierSelect.selectedIndex];
-                                                const kodeSupplier = selectedOption.getAttribute('data-kode');
-                                                const instansiSupplier = selectedOption.getAttribute('data-instansi');
-                                                const emailSupplier = selectedOption.getAttribute('data-email');
-                                                const teleponSupplier = selectedOption.getAttribute('data-telepon');
-                                                kodeSupplierInput.value = kodeSupplier;
-                                                instansiSupplierInput.value = instansiSupplier;
-                                                emailSupplierInput.value = emailSupplier;
-                                                teleponSupplierInput.value = teleponSupplier;
-                                            }
-                                            logisticSelect.addEventListener('change', updateLogisticDetails);
-                                            supplierSelect.addEventListener('change', updateSupplierDetails);
-                                            logisticSelect.dispatchEvent(new Event('change'));
-                                            supplierSelect.dispatchEvent(new Event('change'));
-                                        });
-                                    </script>
-                                <div class="row">
-                                    <div class="d-grid">
-                                        <a href="{{ route('inlogistics') }}" class="btn btn-primary">
-                                            <i class="fas fa-arrow-left me-1"></i> Kembali
-                                        </a>
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead class="table-primary">
+                                                        <tr>
+                                                            <th class="text-center">Kode Logistik</th>
+                                                            <th class="text-center">Nama Logistik</th>
+                                                            <th class="text-center">Satuan</th>
+                                                            <th class="text-center">Jumlah</th>
+                                                            <th class="text-center">Tanggal Masuk</th>
+                                                            <th class="text-center">Tanggal Kadaluarsa</th>
+                                                            <th class="text-center">Keterangan</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                {{ $inlogistic->logistic->kode_logistik }}
+                                                            </td>
+                                                            <td class="text-center">
+                                                                {{ $inlogistic->logistic->nama_logistik }}
+                                                            </td>
+                                                            <td class="text-center">
+                                                                {{ $inlogistic->logistic->satuan_logistik }}
+                                                            </td>
+                                                            <td class="text-center">
+                                                                {{ $inlogistic->jumlah_logistik_masuk }}
+                                                            </td>
+                                                            <td class="text-center">{{ $inlogistic->tanggal_masuk }}
+                                                            </td>
+                                                            <td class="text-center">{{ $inlogistic->expayer_logistik }}
+                                                            </td>
+                                                            <td class="text-center">{{ $inlogistic->keterangan_masuk }}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </form> 
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -339,7 +333,8 @@
         </div>
     </div>
 
-    <!-- General JS Scripts -->
+
+
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
@@ -348,13 +343,25 @@
     <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-    <!-- JS Libraies -->
-
-    <!-- Page Specific JS File -->
-
-    <!-- Template JS File -->
     <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+
+    <script>
+        function performSearch() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const tableRows = document.querySelectorAll('table tbody tr');
+            tableRows.forEach(row => {
+                const rowData = row.innerText.toLowerCase();
+                if (rowData.includes(searchQuery)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        document.getElementById('search-input').addEventListener('input', performSearch);
+    </script>
+
 </body>
 
 </html>

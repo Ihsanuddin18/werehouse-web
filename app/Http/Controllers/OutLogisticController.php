@@ -47,7 +47,7 @@ class OutLogisticController extends Controller
             'dokumentasi_keluar' => 'nullable|string|max:20000',
         ]);
         if ($request->hasFile('dokumentasi_keluar')) {
-            $fileName = time(). $request->file('dokumentasi_keluar')->getClientOriginalName();
+            $fileName = time() . $request->file('dokumentasi_keluar')->getClientOriginalName();
             $path = $request->file('dokumentasi_keluar')->storeAs('images', $fileName, 'public');
             $validatedData['dokumentasi_keluar'] = '/storage/' . $path;
         }
@@ -59,14 +59,14 @@ class OutLogisticController extends Controller
     {
         $outlogistic = Outlogistic::findOrFail($id);
         $logistics = Logistic::all();
-        return view('outlogistics.show', compact('outlogistic','logistics'));
+        return view('outlogistics.show', compact('outlogistic', 'logistics'));
     }
 
     public function edit(string $id)
     {
         $outlogistic = Outlogistic::findOrFail($id);
-        $logistics = Logistic::all(); 
-        return view('outlogistics.edit', compact('outlogistic','logistics'));
+        $logistics = Logistic::all();
+        return view('outlogistics.edit', compact('outlogistic', 'logistics'));
     }
 
     public function update(Request $request, string $id)
