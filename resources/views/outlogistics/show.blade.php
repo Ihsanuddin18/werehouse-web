@@ -4,21 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Logistik Keluar &rsaquo; Tambah Logistik Keluar &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Logistik Keluar &rsaquo; Detail logistik keluar &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
-    <!-- General CSS Files -->
+    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
+
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/select2/dist/css/select2.min.css">
 
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
 
-    <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+    
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -27,8 +26,6 @@
         gtag('config', 'UA-94034622-3');
     </script>
 
-
-    <!-- /END GA -->
 </head>
 
 <body>
@@ -39,14 +36,16 @@
                 <form class="form-inline mr-auto">
                     <ul class="navbar-nav mr-3">
                         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i
-                                    class="fas fa-bars"></i></a></li>
+                                    class="fas fa-bars"></i></a>
+                        </li>
                         <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
                                     class="fas fa-search"></i></a></li>
                     </ul>
                     <div class="search-element">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                            data-width="250">
-                        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                        <input id="search-input" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search" data-width="250">
+                        <button class="btn" type="button" onclick="performSearch()"><i
+                                class="fas fa-search"></i></button>
                     </div>
                     <div id="clock" style="color: white; margin-left: 15px;"></div>
                 </form>
@@ -175,117 +174,133 @@
                 </aside>
             </div>
 
-            <!-- Main Content -->
+            <!-- Main -->
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Detail Logistik Keluar</h1>
+                        <h1>Detail logistik keluar</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item active"><a href="{{ route('outlogistics') }}">Data Logistik Keluar</a>
-                            </div>
-                            <div class="breadcrumb-item">Detail Logistik Keluar</div>
+                            <div class="breadcrumb-item"><a href="{{ route('outlogistics') }}">Logistik Keluar</a></div>
+                            <div class="breadcrumb-item">Detail logistik keluar</div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Detail Logistik Keluar</h4>
-                        </div>
-                        <div class="card-body">
-                            <form action="{{ route('outlogistics.store', $outlogistic->id) }}" method="POST">
-                                @csrf
-                                <div class="form-row">
-                                    <div class="form-group col-md-3">
-                                        <label for="tanggal_keluar">Tanggal Keluar</label>
-                                        <input type="date" class="form-control" name="tanggal_keluar"
-                                            value="{{ $outlogistic->tanggal_keluar }}"
-                                            disabled readonly>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <h4>Data Penerima</h4>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="nama_penerima">Nama Penerima</label>
-                                        <input type="text" class="form-control" name="nama_penerima"
-                                            value="{{ $outlogistic->nama_penerima }}"
-                                            disabled readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="nik_kk_penerima">NIK / KK</label>
-                                        <input type="text" class="form-control" name="nik_kk_penerima"
-                                            value="{{ $outlogistic->nik_kk_penerima }}" disabled
-                                            readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="alamat_penerima">Alamat Penerima</label>
-                                        <input type="text" class="form-control" name="alamat_penerima"
-                                            value="{{ $outlogistic->alamat_penerima }}"
-                                            disabled readonly>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <h4>Data Logistik</h4>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="nama_logistik_keluar">Nama Logistik</label>
-                                        <input type="text" class="form-control" name="nama_logistik_keluar"
-                                            value="{{ $outlogistic->logistic->nama_logistik }}" disabled readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="kode_logistik">Kode Logistik</label>
-                                        <input type="text" class="form-control" name="kode_logistik" id="kode_logistik"
-                                            value="{{ $outlogistic->logistic->kode_logistik }}" readonly disabled>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="jumlah_logistik_keluar">Jumlah</label>
-                                        <input type="number" class="form-control" name="jumlah_logistik_keluar"
-                                            value="{{ $outlogistic->jumlah_logistik_keluar }}" disabled readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="satuan_logistik_keluar">Satuan</label>
-                                        <input type="text" name="satuan_logistik_keluar" class="form-control"
-                                            value="{{ $outlogistic->logistic->satuan_logistik }}" disabled
-                                            readonly>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="keterangan_keluar">Keterangan</label>
-                                        <input type="text" class="form-control" name="keterangan_keluar"
-                                            value="{{ $outlogistic->keterangan_keluar }}" disabled readonly>
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="d-flex align-items-center justify-content-end">
+                                    <a href="{{ route('outlogistics') }}" class="btn btn-primary mr-2"
+                                        style="margin-top: 10px; background-color: silver !important; color: black !important;">
+                                        <i class="fas fa-arrow-left"></i> Kembali
+                                    </a>
+                                    <a href="{{ route('export_show_outlogistic_pdf', ['id' => $outlogistic->id]) }}"
+                                        class="btn btn-danger mr-2" style="margin-top: 10px;">
+                                        <i class="fas fa-file-pdf"></i> Export PDF
+                                    </a>
+                                </div>
+                                <div class="card-header">
+                                    <h4 style="font-size: 2rem;">Detail logistik keluar</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <h4 style="color: blue;">Data Penerima</h4>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nama_penerima">Nama Penerima:</label>
+                                                <p>{{ $outlogistic->nama_penerima }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nik_kk_penerima">NIK / KK:</label>
+                                                <p>{{ $outlogistic->nik_kk_penerima }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="alamat_penerima">Alamat Penerima:</label>
+                                                <p>{{ $outlogistic->alamat_penerima }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="tanggal_keluar">Tanggal Keluar:</label>
+                                                <p>{{ $outlogistic->tanggal_keluar }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <h4 style="color: blue;">Data Logistik</h4>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nama_logistik_keluar">Nama Logistik:</label>
+                                                <p>{{ $outlogistic->logistic->nama_logistik }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="kode_logistik">Kode Logistik:</label>
+                                                <p>{{ $outlogistic->logistic->kode_logistik }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="satuan_logistik_keluar">Satuan Logistik:</label>
+                                                <p>{{ $outlogistic->logistic->satuan_logistik }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="jumlah_logistik_keluar">Jumlah:</label>
+                                                <p>{{ $outlogistic->jumlah_logistik_keluar }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="keterangan_keluar">Keterangan:</label>
+                                                <p>{{ $outlogistic->keterangan_keluar }}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="dokumentasi_keluar">Dokumentasi:</label>
+                                                <img src="{{ asset($outlogistic->dokumentasi_keluar) }}" width='50'
+                                                    height='50' class="img img-responsive" />
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col mb-3">
-                                            <label class="form-label">Ditambahkan Pada</label>
-                                            <input type="text" name="created_at" class="form-control"
-                                                placeholder="Created At" value="{{ $outlogistic->created_at }}" disabled
-                                                readonly>
+                                            <label>Ditambahkan Pada:</label>
+                                            <p>{{ $outlogistic->created_at }}</p>
                                         </div>
                                         <div class="col mb-3">
-                                            <label class="form-label">Diperbarui Pada</label>
-                                            <input type="text" name="updated_at" class="form-control"
-                                                placeholder="Updated At" value="{{ $outlogistic->updated_at }}" disabled
-                                                readonly>
+                                            <label>Diperbarui Pada:</label>
+                                            <p>{{ $outlogistic->updated_at }}</p>
                                         </div>
-                                        <div class=" col-md-6">
-                                        <label for="keterangan_keluar">Dokumentasi</label>
-                                        <input type="text" class="form-control" name="keterangan_keluar" readonly disabled>
-                                        <img src="{{ asset($outlogistic->keterangan_keluar) }}" width='50' height='50' class="img img-responsive"/>
                                     </div>
+                                    <div class="row mt-4">
+                                        <div class="col-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead class="table-primary">
+                                                        <tr>
+                                                            <th class="text-center">Kode Logistik</th>
+                                                            <th class="text-center">Nama Logistik</th>
+                                                            <th class="text-center">Satuan</th>
+                                                            <th class="text-center">Jumlah</th>
+                                                            <th class="text-center">Tanggal Keluar</th>
+                                                            <th class="text-center">Keterangan</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                {{ $outlogistic->logistic->kode_logistik }}</td>
+                                                            <td class="text-center">
+                                                                {{ $outlogistic->logistic->nama_logistik }}</td>
+                                                            <td class="text-center">
+                                                                {{ $outlogistic->logistic->satuan_logistik }}</td>
+                                                            <td class="text-center">
+                                                                {{ $outlogistic->jumlah_logistik_keluar }}</td>
+                                                            <td class="text-center">{{ $outlogistic->tanggal_keluar }}
+                                                            </td>
+                                                            <td class="text-center">
+                                                                {{ $outlogistic->keterangan_keluar }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <script>
-                                        document.getElementById('id_logistik').addEventListener('change', function () {
-                                            var selectedOption = this.options[this.selectedIndex];
-                                            document.getElementById('kode_logistik').value = selectedOption.getAttribute('data-kode');
-                                            document.getElementById('satuan_logistik').value = selectedOption.getAttribute('data-satuan');
-                                        });
-                                    </script>
                                 </div>
-                                <div class="row">
-                                    <div class="d-grid">
-                                        <a href="{{ route('outlogistics') }}" class="btn btn-primary">
-                                            <i class="fas fa-arrow-left me-1"></i> Kembali
-                                        </a>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -300,7 +315,9 @@
         </div>
     </div>
 
-    <!-- General JS Scripts -->
+   
+
+    
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
@@ -309,11 +326,6 @@
     <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-    <!-- JS Libraies -->
-
-    <!-- Page Specific JS File -->
-
-    <!-- Template JS File -->
     <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
 </body>

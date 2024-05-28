@@ -4,23 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Werehouse| BPBD</title>
+    <title> Selamat Datang Di Werehouse BPBD | Kabupaten Jember </title>
 
-    <!--====== Favicon Icon ======-->
     <link
       rel="shortcut icon"
       href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png"
       type="image/png"
     />
 
-    <!-- ===== All CSS files ===== -->
     <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/animate.css" />
     <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/lineicons.css" />
     <link rel="stylesheet" href="{{ asset('landingpages') }}/assets/css/ud-styles.css" />
   </head>
   <body>
-    <!-- ====== Header Start ====== -->
+    
     <header class="ud-header">
       <div class="container">
         <div class="row">
@@ -103,9 +101,7 @@
         </div>
       </div>
     </header>
-    <!-- ====== Header End ====== -->
-
-    <!-- ====== Banner Start ====== -->
+    
     <section class="ud-page-banner">
       <div class="container">
         <div class="row">
@@ -117,9 +113,7 @@
         </div>
       </div>
     </section>
-    <!-- ====== Banner End ====== -->
-
-    <!-- ====== About Start ====== -->
+    
     <section id="about" class="ud-about">
       <div class="container">
         <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
@@ -144,9 +138,7 @@
         </div>
       </div>
     </section>
-    <!-- ====== About End ====== -->
-
-     <!-- ====== Team Start ====== -->
+    
      <section id="team" class="ud-team">
       <div class="container">
         <div class="row">
@@ -322,9 +314,7 @@
         </div>
       </div>
     </section>
-    <!-- ====== Team End ====== -->
-
-   <!-- ====== Footer Start ====== -->
+    
     <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
       <div class="shape shape-1">
         <img src="{{ asset('landingpages') }}/assets/images/footer/shape-1.svg" alt="shape" />
@@ -391,12 +381,6 @@
                 <h5 class="ud-widget-title">Fitur Utama</h5>
                 <ul class="ud-widget-links">
                   <li>
-                    <a href="/">Alat Pemindai</a>
-                  </li>
-                  <li>
-                    <a href="/">Alat Cetak Termal</a>
-                  </li>
-                  <li>
                     <a href="/">Cetak Laporan</a>
                   </li>
                   <li>
@@ -428,15 +412,11 @@
         </div>
       </div>
     </footer>
-    <!-- ====== Footer End ====== -->
-
-    <!-- ====== Back To Top Start ====== -->
+    
     <a href="javascript:void(0)" class="back-to-top">
       <i class="lni lni-chevron-up"> </i>
     </a>
-    <!-- ====== Back To Top End ====== -->
-
-    <!-- ====== All Javascript Files ====== -->
+    
     <script src="{{ asset('landingpages') }}/assets/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('landingpages') }}/assets/js/wow.min.js"></script>
     <script src="{{ asset('landingpages') }}/assets/js/main.js"></script>

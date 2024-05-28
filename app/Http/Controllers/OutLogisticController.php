@@ -9,14 +9,33 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class OutLogisticController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $outlogistics = Outlogistic::with('logistic')->get();
+        $query = OutLogistic::with('logistic');
+
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        if ($month && $year) {
+            $query->whereYear('tanggal_keluar', $year)
+                ->whereMonth('tanggal_keluar', $month);
+        } elseif ($year) {
+            $query->whereYear('tanggal_keluar', $year);
+        }
+
+        $outlogistics = $query->latest()->paginate(15);
+
         $logistics = Logistic::with('outlogistics')->get();
-        $outlogistics = Outlogistic::all();
+
+        $firstYearDate = OutLogistic::min('tanggal_keluar');
+        $firstYear = $firstYearDate ? date('Y', strtotime($firstYearDate)) : date('Y');
+        $currentYear = date('Y');
+
         return view('outlogistics.index', [
             'outlogistics' => $outlogistics,
             'logistics' => $logistics,
+            'firstYear' => $firstYear,
+            'currentYear' => $currentYear,
         ]);
     }
 
@@ -26,6 +45,15 @@ class OutLogisticController extends Controller
         $pdf = PDF::loadView('pdf.export_outlogistic_pdf', ['outlogistics' => $outlogistics]);
         return $pdf->download('export_outlogistic_pdf.pdf');
     }
+
+    public function export_show_outlogistic_pdf($id)
+    {
+        $outlogistic = Outlogistic::findOrFail($id);
+
+        $pdf = PDF::loadView('pdf.export_show_outlogistic_pdf', compact('outlogistic'));
+        return $pdf->download('export_show_outlogistic.pdf');
+    }
+
 
     public function create()
     {
@@ -52,7 +80,7 @@ class OutLogisticController extends Controller
             $validatedData['dokumentasi_keluar'] = '/storage/' . $path;
         }
         Outlogistic::create($validatedData);
-        return redirect()->route('outlogistics.index')->with('success', 'Data Berhasil Ditambahkan!');
+        return redirect()->route('outlogistics.index')->with('success', 'Data berhasil ditambahkan !');
     }
 
     public function show(string $id)
@@ -73,13 +101,13 @@ class OutLogisticController extends Controller
     {
         $outlogistic = Outlogistic::findOrFail($id);
         $outlogistic->update($request->all());
-        return redirect()->route('outlogistics')->with('success', 'Data berhasil Dirubah !');
+        return redirect()->route('outlogistics')->with('success', 'Data berhasil diubah !');
     }
 
     public function destroy(string $id)
     {
         $outlogistic = Outlogistic::findOrFail($id);
         $outlogistic->delete();
-        return redirect()->route('outlogistics')->with('success', 'Data berhasil Dihapus !');
+        return redirect()->route('outlogistics')->with('success', 'Data berhasil dihapus !');
     }
 }

@@ -82,6 +82,7 @@ Route::controller(OutlogisticController::class)->prefix('outlogistics')->group(f
     Route::put('edit/{id}', 'update')->name('outlogistics.update');
     Route::delete('destroy/{id}', 'destroy')->name('outlogistics.destroy');
     Route::get('/export_outlogistic_pdf', [OutlogisticController::class, 'export_outlogistic_pdf'])->name('export_outlogistic_pdf');
+    Route::get('/outlogistics/{id}/export_show_outlogistic_pdf', [OutlogisticController::class, 'export_show_outlogistic_pdf'])->name('export_show_outlogistic_pdf');
 });
 
 

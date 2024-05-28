@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Login &rsaquo; Werehouse BPBD | Kabupaten Jember</title>
 
-    <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
 
     <link rel="shortcut icon" href="{{ asset('tloginjadi') }}/assets/images/fav.jpg">
@@ -14,10 +13,7 @@
     <link rel="stylesheet" href="{{ asset('tloginjadi') }}/assets/css/fontawsom-all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('tloginjadi') }}/assets/css/style.css" />
 
-    <!-- Start GA -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- /END GA -->
-
 
 </head>
 <style>
@@ -69,19 +65,11 @@
                             <div class="small-logo">
                                 <img src="{{ asset('tloginjadi') }}/assets/images/logo1login.svg" alt="Logo">
                             </div>
-                            <p class="dfmn">Login</p>
+                            <p class="dfmn">Login Administrator</p>
 
                             <div class="text-box-cont">
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"><i
-                                                    class="fas fa-warehouse"></i></span>
-                                        </div>
-                                        <input class="form-control font-weight-bold" placeholder="Admin Gudang"
-                                            aria-describedby="basic-addon1" disabled readonly>
-                                    </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1"><i
@@ -133,14 +121,23 @@
                                         text: '{{ session('status') }}'
                                     });
                                 @elseif($errors->any())
-                                    Toast.fire({
-                                        icon: 'error',
-                                        title: 'Gagal!',
-                                        text: '{{ $errors->first() }}'
-                                    });
+                                    @if($errors->has('email') || $errors->has('password'))
+                                        Toast.fire({
+                                            icon: 'error',
+                                            title: 'Login Gagal!',
+                                            text: 'Email atau kata sandi yang Anda masukkan salah !'
+                                        });
+                                    @else
+                                        Toast.fire({
+                                            icon: 'error',
+                                            title: 'Gagal!',
+                                            text: '{{ $errors->first() }}'
+                                        });
+                                    @endif
                                 @endif
                             </script>
                         @endif
+
                         <div class="col-lg-6 col-md-6 box-de">
                             <div class="inn-cover">
                                 <div class="ditk-inf">
@@ -168,6 +165,7 @@
         </div>
     </div>
 </body>
+
 
 <script src="{{ asset('tloginjadi') }}/assets/js/jquery-3.2.1.min.js"></script>
 <script src="{{ asset('tloginjadi') }}/assets/js/popper.min.js"></script>

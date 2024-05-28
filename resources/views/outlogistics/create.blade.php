@@ -4,21 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Logistik Masuk &rsaquo; Tambah Logistik Masuk &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Logistik Keluar &rsaquo; Tambah logistik keluar &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
-    <!-- General CSS Files -->
+    <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
+
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/fontawesome/css/all.min.css">
 
-    <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/select2/dist/css/select2.min.css">
 
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
 
-    <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -27,8 +26,6 @@
         gtag('config', 'UA-94034622-3');
     </script>
 
-
-    <!-- /END GA -->
 </head>
 
 <body>
@@ -39,14 +36,16 @@
                 <form class="form-inline mr-auto">
                     <ul class="navbar-nav mr-3">
                         <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i
-                                    class="fas fa-bars"></i></a></li>
+                                    class="fas fa-bars"></i></a>
+                        </li>
                         <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
                                     class="fas fa-search"></i></a></li>
                     </ul>
                     <div class="search-element">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                            data-width="250">
-                        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                        <input id="search-input" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search" data-width="250">
+                        <button class="btn" type="button" onclick="performSearch()"><i
+                                class="fas fa-search"></i></button>
                     </div>
                     <div id="clock" style="color: white; margin-left: 15px;"></div>
                 </form>
@@ -175,15 +174,15 @@
                 </aside>
             </div>
 
-            <!-- Main Content -->
+            <!-- Main -->
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Tambah Logistik Keluar</h1>
+                        <h1>Tambah logistik keluar</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                             <div class="breadcrumb-item active"><a href="#">Logistik Keluar</a></div>
-                            <div class="breadcrumb-item">Tambah Logistik Keluar</div>
+                            <div class="breadcrumb-item">Tambah logistik keluar</div>
                         </div>
                     </div>
                     <div class="card">
@@ -192,12 +191,18 @@
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
-                                        <label for="tanggal_keluar">Tanggal Keluar Logistik</label>
+                                        <label for="tanggal_keluar">Tanggal Logistik Keluar</label>
                                         <input type="date" class="form-control" name="tanggal_keluar"
                                             id="tanggal_keluar" placeholder="*Tanggal Keluar">
                                     </div>
+                                    <div style="position: absolute; top: 0; right: 0;">
+                                        <a href="{{ route('outlogistics') }}" class="btn btn-primary mx-2"
+                                            style="background-color: silver !important; color: black !important;">
+                                            <i class="fas fa-arrow-left"></i> Kembali
+                                        </a>
+                                    </div>
                                     <div class="col-md-12">
-                                        <h4>Data Penerima</h4>
+                                        <h4 style="color: blue;">Data Penerima</h4>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="nama_penerima">Nama Penerima</label>
@@ -257,8 +262,11 @@
                                         <input type="file" class="form-control" name="dokumentasi_keluar"
                                             id="dokumentasi_keluar" placeholder="*Masukkan Keterangan">
                                     </div>
-                                    <button type="button" id="addLogistic" class="btn btn-primary">Tambahkan ke
-                                        Tabel</button>
+                                    <div style="text-align: right;">
+                                        <button type="button" id="addLogistic" class="btn btn-primary">
+                                            <i class="fas fa-plus"></i> Lihat Detail
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                             <div class="mt-4">
@@ -279,11 +287,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- Rows will be added dynamically here -->
                                     </tbody>
                                 </table>
-                                <button type="button" id="saveLogistics" class="btn btn-success"
-                                    style="display: none;">Tambah Logistik Keluar</button>
+                                <div style="display: flex; justify-content: center;">
+                                    <button type="button" id="saveLogistics" class="btn btn-primary">
+                                        <i class="fas fa-save"></i> Tambah Logistik Keluar
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -369,14 +379,12 @@
                             button.addEventListener('click', function () {
                                 this.closest('tr').remove();
                                 console.log('Row removed from table');
-                                // Re-enable the "Tambahkan ke Tabel" button if the table is empty
                                 if (table.rows.length === 0) {
                                     saveLogisticsButton.style.display = 'none';
                                 }
                             });
                         });
 
-                        // Show the save button after adding the row
                         saveLogisticsButton.style.display = 'block';
                     });
 
@@ -402,7 +410,9 @@
         </div>
     </div>
 
-    <!-- General JS Scripts -->
+
+
+
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
@@ -411,11 +421,6 @@
     <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-    <!-- JS Libraies -->
-
-    <!-- Page Specific JS File -->
-
-    <!-- Template JS File -->
     <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
 </body>

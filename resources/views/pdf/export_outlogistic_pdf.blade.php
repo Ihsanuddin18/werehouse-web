@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <style>
         #customers {
@@ -40,24 +41,24 @@
             <th>Nama Logistik</th>
             <th>Jumlah</th>
             <th>Satuan</th>
-            <th>Penerima</th> 
-            <th>Alamat</th> 
-            <th>Keterangan</th> 
-            <th>Dokumentasi</th> 
+            <th>Penerima</th>
+            <th>Alamat</th>
+            <th>Keterangan</th>
+            <th>Dokumentasi</th>
         </tr>
         @if($outlogistics->count() > 0)
-        @foreach($outlogistics as $outlogistic)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ optional($outlogistic->logistic)->nama_logistik }}</td>
-            <td>{{ $outlogistic->jumlah_logistik_keluar }}</td>
-            <td>{{ optional($outlogistic->logistic)->satuan_logistik }}</td>
-            <td>{{ $outlogistic->nama_penerima }}</td>
-            <td>{{ $outlogistic->alamat_penerima }}</td>
-            <td>{{ $outlogistic->keterangan_keluar }}</td>
-            <td>{{ asset($outlogistic->dokumentasi_keluar) }}</td>
-        </tr>
-        @endforeach
+            @foreach($outlogistics as $outlogistic)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ optional($outlogistic->logistic)->nama_logistik }}</td>
+                    <td>{{ $outlogistic->jumlah_logistik_keluar }}</td>
+                    <td>{{ optional($outlogistic->logistic)->satuan_logistik }}</td>
+                    <td>{{ $outlogistic->nama_penerima }}</td>
+                    <td>{{ $outlogistic->alamat_penerima }}</td>
+                    <td>{{ $outlogistic->keterangan_keluar }}</td>
+                    <td>{{ asset($outlogistic->dokumentasi_keluar) }}</td>
+                </tr>
+            @endforeach
         @else
             <tr>
                 <td colspan="8">Tidak ada data logistik keluar!</td>

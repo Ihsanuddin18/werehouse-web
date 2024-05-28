@@ -10,9 +10,6 @@ use Illuminate\Validation\Rules\Password;
 
 class PasswordController extends Controller
 {
-    /**
-     * Update the user's password.
-     */
     public function update(Request $request): RedirectResponse
     {
         $validated = $request->validateWithBag('updatePassword', [
@@ -25,6 +22,6 @@ class PasswordController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        return back()->with('status', 'Password Berhasil Diperbarui !');
+        return back()->with('status', 'Password berhasil diperbarui !');
     }
 }

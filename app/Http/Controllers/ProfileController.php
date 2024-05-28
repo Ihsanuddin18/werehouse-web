@@ -13,13 +13,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 
 
-
-
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -27,9 +22,6 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
@@ -40,32 +32,25 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'Profil Berhasil Diperbarui !');
+        return Redirect::route('profile.edit')->with('status', 'Profil berhasil diperbarui !');
     }
 
-    /**
-     * Update the user's biography.
-     */
+
     public function updateBiography(Request $request, $id): RedirectResponse
-{       
-    
+    {
+
         $user = User::findOrFail($id);
         $biography = $request->input('biography');
-        $cleanBiography = Str::of(strip_tags($biography))->trim(); 
+        $cleanBiography = Str::of(strip_tags($biography))->trim();
         $user->biography = $biography;
         $user->biography = $cleanBiography;
         $user->save();
 
-        // Mengirimkan notifikasi
-        Session::flash('status', 'Biografi Berhasil Diperbarui !');
+        Session::flash('status', 'Biografi berhasil diperbarui !');
 
-        return redirect()->route('profile.edit')->with('status', 'Biografi Berhasil Diperbarui !');
+        return redirect()->route('profile.edit')->with('status', 'Biografi berhasil diperbarui !');
     }
 
-
-    /**
-     * Delete the user's account.
-     */
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [
