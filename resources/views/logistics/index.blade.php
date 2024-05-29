@@ -199,7 +199,7 @@
                                     <option value="">Pilih Bulan</option>
                                     @foreach(range(1, 12) as $month)
                                         <option value="{{ $month }}">
-                                            {{ DateTime::createFromFormat('!m', $month)->format('F') }}
+                                            {{ ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][$month - 1] }}
                                         </option>
                                     @endforeach
                                 </select>

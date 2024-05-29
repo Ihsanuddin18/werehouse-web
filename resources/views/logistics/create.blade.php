@@ -186,21 +186,22 @@
                                 <h4>Form tambah data logistik</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('logistics.store') }}" method="POST">
+                                <form id="logisticsForm" action="{{ route('logistics.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <label for="kode_logistik">Kode Logistik</label>
-                                        <input type="text" class="form-control" name="kode_logistik"
-                                            placeholder="*Masukkan kode logistik">
+                                        <input type="text" class="form-control" id="kode_logistik" name="kode_logistik"
+                                            placeholder="*Masukkan kode logistik" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_logistik">Nama Logistik</label>
-                                        <input type="text" class="form-control" name="nama_logistik"
-                                            placeholder="*Masukkan nama logistik">
+                                        <input type="text" class="form-control" id="nama_logistik" name="nama_logistik"
+                                            placeholder="*Masukkan nama logistik" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="satuan_logistik">Satuan</label>
-                                        <select name="satuan_logistik" class="form-control">
+                                        <select id="satuan_logistik" name="satuan_logistik" class="form-control"
+                                            required>
                                             <option value="" selected disabled>*Pilih satuan</option>
                                             <option value="Kilogram (kg)">Kilogram (kg)</option>
                                             <option value="Gram (g)">Gram (g)</option>
@@ -231,6 +232,34 @@
                 </div>
             </section>
         </div>
+
+        <script>
+            document.getElementById('logisticsForm').addEventListener('submit', function (event) {
+                var isValid = true;
+                var inputs = document.querySelectorAll('#logisticsForm [required]');
+
+                inputs.forEach(function (input) {
+                    if (!input.value) {
+                        isValid = false;
+                        input.classList.add('is-invalid');
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                });
+
+                if (!isValid) {
+                    event.preventDefault();
+                    alert('Semua kolom wajib diisi!');
+                }
+            });
+        </script>
+
+        <style>
+            .is-invalid {
+                border-color: #dc3545;
+            }
+        </style>
+
         <footer class="main-footer">
             <div class="footer-left">
                 Werehouse BPBD<div class="bullet"></div> Kabupaten Jember

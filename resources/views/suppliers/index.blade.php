@@ -25,7 +25,7 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-   
+
 </head>
 
 <body>
@@ -200,7 +200,7 @@
                                     <option value="">Pilih Bulan</option>
                                     @foreach(range(1, 12) as $month)
                                         <option value="{{ $month }}">
-                                            {{ DateTime::createFromFormat('!m', $month)->format('F') }}
+                                            {{ ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][$month - 1] }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -329,7 +329,7 @@
     </div>
 
 
-    
+
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>

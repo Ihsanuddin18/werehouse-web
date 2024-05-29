@@ -186,32 +186,33 @@
                                 <h4>Form tambah supplier</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('suppliers.store') }}" method="POST"
+                                <form id="supplierForm" action="{{ route('suppliers.store') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="kode_supplier">Kode Supplier</label>
-                                        <input type="text" class="form-control" name="kode_supplier"
-                                            placeholder="*Masukkan kode supplier">
+                                        <input type="text" class="form-control" id="kode_supplier" name="kode_supplier"
+                                            placeholder="*Masukkan kode supplier" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_supplier">Nama Supplier</label>
-                                        <input type="text" class="form-control" name="nama_supplier"
-                                            placeholder="*Masukkan nama supplier">
+                                        <input type="text" class="form-control" id="nama_supplier" name="nama_supplier"
+                                            placeholder="*Masukkan nama supplier" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="email_supplier">Email</label>
-                                        <input type="email" name="email_supplier" class="form-control"
-                                            placeholder="*Masukkan alamat email">
+                                        <input type="email" name="email_supplier" id="email_supplier"
+                                            class="form-control" placeholder="*Masukkan alamat email" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="telepon_supplier">Telepon</label>
-                                        <input type="tel" name="telepon_supplier" class="form-control"
-                                            placeholder="*Masukkan nomor telepon">
+                                        <input type="tel" name="telepon_supplier" id="telepon_supplier"
+                                            class="form-control" placeholder="*Masukkan nomor telepon" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="instansi_supplier">Instansi</label>
-                                        <select name="instansi_supplier" class="form-control">
+                                        <select name="instansi_supplier" id="instansi_supplier" class="form-control"
+                                            required>
                                             <option value="" selected disabled>*Pilih instansi</option>
                                             <option value="Pemerintah">Pemerintah</option>
                                             <option value="Kabupaten/Kota">Kabupaten/Kota</option>
@@ -238,6 +239,34 @@
                 </div>
             </section>
         </div>
+
+        <script>
+            document.getElementById('supplierForm').addEventListener('submit', function (event) {
+                var isValid = true;
+                var inputs = document.querySelectorAll('#supplierForm [required]');
+
+                inputs.forEach(function (input) {
+                    if (!input.value) {
+                        isValid = false;
+                        input.classList.add('is-invalid');
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                });
+
+                if (!isValid) {
+                    event.preventDefault();
+                    alert('Semua kolom wajib diisi!');
+                }
+            });
+        </script>
+
+        <style>
+            .is-invalid {
+                border-color: #dc3545;
+            }
+        </style>
+
         <footer class="main-footer">
             <div class="footer-left">
                 Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
@@ -249,32 +278,32 @@
 
 
 
-    <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-    <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
 
-    <script>
-        function performSearch() {
-            const searchQuery = document.getElementById('search-input').value.toLowerCase();
-            const tableRows = document.querySelectorAll('table tbody tr');
-            tableRows.forEach(row => {
-                const rowData = row.innerText.toLowerCase();
-                if (rowData.includes(searchQuery)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
-        document.getElementById('search-input').addEventListener('input', performSearch);
-    </script>
+<script>
+    function performSearch() {
+        const searchQuery = document.getElementById('search-input').value.toLowerCase();
+        const tableRows = document.querySelectorAll('table tbody tr');
+        tableRows.forEach(row => {
+            const rowData = row.innerText.toLowerCase();
+            if (rowData.includes(searchQuery)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    document.getElementById('search-input').addEventListener('input', performSearch);
+</script>
 
 </body>
 

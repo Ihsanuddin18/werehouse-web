@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-   
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 
     <script>
@@ -186,24 +186,26 @@
                                 <h4>Form edit data logistik</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('logistics.update', $logistic->id) }}" method="POST">
+                                <form id="logisticsEditForm" action="{{ route('logistics.update', $logistic->id) }}"
+                                    method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
                                         <label for="kode_logistik">Kode Logistik</label>
-                                        <input type="text" class="form-control" name="kode_logistik"
-                                            placeholder="*Masukkan kode logistik"
-                                            value="{{ $logistic->kode_logistik }}">
+                                        <input type="text" class="form-control" id="kode_logistik" name="kode_logistik"
+                                            placeholder="*Masukkan kode logistik" value="{{ $logistic->kode_logistik }}"
+                                            required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_logistik">Nama Logistik</label>
-                                        <input type="text" class="form-control" name="nama_logistik"
-                                            placeholder="*Masukkan nama logistik"
-                                            value="{{ $logistic->nama_logistik }}">
+                                        <input type="text" class="form-control" id="nama_logistik" name="nama_logistik"
+                                            placeholder="*Masukkan nama logistik" value="{{ $logistic->nama_logistik }}"
+                                            required>
                                     </div>
                                     <div class="form-group">
                                         <label for="satuan_logistik">Satuan</label>
-                                        <select name="satuan_logistik" class="form-control">
+                                        <select id="satuan_logistik" name="satuan_logistik" class="form-control"
+                                            required>
                                             <option value="" disabled>*Pilih satuan</option>
                                             <option value="Kilogram (kg)" {{ $logistic->satuan_logistik == "Kilogram (kg)" ? 'selected' : '' }}>Kilogram (kg)</option>
                                             <option value="Gram (g)" {{ $logistic->satuan_logistik == "Gram (g)" ? 'selected' : '' }}>Gram (g)</option>
@@ -234,42 +236,72 @@
         </div>
         </section>
     </div>
-    <footer class="main-footer">
-        <div class="footer-left">
-            Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
-        </div>
-    </footer>
-</div>
-</div>
-
-
-
-    <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
-
-    <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
 
     <script>
-        function performSearch() {
-            const searchQuery = document.getElementById('search-input').value.toLowerCase();
-            const tableRows = document.querySelectorAll('table tbody tr');
-            tableRows.forEach(row => {
-                const rowData = row.innerText.toLowerCase();
-                if (rowData.includes(searchQuery)) {
-                    row.style.display = '';
+        document.getElementById('logisticsEditForm').addEventListener('submit', function (event) {
+            var isValid = true;
+            var inputs = document.querySelectorAll('#logisticsEditForm [required]');
+
+            inputs.forEach(function (input) {
+                if (!input.value) {
+                    isValid = false;
+                    input.classList.add('is-invalid');
                 } else {
-                    row.style.display = 'none';
+                    input.classList.remove('is-invalid');
                 }
             });
-        }
-        document.getElementById('search-input').addEventListener('input', performSearch);
+
+            if (!isValid) {
+                event.preventDefault();
+                alert('Semua kolom wajib diisi!');
+            }
+        });
     </script>
+
+    <style>
+        .is-invalid {
+            border-color: #dc3545;
+        }
+    </style>
+
+    </section>
+</div>
+<footer class="main-footer">
+    <div class="footer-left">
+        Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
+    </div>
+</footer>
+</div>
+</div>
+
+
+
+<script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
+
+<script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+
+<script>
+    function performSearch() {
+        const searchQuery = document.getElementById('search-input').value.toLowerCase();
+        const tableRows = document.querySelectorAll('table tbody tr');
+        tableRows.forEach(row => {
+            const rowData = row.innerText.toLowerCase();
+            if (rowData.includes(searchQuery)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    document.getElementById('search-input').addEventListener('input', performSearch);
+</script>
 
 </body>
 

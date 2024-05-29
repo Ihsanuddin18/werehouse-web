@@ -186,36 +186,38 @@
                                 <h4>Form edit data supplier</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('suppliers.update', $supplier->id) }}" method="POST">
+                                <form id="supplierEditForm" action="{{ route('suppliers.update', $supplier->id) }}"
+                                    method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
                                         <label for="kode_supplier">Kode Supplier</label>
-                                        <input type="text" class="form-control" name="kode_supplier"
-                                            placeholder="*Masukkan kode supplier"
-                                            value="{{ $supplier->kode_supplier }}">
+                                        <input type="text" class="form-control" id="kode_supplier" name="kode_supplier"
+                                            placeholder="*Masukkan kode supplier" value="{{ $supplier->kode_supplier }}"
+                                            required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_supplier">Nama Supplier</label>
-                                        <input type="text" class="form-control" name="nama_supplier"
-                                            placeholder="*Masukkan nama supplier"
-                                            value="{{ $supplier->nama_supplier }}">
+                                        <input type="text" class="form-control" id="nama_supplier" name="nama_supplier"
+                                            placeholder="*Masukkan nama supplier" value="{{ $supplier->nama_supplier }}"
+                                            required>
                                     </div>
                                     <div class="form-group">
                                         <label for="email_supplier">Email</label>
-                                        <input type="email" name="email_supplier" class="form-control"
-                                            placeholder="*Masukkan alamat email"
-                                            value="{{ $supplier->email_supplier }}">
+                                        <input type="email" name="email_supplier" id="email_supplier"
+                                            class="form-control" placeholder="*Masukkan alamat email"
+                                            value="{{ $supplier->email_supplier }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="telepon_supplier">Telepon</label>
-                                        <input type="tel" name="telepon_supplier" class="form-control"
-                                            placeholder="*Masukkan nomor telepon"
-                                            value="{{ $supplier->telepon_supplier }}">
+                                        <input type="tel" name="telepon_supplier" id="telepon_supplier"
+                                            class="form-control" placeholder="*Masukkan nomor telepon"
+                                            value="{{ $supplier->telepon_supplier }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="instansi_supplier">Instansi</label>
-                                        <select name="instansi_supplier" class="form-control">
+                                        <select name="instansi_supplier" id="instansi_supplier" class="form-control"
+                                            required>
                                             <option value="" disabled>*Pilih instansi</option>
                                             <option value="Pemerintah" {{ $supplier->instansi_supplier == "Pemerintah" ? 'selected' : '' }}>Pemerintah</option>
                                             <option value="Kabupaten/Kota" {{ $supplier->instansi_supplier == "Kabupaten/Kota" ? 'selected' : '' }}>
@@ -244,6 +246,34 @@
                 </div>
             </section>
         </div>
+
+        <script>
+            document.getElementById('supplierEditForm').addEventListener('submit', function (event) {
+                var isValid = true;
+                var inputs = document.querySelectorAll('#supplierEditForm [required]');
+
+                inputs.forEach(function (input) {
+                    if (!input.value) {
+                        isValid = false;
+                        input.classList.add('is-invalid');
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                });
+
+                if (!isValid) {
+                    event.preventDefault();
+                    alert('Semua kolom wajib diisi!');
+                }
+            });
+        </script>
+
+        <style>
+            .is-invalid {
+                border-color: #dc3545;
+            }
+        </style>
+
         <footer class="main-footer">
             <div class="footer-left">
                 Werehouse BPBD<div class="bullet"></div> Kabupaten Jember
