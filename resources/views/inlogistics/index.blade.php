@@ -285,10 +285,6 @@
                                                                     class="btn btn-success mr-2" title="Detail">
                                                                     <i class="fas fa-eye"></i>
                                                                 </a>
-                                                                <a href="{{ route('inlogistics.edit', $inlogistic->id)}}"
-                                                                    class="btn btn-warning mr-2" title="Edit">
-                                                                    <i class="fas fa-pencil-alt"></i>
-                                                                </a>
                                                                 <form action="{{ route('inlogistics.destroy', $inlogistic->id) }}"
                                                                     method="POST" class="p-0"
                                                                     onsubmit="return confirm('Delete?')">

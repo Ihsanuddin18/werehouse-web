@@ -74,13 +74,22 @@ class OutLogisticController extends Controller
             'nik_kk_penerima' => 'required|string|max:255',
             'dokumentasi_keluar' => 'nullable|string|max:20000',
         ]);
-        if ($request->hasFile('dokumentasi_keluar')) {
-            $fileName = time() . $request->file('dokumentasi_keluar')->getClientOriginalName();
-            $path = $request->file('dokumentasi_keluar')->storeAs('images', $fileName, 'public');
-            $validatedData['dokumentasi_keluar'] = '/storage/' . $path;
+    
+        // Simpan data logistik keluar
+        $outlogistic = Outlogistic::create($validatedData);
+    
+        // Kurangi jumlah logistik yang masuk
+        $inlogistic = \App\Models\Inlogistic::where('id_logistik', $validatedData['id_logistik'])->firstOrFail();
+        $inlogistic->jumlah_logistik_masuk -= $validatedData['jumlah_logistik_keluar'];
+    
+        // Pastikan jumlah tidak kurang dari 0
+        if ($inlogistic->jumlah_logistik_masuk < 0) {
+            $inlogistic->jumlah_logistik_masuk = 0;
         }
-        Outlogistic::create($validatedData);
-        return redirect()->route('outlogistics.index')->with('success', 'Data berhasil ditambahkan !');
+    
+        $inlogistic->save();
+    
+        return redirect()->route('outlogistics.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     public function show(string $id)
@@ -88,20 +97,6 @@ class OutLogisticController extends Controller
         $outlogistic = Outlogistic::findOrFail($id);
         $logistics = Logistic::all();
         return view('outlogistics.show', compact('outlogistic', 'logistics'));
-    }
-
-    public function edit(string $id)
-    {
-        $outlogistic = Outlogistic::findOrFail($id);
-        $logistics = Logistic::all();
-        return view('outlogistics.edit', compact('outlogistic', 'logistics'));
-    }
-
-    public function update(Request $request, string $id)
-    {
-        $outlogistic = Outlogistic::findOrFail($id);
-        $outlogistic->update($request->all());
-        return redirect()->route('outlogistics')->with('success', 'Data berhasil diubah !');
     }
 
     public function destroy(string $id)

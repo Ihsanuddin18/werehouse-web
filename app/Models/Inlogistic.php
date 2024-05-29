@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Logistic;
 use App\Models\Supplier;
 
+
 class Inlogistic extends Model
 {
     use HasFactory;

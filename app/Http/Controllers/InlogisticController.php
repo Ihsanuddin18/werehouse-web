@@ -91,20 +91,6 @@ class InlogisticController extends Controller
         return view('inlogistics.show', compact('inlogistic', 'logistics'));
     }
 
-    public function edit(string $id)
-    {
-        $inlogistic = Inlogistic::findOrFail($id);
-        $logistics = Logistic::all();
-        $suppliers = Supplier::all();
-        return view('inlogistics.edit', compact('inlogistic', 'logistics', 'suppliers'));
-    }
-
-    public function update(Request $request, string $id)
-    {
-        $inlogistic = Inlogistic::findOrFail($id);
-        $inlogistic->update($request->all());
-        return redirect()->route('inlogistics')->with('success', 'Data berhasil diubah !');
-    }
 
     public function destroy(string $id)
     {
