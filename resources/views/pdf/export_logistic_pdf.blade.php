@@ -13,6 +13,7 @@
         #customers th {
             border: 1px solid #ddd;
             padding: 8px;
+            text-align: center;
         }
 
         #customers tr:nth-child(even) {
@@ -26,7 +27,7 @@
         #customers th {
             padding-top: 12px;
             padding-bottom: 12px;
-            text-align: left;
+            text-align: center;
             background-color: #04AA6D;
             color: white;
         }
@@ -47,7 +48,7 @@
         @if($logistics->count() > 0)
             @foreach($logistics as $logistic)
                 <tr>
-                    <td class="text-center">{{ ($logistics->currentPage() - 1) * $logistics->perPage() + $loop->iteration }}</td>
+                    <td class="text-center">{{ $loop->iteration }}</td>
                     <td class="text-center">{{ $logistic->kode_logistik }}</td>
                     <td class="text-center">{{ $logistic->nama_logistik }}</td>
                     <td class="text-center">{{ $logistic->satuan_logistik }}</td>
@@ -55,7 +56,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="6" class="text-center"> Tidak ada data ! </td>
+                <td colspan="8" style="text-align: center;">Tidak ada data logistik !</td>
             </tr>
         @endif
     </table>

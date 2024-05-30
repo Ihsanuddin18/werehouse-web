@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
-   
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -24,7 +24,7 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-   
+
 </head>
 
 <body>
@@ -187,9 +187,13 @@
                             <a href="{{ route('outlogistics.create') }}" class="btn btn-primary mr-2">
                                 <i class="fas fa-plus"></i> Logistik Keluar
                             </a>
-                            <a href="{{ route('export_outlogistic_pdf') }}" class="btn btn-danger">
-                                <i class="fas fa-file-pdf"></i> Export PDF
-                            </a>
+                            <form method="GET" action="{{ route('export_outlogistic_pdf') }}">
+                                <input type="hidden" name="month" value="{{ request('month') }}">
+                                <input type="hidden" name="year" value="{{ request('year') }}">
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-file-pdf"></i> Export PDF
+                                </button>
+                            </form>
                         </div>
                         <br>
                         <form method="GET" action="{{ route('outlogistics.index') }}" class="form-inline">
@@ -198,8 +202,8 @@
                                 <select name="month" id="month" class="form-control mr-2">
                                     <option value="">Pilih Bulan</option>
                                     @foreach(range(1, 12) as $month)
-                                        <option value="{{ $month }}">
-                                            {{ DateTime::createFromFormat('!m', $month)->format('F') }}
+                                        <option value="{{ $month }}" {{ request('month') == $month ? 'selected' : '' }}>
+                                            {{ ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][$month - 1] }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -209,7 +213,9 @@
                                 <select name="year" id="year" class="form-control mr-2">
                                     <option value="">Pilih Tahun</option>
                                     @foreach(range($firstYear, date('Y')) as $year)
-                                        <option value="{{ $year }}">{{ $year }}</option>
+                                        <option value="{{ $year }}" {{ request('year') == $year ? 'selected' : '' }}>
+                                            {{ $year }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -261,14 +267,14 @@
                                             @if($outlogistics->count() > 0)
                                                 @foreach($outlogistics as $outlogistic)
                                                     <tr>
-                                                        <td class="text-center">{{ ($outlogistics->currentPage() - 1) * $outlogistics->perPage() + $loop->iteration }}</td>
                                                         <td class="text-center">
-                                                            {{ optional($outlogistic->logistic)->nama_logistik }}
+                                                            {{ ($outlogistics->currentPage() - 1) * $outlogistics->perPage() + $loop->iteration }}
                                                         </td>
+                                                        <td class="text-center">
+                                                            {{ optional($outlogistic->logistic)->nama_logistik }}</td>
                                                         <td class="text-center">{{ $outlogistic->jumlah_logistik_keluar }}</td>
                                                         <td class="text-center">
-                                                            {{ optional($outlogistic->logistic)->satuan_logistik }}
-                                                        </td>
+                                                            {{ optional($outlogistic->logistic)->satuan_logistik }}</td>
                                                         <td class="text-center">{{ $outlogistic->nama_penerima }}</td>
                                                         <td class="text-center">{{ $outlogistic->alamat_penerima }}</td>
                                                         <td class="text-center">{{ $outlogistic->keterangan_keluar }}</td>
@@ -282,6 +288,10 @@
                                                                 <a href="{{ route('outlogistics.show', $outlogistic->id) }}"
                                                                     class="btn btn-success mr-2" title="Detail">
                                                                     <i class="fas fa-eye"></i>
+                                                                </a>
+                                                                <a href="{{ route('outlogistics.edit', $outlogistic->id)}}"
+                                                                    class="btn btn-warning mr-2" title="Edit">
+                                                                    <i class="fas fa-pencil-alt"></i>
                                                                 </a>
                                                                 <form
                                                                     action="{{ route('outlogistics.destroy', $outlogistic->id) }}"
@@ -299,7 +309,7 @@
                                                 @endforeach
                                             @else
                                                 <tr>
-                                                    <td colspan="6" class="text-center">Tidak ada data !</td>
+                                                    <td colspan="9" class="text-center">Tidak ada data!</td>
                                                 </tr>
                                             @endif
                                         </tbody>
@@ -323,6 +333,7 @@
                     </div>
                 </section>
             </div>
+
     </div>
     <footer class="main-footer">
         <div class="footer-left">

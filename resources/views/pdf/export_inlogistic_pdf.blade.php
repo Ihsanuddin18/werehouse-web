@@ -13,6 +13,7 @@
         #customers th {
             border: 1px solid #ddd;
             padding: 8px;
+            text-align: center;
         }
 
         #customers tr:nth-child(even) {
@@ -26,7 +27,7 @@
         #customers th {
             padding-top: 12px;
             padding-bottom: 12px;
-            text-align: left;
+            text-align: center;
             background-color: #04AA6D;
             color: white;
         }
@@ -63,7 +64,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="8"> Tidak ada data logistik masuk !</td>
+                <td colspan="8" style="text-align: center;">Tidak ada data logistik masuk !</td>
             </tr>
         @endif
     </table>

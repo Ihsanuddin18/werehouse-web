@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Outlogistic;
 use App\Models\Logistic;
 use App\Models\Supplier;
 
@@ -28,5 +29,9 @@ class Inlogistic extends Model
     public function supplier()
     {
         return $this->belongsTo(Supplier::class, 'id_supplier', 'id');
+    }
+    public function outlogistics()
+    {
+        return $this->hasMany(Outlogistic::class, 'id_inlogistik');
     }
 }

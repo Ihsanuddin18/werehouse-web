@@ -17,7 +17,7 @@ class SupplierController extends Controller
 
         if ($month && $year) {
             $query->whereYear('created_at', $year)
-                ->whereMonth('created_at', $month);
+                  ->whereMonth('created_at', $month);
         } elseif ($year) {
             $query->whereYear('created_at', $year);
         }
@@ -34,9 +34,21 @@ class SupplierController extends Controller
         ]);
     }
 
-    public function export_supplier_pdf()
+    public function export_supplier_pdf(Request $request)
     {
-        $suppliers = Supplier::latest()->paginate(15);
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        $query = Supplier::query();
+
+        if ($month && $year) {
+            $query->whereYear('created_at', $year)
+                  ->whereMonth('created_at', $month);
+        } elseif ($year) {
+            $query->whereYear('created_at', $year);
+        }
+
+        $suppliers = $query->latest()->get();
 
         $pdf = PDF::loadView('pdf.export_supplier_pdf', compact('suppliers'));
         return $pdf->download('export_supplier.pdf');

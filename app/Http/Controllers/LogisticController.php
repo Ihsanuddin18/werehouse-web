@@ -34,13 +34,26 @@ class LogisticController extends Controller
         ]);
     }
 
-    public function export_logistic_pdf()
+    public function export_logistic_pdf(Request $request)
     {
-        $logistics = Logistic::latest()->paginate(15);
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        $query = Logistic::query();
+
+        if ($month && $year) {
+            $query->whereYear('created_at', $year)
+                ->whereMonth('created_at', $month);
+        } elseif ($year) {
+            $query->whereYear('created_at', $year);
+        }
+
+        $logistics = $query->latest()->get();
 
         $pdf = PDF::loadView('pdf.export_logistic_pdf', compact('logistics'));
         return $pdf->download('export_logistic.pdf');
     }
+
 
     public function export_show_logistic_pdf($id)
     {

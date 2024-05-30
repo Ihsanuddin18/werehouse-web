@@ -30,7 +30,7 @@
         #logistics-table th {
             padding-top: 12px;
             padding-bottom: 12px;
-            text-align: left;
+            text-align: center;
             background-color: #04AA6D;
             color: white;
         }

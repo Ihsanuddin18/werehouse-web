@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Inlogistic;
 use App\Models\Logistic;
+use App\Models\Outlogistic;
 use App\Models\Supplier;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -42,12 +43,26 @@ class InlogisticController extends Controller
         ]);
     }
 
-    public function export_inlogistic_pdf()
+    public function export_inlogistic_pdf(Request $request)
     {
-        $inlogistics = Inlogistic::all();
+        $query = Inlogistic::with('logistic', 'supplier');
+
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        if ($month && $year) {
+            $query->whereYear('tanggal_masuk', $year)
+                ->whereMonth('tanggal_masuk', $month);
+        } elseif ($year) {
+            $query->whereYear('tanggal_masuk', $year);
+        }
+
+        $inlogistics = $query->get();
+
         $pdf = PDF::loadView('pdf.export_inlogistic_pdf', ['inlogistics' => $inlogistics]);
         return $pdf->download('export_inlogistic_pdf.pdf');
     }
+
 
     public function export_show_inlogistic_pdf($id)
     {
@@ -71,9 +86,9 @@ class InlogisticController extends Controller
             'id_supplier' => 'required|exists:suppliers,id',
             'jumlah_logistik_masuk' => 'required|integer',
             'tanggal_masuk' => 'required|date',
-            'expayer_logistik' => 'nullable|date',
-            'keterangan_masuk' => 'nullable|string',
-            'dokumentasi_masuk' => 'nullable|string|max:20000',
+            'expayer_logistik' => 'date',
+            'keterangan_masuk' => 'string',
+            'dokumentasi_masuk' => 'string|max:20000',
         ]);
         if ($request->hasFile('dokumentasi_masuk')) {
             $fileName = time() . $request->file('dokumentasi_masuk')->getClientOriginalName();
@@ -91,11 +106,35 @@ class InlogisticController extends Controller
         return view('inlogistics.show', compact('inlogistic', 'logistics'));
     }
 
-
-    public function destroy(string $id)
+    public function edit(string $id)
     {
         $inlogistic = Inlogistic::findOrFail($id);
-        $inlogistic->delete();
-        return redirect()->route('inlogistics')->with('success', 'Data berhasil dihapus !');
+        $logistics = Logistic::all();
+        $suppliers = Supplier::all();
+        return view('inlogistics.edit', compact('inlogistic', 'logistics', 'suppliers'));
     }
+
+    public function update(Request $request, string $id)
+    {
+        $inlogistic = Inlogistic::findOrFail($id);
+        $inlogistic->update($request->all());
+        return redirect()->route('inlogistics')->with('success', 'Data berhasil diubah !');
+    }
+
+    // InlogisticController.php
+
+    public function destroy($id)
+    {
+        $inlogistic = Inlogistic::findOrFail($id);
+
+        $inlogistic->delete();
+
+        $outlogistic = Outlogistic::where('id_inlogistik', $id)->first();
+        if ($outlogistic) {
+            $outlogistic->delete();
+        }
+
+        return redirect()->route('inlogistics.index')->with('success', 'Data berhasil dihapus !');
+    }
+
 }

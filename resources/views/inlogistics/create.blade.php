@@ -196,7 +196,7 @@
                                             <label for="tanggal_masuk" style="font-size: larger;">Tanggal Masuk
                                                 Logistik</label>
                                             <input type="date" class="form-control" name="tanggal_masuk"
-                                                id="tanggal_masuk" placeholder="*Tanggal Masuk">
+                                                id="tanggal_masuk" placeholder="*Tanggal Masuk" required>
                                         </div>
                                         <div style="position: absolute; top: 0; right: 0;">
                                             <a href="{{ route('inlogistics') }}" class="btn btn-primary mx-2"
@@ -271,7 +271,7 @@
                                     <div class="form-group col-md-3">
                                         <label for="jumlah_logistik_masuk">Jumlah</label>
                                         <input type="number" class="form-control" name="jumlah_logistik_masuk"
-                                            id="jumlah_logistik_masuk" placeholder="*Masukkan Jumlah">
+                                            id="jumlah_logistik_masuk" placeholder="*Masukkan Jumlah" required>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="satuan_logistik">Satuan Logistik</label>
@@ -281,12 +281,12 @@
                                     <div class="form-group col-md-3">
                                         <label for="expayer_logistik">Tanggal Kadaluarsa</label>
                                         <input type="date" class="form-control" name="expayer_logistik"
-                                            id="expayer_logistik">
+                                            id="expayer_logistik" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="keterangan_masuk">Keterangan</label>
                                         <input type="text" class="form-control" name="keterangan_masuk"
-                                            id="keterangan_masuk" placeholder="*Masukkan Keterangan">
+                                            id="keterangan_masuk" placeholder="*Masukkan Keterangan" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="dokumentasi_masuk">Dokumentasi Masuk</label>
@@ -367,18 +367,29 @@
                         teleponSupplierInput.value = teleponSupplier;
                     }
 
-                    function enableAddLogisticButton() {
-                        addLogisticButton.disabled = false;
-                    }
+                    function validateForm() {
+                        const requiredFields = [
+                            document.getElementById('tanggal_masuk'),
+                            supplierSelect,
+                            logisticSelect,
+                            document.getElementById('jumlah_logistik_masuk'),
+                            document.getElementById('expayer_logistik'),
+                            document.getElementById('keterangan_masuk')
+                        ];
 
-                    function disableAddLogisticButton() {
-                        addLogisticButton.disabled = true;
+                        for (let field of requiredFields) {
+                            if (!field.value) {
+                                alert('Semua kolom wajib diisi!');
+                                return false;
+                            }
+                        }
+
+                        return true;
                     }
 
                     function addRemoveButtonHandler(button) {
                         button.addEventListener('click', function () {
                             this.closest('tr').remove();
-                            enableAddLogisticButton();
                         });
                     }
 
@@ -386,6 +397,10 @@
                     supplierSelect.addEventListener('change', updateSupplierDetails);
 
                     addLogisticButton.addEventListener('click', function () {
+                        if (!validateForm()) {
+                            return;
+                        }
+
                         const tanggalMasuk = document.getElementById('tanggal_masuk').value;
                         const supplierText = supplierSelect.options[supplierSelect.selectedIndex].text;
                         const logisticText = logisticSelect.options[logisticSelect.selectedIndex].text;
@@ -418,19 +433,31 @@
                         document.querySelectorAll('.remove-row').forEach(button => {
                             addRemoveButtonHandler(button);
                         });
-
-                        disableAddLogisticButton();
                     });
 
                     document.getElementById('saveLogistics').addEventListener('click', function () {
+                        if (!validateForm()) {
+                            return;
+                        }
                         const logisticForm = document.getElementById('logisticForm');
                         logisticForm.action = "{{ route('inlogistics.store') }}";
                         logisticForm.method = 'POST';
                         logisticForm.submit();
                     });
-                });
 
+                    document.getElementById('logisticForm').addEventListener('submit', function (event) {
+                        if (!validateForm()) {
+                            event.preventDefault();
+                        }
+                    });
+                });
             </script>
+            <style>
+                .is-invalid {
+                    border-color: #dc3545;
+                }
+            </style>
+
             <footer class="main-footer">
                 <div class="footer-left">
                     Werehouse BPBD<div class="bullet"></div> Kabupaten Jember

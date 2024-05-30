@@ -188,18 +188,22 @@
                             <a href="{{ route('suppliers.create') }}" class="btn btn-primary mr-2">
                                 <i class="fas fa-plus"></i> Tambah
                             </a>
-                            <a href="{{ route('export_supplier_pdf') }}" class="btn btn-danger">
-                                <i class="fas fa-file-pdf"></i> Export PDF
-                            </a>
+                            <form method="GET" action="{{ route('export_supplier_pdf') }}">
+                                <input type="hidden" name="month" value="{{ request('month') }}">
+                                <input type="hidden" name="year" value="{{ request('year') }}">
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-file-pdf"></i> Export PDF
+                                </button>
+                            </form>
                         </div>
                         <br>
-                        <form method="GET" action="{{ route('suppliers.index') }}" class="form-inline">
+                        <form method="GET" action="{{ route('suppliers.index') }}" class="form-inline" id="filterForm">
                             <div class="form-group mb-2">
                                 <label for="month" class="mr-2">Bulan:</label>
                                 <select name="month" id="month" class="form-control mr-2">
                                     <option value="">Pilih Bulan</option>
                                     @foreach(range(1, 12) as $month)
-                                        <option value="{{ $month }}">
+                                        <option value="{{ $month }}" {{ request('month') == $month ? 'selected' : '' }}>
                                             {{ ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][$month - 1] }}
                                         </option>
                                     @endforeach
@@ -210,7 +214,9 @@
                                 <select name="year" id="year" class="form-control mr-2">
                                     <option value="">Pilih Tahun</option>
                                     @foreach(range($firstYear, $currentYear) as $year)
-                                        <option value="{{ $year }}">{{ $year }}</option>
+                                        <option value="{{ $year }}" {{ request('year') == $year ? 'selected' : '' }}>
+                                            {{ $year }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
