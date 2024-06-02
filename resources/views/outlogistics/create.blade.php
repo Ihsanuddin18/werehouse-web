@@ -363,6 +363,7 @@
                             if (document.getElementById('logisticTable').getElementsByTagName('tbody')[0].rows.length === 0) {
                                 saveLogisticsButton.style.display = 'none';
                             }
+                            addLogisticButton.disabled = false; // Re-enable the button when a row is removed
                         });
                     }
 
@@ -416,6 +417,7 @@
                             addRemoveButtonHandler(button);
                         });
 
+                        addLogisticButton.disabled = true; // Disable the button after adding a row
                         saveLogisticsButton.style.display = 'block';
                     });
 

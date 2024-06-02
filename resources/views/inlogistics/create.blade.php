@@ -390,6 +390,7 @@
                     function addRemoveButtonHandler(button) {
                         button.addEventListener('click', function () {
                             this.closest('tr').remove();
+                            addLogisticButton.disabled = false; // Re-enable the button when a row is removed
                         });
                     }
 
@@ -433,6 +434,7 @@
                         document.querySelectorAll('.remove-row').forEach(button => {
                             addRemoveButtonHandler(button);
                         });
+                        addLogisticButton.disabled = true; // Disable the button after adding a row
                     });
 
                     document.getElementById('saveLogistics').addEventListener('click', function () {
@@ -452,11 +454,6 @@
                     });
                 });
             </script>
-            <style>
-                .is-invalid {
-                    border-color: #dc3545;
-                }
-            </style>
 
             <footer class="main-footer">
                 <div class="footer-left">
