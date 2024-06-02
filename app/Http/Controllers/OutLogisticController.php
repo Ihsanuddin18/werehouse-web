@@ -7,7 +7,7 @@ use App\Models\Outlogistic;
 use App\Models\Logistic;
 use App\Models\Inlogistic;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\Log; // Tambahkan ini
+use Illuminate\Support\Facades\Log; 
 
 class OutLogisticController extends Controller
 {
@@ -26,7 +26,7 @@ class OutLogisticController extends Controller
         }
 
         $outlogistics = $query->latest()->paginate(15);
-        
+
         $logistics = Logistic::with('outlogistics')->get();
 
         $firstYearDate = Outlogistic::min('tanggal_keluar');
@@ -91,6 +91,17 @@ class OutLogisticController extends Controller
         ]);
 
         $inlogistic = Inlogistic::where('id_logistik', $validatedData['id_logistik'])->firstOrFail();
+        $logistic = Logistic::with('inlogistics')->findOrFail($validatedData['id_logistik']);
+        $jumlahTersedia = $logistic->inlogistics->sum('jumlah_logistik_masuk');
+
+        if ($validatedData['jumlah_logistik_keluar'] > $jumlahTersedia) {
+            return redirect()->back()->withErrors(['jumlah_logistik_keluar' => 'Jumlah logistik tidak mencukupi.']);
+        }
+        if ($request->hasFile('dokumentasi_keluar')) {
+            $file = $request->file('dokumentasi_keluar');
+            $filePath = $file->store('dokumentasi_keluar', 'public');
+            $validatedData['dokumentasi_keluar'] = $filePath;
+        }
 
         $validatedData['id_inlogistik'] = $inlogistic->id;
 
@@ -131,7 +142,7 @@ class OutLogisticController extends Controller
 
         Log::info('Request Data:', $request->all());
 
-        $request->validate([
+        $validatedData = $request->validate([
             'tanggal_keluar' => 'required|date',
             'nama_penerima' => 'required|string|max:255',
             'nik_kk_penerima' => 'required|string|max:255',
@@ -142,28 +153,28 @@ class OutLogisticController extends Controller
         ]);
 
         // Hitung perbedaan jumlah logistik keluar
-        $newJumlahLogistikKeluar = $request->input('jumlah_logistik_keluar');
+        $newJumlahLogistikKeluar = $validatedData['jumlah_logistik_keluar'];
         $difference = $newJumlahLogistikKeluar - $oldJumlahLogistikKeluar;
 
         // Temukan data inlogistic terkait
         $inlogistic = Inlogistic::where('id_logistik', $outlogistic->id_logistik)->firstOrFail();
+        $jumlahTersedia = $inlogistic->jumlah_logistik_masuk;
+
+        if ($difference > $jumlahTersedia) {
+            return redirect()->back()->withErrors(['jumlah_logistik_keluar' => 'Jumlah logistik tidak mencukupi.']);
+        }
 
         // Perbarui jumlah logistik masuk berdasarkan perbedaan
         $inlogistic->jumlah_logistik_masuk -= $difference;
-
-        if ($inlogistic->jumlah_logistik_masuk < 0) {
-            $inlogistic->jumlah_logistik_masuk = 0;
-        }
-
         $inlogistic->save();
 
         // Perbarui data outlogistic
-        $outlogistic->tanggal_keluar = $request->input('tanggal_keluar');
-        $outlogistic->nama_penerima = $request->input('nama_penerima');
-        $outlogistic->nik_kk_penerima = $request->input('nik_kk_penerima');
-        $outlogistic->alamat_penerima = $request->input('alamat_penerima');
-        $outlogistic->jumlah_logistik_keluar = $request->input('jumlah_logistik_keluar');
-        $outlogistic->keterangan_keluar = $request->input('keterangan_keluar');
+        $outlogistic->tanggal_keluar = $validatedData['tanggal_keluar'];
+        $outlogistic->nama_penerima = $validatedData['nama_penerima'];
+        $outlogistic->nik_kk_penerima = $validatedData['nik_kk_penerima'];
+        $outlogistic->alamat_penerima = $validatedData['alamat_penerima'];
+        $outlogistic->jumlah_logistik_keluar = $validatedData['jumlah_logistik_keluar'];
+        $outlogistic->keterangan_keluar = $validatedData['keterangan_keluar'];
 
         if ($request->hasFile('dokumentasi_keluar')) {
             $filePath = $request->file('dokumentasi_keluar')->store('dokumentasi_keluar');

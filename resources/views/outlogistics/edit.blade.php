@@ -185,6 +185,7 @@
                                 method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
+                                <input type="hidden" name="id_logistik" value="{{ $outlogistic->id_logistik }}">
                                 <div class="form-row">
                                     <div class="form-group col-md-3">
                                         <label for="tanggal_keluar" style="font-size: larger;">Tanggal Keluar
@@ -253,6 +254,11 @@
                                             id="jumlah_logistik_keluar" placeholder="*Masukkan Jumlah"
                                             value="{{ old('jumlah_logistik_keluar', $outlogistic->jumlah_logistik_keluar) }}"
                                             required>
+                                        @if($errors->has('jumlah_logistik_keluar'))
+                                            <div class="text-danger">
+                                                {{ $errors->first('jumlah_logistik_keluar') }}
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="satuan_logistik">Satuan Logistik</label>
@@ -323,7 +329,6 @@
                     }
                 });
             </script>
-
 
             <footer class="main-footer">
                 <div class="footer-left">

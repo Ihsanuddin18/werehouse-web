@@ -230,7 +230,8 @@
                                                 @foreach($logistics as $logistic)
                                                     <option value="{{ $logistic->id }}"
                                                         data-kode="{{ $logistic->kode_logistik }}"
-                                                        data-satuan="{{ $logistic->satuan_logistik }}">
+                                                        data-satuan="{{ $logistic->satuan_logistik }}"
+                                                        data-jumlah-tersedia="{{ $logistic->inlogistics->sum('jumlah_logistik_masuk') }}">
                                                         {{ $logistic->nama_logistik }}
                                                     </option>
                                                 @endforeach
@@ -246,6 +247,8 @@
                                         <label for="jumlah_logistik_keluar">Jumlah</label>
                                         <input type="number" class="form-control" name="jumlah_logistik_keluar"
                                             id="jumlah_logistik_keluar" placeholder="*Masukkan Jumlah" required>
+                                        <small id="jumlah_tidak_cukup" class="form-text text-danger"
+                                            style="display:none;">Jumlah tidak mencukupi</small>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="satuan_logistik">Satuan Logistik</label>
@@ -305,6 +308,8 @@
                     const logisticSelect = document.getElementById('id_logistik');
                     const kodeLogistikInput = document.getElementById('kode_logistik');
                     const satuanLogistikInput = document.getElementById('satuan_logistik');
+                    const jumlahLogistikKeluarInput = document.getElementById('jumlah_logistik_keluar');
+                    const jumlahTidakCukupText = document.getElementById('jumlah_tidak_cukup');
                     const addLogisticButton = document.getElementById('addLogistic');
                     const saveLogisticsButton = document.getElementById('saveLogistics');
 
@@ -317,6 +322,20 @@
                         satuanLogistikInput.value = satuanLogistik;
                     }
 
+                    function validateJumlahLogistik() {
+                        const selectedOption = logisticSelect.options[logisticSelect.selectedIndex];
+                        const jumlahTersedia = parseInt(selectedOption.getAttribute('data-jumlah-tersedia'));
+                        const jumlahKeluar = parseInt(jumlahLogistikKeluarInput.value);
+
+                        if (isNaN(jumlahKeluar) || jumlahKeluar > jumlahTersedia) {
+                            jumlahTidakCukupText.style.display = 'block';
+                            addLogisticButton.disabled = true;
+                        } else {
+                            jumlahTidakCukupText.style.display = 'none';
+                            addLogisticButton.disabled = false;
+                        }
+                    }
+
                     function validateForm() {
                         const requiredFields = [
                             document.getElementById('tanggal_keluar'),
@@ -324,7 +343,7 @@
                             document.getElementById('nik_kk_penerima'),
                             document.getElementById('alamat_penerima'),
                             logisticSelect,
-                            document.getElementById('jumlah_logistik_keluar'),
+                            jumlahLogistikKeluarInput,
                             document.getElementById('keterangan_keluar')
                         ];
 
@@ -334,7 +353,7 @@
                                 return false;
                             }
                         }
-
+                        
                         return true;
                     }
 
@@ -348,9 +367,15 @@
                     }
 
                     logisticSelect.addEventListener('change', updateLogisticDetails);
+                    jumlahLogistikKeluarInput.addEventListener('input', validateJumlahLogistik);
 
                     addLogisticButton.addEventListener('click', function () {
                         if (!validateForm()) {
+                            return;
+                        }
+
+                        // Lakukan validasi jumlah logistik sekali lagi sebelum menambahkan ke tabel
+                        if (addLogisticButton.disabled) {
                             return;
                         }
 
@@ -359,7 +384,7 @@
                         const nikKkPenerima = document.getElementById('nik_kk_penerima').value;
                         const alamatPenerima = document.getElementById('alamat_penerima').value;
                         const logisticText = logisticSelect.options[logisticSelect.selectedIndex].text;
-                        const jumlah = document.getElementById('jumlah_logistik_keluar').value;
+                        const jumlah = jumlahLogistikKeluarInput.value;
                         const satuan = satuanLogistikInput.value;
                         const dokumentasi = document.getElementById('dokumentasi_keluar').files[0] ? document.getElementById('dokumentasi_keluar').files[0].name : '';
 
@@ -410,6 +435,7 @@
                         }
                     });
                 });
+
             </script>
 
 

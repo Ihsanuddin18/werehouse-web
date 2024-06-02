@@ -121,8 +121,6 @@ class InlogisticController extends Controller
         return redirect()->route('inlogistics')->with('success', 'Data berhasil diubah !');
     }
 
-    // InlogisticController.php
-
     public function destroy($id)
     {
         $inlogistic = Inlogistic::findOrFail($id);
