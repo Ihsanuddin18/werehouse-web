@@ -138,8 +138,9 @@ class UserController extends Controller
     {
         $request->validate([    
             'id_logistik' => 'required',
-            'id_inlogistik' => 'required',
+            // 'id_inlogistik' => 'required',
             'jumlah_logistik_keluar' => 'required',
+            'tanggal_keluar' => 'required',
             'nama_penerima' => 'required',
             'nik_kk_penerima' => 'required',
             'alamat_penerima' => 'required',
@@ -147,6 +148,7 @@ class UserController extends Controller
             'dokumentasi_keluar' => 'required',
         ]);
 
+        
         $post = Outlogistic::create($request->all());
         return new LogistikResource(true, "Data logistik Keluar", $post);
     }
