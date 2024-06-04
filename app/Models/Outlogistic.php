@@ -20,10 +20,12 @@ class Outlogistic extends Model
         'keterangan_keluar',
         'dokumentasi_keluar',
     ];
+
     public function logistic()
     {
         return $this->belongsTo(Logistic::class, 'id_logistik', 'id');
     }
+    
     public function inlogistic()
     {
         return $this->belongsTo(Inlogistic::class, 'id_inlogistik');

@@ -11,6 +11,7 @@ use App\Models\Logistic;
 use App\Models\Supplier;
 use App\Models\Inlogistic;
 use App\Models\Outlogistic;
+use App\Models\LogisticRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -136,20 +137,65 @@ class UserController extends Controller
 
     public function storeOutlogistic(Request $request)
     {
-        $request->validate([    
-            'id_logistik' => 'required',
-            // 'id_inlogistik' => 'required',
-            'jumlah_logistik_keluar' => 'required',
-            'tanggal_keluar' => 'required',
-            'nama_penerima' => 'required',
-            'nik_kk_penerima' => 'required',
-            'alamat_penerima' => 'required',
-            'keterangan_keluar' => 'required',
-            'dokumentasi_keluar' => 'required',
+        $validatedData = $request->validate([
+            'id_logistik' => 'required|exists:logistics,id',
+            'jumlah_logistik_keluar' => 'required|integer',
+            'tanggal_keluar' => 'required|date',
+            'nama_penerima' => 'required|string|max:255',
+            'nik_kk_penerima' => 'required|string|max:255',
+            'alamat_penerima' => 'required|string|max:255',
+            'keterangan_keluar' => 'nullable|string',
+            'dokumentasi_keluar' => 'nullable|string|max:20000',
         ]);
 
-        
-        $post = Outlogistic::create($request->all());
-        return new LogistikResource(true, "Data logistik Keluar", $post);
+        $inlogistic = Inlogistic::where('id_logistik', $validatedData['id_logistik'])->firstOrFail();
+        $logistic = Logistic::with('inlogistics')->findOrFail($validatedData['id_logistik']);
+        $jumlahTersedia = $logistic->inlogistics->sum('jumlah_logistik_masuk');
+
+        if ($validatedData['jumlah_logistik_keluar'] > $jumlahTersedia) {
+            return response()->json(['success' => false, 'message' => 'Jumlah logistik tidak mencukupi.'], 400);
+        }
+
+        if ($request->hasFile('dokumentasi_keluar')) {
+            $file = $request->file('dokumentasi_keluar');
+            $filePath = $file->store('dokumentasi_keluar', 'public');
+            $validatedData['dokumentasi_keluar'] = $filePath;
+        }
+
+        $validatedData['id_inlogistik'] = $inlogistic->id;
+
+        $outlogistic = Outlogistic::create($validatedData);
+
+        $inlogistic->jumlah_logistik_masuk -= $validatedData['jumlah_logistik_keluar'];
+
+        if ($inlogistic->jumlah_logistik_masuk < 0) {
+            $inlogistic->jumlah_logistik_masuk = 0;
+        }
+
+        $inlogistic->save();
+
+        return new LogistikResource(true, "Data logistik Keluar", $outlogistic);
+    }
+
+
+    public function getLogisticRequest()
+    {
+        $logisticrequest = LogisticRequest::all();
+        return new UserDataResource(true, "List logistik ", $logisticrequest);
+    }
+
+    public function storeLogisticRequest(Request $request)
+    {
+        $request->validate([
+            'request_nama_logistik_keluar' => 'required',
+            'request_jumlah_logistik_keluar' => 'required',
+            'alamat_penerima_logistik' => 'required',
+            'keterangan_penerima_logistik' => 'required',
+            'tanggal_kejadian_bencana' => 'required',
+        ]);
+
+
+        $post = LogisticRequest::create($request->all());
+        return new LogistikResource(true, "List logistik", $post);
     }
 }

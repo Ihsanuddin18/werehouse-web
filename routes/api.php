@@ -21,7 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
 Route::post('/apiTest/login', [UserController::class, 'login']);
 Route::post('/apiTest/register', [UserController::class, 'store']);
 Route::get('/apiTest/users', [UserController::class, 'index']);
@@ -37,3 +36,6 @@ Route::post("/apiTest/addInlogistic", [UserController::class, "storeInlogistic"]
 
 Route::get("/apiTest/outlogistic", [UserController::class, 'getOutlogistic']);
 Route::post("/apiTest/addOutlogistic", [UserController::class, "storeOutlogistic"]);
+
+Route::get("/apiTest/logisticrequest", [UserController::class, 'getLogisticRequest']);
+Route::post("/apiTest/addLogisticRequest", [UserController::class, "storeLogisticRequest"]);
