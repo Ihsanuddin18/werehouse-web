@@ -282,11 +282,6 @@
                                         <input type="text" class="form-control" name="keterangan_masuk"
                                             value="{{ $inlogistic->keterangan_masuk }}" required>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="dokumentasi_masuk">Dokumentasi</label>
-                                        <input type="file" class="form-control" name="dokumentasi_masuk"
-                                            value="{{ $inlogistic->dokumentasi_masuk }}">
-                                    </div>
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label class="form-label">Ditambahkan Pada</label>

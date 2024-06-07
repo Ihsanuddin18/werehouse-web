@@ -57,7 +57,14 @@
                     <td>{{ $outlogistic->nama_penerima }}</td>
                     <td>{{ $outlogistic->alamat_penerima }}</td>
                     <td>{{ $outlogistic->keterangan_keluar }}</td>
-                    <td>{{ asset($outlogistic->dokumentasi_keluar) }}</td>
+                    <td>
+                        @if($outlogistic->dokumentasi_keluar)
+                            <img src="{{ public_path('uploads/outlogistic/' . basename($outlogistic->dokumentasi_keluar)) }}"
+                                width="90" height="90">
+                        @else
+                            Tidak ada gambar
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         @else

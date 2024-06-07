@@ -428,6 +428,7 @@
                         const logisticForm = document.getElementById('logisticForm');
                         logisticForm.action = "{{ route('outlogistics.store') }}";
                         logisticForm.method = 'POST';
+                        logisticForm.enctype = 'multipart/form-data'; // Menambahkan atribut enctype
                         logisticForm.submit();
                     });
 

@@ -8,6 +8,7 @@ use App\Models\Logistic;
 use App\Models\Outlogistic;
 use App\Models\Supplier;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\File;
 
 class InlogisticController extends Controller
 {
@@ -105,12 +106,9 @@ class InlogisticController extends Controller
         $path = NULL;
 
         if ($request->has('dokumentasi_masuk')) {
-
             $file = $request->file('dokumentasi_masuk');
             $extension = $file->getClientOriginalExtension();
-
             $filename = time() . '.' . $extension;
-
             $path = 'uploads/inlogistic/';
             $file->move($path, $filename);
         }
@@ -153,6 +151,9 @@ class InlogisticController extends Controller
     public function destroy($id)
     {
         $inlogistic = Inlogistic::findOrFail($id);
+        if(File::exists($inlogistic->dokumentasi_masuk)){
+            File::delete($inlogistic->dokumentasi_masuk);
+        }
 
         $inlogistic->delete();
 

@@ -111,9 +111,13 @@
                             <p>{{$outlogistic->keterangan_keluar}}</p>
                         </div>
                         <div class="form-group">
-                            <label style="font-weight: bold" for="dokumentasi_keluar">Dokumentasi:</label>
-                            <img src="{{ asset($outlogistic->dokumentasi_keluar) }}" width='50' height='50'
-                                class="img img-responsive" />
+                            <label style="font-weight: bold" for="dokumentasi_keluar">Dokumentasi Keluar:</label>
+                            @if($outlogistic->dokumentasi_keluar)
+                                <img src="{{ public_path('uploads/outlogistic/' . basename($outlogistic->dokumentasi_keluar)) }}"
+                                    width="90" height="90">
+                            @else
+                                <p>Tidak ada gambar</p>
+                            @endif
                         </div>
                     </div>
                 </div>

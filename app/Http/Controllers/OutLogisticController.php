@@ -7,7 +7,8 @@ use App\Models\Outlogistic;
 use App\Models\Logistic;
 use App\Models\Inlogistic;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\Log; 
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
 
 class OutLogisticController extends Controller
 {
@@ -57,6 +58,11 @@ class OutLogisticController extends Controller
 
         $outlogistics = $query->get();
 
+        foreach ($outlogistics as $outlogistic) {
+            $outlogistic->dokumentasi_keluar = $outlogistic->dokumentasi_keluar ? public_path('uploads/outlogistic/' . basename($outlogistic->dokumentasi_keluar)) : null;
+            \Log::info('Jalur gambar: ' . $outlogistic->dokumentasi_keluar);
+        }
+
         $pdf = PDF::loadView('pdf.export_outlogistic_pdf', ['outlogistics' => $outlogistics]);
         return $pdf->download('export_outlogistic_pdf.pdf');
     }
@@ -64,7 +70,13 @@ class OutLogisticController extends Controller
 
     public function export_show_outlogistic_pdf($id)
     {
-        $outlogistic = Outlogistic::findOrFail($id);
+        $outlogistic = Outlogistic::with('logistic')->findOrFail($id);
+
+        // Ubah jalur gambar menjadi jalur absolut
+        if ($outlogistic->dokumentasi_keluar) {
+            $outlogistic->dokumentasi_keluar = public_path('uploads/outlogistic/' . basename($outlogistic->dokumentasi_keluar));
+            \Log::info('Jalur gambar: ' . $outlogistic->dokumentasi_keluar);
+        }
 
         $pdf = PDF::loadView('pdf.export_show_outlogistic_pdf', compact('outlogistic'));
         return $pdf->download('export_show_outlogistic.pdf');
@@ -79,36 +91,49 @@ class OutLogisticController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'id_logistik' => 'required|exists:logistics,id',
             'jumlah_logistik_keluar' => 'required|integer',
             'tanggal_keluar' => 'required|date',
-            'nama_penerima' => 'required|string|max:255',
-            'alamat_penerima' => 'required|string|max:255',
-            'keterangan_keluar' => 'nullable|string',
-            'nik_kk_penerima' => 'required|string|max:255',
-            'dokumentasi_keluar' => 'nullable|string|max:20000',
+            'nama_penerima' => 'required|string',
+            'alamat_penerima' => 'required|string',
+            'keterangan_keluar' => 'required|string',
+            'nik_kk_penerima' => 'required|string',
+            'dokumentasi_keluar' => 'nullable|mimes:png,jpg,jpeg,webp',
         ]);
 
-        $inlogistic = Inlogistic::where('id_logistik', $validatedData['id_logistik'])->firstOrFail();
-        $logistic = Logistic::with('inlogistics')->findOrFail($validatedData['id_logistik']);
+        $filename = NULL;
+        $path = NULL;
+
+        $inlogistic = Inlogistic::where('id_logistik', $request['id_logistik'])->firstOrFail();
+        $logistic = Logistic::with('inlogistics')->findOrFail($request['id_logistik']);
         $jumlahTersedia = $logistic->inlogistics->sum('jumlah_logistik_masuk');
 
-        if ($validatedData['jumlah_logistik_keluar'] > $jumlahTersedia) {
+        if ($request['jumlah_logistik_keluar'] > $jumlahTersedia) {
             return redirect()->back()->withErrors(['jumlah_logistik_keluar' => 'Jumlah logistik tidak mencukupi.']);
         }
-        
+
         if ($request->hasFile('dokumentasi_keluar')) {
             $file = $request->file('dokumentasi_keluar');
-            $filePath = $file->store('dokumentasi_keluar', 'public');
-            $validatedData['dokumentasi_keluar'] = $filePath;
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $path = 'uploads/outlogistic/';
+            $file->move($path, $filename);
         }
 
-        $validatedData['id_inlogistik'] = $inlogistic->id;
+        Outlogistic::create([
+            'id_logistik' => $request->id_logistik,
+            'jumlah_logistik_keluar' => $request->jumlah_logistik_keluar,
+            'tanggal_keluar' => $request->tanggal_keluar,
+            'nama_penerima' => $request->nama_penerima,
+            'alamat_penerima' => $request->alamat_penerima,
+            'keterangan_keluar' => $request->keterangan_keluar,
+            'nik_kk_penerima' => $request->nik_kk_penerima,
+            'dokumentasi_keluar' => $path . $filename,
+        ]);
 
-        $outlogistic = Outlogistic::create($validatedData);
-
-        $inlogistic->jumlah_logistik_masuk -= $validatedData['jumlah_logistik_keluar'];
+        $request['id_inlogistik'] = $inlogistic->id;
+        $inlogistic->jumlah_logistik_masuk -= $request['jumlah_logistik_keluar'];
 
         if ($inlogistic->jumlah_logistik_masuk < 0) {
             $inlogistic->jumlah_logistik_masuk = 0;
@@ -116,8 +141,9 @@ class OutLogisticController extends Controller
 
         $inlogistic->save();
 
-        return redirect()->route('outlogistics.index')->with('success', 'Data berhasil dikeluarkan !');
+        return redirect()->route('outlogistics.index')->with('success', 'Data berhasil dikeluarkan!');
     }
+
 
     public function show($id)
     {
@@ -191,6 +217,9 @@ class OutLogisticController extends Controller
     public function destroy(string $id)
     {
         $outlogistic = Outlogistic::findOrFail($id);
+        if(File::exists($outlogistic->dokumentasi_keluar)){
+            File::delete($outlogistic->dokumentasi_keluar);
+        }
 
         $inlogistic = Inlogistic::where('id_logistik', $outlogistic->id_logistik)->first();
 
