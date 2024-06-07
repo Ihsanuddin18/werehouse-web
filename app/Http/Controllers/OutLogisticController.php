@@ -97,6 +97,7 @@ class OutLogisticController extends Controller
         if ($validatedData['jumlah_logistik_keluar'] > $jumlahTersedia) {
             return redirect()->back()->withErrors(['jumlah_logistik_keluar' => 'Jumlah logistik tidak mencukupi.']);
         }
+        
         if ($request->hasFile('dokumentasi_keluar')) {
             $file = $request->file('dokumentasi_keluar');
             $filePath = $file->store('dokumentasi_keluar', 'public');

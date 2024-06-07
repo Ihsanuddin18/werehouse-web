@@ -16,6 +16,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\JsonResponse;
+
+
 
 class UserController extends Controller
 {
@@ -56,18 +59,69 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            $user->last_login_at = now();
+            $token = $user->createToken('API Token')->plainTextToken;
 
-            $data = [
-                'id' => $user->id,
-                'name' => $user->name
-            ];
-
-            return new UserDataResource(true, "Berhasil Login!", $data);
+            return response()->json([
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+            ]);
         } else {
-            return new UserDataResource(true, "Berhasil Login!", []);
+            return response()->json(['message' => 'Unauthorized'], 401);
         }
     }
+
+    public function getProfile(Request $request)
+    {
+        $user = $request->user();
+        return response()->json($user);
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = $request->user();
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'email_verified_at' => 'date',
+            'biography' => 'nullable|string',
+        ]);
+
+        if ($request->has('email') && $user->email !== $validatedData['email']) {
+            $validatedData['email_verified_at'] = null;
+        }
+
+        $user->update($validatedData);
+
+        return response()->json([
+            'message' => 'Profil berhasil diperbarui!',
+            'user' => $user
+        ]);
+    }
+
+    public function updatePassword(Request $request): JsonResponse
+    {
+        $user = Auth::user();
+
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return response()->json(['message' => 'Password saat ini salah!'], 422);
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return response()->json(['message' => 'Password berhasil diperbarui!'], 200);
+    }
+
 
     public function getLogistic()
     {

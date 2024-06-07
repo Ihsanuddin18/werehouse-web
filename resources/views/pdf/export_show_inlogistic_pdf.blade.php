@@ -123,9 +123,12 @@
                             <p>{{ $inlogistic->keterangan_masuk }}</p>
                         </div>
                         <div class="form-group">
-                            <label style="font-weight: bold" for="dokumentasi_masuk">Dokumentasi:</label>
-                            <img src="{{ asset($inlogistic->dokumentasi_masuk) }}" width='50' height='50'
-                                class="img img-responsive" />
+                            <label style="font-weight: bold" for="dokumentasi_masuk">Dokumentasi Masuk:</label>
+                            @if($inlogistic->dokumentasi_masuk)
+                                <img src="{{ public_path('uploads/inlogistic/' . basename($inlogistic->dokumentasi_masuk)) }}" width="90" height="90">
+                            @else
+                                <p>Tidak ada gambar</p>
+                            @endif
                         </div>
                     </div>
                 </div>

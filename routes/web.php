@@ -9,7 +9,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\LogisticController;
 use App\Http\Controllers\InlogisticController;
 use App\Http\Controllers\OutlogisticController;
-
+use App\Http\Controllers\LogisticRequestController;
 
 Route::get('/', function () {return view('welcome'); });
     Route::get('/about', [AboutController::class, 'showAbout'])->name('about');
@@ -84,6 +84,8 @@ Route::controller(OutlogisticController::class)->prefix('outlogistics')->group(f
     Route::get('/export_outlogistic_pdf', [OutlogisticController::class, 'export_outlogistic_pdf'])->name('export_outlogistic_pdf');
     Route::get('/outlogistics/{id}/export_show_outlogistic_pdf', [OutlogisticController::class, 'export_show_outlogistic_pdf'])->name('export_show_outlogistic_pdf');
 });
+
+Route::get('/logistic-request/{id}', [LogisticRequestController::class, 'show']);
 
 
 require __DIR__ . '/auth.php';

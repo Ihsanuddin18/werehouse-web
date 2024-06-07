@@ -238,7 +238,7 @@
                                 Toast.fire({
                                     icon: 'success',
                                     title: '{{ Session::get('success') }}'
-                                });
+                                });z
                             </script>
                         @endif
                     </div>
@@ -247,7 +247,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4>Daftar data logistik masuk</h4>
-                                </div>
+                                </div>  
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead class="table-primary">
@@ -281,8 +281,8 @@
                                                         <td class="text-center">{{ $inlogistic->tanggal_masuk }}</td>
                                                         <td class="text-center">{{ $inlogistic->expayer_logistik }}</td>
                                                         <td class="text-center">
-                                                            <img src="{{ asset($inlogistic->dokumentasi_masuk) }}" width='50'
-                                                                height='50' class="img img-responsive" />
+                                                            <img src="{{ asset($inlogistic->dokumentasi_masuk) }}" width='90'
+                                                                height='90' class="img img-responsive" />
                                                         </td>
                                                         <td class="text-center">
                                                             <div class="d-flex justify-content-center" role="group"

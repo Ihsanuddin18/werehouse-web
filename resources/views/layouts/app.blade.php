@@ -17,7 +17,8 @@
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/jqvmap/dist/jqvmap.min.css">
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/summernote/summernote-bs4.css">
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
-  <link rel="stylesheet"href="{{ asset('tdashboard') }}/assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
+  <link rel="stylesheet"
+    href="{{ asset('tdashboard') }}/assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/style.css">
@@ -33,7 +34,7 @@
 
     gtag('config', 'UA-94034622-3');
   </script>
-  
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
@@ -138,24 +139,24 @@
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">
                 @if(Auth::user()->last_login_at)
-                                  @php
-                          $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
-                          $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
-                          $hours = floor($diffInMinutes / 60);
-                          $remainingMinutes = $diffInMinutes % 60;
-                        @endphp
-                                  @if($diffInMinutes > 60)
-                          Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
-                        @elseif($diffInMinutes > 1)
-                      Login {{ $diffInMinutes }} menit yang lalu
-                    @elseif($diffInSeconds > 0)
-                    Login {{ $diffInSeconds }} detik yang lalu
-                  @else
-                  Baru Login
-                @endif
-                        @else
-                      Baru Login
-                    @endif
+                  @php
+          $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
+          $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
+          $hours = floor($diffInMinutes / 60);
+          $remainingMinutes = $diffInMinutes % 60;
+        @endphp
+                  @if($diffInMinutes > 60)
+            Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
+          @elseif($diffInMinutes > 1)
+        Login {{ $diffInMinutes }} menit yang lalu
+      @elseif($diffInSeconds > 0)
+      Login {{ $diffInSeconds }} detik yang lalu
+    @else
+      Baru Login
+    @endif
+        @else
+      Baru Login
+    @endif
               </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profil
@@ -220,12 +221,13 @@
             </div>
         </aside>
       </div>
+
       <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="tambahModalLabel">Permintaan Logistik</h5>
+              <h5 class="modal-title" id="tambahModalLabel" style="font-weight: bold;">Permintaan Logistik !</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -234,54 +236,71 @@
               <div class="form-group row">
                 <label for="nama_anggota" class="col-sm-3 col-form-label">Nama Anggota</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="nama_anggota" name="nama_anggota" value="Kusnaedi"
-                    readonly>
-                  <div class="invalid-feedback">
-                    Kolom wajib diisi!
-                  </div>
-                  <div class="valid-feedback">
-                    Valid!
-                  </div>
+                  <input type="text" class="form-control" id="nama_anggota" name="nama_anggota" value="Anggota Lapangan"
+                    disabled readonly>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="list_logistik" class="col-sm-3 col-form-label">List Logistik</label>
+                <label for="request_nama_logistik_keluar" class="col-sm-3 col-form-label">List Logistik</label>
                 <div class="col-sm-9">
-                  <textarea class="form-control" id="list_logistik" name="list_logistik" rows="3" readonly>
-                                Kursi Lipat - 10 buah
-                                Meja Lipat - 5 buah
-                                Sound System - 1 set
-                                Proyektor - 2 unit
-                            </textarea>
-                  <div class="invalid-feedback">
-                    Kolom wajib diisi!
-                  </div>
-                  <div class="valid-feedback">
-                    Valid!
-                  </div>
+                  <textarea class="form-control" id="request_nama_logistik_keluar" name="request_nama_logistik_keluar"
+                    rows="3" disabled readonly></textarea>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="lokasi_pengiriman" class="col-sm-3 col-form-label">Lokasi Pengiriman</label>
+                <label for="alamat_penerima_logistik" class="col-sm-3 col-form-label">Alamat</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="lokasi_pengiriman" name="lokasi_pengiriman"
-                    value="Lokasi Pengiriman" readonly>
-                  <div class="invalid-feedback">
-                    Kolom wajib diisi!
-                  </div>
-                  <div class="valid-feedback">
-                    Valid!
-                  </div>
+                  <input type="text" class="form-control" id="alamat_penerima_logistik" name="alamat_penerima_logistik"
+                    disabled readonly>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="tanggal_kejadian_bencana" class="col-sm-3 col-form-label">Tanggal</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="tanggal_kejadian_bencana" name="tanggal_kejadian_bencana"
+                    disabled readonly>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="keterangan_penerima_logistik" class="col-sm-3 col-form-label">Keterangan</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="keterangan_penerima_logistik"
+                    name="keterangan_penerima_logistik" disabled readonly>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Tolak</button>
               <button type="button" class="btn btn-primary">Konfirmasi</button>
             </div>
           </div>
         </div>
       </div>
+
+      <script>
+        $(document).ready(function () {
+          // Example ID to fetch data for
+          const requestId = 1; // Replace with the actual ID
+
+          $.ajax({
+            url: '/logistic-requests/' + requestId,
+            method: 'GET',
+            success: function (data) {
+              // Assuming data is in the form of { id: ..., nama_anggota: ..., request_nama_logistik_keluar: ..., ... }
+              const logisticRequest = data.data;
+              $('#nama_anggota').val(logisticRequest.nama_anggota);
+              $('#request_nama_logistik_keluar').val(logisticRequest.request_nama_logistik_keluar);
+              $('#alamat_penerima_logistik').val(logisticRequest.alamat_penerima_logistik);
+              $('#tanggal_kejadian_bencana').val(logisticRequest.tanggal_kejadian_bencana);
+              $('#keterangan_penerima_logistik').val(logisticRequest.keterangan_penerima_logistik);
+            },
+            error: function (error) {
+              console.log('Error fetching logistic request data:', error);
+            }
+          });
+        });
+      </script>
+
       <script>
         document.getElementById("notification").addEventListener("click", function (event) {
           event.preventDefault();
@@ -289,26 +308,26 @@
         });
       </script>
       @if(session('loginSuccessNotification'))
-    <script>
+      <script>
       const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 9000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 9000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer);
         toast.addEventListener('mouseleave', Swal.resumeTimer);
-      }
+        }
       });
 
       // Tampilkan notifikasi Toast dengan pesan yang diterima dari session
       Toast.fire({
-      icon: 'success',
-      title: '{{ session('loginSuccessNotification') }}'
+        icon: 'success',
+        title: '{{ session('loginSuccessNotification') }}'
       });
-    </script>
-  @endif
+      </script>
+    @endif
 
       <!-- Main Content -->
       <div class="main-content">
@@ -403,23 +422,23 @@
                     </thead>
                     <tbody>
                       @if($inlogistics->count() > 0)
-                              @foreach($inlogistics as $inlogistic)
-                          <tr>
-                          <td class="text-center">{{ $loop->iteration }}</td>
-                          <td class="text-center">{{ optional($inlogistic->logistic)->kode_logistik }}</td>
-                          <td class="text-center">{{ optional($inlogistic->logistic)->nama_logistik }}</td>
-                          <td class="text-center">{{ optional($inlogistic->supplier)->nama_supplier }}</td>
-                          <td class="text-center">{{ $inlogistic->jumlah_logistik_masuk }}
-                          {{ optional($inlogistic->logistic)->satuan_logistik }}
-                          </td>
-                          <td class="text-center">{{ $inlogistic->expayer_logistik }}</td>
-                          </tr>
-                        @endforeach
-                            @else
-                        <tr>
-                          <td colspan="6" class="text-center"> Tidak ada data ! </td>
-                        </tr>
-                      @endif
+              @foreach($inlogistics as $inlogistic)
+          <tr>
+          <td class="text-center">{{ $loop->iteration }}</td>
+          <td class="text-center">{{ optional($inlogistic->logistic)->kode_logistik }}</td>
+          <td class="text-center">{{ optional($inlogistic->logistic)->nama_logistik }}</td>
+          <td class="text-center">{{ optional($inlogistic->supplier)->nama_supplier }}</td>
+          <td class="text-center">{{ $inlogistic->jumlah_logistik_masuk }}
+          {{ optional($inlogistic->logistic)->satuan_logistik }}
+          </td>
+          <td class="text-center">{{ $inlogistic->expayer_logistik }}</td>
+          </tr>
+        @endforeach
+            @else
+          <tr>
+          <td colspan="6" class="text-center"> Tidak ada data ! </td>
+          </tr>
+        @endif
                     </tbody>
                   </table>
                 </div>

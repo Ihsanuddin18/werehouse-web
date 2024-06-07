@@ -59,14 +59,25 @@
                     <td>{{ optional($inlogistic->supplier)->nama_supplier }}</td>
                     <td>{{ $inlogistic->tanggal_masuk }}</td>
                     <td>{{ $inlogistic->expayer_logistik }}</td>
-                    <td>{{ asset($inlogistic->dokumentasi_masuk) }}</td>
+                    <td>
+                        @if($inlogistic->dokumentasi_masuk)
+                            <img src="{{ public_path('uploads/inlogistic/' . basename($inlogistic->dokumentasi_masuk)) }}"
+                                width="90" height="90">
+                        @else
+                            Tidak ada gambar
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         @else
             <tr>
-                <td colspan="8" style="text-align: center;">Tidak ada data logistik masuk !</td>
+                <td colspan="8">Tidak ada data tersedia</td>
             </tr>
         @endif
+
+
+
+
     </table>
 
 </body>

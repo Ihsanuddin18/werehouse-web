@@ -291,7 +291,7 @@
                                     <div class="form-group col-md-6">
                                         <label for="dokumentasi_masuk">Dokumentasi Masuk</label>
                                         <input type="file" class="form-control" name="dokumentasi_masuk"
-                                            id="dokumentasi_masuk" placeholder="*Masukkan Keterangan">
+                                            id="dokumentasi_masuk" placeholder="*Masukan dokumentasi">
                                     </div>
                                 </div>
                                 <div style="text-align: right;">
@@ -444,6 +444,7 @@
                         const logisticForm = document.getElementById('logisticForm');
                         logisticForm.action = "{{ route('inlogistics.store') }}";
                         logisticForm.method = 'POST';
+                        logisticForm.enctype = 'multipart/form-data'; // Menambahkan atribut enctype
                         logisticForm.submit();
                     });
 

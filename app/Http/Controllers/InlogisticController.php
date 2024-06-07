@@ -59,14 +59,24 @@ class InlogisticController extends Controller
 
         $inlogistics = $query->get();
 
+        foreach ($inlogistics as $inlogistic) {
+            $inlogistic->dokumentasi_masuk = $inlogistic->dokumentasi_masuk ? public_path('uploads/inlogistic/' . basename($inlogistic->dokumentasi_masuk)) : null;
+            \Log::info('Jalur gambar: ' . $inlogistic->dokumentasi_masuk);
+        }
+
         $pdf = PDF::loadView('pdf.export_inlogistic_pdf', ['inlogistics' => $inlogistics]);
         return $pdf->download('export_inlogistic_pdf.pdf');
     }
 
-
     public function export_show_inlogistic_pdf($id)
     {
-        $inlogistic = Inlogistic::findOrFail($id);
+        $inlogistic = Inlogistic::with('logistic', 'supplier')->findOrFail($id);
+
+        // Ubah jalur gambar menjadi jalur absolut
+        if ($inlogistic->dokumentasi_masuk) {
+            $inlogistic->dokumentasi_masuk = public_path('uploads/inlogistic/' . basename($inlogistic->dokumentasi_masuk));
+            \Log::info('Jalur gambar: ' . $inlogistic->dokumentasi_masuk);
+        }
 
         $pdf = PDF::loadView('pdf.export_show_inlogistic_pdf', compact('inlogistic'));
         return $pdf->download('export_show_inlogistic.pdf');
@@ -81,21 +91,40 @@ class InlogisticController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'id_logistik' => 'required|exists:logistics,id',
             'id_supplier' => 'required|exists:suppliers,id',
             'jumlah_logistik_masuk' => 'required|integer',
             'tanggal_masuk' => 'required|date',
-            'expayer_logistik' => 'date',
-            'keterangan_masuk' => 'string',
-            'dokumentasi_masuk' => 'string|max:20000',
+            'expayer_logistik' => 'required|date',
+            'keterangan_masuk' => 'required|string',
+            'dokumentasi_masuk' => 'nullable|mimes:png,jpg,jpeg,webp',
         ]);
-        if ($request->hasFile('dokumentasi_masuk')) {
-            $fileName = time() . $request->file('dokumentasi_masuk')->getClientOriginalName();
-            $path = $request->file('dokumentasi_masuk')->storeAs('images', $fileName, 'public');
-            $validatedData['dokumentasi_masuk'] = '/storage/' . $path;
+
+        $filename = NULL;
+        $path = NULL;
+
+        if ($request->has('dokumentasi_masuk')) {
+
+            $file = $request->file('dokumentasi_masuk');
+            $extension = $file->getClientOriginalExtension();
+
+            $filename = time() . '.' . $extension;
+
+            $path = 'uploads/inlogistic/';
+            $file->move($path, $filename);
         }
-        Inlogistic::create($validatedData);
+
+        Inlogistic::create([
+            'id_logistik' => $request->id_logistik,
+            'id_supplier' => $request->id_supplier,
+            'jumlah_logistik_masuk' => $request->jumlah_logistik_masuk,
+            'tanggal_masuk' => $request->tanggal_masuk,
+            'expayer_logistik' => $request->expayer_logistik,
+            'keterangan_masuk' => $request->keterangan_masuk,
+            'dokumentasi_masuk' => $path . $filename,
+        ]);
+
         return redirect()->route('inlogistics.index')->with('success', 'Data berhasil ditambahkan !');
     }
 
