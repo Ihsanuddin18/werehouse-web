@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
+use App\Models\LogisticRequest;
+
 
 
 
@@ -51,5 +53,10 @@ class User extends Authenticatable
     public function setLastLoginAtAttribute($value)
     {
         $this->attributes['last_login_at'] = Carbon::parse($value);
+    }
+
+    public function logisticrequest()
+    {
+        return $this->hasMany(LogisticRequest::class, 'id_user', 'id');
     }
 }

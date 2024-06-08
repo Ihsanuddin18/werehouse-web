@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Inlogistic;
 use App\Models\Outlogistic;
+use App\Models\LogisticRequest;
 
 class Logistic extends Model
 {
@@ -15,6 +16,7 @@ class Logistic extends Model
         'nama_logistik',
         'satuan_logistik',
     ];
+    
     public function inlogistics()
     {
         return $this->hasMany(Inlogistic::class, 'id_logistik', 'id');
@@ -22,5 +24,9 @@ class Logistic extends Model
     public function outlogistics()
     {
         return $this->hasMany(Outlogistic::class, 'id_logistik', 'id');
+    }
+    public function logisticrequest()
+    {
+        return $this->hasMany(LogisticRequest::class, 'id_logistik', 'id');
     }
 }

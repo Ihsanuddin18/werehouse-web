@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('logistic_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('request_nama_logistik_keluar');
-            $table->integer('request_jumlah_logistik_keluar');
-            $table->string('alamat_penerima_logistik');
-            $table->string('keterangan_penerima_logistik');
-            $table->date('tanggal_kejadian_bencana');
+            $table->foreignId('id_logistik')->constrained('logistics')->onDelete('cascade');
+            $table->foreignId('id_inlogistik')->constrained('inlogistics')->onDelete('cascade');
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
+            $table->integer('jumlah_logistik_request');
+            $table->date('tanggal_kejadian_request');
+            $table->string('nama_penerima_request');
+            $table->string('nik_kk_request');
+            $table->string('alamat_penerima_request');
+            $table->string('keterangan_request');
             $table->timestamps();
         });
     }

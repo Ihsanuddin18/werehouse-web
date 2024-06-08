@@ -235,21 +235,43 @@ class UserController extends Controller
     public function getLogisticRequest()
     {
         $logisticrequest = LogisticRequest::all();
-        return new UserDataResource(true, "List logistik ", $logisticrequest);
+        return new UserDataResource(true, "List logistik", $logisticrequest);
     }
 
     public function storeLogisticRequest(Request $request)
     {
-        $request->validate([
-            'request_nama_logistik_keluar' => 'required',
-            'request_jumlah_logistik_keluar' => 'required',
-            'alamat_penerima_logistik' => 'required',
-            'keterangan_penerima_logistik' => 'required',
-            'tanggal_kejadian_bencana' => 'required',
+        $validatedData = $request->validate([
+            'id_logistik' => 'required|exists:logistics,id',
+            'id_inlogistik' => 'required|exists:inlogistics,id',
+            'id_user' => 'required|exists:users,id',
+            'jumlah_logistik_request' => 'required|integer',
+            'tanggal_kejadian_request' => 'required|date',
+            'nama_penerima_request' => 'required|string|max:255',
+            'nik_kk_request' => 'required|string|max:255',
+            'alamat_penerima_request' => 'required|string|max:255',
+            'keterangan_request' => 'nullable|string',
         ]);
 
+        $inlogistic = Inlogistic::where('id_logistik', $validatedData['id_logistik'])->firstOrFail();
+        $logistic = Logistic::with('inlogistics')->findOrFail($validatedData['id_logistik']);
+        $jumlahTersedia = $logistic->inlogistics->sum('jumlah_logistik_masuk');
 
-        $post = LogisticRequest::create($request->all());
-        return new LogistikResource(true, "List logistik", $post);
+        if ($validatedData['jumlah_logistik_request'] > $jumlahTersedia) {
+            return response()->json(['success' => false, 'message' => 'Jumlah logistik tidak mencukupi.'], 400);
+        }
+
+        $validatedData['id_inlogistik'] = $inlogistic->id;
+
+        $logisticrequest = LogisticRequest::create($validatedData);
+
+        $inlogistic->jumlah_logistik_masuk -= $validatedData['jumlah_logistik_request'];
+
+        if ($inlogistic->jumlah_logistik_masuk < 0) {
+            $inlogistic->jumlah_logistik_masuk = 0;
+        }
+
+        $inlogistic->save();
+
+        return new LogistikResource(true, "List permintaan logistik", $logisticrequest);
     }
 }

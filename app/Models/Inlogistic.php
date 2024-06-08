@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Outlogistic;
 use App\Models\Logistic;
 use App\Models\Supplier;
+use App\Models\LogisticRequest;
 
 
 class Inlogistic extends Model
@@ -33,5 +34,9 @@ class Inlogistic extends Model
     public function outlogistics()
     {
         return $this->hasMany(Outlogistic::class, 'id_inlogistik');
+    }
+    public function logisticrequest()
+    {
+        return $this->hasMany(LogisticRequest::class, 'id_inlogistik');
     }
 }
