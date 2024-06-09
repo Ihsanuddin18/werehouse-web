@@ -151,6 +151,10 @@
                             <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                                 <span>Logistik Keluar</span></a>
                         </li>
+                        <li>
+                            <a href="{{ route('logisticrequests')}}" class="nav-link"><i class="fas fa-truck"></i>
+                                <span>Permintaan Logistik</span></a>
+                        </li>
                         <li class="menu-header">Pengaturan</li>
                         <li>
                             <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i>

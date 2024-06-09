@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Dashboard &rsaquo; Data Logistik &mdash; Werehouse BPBD | Kabupaten Jember</title>
+    <title>Dashboard &rsaquo; Permintaan Logistik &mdash; Werehouse BPBD | Kabupaten Jember</title>
 
     <link rel="shortcut icon" href="{{ asset('landingpages') }}/assets/images/logo/logobpbd1.png" type="image/png" />
 
@@ -139,7 +139,7 @@
                             <a href="{{ route('home') }}"><i class="fas fa-home"></i><span>Dashboard</span></a>
                         </li>
                         <li class="menu-header">Master</li>
-                        <li class=active class="dropdown">
+                        <li class="dropdown">
                             <a href="{{ route('logistics') }}"><i class="fas fa-database"></i> <span>Data
                                     Logistik</span></a>
                         </li>
@@ -156,7 +156,7 @@
                             <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                                 <span>Logistik Keluar</span></a>
                         </li>
-                        <li>
+                        <li class=active>
                             <a href="{{ route('logisticrequests')}}" class="nav-link"><i class="fas fa-truck"></i>
                                 <span>Permintaan Logistik</span></a>
                         </li>
@@ -180,111 +180,106 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Data Logistik</h1>
+                        <h1>Permintaan Logistik </h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item">Data Logistik</div>
+                            <div class="breadcrumb-item">Permintaan Logistik </div>
                         </div>
                     </div>
-                    <div class="button-container">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <a href="{{ route('logistics.create') }}" class="btn btn-primary mr-2">
-                                <i class="fas fa-plus"></i> Tambah
-                            </a>
-                            <form method="GET" action="{{ route('export_logistic_pdf') }}">
-                                <input type="hidden" name="month" value="{{ request('month') }}">
-                                <input type="hidden" name="year" value="{{ request('year') }}">
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fas fa-file-pdf"></i> Export PDF
-                                </button>
-                            </form>
+                    <form method="GET" action="{{ route('logisticrequests.index') }}" class="form-inline">
+                        <div class="form-group mb-2">
+                            <label for="month" class="mr-2">Bulan:</label>
+                            <select name="month" id="month" class="form-control mr-2">
+                                <option value="">Pilih Bulan</option>
+                                @foreach(range(1, 12) as $month)
+                                    <option value="{{ $month }}" {{ request('month') == $month ? 'selected' : '' }}>
+                                        {{ ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][$month - 1] }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
-                        <br>
-                        <form method="GET" action="{{ route('logistics.index') }}" class="form-inline">
-                            <div class="form-group mb-2">
-                                <label for="month" class="mr-2">Bulan:</label>
-                                <select name="month" id="month" class="form-control mr-2">
-                                    <option value="">Pilih Bulan</option>
-                                    @foreach(range(1, 12) as $month)
-                                        <option value="{{ $month }}" {{ request('month') == $month ? 'selected' : '' }}>
-                                            {{ ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][$month - 1] }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group mb-2">
-                                <label for="year" class="mr-2">Tahun:</label>
-                                <select name="year" id="year" class="form-control mr-2">
-                                    <option value="">Pilih Tahun</option>
-                                    @foreach(range($firstYear, $currentYear) as $year)
-                                        <option value="{{ $year }}" {{ request('year') == $year ? 'selected' : '' }}>
-                                            {{ $year }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary mb-2">Filter</button>
-                        </form>
-                        @if(Session::has('success'))
-                            <script>
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 4000,
-                                    timerProgressBar: true,
-                                    didOpen: (toast) => {
-                                        toast.onmouseenter = Swal.stopTimer;
-                                        toast.onmouseleave = Swal.resumeTimer;
-                                    }
-                                });
-
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: '{{ Session::get('success') }}'
-                                });
-                            </script>
-                        @endif
-                    </div>
+                        <div class="form-group mb-2">
+                            <label for="year" class="mr-2">Tahun:</label>
+                            <select name="year" id="year" class="form-control mr-2">
+                                <option value="">Pilih Tahun</option>
+                                @foreach(range($firstYear, date('Y')) as $year)
+                                    <option value="{{ $year }}" {{ request('year') == $year ? 'selected' : '' }}>
+                                        {{ $year }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Filter</button>
+                    </form>
+                    @if(Session::has('success'))
+                        <script>
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 4000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.onmouseenter = Swal.stopTimer;
+                                    toast.onmouseleave = Swal.resumeTimer;
+                                }
+                            });
+                            Toast.fire({
+                                icon: 'success',
+                                title: '{{ Session::get('success') }}'
+                            });
+                        </script>
+                    @endif
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Daftar data logistik</h4>
+                                    <h4>Daftar Permintaan Logistik </h4>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead class="table-primary">
                                             <tr>
-                                                <th class="text-center">No</th>
-                                                <th class="text-center">Kode Logistik</th>
-                                                <th class="text-center">Nama</th>
-                                                <th class="text-center">Satuan</th>
-                                                <th class="text-center">Aksi</th>
+                                                <th style="text-align: center;">No</th>
+                                                <th style="text-align: center;">Nama Logistik</th>
+                                                <th style="text-align: center;">Jumlah</th>
+                                                <th style="text-align: center;">Satuan</th>
+                                                <th style="text-align: center;">Tanggal</th>
+                                                <th style="text-align: center;">Nama Penerima</th>
+                                                <th style="text-align: center;">NIK/KK</th>
+                                                <th style="text-align: center;">Alamat Penerima</th>
+                                                <th style="text-align: center;">Keterangan</th>
+                                                <th style="text-align: center;">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if($logistics->count() > 0)
-                                                @foreach($logistics as $logistic)
+                                            @if($logisticrequests->count() > 0)
+                                                @foreach($logisticrequests as $logisticrequest)
                                                     <tr>
                                                         <td class="text-center">
-                                                            {{ ($logistics->currentPage() - 1) * $logistics->perPage() + $loop->iteration }}
+                                                            {{ ($logisticrequests->currentPage() - 1) * $logisticrequests->perPage() + $loop->iteration }}
                                                         </td>
-                                                        <td class="text-center">{{ $logistic->kode_logistik }}</td>
-                                                        <td class="text-center">{{ $logistic->nama_logistik }}</td>
-                                                        <td class="text-center">{{ $logistic->satuan_logistik }}</td>
+                                                        <td class="text-center">
+                                                            {{ optional($logisticrequest->logistic)->nama_logistik }}
+                                                        </td>
+                                                        <td class="text-center">{{ $logisticrequest->jumlah_logistik_request }}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            {{ optional($logisticrequest->logistic)->satuan_logistik }}
+                                                        </td>
+                                                        <td class="text-center">{{ $logisticrequest->tanggal_kejadian_request }}
+                                                        </td>
+                                                        <td class="text-center">{{ $logisticrequest->nama_penerima_request }}
+                                                        </td>
+                                                        <td class="text-center">{{ $logisticrequest->nik_kk_request }}</td>
+                                                        <td class="text-center">{{ $logisticrequest->alamat_penerima_request }}
+                                                        </td>
+                                                        <td class="text-center">{{ $logisticrequest->keterangan_request }}</td>
                                                         <td class="text-center">
                                                             <div class="d-flex justify-content-center" role="group"
                                                                 aria-label="Basic example">
-                                                                <a href="{{ route('logistics.show', $logistic->id) }}"
-                                                                    class="btn btn-success mr-2" title="Detail">
-                                                                    <i class="fas fa-eye"></i>
-                                                                </a>
-                                                                <a href="{{ route('logistics.edit', $logistic->id)}}"
-                                                                    class="btn btn-warning mr-2" title="Edit">
-                                                                    <i class="fas fa-pencil-alt"></i>
-                                                                </a>
-                                                                <form action="{{ route('logistics.destroy', $logistic->id) }}"
+                                                                <form
+                                                                    action="{{ route('logisticrequests.destroy', $logisticrequest->id) }}"
                                                                     method="POST" class="p-0"
                                                                     onsubmit="return confirm('Delete?')">
                                                                     @csrf
@@ -299,7 +294,7 @@
                                                 @endforeach
                                             @else
                                                 <tr>
-                                                    <td colspan="5" class="text-center">Tidak ada data data !</td>
+                                                    <td colspan="9" class="text-center">Tidak ada data!</td>
                                                 </tr>
                                             @endif
                                         </tbody>
@@ -307,13 +302,13 @@
                                     <div class="container">
                                         <div class="row justify-content-end">
                                             <div class="col-auto">
-                                                {{ $logistics->links() }}
+                                                {{ $logisticrequests->links() }}
                                             </div>
                                         </div>
                                         <div class="row justify-content-end mt-2">
                                             <div class="col-auto">
-                                                <span> Halaman {{ $logistics->currentPage() }} dari
-                                                    {{ $logistics->lastPage() }} halaman </span>
+                                                <span> Halaman {{ $logisticrequests->currentPage() }} dari
+                                                    {{ $logisticrequests->lastPage() }} halaman </span>
                                             </div>
                                         </div>
                                     </div>
@@ -333,6 +328,7 @@
     </footer>
     </div>
     </div>
+
 
 
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>

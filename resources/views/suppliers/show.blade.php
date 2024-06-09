@@ -152,6 +152,10 @@
                         <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                             <span>Logistik Keluar</span></a>
                     </li>
+                    <li>
+                        <a href="{{ route('logisticrequests')}}" class="nav-link"><i class="fas fa-truck"></i>
+                            <span>Permintaan Logistik</span></a>
+                    </li>
                     <li class="menu-header">Pengaturan</li>
                     <li>
                         <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i>
@@ -270,33 +274,33 @@
 
 
 
-    <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/modules/moment.min.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/js/stisla.js"></script>
 
-    <script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
-    <script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/js/scripts.js"></script>
+<script src="{{ asset('tdashboard') }}/assets/js/custom.js"></script>
 
-    <script>
-        function performSearch() {
-            const searchQuery = document.getElementById('search-input').value.toLowerCase();
-            const tableRows = document.querySelectorAll('table tbody tr');
-            tableRows.forEach(row => {
-                const rowData = row.innerText.toLowerCase();
-                if (rowData.includes(searchQuery)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
-        document.getElementById('search-input').addEventListener('input', performSearch);
-    </script>
-    
+<script>
+    function performSearch() {
+        const searchQuery = document.getElementById('search-input').value.toLowerCase();
+        const tableRows = document.querySelectorAll('table tbody tr');
+        tableRows.forEach(row => {
+            const rowData = row.innerText.toLowerCase();
+            if (rowData.includes(searchQuery)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    document.getElementById('search-input').addEventListener('input', performSearch);
+</script>
+
 
 </body>
 

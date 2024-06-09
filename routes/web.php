@@ -11,6 +11,8 @@ use App\Http\Controllers\InlogisticController;
 use App\Http\Controllers\OutlogisticController;
 use App\Http\Controllers\LogisticRequestController;
 
+
+
 Route::get('/', function () {return view('welcome'); });
     Route::get('/about', [AboutController::class, 'showAbout'])->name('about');
     Route::get('/contact', [ContactController::class, 'showContact'])->name('contact');
@@ -85,7 +87,14 @@ Route::controller(OutlogisticController::class)->prefix('outlogistics')->group(f
     Route::get('/outlogistics/{id}/export_show_outlogistic_pdf', [OutlogisticController::class, 'export_show_outlogistic_pdf'])->name('export_show_outlogistic_pdf');
 });
 
-Route::get('/logistic-request/{id}', [LogisticRequestController::class, 'show']);
+
+
+Route::controller(LogisticRequestController::class)->prefix('logisticrequests')->group(function () {
+    Route::resource('logisticrequests', LogisticRequestController::class);
+    Route::get('', 'index')->name('logisticrequests');
+    Route::post('store', 'store')->name('logisticrequests.store');
+    Route::delete('destroy/{id}', 'destroy')->name('logisticrequests.destroy');
+});
 
 
 require __DIR__ . '/auth.php';

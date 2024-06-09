@@ -206,6 +206,10 @@
               <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                 <span>Logistik Keluar</span></a>
             </li>
+            <li>
+              <a href="{{ route('logisticrequests')}}" class="nav-link"><i class="fas fa-truck"></i>
+                <span>Permintaan Logistik</span></a>  
+            </li>
             <li class="menu-header">Pengaturan</li>
             <li>
               <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i> <span>Profil</span></a>
@@ -223,6 +227,82 @@
       </div>
 
       <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tambahModalLabel" style="font-weight: bold;">Permintaan Logistik !</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+                <label for="nama_anggota" class="col-sm-3 col-form-label">Nama Anggota</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="id_user" name="id_user" value=""
+                    disabled readonly>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="" class="col-sm-3 col-form-label">List Logistik</label>
+                <div class="col-sm-9">
+                  <textarea class="form-control" id="" name=""
+                    rows="3" disabled readonly></textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="jumlah_logistik_request" class="col-sm-3 col-form-label">Jumlah Permintaan</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="jumlah_logistik_request" name="jumlah_logistik_request"
+                    disabled readonly>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="tanggal_kejadian_request" class="col-sm-3 col-form-label">Tanggal Kejadian</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="tanggal_kejadian_request" name="tanggal_kejadian_request"
+                    disabled readonly>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="nama_penerima_request" class="col-sm-3 col-form-label">Nama Penerima</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="nama_penerima_request" name="nama_penerima_request"
+                    disabled readonly>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="nik_kk_request" class="col-sm-3 col-form-label">NIK / KK Penerima</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="nik_kk_request" name="nik_kk_request"
+                    disabled readonly>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="alamat_penerima_request" class="col-sm-3 col-form-label">Alamat Penerima</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="alamat_penerima_request" name="alamat_penerima_request"
+                    disabled readonly>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="keterangan_request" class="col-sm-3 col-form-label">Keterangan</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="keterangan_request"
+                    name="keterangan_request" disabled readonly>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Tolak</button>
+              <button type="button" class="btn btn-primary">Konfirmasi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -275,31 +355,7 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <script>
-        $(document).ready(function () {
-          // Example ID to fetch data for
-          const requestId = 1; // Replace with the actual ID
-
-          $.ajax({
-            url: '/logistic-requests/' + requestId,
-            method: 'GET',
-            success: function (data) {
-              // Assuming data is in the form of { id: ..., nama_anggota: ..., request_nama_logistik_keluar: ..., ... }
-              const logisticRequest = data.data;
-              $('#nama_anggota').val(logisticRequest.nama_anggota);
-              $('#request_nama_logistik_keluar').val(logisticRequest.request_nama_logistik_keluar);
-              $('#alamat_penerima_logistik').val(logisticRequest.alamat_penerima_logistik);
-              $('#tanggal_kejadian_bencana').val(logisticRequest.tanggal_kejadian_bencana);
-              $('#keterangan_penerima_logistik').val(logisticRequest.keterangan_penerima_logistik);
-            },
-            error: function (error) {
-              console.log('Error fetching logistic request data:', error);
-            }
-          });
-        });
-      </script>
+      </div> -->
 
       <script>
         document.getElementById("notification").addEventListener("click", function (event) {

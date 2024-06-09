@@ -96,7 +96,7 @@
           $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
           $hours = floor($diffInMinutes / 60);
           $remainingMinutes = $diffInMinutes % 60;
-          @endphp
+        @endphp
                   @if($diffInMinutes > 60)
             Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
           @elseif($diffInMinutes > 1)
@@ -156,6 +156,10 @@
             <li>
               <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i> <span>Logistik
                   Keluar</span></a>
+            </li>
+            <li>
+              <a href="{{ route('logisticrequests')}}" class="nav-link"><i class="fas fa-truck"></i>
+                <span>Permintaan Logistik</span></a>
             </li>
             <li class="menu-header">Pengaturan</li>
             <li class=active>
@@ -317,7 +321,7 @@
   </div>
 
 
- 
+
   <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
   <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
   <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>

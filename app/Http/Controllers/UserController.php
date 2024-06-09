@@ -50,6 +50,7 @@ class UserController extends Controller
         return new UserResource(true, "Data masuk!", $user);
     }
 
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -59,14 +60,24 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
+            $user->last_login_at = now();
+            $user->save();
+
             $token = $user->createToken('API Token')->plainTextToken;
 
-            return response()->json([
+
+            $data = [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
                 'access_token' => $token,
                 'token_type' => 'Bearer',
-            ]);
+
+            ];
+
+            return new UserDataResource(true, "Berhasil Login!", $data);
         } else {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return new UserDataResource(false, "Login gagal!", []);
         }
     }
 
@@ -260,17 +271,7 @@ class UserController extends Controller
             return response()->json(['success' => false, 'message' => 'Jumlah logistik tidak mencukupi.'], 400);
         }
 
-        $validatedData['id_inlogistik'] = $inlogistic->id;
-
         $logisticrequest = LogisticRequest::create($validatedData);
-
-        $inlogistic->jumlah_logistik_masuk -= $validatedData['jumlah_logistik_request'];
-
-        if ($inlogistic->jumlah_logistik_masuk < 0) {
-            $inlogistic->jumlah_logistik_masuk = 0;
-        }
-
-        $inlogistic->save();
 
         return new LogistikResource(true, "List permintaan logistik", $logisticrequest);
     }

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('tdashboard') }}/assets/css/components.css">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-    
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -158,6 +158,10 @@
                             <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                                 <span>Logistik Keluar</span></a>
                         </li>
+                        <li>
+                            <a href="{{ route('logisticrequests')}}" class="nav-link"><i class="fas fa-truck"></i>
+                                <span>Permintaan Logistik</span></a>
+                        </li>
                         <li class="menu-header">Pengaturan</li>
                         <li>
                             <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i>
@@ -282,17 +286,22 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="text-center">
-                                                                {{ $outlogistic->logistic->kode_logistik }}</td>
+                                                                {{ $outlogistic->logistic->kode_logistik }}
+                                                            </td>
                                                             <td class="text-center">
-                                                                {{ $outlogistic->logistic->nama_logistik }}</td>
+                                                                {{ $outlogistic->logistic->nama_logistik }}
+                                                            </td>
                                                             <td class="text-center">
-                                                                {{ $outlogistic->logistic->satuan_logistik }}</td>
+                                                                {{ $outlogistic->logistic->satuan_logistik }}
+                                                            </td>
                                                             <td class="text-center">
-                                                                {{ $outlogistic->jumlah_logistik_keluar }}</td>
+                                                                {{ $outlogistic->jumlah_logistik_keluar }}
+                                                            </td>
                                                             <td class="text-center">{{ $outlogistic->tanggal_keluar }}
                                                             </td>
                                                             <td class="text-center">
-                                                                {{ $outlogistic->keterangan_keluar }}</td>
+                                                                {{ $outlogistic->keterangan_keluar }}
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -315,9 +324,9 @@
         </div>
     </div>
 
-   
 
-    
+
+
     <script src="{{ asset('tdashboard') }}/assets/modules/jquery.min.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/popper.js"></script>
     <script src="{{ asset('tdashboard') }}/assets/modules/tooltip.js"></script>

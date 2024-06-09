@@ -151,6 +151,10 @@
                             <a href="{{ route('outlogistics')}}" class="nav-link"><i class="fas fa-sign-out-alt"></i>
                                 <span>Logistik Keluar</span></a>
                         </li>
+                        <li>
+                            <a href="{{ route('logisticrequests')}}" class="nav-link"><i class="fas fa-truck"></i>
+                                <span>Permintaan Logistik</span></a>
+                        </li>
                         <li class="menu-header">Pengaturan</li>
                         <li>
                             <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i>
@@ -244,7 +248,8 @@
                                     @if(isset($logistics))
                                         <div class="form-group col-md-12">
                                             <label for="id_logistik">Nama Logistik</label>
-                                            <select class="form-control" name="id_logistik" id="id_logistik" disabled readonly>
+                                            <select class="form-control" name="id_logistik" id="id_logistik" disabled
+                                                readonly>
                                                 <option value="" disabled>*Pilih Nama Logistik</option>
                                                 @foreach($logistics as $logistic)
                                                     <option value="{{ $logistic->id }}"
@@ -259,13 +264,15 @@
                                     <div class="form-group col-md-3">
                                         <label for="kode_logistik">Kode Logistik</label>
                                         <input type="text" class="form-control" name="kode_logistik" id="kode_logistik"
-                                            value="{{ optional($inlogistic->logistic)->kode_logistik }}" disabled readonly>
+                                            value="{{ optional($inlogistic->logistic)->kode_logistik }}" disabled
+                                            readonly>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="satuan_logistik">Satuan Logistik</label>
                                         <input type="text" class="form-control" name="satuan_logistik"
                                             id="satuan_logistik"
-                                            value="{{ optional($inlogistic->logistic)->satuan_logistik }}" disabled readonly>
+                                            value="{{ optional($inlogistic->logistic)->satuan_logistik }}" disabled
+                                            readonly>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label for="jumlah_logistik_masuk">Jumlah</label>

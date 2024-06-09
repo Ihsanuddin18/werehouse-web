@@ -3,62 +3,77 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\LogisticRequest;
+use App\Models\Logistic;
+use App\Models\Inlogistic;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
 
 class LogisticRequestController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        //
+        $query = LogisticRequest::with('logistic');
+
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        if ($month && $year) {
+            $query->whereYear('tanggal_kejadian_request', $year)
+                ->whereMonth('tanggal_kejadian_request', $month);
+        } elseif ($year) {
+            $query->whereYear('tanggal_kejadian_request', $year);
+        }
+
+        $logisticrequests = $query->latest()->paginate(15);
+
+        $logistics = Logistic::with('logisticrequests')->get();
+
+        $firstYearDate = LogisticRequest::min('tanggal_kejadian_request');
+        $firstYear = $firstYearDate ? date('Y', strtotime($firstYearDate)) : date('Y');
+        $currentYear = date('Y');
+
+        return view('logisticrequests.index', [
+            'logisticrequests' => $logisticrequests,
+            'logistics' => $logistics,
+            'firstYear' => $firstYear,
+            'currentYear' => $currentYear,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $logisticrequests = LogisticRequest::findOrFail($id);
+        $logisticrequests->delete();
+
+        return redirect()->route('logisticrequests.index')->with('success', 'Data berhasil dihapus !');
     }
+
 }

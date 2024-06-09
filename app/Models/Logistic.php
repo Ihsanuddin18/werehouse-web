@@ -25,7 +25,7 @@ class Logistic extends Model
     {
         return $this->hasMany(Outlogistic::class, 'id_logistik', 'id');
     }
-    public function logisticrequest()
+    public function logisticrequests()
     {
         return $this->hasMany(LogisticRequest::class, 'id_logistik', 'id');
     }
