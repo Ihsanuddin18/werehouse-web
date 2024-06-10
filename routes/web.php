@@ -94,7 +94,9 @@ Route::controller(LogisticRequestController::class)->prefix('logisticrequests')-
     Route::get('', 'index')->name('logisticrequests');
     Route::post('store', 'store')->name('logisticrequests.store');
     Route::delete('destroy/{id}', 'destroy')->name('logisticrequests.destroy');
+    Route::post('confirm/{id}', 'confirm')->name('logisticrequests.confirm');
 });
+
 
 
 require __DIR__ . '/auth.php';

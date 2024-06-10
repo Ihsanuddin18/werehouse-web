@@ -59,76 +59,7 @@
           </div>
           <div id="clock" style="color: white; margin-left: 15px;"></div>
         </form>
-
-        <script>
-          function updateClock() {
-            var now = new Date();
-
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            var wib = 'WIB';
-
-            var days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-            var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-            var dayName = days[now.getDay()];
-            var day = now.getDate();
-            var monthName = months[now.getMonth()];
-            var year = now.getFullYear();
-
-            hours = (hours < 10) ? "0" + hours : hours;
-            minutes = (minutes < 10) ? "0" + minutes : minutes;
-            seconds = (seconds < 10) ? "0" + seconds : seconds;
-            day = (day < 10) ? "0" + day : day;
-
-            var clockElement = document.getElementById('clock');
-            clockElement.innerHTML = dayName + ", " + day + " " + monthName + " " + year + "<br>" +
-              hours + " : " + minutes + " : " + seconds + "  " + wib;
-
-            setTimeout(updateClock, 1000);
-          }
-
-          updateClock();
-        </script>
-
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-              class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right">
-              <div class="dropdown-header"> Permintaan !
-              </div>
-              <script>
-                function konfirmasi() {
-                  Swal.fire({
-                    title: 'Telah Dikonfirmasi',
-                    text: 'Permintaan ini telah dikonfirmasi!',
-                    icon: 'success',
-                    showCancelButton: true,
-                    cancelButtonText: 'Kembali'
-                  })
-                };
-              </script>
-              <div class="dropdown-list-content dropdown-list-icons">
-                <a href="#" class="dropdown-item" onclick="konfirmasi()">
-                  <div class="dropdown-item-icon bg-success text-white">
-                    <i class="fas fa-check"></i>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Kusnaedi</b> meminta list logistik yang dibutuhkan
-                    <div class="time">12 Jam yang lalu</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item" id="notification">
-                  <div class="dropdown-item-icon bg-info text-white">
-                    <i class="fas fa-bell"></i>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Kusnaedi</b> meminta list logistik yang dibutuhkan
-                    <div class="time">Kemarin</div>
-                  </div>
-                </a>
-              </div>
-            </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown"
               class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -140,23 +71,23 @@
               <div class="dropdown-title">
                 @if(Auth::user()->last_login_at)
                   @php
-          $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
-          $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
-          $hours = floor($diffInMinutes / 60);
-          $remainingMinutes = $diffInMinutes % 60;
-        @endphp
-                  @if($diffInMinutes > 60)
-            Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
-          @elseif($diffInMinutes > 1)
-        Login {{ $diffInMinutes }} menit yang lalu
-      @elseif($diffInSeconds > 0)
-      Login {{ $diffInSeconds }} detik yang lalu
-    @else
-      Baru Login
-    @endif
-        @else
-      Baru Login
-    @endif
+                        $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
+                        $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
+                        $hours = floor($diffInMinutes / 60);
+                        $remainingMinutes = $diffInMinutes % 60;
+                        @endphp
+                                @if($diffInMinutes > 60)
+                          Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
+                        @elseif($diffInMinutes > 1)
+                      Login {{ $diffInMinutes }} menit yang lalu
+                    @elseif($diffInSeconds > 0)
+                    Login {{ $diffInSeconds }} detik yang lalu
+                  @else
+                    Baru Login
+                  @endif
+                      @else
+                    Baru Login
+                  @endif
               </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profil
@@ -208,7 +139,7 @@
             </li>
             <li>
               <a href="{{ route('logisticrequests')}}" class="nav-link"><i class="fas fa-truck"></i>
-                <span>Permintaan Logistik</span></a>  
+                <span>Permintaan Logistik</span></a>
             </li>
             <li class="menu-header">Pengaturan</li>
             <li>
@@ -226,136 +157,6 @@
         </aside>
       </div>
 
-      <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="tambahModalLabel" style="font-weight: bold;">Permintaan Logistik !</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-group row">
-                <label for="nama_anggota" class="col-sm-3 col-form-label">Nama Anggota</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="id_user" name="id_user" value=""
-                    disabled readonly>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="" class="col-sm-3 col-form-label">List Logistik</label>
-                <div class="col-sm-9">
-                  <textarea class="form-control" id="" name=""
-                    rows="3" disabled readonly></textarea>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="jumlah_logistik_request" class="col-sm-3 col-form-label">Jumlah Permintaan</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="jumlah_logistik_request" name="jumlah_logistik_request"
-                    disabled readonly>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="tanggal_kejadian_request" class="col-sm-3 col-form-label">Tanggal Kejadian</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="tanggal_kejadian_request" name="tanggal_kejadian_request"
-                    disabled readonly>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="nama_penerima_request" class="col-sm-3 col-form-label">Nama Penerima</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="nama_penerima_request" name="nama_penerima_request"
-                    disabled readonly>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="nik_kk_request" class="col-sm-3 col-form-label">NIK / KK Penerima</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="nik_kk_request" name="nik_kk_request"
-                    disabled readonly>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="alamat_penerima_request" class="col-sm-3 col-form-label">Alamat Penerima</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="alamat_penerima_request" name="alamat_penerima_request"
-                    disabled readonly>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="keterangan_request" class="col-sm-3 col-form-label">Keterangan</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="keterangan_request"
-                    name="keterangan_request" disabled readonly>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Tolak</button>
-              <button type="button" class="btn btn-primary">Konfirmasi</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="tambahModalLabel" style="font-weight: bold;">Permintaan Logistik !</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-group row">
-                <label for="nama_anggota" class="col-sm-3 col-form-label">Nama Anggota</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="nama_anggota" name="nama_anggota" value="Anggota Lapangan"
-                    disabled readonly>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="request_nama_logistik_keluar" class="col-sm-3 col-form-label">List Logistik</label>
-                <div class="col-sm-9">
-                  <textarea class="form-control" id="request_nama_logistik_keluar" name="request_nama_logistik_keluar"
-                    rows="3" disabled readonly></textarea>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="alamat_penerima_logistik" class="col-sm-3 col-form-label">Alamat</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="alamat_penerima_logistik" name="alamat_penerima_logistik"
-                    disabled readonly>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="tanggal_kejadian_bencana" class="col-sm-3 col-form-label">Tanggal</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="tanggal_kejadian_bencana" name="tanggal_kejadian_bencana"
-                    disabled readonly>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="keterangan_penerima_logistik" class="col-sm-3 col-form-label">Keterangan</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="keterangan_penerima_logistik"
-                    name="keterangan_penerima_logistik" disabled readonly>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Tolak</button>
-              <button type="button" class="btn btn-primary">Konfirmasi</button>
-            </div>
-          </div>
-        </div>
-      </div> -->
 
       <script>
         document.getElementById("notification").addEventListener("click", function (event) {

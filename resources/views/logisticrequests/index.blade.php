@@ -249,6 +249,7 @@
                                                 <th style="text-align: center;">NIK/KK</th>
                                                 <th style="text-align: center;">Alamat Penerima</th>
                                                 <th style="text-align: center;">Keterangan</th>
+                                                <th style="text-align: center;">Status</th>
                                                 <th style="text-align: center;">Aksi</th>
                                             </tr>
                                         </thead>
@@ -276,16 +277,36 @@
                                                         </td>
                                                         <td class="text-center">{{ $logisticrequest->keterangan_request }}</td>
                                                         <td class="text-center">
+                                                            @if ($logisticrequest->status == 'Dikonfirmasi')
+                                                                <span
+                                                                    style="background-color: #32CD32; color: white; padding: 5px 10px; border-radius: 5px;">Dikonfirmasi</span>
+                                                            @else
+                                                                <span style="color: #FF0000; font-weight: bold;">Belum
+                                                                    Dikonfirmasi</span>
+                                                            @endif
+                                                        </td>
+                                                        <td class="text-center">
                                                             <div class="d-flex justify-content-center" role="group"
                                                                 aria-label="Basic example">
                                                                 <form
                                                                     action="{{ route('logisticrequests.destroy', $logisticrequest->id) }}"
-                                                                    method="POST" class="p-0"
-                                                                    onsubmit="return confirm('Delete?')">
+                                                                    method="POST" class="p-0 mr-2"
+                                                                    onsubmit="return confirm('Tolak dan hapus permintaan ini?')">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button type="submit" class="btn btn-danger" title="Delete">
-                                                                        <i class="fas fa-trash-alt"></i>
+                                                                        <i class="fas fa-times"></i>
+                                                                    </button>
+                                                                </form>
+                                                                <form
+                                                                    action="{{ route('logisticrequests.confirm', $logisticrequest->id) }}"
+                                                                    method="POST" class="p-0 mr-2"
+                                                                    onsubmit="return confirm('Konfirmasi permintaan ini?')">
+                                                                    @csrf
+                                                                    @method('POST')
+                                                                    <button type="submit" class="btn btn-success"
+                                                                        title="Konfirmasi">
+                                                                        <i class="fas fa-check"></i>
                                                                     </button>
                                                                 </form>
                                                             </div>
@@ -319,6 +340,7 @@
                 </section>
             </div>
     </div>
+
     <footer class="main-footer">
         <div class="footer-left">
             Werehouse BPBD<div class="bullet"></div> Kabupaten Jember

@@ -68,12 +68,22 @@ class LogisticRequestController extends Controller
         //
     }
 
+    public function confirm($id)
+    {
+        $logisticRequest = LogisticRequest::findOrFail($id);
+
+        $logisticRequest->status = 'Dikonfirmasi';
+        $logisticRequest->save();
+
+        return redirect()->route('logisticrequests.index')->with('success', 'Permintaan logistik berhasil dikonfirmasi !');
+    }
+
     public function destroy($id)
     {
         $logisticrequests = LogisticRequest::findOrFail($id);
         $logisticrequests->delete();
 
-        return redirect()->route('logisticrequests.index')->with('success', 'Data berhasil dihapus !');
+        return redirect()->route('logisticrequests.index')->with('success', 'Permintaan berhasil ditolak dan dihapus !');
     }
 
 }
