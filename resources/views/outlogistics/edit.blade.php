@@ -278,14 +278,6 @@
                                             value="{{ old('keterangan_keluar', $outlogistic->keterangan_keluar) }}"
                                             required>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="dokumentasi_keluar">Dokumentasi</label>
-                                        <input type="file" class="form-control" name="dokumentasi_keluar">
-                                        @if($outlogistic->dokumentasi_keluar)
-                                            <img src="{{ asset($outlogistic->dokumentasi_keluar) }}" width='100'
-                                                height='100' class="mt-2">
-                                        @endif
-                                    </div>
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label class="form-label">Dikeluarkan Pada</label>

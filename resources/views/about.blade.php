@@ -296,7 +296,7 @@
               </div>
               <div class="ud-team-info">
                 <h5>Rayhan Cahyadi</h5>
-                <h6>Manajemen Perangkat Lunak</h6>
+                <h6>Software Management</h6>
               </div>
               <ul class="ud-team-socials">
                 <li>

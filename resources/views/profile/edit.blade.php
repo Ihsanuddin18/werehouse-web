@@ -227,7 +227,7 @@
     @endif
                   </div>
                   <div class="card-footer text-center">
-                    <div class="font-weight-bold mb-2">Werehouse BPBD</div>
+                    <div class="font-weight-bold mb-2">BPBD Kabupaten Jember</div>
                     <a href="https://www.facebook.com/bpbd.jember" class="btn btn-social-icon btn-facebook mr-1">
                       <img src="{{ asset('tdashboard') }}/assets/img/logfacebook.png" alt="logofacebook">
                     </a>
