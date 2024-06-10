@@ -24,9 +24,6 @@
         <div class="row">
           <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg">
-              <a class="navbar-brand" href="/">
-                <img src="{{ asset('landingpages') }}/assets/images/logo/logo.svg" alt="Logo" />
-              </a>
               <button class="navbar-toggler">
                 <span class="toggler-icon"> </span>
                 <span class="toggler-icon"> </span>
