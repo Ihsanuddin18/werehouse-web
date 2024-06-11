@@ -24,7 +24,6 @@
 
         gtag('config', 'UA-94034622-3');
     </script>
-
 </head>
 
 <body>
@@ -267,6 +266,9 @@
                                                 <th style="text-align: center;">Aksi</th>
                                             </tr>
                                         </thead>
+                                        @php
+                                            use Carbon\Carbon;
+                                        @endphp
                                         <tbody>
                                             @if($inlogistics->count() > 0)
                                                 @foreach($inlogistics as $inlogistic)
@@ -282,8 +284,12 @@
                                                         <td class="text-center">
                                                             {{ optional($inlogistic->supplier)->nama_supplier }}
                                                         </td>
-                                                        <td class="text-center">{{ $inlogistic->tanggal_masuk }}</td>
-                                                        <td class="text-center">{{ $inlogistic->expayer_logistik }}</td>
+                                                        <td class="text-center">
+                                                            {{ Carbon::parse($inlogistic->tanggal_masuk)->translatedFormat('l, d F Y') }}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            {{ Carbon::parse($inlogistic->expayer_logistik)->translatedFormat('l, d F Y') }}
+                                                        </td>
                                                         <td class="text-center">
                                                             <img src="{{ asset($inlogistic->dokumentasi_masuk) }}" width='90'
                                                                 height='90' class="img img-responsive" />

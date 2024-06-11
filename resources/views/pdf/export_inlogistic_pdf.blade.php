@@ -57,8 +57,8 @@
                     <td>{{ $inlogistic->jumlah_logistik_masuk }}</td>
                     <td>{{ optional($inlogistic->logistic)->satuan_logistik }}</td>
                     <td>{{ optional($inlogistic->supplier)->nama_supplier }}</td>
-                    <td>{{ $inlogistic->tanggal_masuk }}</td>
-                    <td>{{ $inlogistic->expayer_logistik }}</td>
+                    <td>{{ \Carbon\Carbon::parse($inlogistic->tanggal_masuk)->translatedFormat('l, d F Y') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($inlogistic->expayer_logistik)->translatedFormat('l, d F Y') }}</td>
                     <td>
                         @if($inlogistic->dokumentasi_masuk)
                             <img src="{{ public_path('uploads/inlogistic/' . basename($inlogistic->dokumentasi_masuk)) }}"

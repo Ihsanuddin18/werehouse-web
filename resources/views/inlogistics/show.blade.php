@@ -184,7 +184,8 @@
                         <h1>Detail logistik masuk</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item"><a href="{{ route('inlogistics') }}">Data Logistik Masuk</a></div>
+                            <div class="breadcrumb-item"><a href="{{ route('inlogistics') }}">Data Logistik Masuk</a>
+                            </div>
                             <div class="breadcrumb-item">Detail logistik masuk</div>
                         </div>
                     </div>
@@ -232,7 +233,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="tanggal_masuk">Tanggal Masuk:</label>
-                                                <p>{{ $inlogistic->tanggal_masuk }}</p>
+                                                <p>{{ \Carbon\Carbon::parse($inlogistic->tanggal_masuk)->translatedFormat('l, d F Y') }}
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -257,7 +259,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="expayer_logistik">Tanggal Kadaluarsa:</label>
-                                                <p>{{ $inlogistic->expayer_logistik }}</p>
+                                                <p>{{ \Carbon\Carbon::parse($inlogistic->expayer_logistik)->translatedFormat('l, d F Y') }}
+                                                </p>
                                             </div>
                                             <div class="form-group">
                                                 <label for="keterangan_masuk">Keterangan:</label>
@@ -273,11 +276,13 @@
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label>Ditambahkan Pada:</label>
-                                            <p>{{ $inlogistic->created_at }}</p>
+                                            <p>{{ \Carbon\Carbon::parse($inlogistic->created_at)->translatedFormat('l, d F Y') }}
+                                            </p>
                                         </div>
                                         <div class="col mb-3">
                                             <label>Diperbarui Pada:</label>
-                                            <p>{{ $inlogistic->updated_at }}</p>
+                                            <p>{{ \Carbon\Carbon::parse($inlogistic->updated_at)->translatedFormat('l, d F Y') }}
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="row mt-4">
@@ -295,6 +300,9 @@
                                                             <th class="text-center">Keterangan</th>
                                                         </tr>
                                                     </thead>
+                                                    @php
+                                                        use Carbon\Carbon;
+                                                    @endphp
                                                     <tbody>
                                                         <tr>
                                                             <td class="text-center">
@@ -309,9 +317,11 @@
                                                             <td class="text-center">
                                                                 {{ $inlogistic->jumlah_logistik_masuk }}
                                                             </td>
-                                                            <td class="text-center">{{ $inlogistic->tanggal_masuk }}
+                                                            <td class="text-center">
+                                                                {{ Carbon::parse($inlogistic->tanggal_masuk)->translatedFormat('l, d F Y') }}
                                                             </td>
-                                                            <td class="text-center">{{ $inlogistic->expayer_logistik }}
+                                                            <td class="text-center">
+                                                                {{ Carbon::parse($inlogistic->expayer_logistik)->translatedFormat('l, d F Y') }}
                                                             </td>
                                                             <td class="text-center">{{ $inlogistic->keterangan_masuk }}
                                                             </td>

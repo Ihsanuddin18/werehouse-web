@@ -277,6 +277,9 @@
                         <th style="text-align: center;">Tanggal Kadaluarsa</th>
                       </tr>
                     </thead>
+                    @php
+            use Carbon\Carbon;
+            @endphp
                     <tbody>
                       @if($inlogistics->count() > 0)
               @foreach($inlogistics as $inlogistic)
@@ -288,7 +291,9 @@
           <td class="text-center">{{ $inlogistic->jumlah_logistik_masuk }}
           {{ optional($inlogistic->logistic)->satuan_logistik }}
           </td>
-          <td class="text-center">{{ $inlogistic->expayer_logistik }}</td>
+          <td class="text-center">
+          {{ Carbon::parse($inlogistic->expayer_logistik)->translatedFormat('l, d F Y') }}
+          </td>
           </tr>
         @endforeach
             @else

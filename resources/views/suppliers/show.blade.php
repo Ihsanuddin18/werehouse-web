@@ -223,13 +223,16 @@
                                 <div class="row">
                                     <div class="col mb-3">
                                         <label>Ditambahkan Pada:</label>
-                                        <p>{{ $supplier->created_at }}</p>
+                                        <p>{{ \Carbon\Carbon::parse($supplier->created_at)->translatedFormat('l, d F Y') }}
+                                        </p>
                                     </div>
                                     <div class="col mb-3">
                                         <label>Diperbarui Pada:</label>
-                                        <p>{{ $supplier->updated_at }}</p>
+                                        <p>{{ \Carbon\Carbon::parse($supplier->updated_at)->translatedFormat('l, d F Y') }}
+                                        </p>
                                     </div>
                                 </div>
+
                                 <div class="row mt-4">
                                     <div class="col-12">
                                         <div class="table-responsive">

@@ -153,9 +153,9 @@
                             <span>Logistik Keluar</span></a>
                     </li>
                     <li>
-                            <a href="{{ route('logisticrequests')}}" class="nav-link"><i class="fas fa-truck"></i>
-                                <span>Permintaan Logistik</span></a>
-                        </li>
+                        <a href="{{ route('logisticrequests')}}" class="nav-link"><i class="fas fa-truck"></i>
+                            <span>Permintaan Logistik</span></a>
+                    </li>
                     <li class="menu-header">Pengaturan</li>
                     <li>
                         <a href="{{ route('profile.edit')}}" class="nav-link"><i class="fas fa-user"></i>
@@ -215,11 +215,13 @@
                                 <div class="row">
                                     <div class="col mb-3">
                                         <label>Ditambahkan Pada:</label>
-                                        <p>{{ $logistic->created_at }}</p>
+                                        <p>{{ \Carbon\Carbon::parse($logistic->created_at)->translatedFormat('l, d F Y') }}
+                                        </p>
                                     </div>
                                     <div class="col mb-3">
                                         <label>Diperbarui Pada:</label>
-                                        <p>{{ $logistic->updated_at }}</p>
+                                        <p>{{ \Carbon\Carbon::parse($logistic->updated_at)->translatedFormat('l, d F Y') }}
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="row mt-4">

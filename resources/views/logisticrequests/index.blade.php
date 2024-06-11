@@ -253,6 +253,9 @@
                                                 <th style="text-align: center;">Aksi</th>
                                             </tr>
                                         </thead>
+                                        @php
+                                            use Carbon\Carbon;
+                                        @endphp
                                         <tbody>
                                             @if($logisticrequests->count() > 0)
                                                 @foreach($logisticrequests as $logisticrequest)
@@ -268,8 +271,7 @@
                                                         <td class="text-center">
                                                             {{ optional($logisticrequest->logistic)->satuan_logistik }}
                                                         </td>
-                                                        <td class="text-center">{{ $logisticrequest->tanggal_kejadian_request }}
-                                                        </td>
+                                                        <td class="text-center">{{ \Carbon\Carbon::parse($logisticrequest->tanggal_kejadian_request)->translatedFormat('l, d F Y') }}</td>
                                                         <td class="text-center">{{ $logisticrequest->nama_penerima_request }}
                                                         </td>
                                                         <td class="text-center">{{ $logisticrequest->nik_kk_request }}</td>

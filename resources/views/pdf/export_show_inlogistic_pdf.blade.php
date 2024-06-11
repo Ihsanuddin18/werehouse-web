@@ -125,7 +125,8 @@
                         <div class="form-group">
                             <label style="font-weight: bold" for="dokumentasi_masuk">Dokumentasi Masuk:</label>
                             @if($inlogistic->dokumentasi_masuk)
-                                <img src="{{ public_path('uploads/inlogistic/' . basename($inlogistic->dokumentasi_masuk)) }}" width="90" height="90">
+                                <img src="{{ public_path('uploads/inlogistic/' . basename($inlogistic->dokumentasi_masuk)) }}"
+                                    width="90" height="90">
                             @else
                                 <p>Tidak ada gambar</p>
                             @endif
@@ -135,11 +136,11 @@
                 <div class="row">
                     <div class="col mb-3">
                         <label style="font-weight: bold;">Ditambahkan Pada:</label>
-                        <p>{{ $inlogistic->created_at }}</p>
+                        <p>{{ \Carbon\Carbon::parse($inlogistic->created_at)->translatedFormat('l, d F Y') }}</p>
                     </div>
                     <div class="col mb-3">
                         <label style="font-weight: bold;">Diperbarui Pada:</label>
-                        <p>{{ $inlogistic->updated_at }}</p>
+                        <p>{{ \Carbon\Carbon::parse($inlogistic->updated_at)->translatedFormat('l, d F Y') }}</p>
                     </div>
                 </div>
             </div>

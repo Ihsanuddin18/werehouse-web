@@ -293,8 +293,9 @@
                                         <div class="col mb-3">
                                             <label class="form-label">Ditambahkan Pada</label>
                                             <input type="text" name="created_at" class="form-control"
-                                                placeholder="Created At" value="{{ $inlogistic->created_at }}" disabled
-                                                readonly>
+                                                placeholder="Created At"
+                                                value="{{ \Carbon\Carbon::parse($inlogistic->created_at)->translatedFormat('l, d F Y') }}"
+                                                disabled readonly>
                                         </div>
                                     </div>
                                 </div>

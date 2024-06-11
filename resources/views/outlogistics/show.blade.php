@@ -185,7 +185,8 @@
                         <h1>Detail logistik keluar</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item"><a href="{{ route('outlogistics') }}">Data Logistik Keluar</a></div>
+                            <div class="breadcrumb-item"><a href="{{ route('outlogistics') }}">Data Logistik Keluar</a>
+                            </div>
                             <div class="breadcrumb-item">Detail logistik keluar</div>
                         </div>
                     </div>
@@ -225,7 +226,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="tanggal_keluar">Tanggal Keluar:</label>
-                                                <p>{{ $outlogistic->tanggal_keluar }}</p>
+                                                <p>{{ \Carbon\Carbon::parse($outlogistic->tanggal_keluar)->translatedFormat('l, d F Y') }}
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -262,11 +264,13 @@
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label>Ditambahkan Pada:</label>
-                                            <p>{{ $outlogistic->created_at }}</p>
+                                            <p>{{ \Carbon\Carbon::parse($outlogistic->created_at)->translatedFormat('l, d F Y') }}
+                                            </p>
                                         </div>
                                         <div class="col mb-3">
                                             <label>Diperbarui Pada:</label>
-                                            <p>{{ $outlogistic->updated_at }}</p>
+                                            <p>{{ \Carbon\Carbon::parse($outlogistic->updated_at)->translatedFormat('l, d F Y') }}
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="row mt-4">
@@ -297,7 +301,8 @@
                                                             <td class="text-center">
                                                                 {{ $outlogistic->jumlah_logistik_keluar }}
                                                             </td>
-                                                            <td class="text-center">{{ $outlogistic->tanggal_keluar }}
+                                                            <td class="text-center">
+                                                                {{ \Carbon\Carbon::parse($outlogistic->tanggal_keluar)->translatedFormat('l, d F Y') }}
                                                             </td>
                                                             <td class="text-center">
                                                                 {{ $outlogistic->keterangan_keluar }}

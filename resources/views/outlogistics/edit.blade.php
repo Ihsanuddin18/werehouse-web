@@ -282,7 +282,7 @@
                                         <div class="col mb-3">
                                             <label class="form-label">Dikeluarkan Pada</label>
                                             <input type="text" name="created_at" class="form-control"
-                                                placeholder="Created At" value="{{ $outlogistic->created_at }}" disabled
+                                                placeholder="Created At" value="{{ \Carbon\Carbon::parse($outlogistic->created_at)->translatedFormat('l, d F Y') }}" disabled
                                                 readonly>
                                         </div>
                                     </div>

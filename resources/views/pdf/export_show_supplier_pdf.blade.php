@@ -62,11 +62,11 @@
         </div>
         <div style="margin-bottom: 15px;">
             <label style="font-weight: bold;">Ditambahkan Pada:</label>
-            <p>{{ $supplier->created_at }}</p>
+            <p>{{ \Carbon\Carbon::parse($supplier->created_at)->translatedFormat('l, d F Y') }}</p>
         </div>
         <div style="margin-bottom: 15px;">
             <label style="font-weight: bold;">Diperbarui Pada:</label>
-            <p>{{ $supplier->updated_at }}</p>
+            <p>{{ \Carbon\Carbon::parse($supplier->updated_at)->translatedFormat('l, d F Y') }}</p>
         </div>
     </div>
     <table id="logistics-table">
