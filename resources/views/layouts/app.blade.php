@@ -71,23 +71,23 @@
               <div class="dropdown-title">
                 @if(Auth::user()->last_login_at)
                   @php
-                        $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
-                        $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
-                        $hours = floor($diffInMinutes / 60);
-                        $remainingMinutes = $diffInMinutes % 60;
-                        @endphp
-                                @if($diffInMinutes > 60)
-                          Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
-                        @elseif($diffInMinutes > 1)
-                      Login {{ $diffInMinutes }} menit yang lalu
-                    @elseif($diffInSeconds > 0)
-                    Login {{ $diffInSeconds }} detik yang lalu
-                  @else
-                    Baru Login
-                  @endif
-                      @else
-                    Baru Login
-                  @endif
+          $diffInMinutes = Carbon\Carbon::now()->diffInMinutes(Auth::user()->last_login_at);
+          $diffInSeconds = Carbon\Carbon::now()->diffInSeconds(Auth::user()->last_login_at);
+          $hours = floor($diffInMinutes / 60);
+          $remainingMinutes = $diffInMinutes % 60;
+          @endphp
+                  @if($diffInMinutes > 60)
+            Login {{ $hours }} jam {{ $remainingMinutes }} menit yang lalu
+          @elseif($diffInMinutes > 1)
+        Login {{ $diffInMinutes }} menit yang lalu
+      @elseif($diffInSeconds > 0)
+      Login {{ $diffInSeconds }} detik yang lalu
+    @else
+      Baru Login
+    @endif
+        @else
+      Baru Login
+    @endif
               </div>
               <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profil
@@ -274,7 +274,7 @@
                         <th style="text-align: center;">Nama Logistik</th>
                         <th style="text-align: center;">Supplier</th>
                         <th style="text-align: center;">Stok Logistik</th>
-                        <th style="text-align: center;">Expayer</th>
+                        <th style="text-align: center;">Tanggal Kadaluarsa</th>
                       </tr>
                     </thead>
                     <tbody>

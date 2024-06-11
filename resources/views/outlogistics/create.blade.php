@@ -185,7 +185,7 @@
                         <h1>Tambah logistik keluar</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                            <div class="breadcrumb-item active"><a href="#">Logistik Keluar</a></div>
+                            <div class="breadcrumb-item active"><a href="#">Data Logistik Keluar</a></div>
                             <div class="breadcrumb-item">Tambah logistik keluar</div>
                         </div>
                     </div>

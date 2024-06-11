@@ -184,7 +184,7 @@
                         <h1>Tambah logistik masuk</h1>
                         <div class="section-header-breadcrumb">
                             <div class="breadcrumb-item active"><a href="{{ route('home') }}">Dashboard</a></div>
-                            <div class="breadcrumb-item active"><a href="{{ route('inlogistics') }}">Logistik Masuk</a>
+                            <div class="breadcrumb-item active"><a href="{{ route('inlogistics') }}">Data Logistik Masuk</a>
                             </div>
                             <div class="breadcrumb-item">Tambah logistik masuk</div>
                         </div>
