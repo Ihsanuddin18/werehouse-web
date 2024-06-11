@@ -33,7 +33,6 @@
         }
     </style>
 </head>
-
 <body>
     <h1>Data Logistik Keluar</h1>
     <table id="customers">
